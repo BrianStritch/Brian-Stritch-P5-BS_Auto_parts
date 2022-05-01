@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background: url('///media/bg-img.JPG') no-repeat center center fixed;
+    background: url('/media/bg-4-img.JPG') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     font-family: "Open Sans", sans-serif;
