@@ -5,14 +5,20 @@
 --------------------------------------------------------------*/
 html {
     height: 100%;
+    background-color: black;
 }
 
 body {
-    background: url('/media/bg-4-img.JPG') no-repeat center center fixed;
+    background: url('/media/2jz-bg.JPG') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: calc(120vh - 164px);
     font-family: "Open Sans", sans-serif;
     color: #313030;
+}
+#dim-cover{
+    background-color: rgba(0, 0, 0, 0.590);
+    height: 100vh;
+    width: auto;
 }
 
 
