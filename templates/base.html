@@ -128,15 +128,31 @@
                     </ul>
                 </div>
             </div>
-            <div class="row bg-white">
+            <!-- <div class="row bg-white">
                 <nav class="navbar navbar-expand-lg navbar-light w-100">
                     <button class="navbar-toggler" type="text" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-label="toggle navigation" aria-expanded="false">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     
                 </nav>
+            </div> -->
+            <div class="row ">
+                <div class="col">
+                    <nav class="navbar navbar-expand-lg navbar-light w-100">
+                        <button class="navbar-toggler" type="text" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-label="toggle navigation" aria-expanded="false">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        {% include 'includes/mobile-top-header.html' %}
+                        {% include 'includes/main-nav-2.html' %}
+                        
+                    </nav>
+                </div>
+                <div class="col">
+                    {% include 'includes/main-nav-3.html' %}
+                </div>
+                
             </div>
-            <div id="delivery-banner" class="row text-center">
+            <div class="row text-center">
                 <div class="col bg-black text-white">
                     <h4 class="logo-font my-1">
                         Same day dispatch on orders made before 3pm !
@@ -169,7 +185,7 @@
 
 
         <!-- ======= Footer ======= -->
-        <footer id="footer">
+        <!-- <footer id="footer">
             <div class="container d-lg-flex py-4">
                 <div class="me-lg-auto text-center text-lg-start">
                     <div class="copyright">
@@ -192,7 +208,7 @@
                 </div>
             </div>
         </footer>
-        
+         -->
         <!-- End Footer -->
 
     </section>
