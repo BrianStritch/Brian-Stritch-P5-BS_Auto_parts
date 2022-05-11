@@ -2,8 +2,85 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-10 mb-10">
-    <h1 style="color:green">this is the index page</h1>
-</div>
 
+<div class="row">
+    <div class="col-sm-5">
+        <div class="row">
+            <div class="col-sm-8  site-search-box">
+                <div class="card">
+                <div class="card-body">
+                    <form method="GET" action="">
+                        <div class="input-group w-100">
+                            <input type="text" class="form-control border-black border rounded-0" name="q" placeholder="Search Our Site">
+                            <div class="input-group-append">
+                                <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-8 vehicle-search-box">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="GET" action="">
+                            <div class="form-group">                    
+                                <h4>Select your vehicle make</h4>
+                                <label for="search_make">Make</label>
+                                <select class="form-control" id="search_make">
+                                    {% if makes %} 
+                                        {% for make in makes %}
+                                            <option>{{ make }}</option>                        
+                                        {% endfor%}
+                                    {% else %}                      
+                                        <option>No options available</option>
+                                    {% endif %}                      
+                                </select>
+                            </div>                  
+                            <hr>
+                            <button type="submit" class="btn btn-primary">Find Parts</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 site-search-box">        
+        <div class="container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img src="/media/bg_images/bg-2-img.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item active">
+                    <img src="/media/bg_images/bg-3-img.JPG" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/media/bg_images/bg-4-img.2.jpg" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" 
+                    data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>        
+    </div>
+</div>
 {% endblock %}

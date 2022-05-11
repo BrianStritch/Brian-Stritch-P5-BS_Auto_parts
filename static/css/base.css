@@ -7,6 +7,7 @@ body {
     background: url('/media/bg_images/2jz-bg.JPG') no-repeat center center fixed;
     background-size: cover;
     height: calc(120vh - 164px);
+    width: 100vw;
     font-family: "Open Sans", sans-serif;
     color: #313030;
 }
@@ -54,6 +55,15 @@ font-family: "Raleway", sans-serif;
 .btn-outline-bs:hover{
     background-color: #ff5821;
     color: #39312f;
+}
+
+/****************** index page styling ***************************/
+
+.site-search-box{
+    margin: 250px 0 50px 50px;
+}
+.vehicle-search-box{
+    margin: 0px 0 50px 50px;
 }
 
 
