@@ -1,0 +1,146 @@
+[
+    {
+        "pk": 1,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "audi",
+            "friendly_name": "Audi"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "bmw",
+            "friendly_name": "BMW"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "citreon",
+            "friendly_name": "Citreon"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "daihatsu",
+            "friendly_name": "Daihatsu"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "ford",
+            "friendly_name": "Ford"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "hyundai",
+            "friendly_name": "Hyundai"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "infinity",
+            "friendly_name": "Infinity"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "jaguar",
+            "friendly_name": "Jaguar"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "kia",
+            "friendly_name": "Kia"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "lexus",
+            "friendly_name": "Lexus"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "mazda",
+            "friendly_name": "Mazda"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "nissan",
+            "friendly_name": "Nissan"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "opel",
+            "friendly_name": "Opel"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "porsche",
+            "friendly_name": "Porsche"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "renault",
+            "friendly_name": "Renault"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "subaru",
+            "friendly_name": "Subaru"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "toyota",
+            "friendly_name": "Toyota"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "products.manufacturer",
+        "fields": {
+            "name": "volkswagen",
+            "friendly_name": "Volkswagen"
+        }
+    }
+]

@@ -1,0 +1,250 @@
+[
+    {
+        "pk": 1,
+        "model": "products.category",
+        "fields": {
+            "name": "coilover_kits",
+            "friendly_name": "Coilover Kits"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.category",
+        "fields": {
+            "name": "steering_kits",
+            "friendly_name": "Steering Kits"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.category",
+        "fields": {
+            "name": "camber_arm_kits",
+            "friendly_name": "Camber Arm Kits"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.category",
+        "fields": {
+            "name": "fast_road_brake_kits",
+            "friendly_name": "Fast Road Braking Kits"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.category",
+        "fields": {
+            "name": "racing_brake_kits",
+            "friendly_name": "Racing Braking Kits"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.category",
+        "fields": {
+            "name": "brake_fitting_kits",
+            "friendly_name": "Brake Fitting Kits"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.category",
+        "fields": {
+            "name": "brake_hose_kits",
+            "friendly_name": "Brake Hose Kits"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.category",
+        "fields": {
+            "name": "handbrake_kits",
+            "friendly_name": "Handbrake Kits"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "products.category",
+        "fields": {
+            "name": "engine_tuning_parts",
+            "friendly_name": "Engine Tuning Parts"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "products.category",
+        "fields": {
+            "name": "turbocharging_kits",
+            "friendly_name": "Turbocharging Kits"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "products.category",
+        "fields": {
+            "name": "engine_electronics",
+            "friendly_name": "Engine Electronics"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "products.category",
+        "fields": {
+            "name": "differentials",
+            "friendly_name": "Differentials"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "products.category",
+        "fields": {
+            "name": "safety_equipment",
+            "friendly_name": "Safety Equipment"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "products.category",
+        "fields": {
+            "name": "protective_equipment",
+            "friendly_name": "Protective Equipment"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "products.category",
+        "fields": {
+            "name": "timing",
+            "friendly_name": "Timing"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "products.category",
+        "fields": {
+            "name": "spoilers",
+            "friendly_name": "Spoilers"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "products.category",
+        "fields": {
+            "name": "splitters",
+            "friendly_name": "Splitters"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "products.category",
+        "fields": {
+            "name": "alloy_wheels",
+            "friendly_name": "Alloy Wheels"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "products.category",
+        "fields": {
+            "name": "audio",
+            "friendly_name": "Audio"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "products.category",
+        "fields": {
+            "name": "lighting",
+            "friendly_name": "Lighting"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "products.category",
+        "fields": {
+            "name": "oil_filters",
+            "friendly_name": "Oil Filters"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "products.category",
+        "fields": {
+            "name": "air_filters",
+            "friendly_name": "Air Filters"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "products.category",
+        "fields": {
+            "name": "fuel_filters",
+            "friendly_name": "Fuel Filters"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "products.category",
+        "fields": {
+            "name": "spark_plugs",
+            "friendly_name": "Spark Plugs"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "products.category",
+        "fields": {
+            "name": "glow_plugs",
+            "friendly_name": "Glow Plugs"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "products.category",
+        "fields": {
+            "name": "oils",
+            "friendly_name": "Oils"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "products.category",
+        "fields": {
+            "name": "motorsport_misc",
+            "friendly_name": "Motorsport Misc."
+        }
+    },
+    {
+        "pk": 28,
+        "model": "products.category",
+        "fields": {
+            "name": "styling_misc",
+            "friendly_name": "Styling Misc."
+        }
+    },
+    {
+        "pk": 29,
+        "model": "products.category",
+        "fields": {
+            "name": "service_misc",
+            "friendly_name": "Service Misc."
+        }
+    },
+    {
+        "pk": 30,
+        "model": "products.category",
+        "fields": {
+            "name": "suspension_and_steering_misc",
+            "friendly_name": "Suspension & Steering Misc."
+        }
+    },
+    {
+        "pk": 31,
+        "model": "products.category",
+        "fields": {
+            "name": "braking_misc",
+            "friendly_name": "Braking Misc."
+        }
+    }
+]
