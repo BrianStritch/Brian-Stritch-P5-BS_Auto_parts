@@ -23,11 +23,15 @@ class ManufacturerAdmin(admin.ModelAdmin):
         'name',        
     )
 
+    ordering = ('friendly_name',)
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'name',        
     )
+
+    ordering = ('friendly_name',)
 
 
 admin.site.register(Product, ProductAdmin)
