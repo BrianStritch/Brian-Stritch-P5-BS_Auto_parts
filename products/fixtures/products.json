@@ -10,7 +10,7 @@
           "category":1,
           "suits":"Hyundai Tuscon, Kia Sportage",
           "rating":4.6,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/co-hk-1.JPG",
           "image":"co-hk-1.JPG"
        }
     },
@@ -25,7 +25,7 @@
           "category":2,
           "suits":"Nissan S12, S13, S14, S15, 180sx, 200sx, 240sx, silvia",
           "rating":4.8,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/sk-nis-1.JPG",
           "image":"sk-nis-1.JPG"
        }
     },
@@ -40,7 +40,7 @@
           "category":3,
           "suits":"Subaru Impreza GC8 WRX STI",
           "rating":4.1,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/cak-sub-1.JPG",
           "image":"cak-sub-1.JPG"
        }
     },
@@ -55,7 +55,7 @@
           "category":4,
           "suits":"Volkswagen GOlf MK6 GTI R-Line",
           "rating":3.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/frbk-vw-1.JPG",
           "image":"frbk-vw-1.JPG"
        }
     },
@@ -70,7 +70,7 @@
           "category":5,
           "suits":"Renault Clio Sport 182",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/rbk-ren-1.JPG",
           "image":"rbk-ren-1.JPG"
        }
     },
@@ -85,7 +85,7 @@
           "category":6,
           "suits":"Audi TT MK1",
           "rating":3.8,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/bfk-au-1.JPG",
           "image":"bfk-au-1.JPG"
        }
     },
@@ -100,7 +100,7 @@
           "category":4,
           "suits":"Toyota GT86",
           "rating":4.4,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/bhk-toy-1.JPG",
           "image":"bhk-toy-1.JPG"
        }
     },
@@ -115,7 +115,7 @@
           "category":8,
           "suits":"Nissan",
           "rating":4.5,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/hb-nis-1.JPG",
           "image":"hb-nis-1.JPG"
        }
     },
@@ -130,7 +130,7 @@
           "category":9,
           "suits":"Mazda 323 Interplay",
           "rating":4.5,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/etp-maz-1.JPG",
           "image":"etp-maz-1.JPG"
        }
     },
@@ -145,7 +145,7 @@
           "category":10,
           "suits":"Toyota Altezza Beams",
           "rating":4.4,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/tck-toy-1.JPG",
           "image":"tck-toy-1.JPG"
        }
     },
@@ -160,7 +160,7 @@
           "category":11,
           "suits":"Porsche 911 Carrera",
           "rating":3.8,
-          "image_url":"",
+          "image_url":"https://github.com/BrianStritch/BS_Auto_parts/blob/main/media/product_images/eman-por-1.JPG",
           "image":"eman-por-1.JPG"
        }
     },
@@ -175,7 +175,7 @@
           "category":12,
           "suits":"Lexus soarer",
           "rating":4.6,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/dif-lex-1.JPG",
           "image":"dif-lex-1.JPG"
        }
     },
@@ -190,7 +190,7 @@
           "category":13,
           "suits":"",
           "rating":3.9,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/safe-1.JPG",
           "image":"safe-1.JPG"
        }
     },
@@ -205,7 +205,7 @@
           "category":14,
           "suits":"",
           "rating":4.7,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/prot-1.JPG",
           "image":"prot-1.JPG"
        }
     },
@@ -235,7 +235,7 @@
           "category":16,
           "suits":"",
           "rating":4.4,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/spo-dri-1.JPG",
           "image":"spo-dri-1.JPG"
        }
     },
@@ -250,7 +250,7 @@
           "category":17,
           "suits":"Audi A5 S5 S-line quattro",
           "rating":4.4,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/spl-aud-1.JPG",
           "image":"spl-aud-1.JPG"
        }
     },
@@ -265,7 +265,7 @@
           "category":18,
           "suits":"Audi, Volkswagen, Porsche, Skoda, Seat 5x113.5",
           "rating":4.8,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/alloy-1.JPG",
           "image":"alloy-1.JPG"
        }
     },
@@ -280,7 +280,7 @@
           "category":19,
           "suits":"",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/audio-1.JPG",
           "image":"audio-1.JPG"
        }
     },
@@ -295,7 +295,7 @@
           "category":20,
           "suits":"",
           "rating":4.7,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/light-1.JPG",
           "image":"light-1.JPG"
        }
     },
@@ -310,7 +310,7 @@
           "category":21,
           "suits":"Hyundai Kia Diesel crdi",
           "rating":4.3,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/oilf-hyki-1.JPG",
           "image":"oilf-hyki-1.JPG"
        }
     },
@@ -325,7 +325,7 @@
           "category":22,
           "suits":"Toyota Corolla",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/airf-toy-1.JPG",
           "image":"airf-toy-1.JPG"
        }
     },
@@ -340,7 +340,7 @@
           "category":23,
           "suits":"",
           "rating":4.8,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/fuef-Volv-1.JPG",
           "image":"fuef-Volv-1.JPG"
        }
     },
@@ -355,7 +355,7 @@
           "category":24,
           "suits":"",
           "rating":3.8,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/splu-nis-1.JPG",
           "image":"splu-nis-1.JPG"
        }
     },
@@ -370,7 +370,7 @@
           "category":25,
           "suits":"Audi Volkswagen Skoda Seat",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/glop-vag-1.JPG",
           "image":"glop-vag-1.JPG"
        }
     },
@@ -385,7 +385,7 @@
           "category":26,
           "suits":"",
           "rating":4.4,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/oil-5w40.JPG",
           "image":"oil-5w40.JPG"
        }
     },
@@ -400,7 +400,7 @@
           "category":28,
           "suits":"",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/styl-1.JPG",
           "image":"styl-1.JPG"
        }
     },
@@ -415,7 +415,7 @@
           "category":27,
           "suits":"",
           "rating":4.3,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/motsport-1.JPG",
           "image":"motsport-1.JPG"
        }
     },
@@ -430,7 +430,7 @@
           "category":29,
           "suits":"Mazda",
           "rating":4.6,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/serv-1.JPG",
           "image":"serv-1.JPG"
        }
     },
@@ -445,7 +445,7 @@
           "category":30,
           "suits":"Toyota Corolla",
           "rating":5.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/susp-ste-1.JPG",
           "image":"susp-ste-1.JPG"
        }
     },
@@ -460,7 +460,7 @@
           "category":31,
           "suits":"",
           "rating":4.0,
-          "image_url":"",
+          "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/brake-1.JPG",
           "image":"brake-1.JPG"
        }
     }
