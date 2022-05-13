@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q # this is django built in and generates a search query
-from .models import Product, Category
+from .models import Product, Category, Manufacturer
 
 # Create your views here.
 def all_products(request):
@@ -10,6 +10,8 @@ def all_products(request):
     including sorting and search queries
     """
     products = Product.objects.all()
+    makes = Manufacturer.objects.all().order_by('name')
+
     # query = None
     # categories = None
     # sort = None
@@ -49,6 +51,7 @@ def all_products(request):
 
     context = {
       'products': products,
+      'makes':makes,
     #   'search_term': query,
     #   'current_categories': categories,
     #   'current_sorting': current_sorting,

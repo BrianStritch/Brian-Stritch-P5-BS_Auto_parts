@@ -29,14 +29,16 @@
             <div class="col-sm-8 vehicle-search-box">
                 <div class="card">
                     <div class="card-body">
-                        <form method="GET" action="">
+                        <form method="GET" action="#">
                             <div class="form-group">                    
                                 <h4>Select your vehicle make</h4>
                                 <label for="search_make">Make</label>
-                                <select class="form-control" id="search_make">
+                                <select class="form-control" id="search_make" name="make">
+                                    <option>Please Choose:</option> 
+                                                                      
                                     {% if makes %} 
                                         {% for make in makes %}
-                                            <option>{{ make }}</option>                        
+                                            <option value="{{ make }}">{{ make }}</option>                        
                                         {% endfor%}
                                     {% else %}                      
                                         <option>No options available</option>

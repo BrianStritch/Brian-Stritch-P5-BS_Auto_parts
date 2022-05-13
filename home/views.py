@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from products.models import Manufacturer
 
 def index(request):
     """
     A view to return the home page
     """
-    return render(request,'home/index.html')
+    makes = Manufacturer.objects.all().order_by('name')    
+
+    context = {
+        'makes': makes,
+    }
+    return render(request,'home/index.html', context)
+
