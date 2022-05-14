@@ -93,6 +93,10 @@ font-family: "Raleway", sans-serif;
     margin: 0px 0 50px 50px;
 }
 
+.card{
+    max-width: 90vw;
+}
+
 /* ******************* Products page styling ***************************/
 .logo-font{
     color: #fff;
