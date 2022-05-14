@@ -1,23 +1,7 @@
-from django.shortcuts import render
-from products.models import Manufacturer
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q # this is django built in and generates a search query
+from django.db.models import Q
 from products.models import Product, Category, Manufacturer
-
-
-# def index(request):
-#     """
-#     A view to return the home page
-#     """
-#     makes = Manufacturer.objects.all().order_by('name')    
-
-#     context = {
-#         'makes': makes,
-#     }
-#     return render(request,'home/index.html', context)
-
 
 
 def index(request):
