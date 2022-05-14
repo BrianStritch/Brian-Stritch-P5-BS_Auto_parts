@@ -34,14 +34,14 @@
                                 <h4>Select your vehicle make</h4>
                                 <label for="search_make">Make</label>
                                 <select class="form-control" id="search_make" name="make">
-                                    <option>Please Choose:</option> 
+                                    <option class="manufacturer-list">Please Choose:</option> 
                                                                       
                                     {% if makes %} 
                                         {% for make in makes %}
-                                            <option value="{{ make }}">{{ make }}</option>                        
+                                            <option class="manufacturer-list" value="{{ make }}">{{ make }}</option>                        
                                         {% endfor%}
                                     {% else %}                      
-                                        <option>No options available</option>
+                                        <option class="manufacturer-list">No options available</option>
                                     {% endif %}                      
                                 </select>
                             </div>                  
