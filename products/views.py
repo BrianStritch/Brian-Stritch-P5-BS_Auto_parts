@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.db.models.functions import Lower
 from django.db.models import Q # this is django built in and generates a search query
 from .models import Product, Category, Manufacturer
 
@@ -25,7 +26,7 @@ def all_products(request):
         sort = sortkey
         if sortkey == 'name':
           sortkey = 'lower_name'
-          products = products.annotate(lower_name = lower('name'))
+          products = products.annotate(lower_name = Lower('name'))
         if sortkey == 'category':
                 sortkey = 'category__name'
           

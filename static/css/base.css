@@ -184,3 +184,30 @@ a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
 }
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid black ;
+    z-index: 2;
+    background-color: white;
+}
+
+.btt-button:hover {
+    border: 2px solid orangered ;
+    z-index: 2;
+    background-color: black;
+    color: white;
+}
+.btt-link{
+    color: black;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+    
+}
