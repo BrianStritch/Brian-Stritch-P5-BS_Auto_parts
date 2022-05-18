@@ -71,15 +71,18 @@ a:hover{
     
     
 }
-.navbar-nav .dropdown-menu {
+.navbar-nav .dropdown-menu,
+.dropdown-menu{
     position: static;
     background-color: orangered;
+    border: 1px solid black;
 }
 .nav-link{
     color: black;
     font-weight: bold;
 }
-.nav-item a:hover{
+.nav-item a:hover,
+.dropdown-menu a:hover{
     color: white;
 }
 .dropdown-item{

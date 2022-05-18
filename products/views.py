@@ -17,6 +17,7 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+    sale = None
     # current_sorting = None,None
 
     if request.GET:
@@ -58,6 +59,14 @@ def all_products(request):
         
         queries = Q(name__icontains=query) | Q(description__icontains=query)
         products = makes.filter(queries)
+
+      if 'sale' in request.GET:
+        sale = request.GET['sale']
+        if not sale:
+          messages.error(request, "You didn't enter any search criteria!")
+          return redirect(reverse('products'))
+        
+        products = Product.objects.all().filter(on_sale=True)
 
     current_sorting = f'{sort}_{direction}'
 

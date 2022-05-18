@@ -9,6 +9,8 @@
           "price":449.95,
           "category":1,
           "suits":"Hyundai Tuscon, Kia Sportage",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.6,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/co-hk-1.JPG",
           "image":"co-hk-1.JPG"
@@ -24,6 +26,8 @@
           "price":280.00,
           "category":2,
           "suits":"Nissan S12, S13, S14, S15, 180sx, 200sx, 240sx, silvia",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.8,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/sk-nis-1.JPG",
           "image":"sk-nis-1.JPG"
@@ -39,6 +43,8 @@
           "price":365.00,
           "category":3,
           "suits":"Subaru Impreza GC8 WRX STI",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.1,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/cak-sub-1.JPG",
           "image":"cak-sub-1.JPG"
@@ -54,6 +60,8 @@
           "price":169.99,
           "category":4,
           "suits":"Volkswagen GOlf MK6 GTI R-Line",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":3.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/frbk-vw-1.JPG",
           "image":"frbk-vw-1.JPG"
@@ -69,6 +77,8 @@
           "price":232.99,
           "category":5,
           "suits":"Renault Clio Sport 182",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/rbk-ren-1.JPG",
           "image":"rbk-ren-1.JPG"
@@ -84,6 +94,8 @@
           "price":30.99,
           "category":6,
           "suits":"Audi TT MK1",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":3.8,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/bfk-au-1.JPG",
           "image":"bfk-au-1.JPG"
@@ -99,6 +111,8 @@
           "price":59.0,
           "category":4,
           "suits":"Toyota GT86",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.4,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/bhk-toy-1.JPG",
           "image":"bhk-toy-1.JPG"
@@ -114,6 +128,8 @@
           "price":245.00,
           "category":8,
           "suits":"Nissan",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.5,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/hb-nis-1.JPG",
           "image":"hb-nis-1.JPG"
@@ -129,6 +145,8 @@
           "price":799.99,
           "category":9,
           "suits":"Mazda 323 Interplay",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.5,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/etp-maz-1.JPG",
           "image":"etp-maz-1.JPG"
@@ -144,6 +162,8 @@
           "price":33.99,
           "category":10,
           "suits":"Toyota Altezza Beams",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.4,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/tck-toy-1.JPG",
           "image":"tck-toy-1.JPG"
@@ -159,6 +179,8 @@
           "price":1299.99,
           "category":11,
           "suits":"Porsche 911 Carrera",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":3.8,
           "image_url":"https://github.com/BrianStritch/BS_Auto_parts/blob/main/media/product_images/eman-por-1.JPG",
           "image":"eman-por-1.JPG"
@@ -174,6 +196,8 @@
           "price":799.99,
           "category":12,
           "suits":"Lexus soarer",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.6,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/dif-lex-1.JPG",
           "image":"dif-lex-1.JPG"
@@ -189,6 +213,8 @@
           "price":210.00,
           "category":13,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":3.9,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/safe-1.JPG",
           "image":"safe-1.JPG"
@@ -204,6 +230,8 @@
           "price":26.99,
           "category":14,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.7,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/prot-1.JPG",
           "image":"prot-1.JPG"
@@ -219,6 +247,8 @@
           "price":48.99,
           "category":15,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.8,
           "image_url":"",
           "image":"time-1.JPG"
@@ -234,6 +264,8 @@
           "price":175.00,
           "category":16,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.4,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/spo-dri-1.JPG",
           "image":"spo-dri-1.JPG"
@@ -249,6 +281,8 @@
           "price":110.00,
           "category":17,
           "suits":"Audi A5 S5 S-line quattro",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.4,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/spl-aud-1.JPG",
           "image":"spl-aud-1.JPG"
@@ -264,6 +298,8 @@
           "price":450.00,
           "category":18,
           "suits":"Audi, Volkswagen, Porsche, Skoda, Seat 5x113.5",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.8,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/alloy-1.JPG",
           "image":"alloy-1.JPG"
@@ -279,6 +315,8 @@
           "price":325.00,
           "category":19,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/audio-1.JPG",
           "image":"audio-1.JPG"
@@ -294,6 +332,8 @@
           "price":20.99,
           "category":20,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.7,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/light-1.JPG",
           "image":"light-1.JPG"
@@ -309,6 +349,8 @@
           "price":21.99,
           "category":21,
           "suits":"Hyundai Kia Diesel crdi",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.3,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/oilf-hyki-1.JPG",
           "image":"oilf-hyki-1.JPG"
@@ -324,6 +366,8 @@
           "price":34.99,
           "category":22,
           "suits":"Toyota Corolla",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/airf-toy-1.JPG",
           "image":"airf-toy-1.JPG"
@@ -339,6 +383,8 @@
           "price":29.99,
           "category":23,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.8,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/fuef-Volv-1.JPG",
           "image":"fuef-Volv-1.JPG"
@@ -354,6 +400,8 @@
           "price":82.0,
           "category":24,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":3.8,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/splu-nis-1.JPG",
           "image":"splu-nis-1.JPG"
@@ -369,6 +417,8 @@
           "price":109.99,
           "category":25,
           "suits":"Audi Volkswagen Skoda Seat",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/glop-vag-1.JPG",
           "image":"glop-vag-1.JPG"
@@ -384,6 +434,8 @@
           "price":49.99,
           "category":26,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.4,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/oil-5w40.JPG",
           "image":"oil-5w40.JPG"
@@ -399,6 +451,8 @@
           "price":14.99,
           "category":28,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/styl-1.JPG",
           "image":"styl-1.JPG"
@@ -414,6 +468,8 @@
           "price":53.99,
           "category":27,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.3,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/motsport-1.JPG",
           "image":"motsport-1.JPG"
@@ -429,6 +485,8 @@
           "price":8.99,
           "category":29,
           "suits":"Mazda",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.6,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/serv-1.JPG",
           "image":"serv-1.JPG"
@@ -444,6 +502,8 @@
           "price":24.99,
           "category":30,
           "suits":"Toyota Corolla",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":5.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/susp-ste-1.JPG",
           "image":"susp-ste-1.JPG"
@@ -459,6 +519,8 @@
           "price":5.99,
           "category":31,
           "suits":"",
+          "on_sale": "False",
+          "has_sizes":"False",
           "rating":4.0,
           "image_url":"https://raw.githubusercontent.com/BrianStritch/BS_Auto_parts/main/media/product_images/brake-1.JPG",
           "image":"brake-1.JPG"

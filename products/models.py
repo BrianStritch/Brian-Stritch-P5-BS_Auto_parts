@@ -35,6 +35,8 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     suits = models.TextField()
+    on_sale = models.BooleanField(default=False, null=True, blank=True)
+    has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)

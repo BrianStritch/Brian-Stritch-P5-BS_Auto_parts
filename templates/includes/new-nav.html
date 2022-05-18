@@ -10,7 +10,7 @@
             <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Products
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu" aria-labelledby="all-products-link">
                 <a href="{% url 'products'%}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="{% url 'products'%}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
                 <a href="{% url 'products'%}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
@@ -22,7 +22,7 @@
             <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="suspension_steering-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Suspension & Steering
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="suspension_steering-link">
+            <div class="dropdown-menu" aria-labelledby="suspension_steering-link">
                 <a href="{% url 'products'%}?category=coilover_kits" class="dropdown-item">Coilover Kits</a>
                 <a href="{% url 'products'%}?categoryt=steering_kits" class="dropdown-item">Steering Kits</a>
                 <a href="{% url 'products'%}?category=camber_arm_kits" class="dropdown-item">Camber Arm Kits</a>
@@ -34,7 +34,7 @@
             <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="braking-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Braking
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="braking-link">
+            <div class="dropdown-menu" aria-labelledby="braking-link">
                 <a href="{% url 'products'%}?category=fast_road_brake_kits" class="dropdown-item">Fast Road Braking Kits</a>
                 <a href="{% url 'products'%}?category=racing_brake_kits" class="dropdown-item">Racing Braking Kits</a>
                 <a href="{% url 'products'%}?category=brake_fitting_kits" class="dropdown-item">Brake fitting Kits</a>
@@ -48,7 +48,7 @@
             <a class="logo-font2 font-weight-bold nav-link " href="#" id="motorsport-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Motorsport
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="motorsport-link">                
+            <div class="dropdown-menu" aria-labelledby="motorsport-link">                
                 <a href="{% url 'products'%}?category=engine_tuning_parts" class="dropdown-item">Engine Tuning Parts</a>
                 <a href="{% url 'products'%}?category=turbocharging_kits" class="dropdown-item">Turbocharging</a>
                 <a href="{% url 'products'%}?category=engine_electronics" class="dropdown-item">Electronics</a>
@@ -65,7 +65,7 @@
             <a class="logo-font2 font-weight-bold nav-link " href="#" id="styling-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Styling
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="styling-link">
+            <div class="dropdown-menu" aria-labelledby="styling-link">
                 <a href="{% url 'products'%}?category=spoilers" class="dropdown-item">Spoilers</a>
                 <a href="{% url 'products'%}?category=splitters" class="dropdown-item">Splitters</a>
                 <a href="{% url 'products'%}?category=alloy_wheels" class="dropdown-item">Alloys</a>
@@ -79,7 +79,7 @@
             <a class="logo-font2 font-weight-bold nav-link " href="#" id="service-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Service parts
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="service-link">
+            <div class="dropdown-menu" aria-labelledby="service-link">
                 <a href="{% url 'products'%}?category=oils" class="dropdown-item">Oils</a>
                 <a href="{% url 'products'%}?category=oil_filters" class="dropdown-item">Oil Filters</a>
                 <a href="{% url 'products'%}?category=air_filters" class="dropdown-item">Air Filters</a>
@@ -88,6 +88,14 @@
                 <a href="{% url 'products'%}?category=glow_plugs" class="dropdown-item">Glow Plugs</a>
                 <a href="{% url 'products'%}?category=service_misc" class="dropdown-item">Service misc</a>
                 <a href="{% url 'products'%}?category=oils,oil_filters,air_filters,fuel_filters,spark_plugs,service_misc" class="dropdown-item">All Service</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font2 font-weight-bold nav-link " href="#" id="clearance-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clearance
+            </a>
+            <div class="dropdown-menu" aria-labelledby="clearance-link">
+                <a href="{% url 'products'%}?sale=on_sale" class="dropdown-item">All Clearance items</a>
             </div>
         </li>
     </ul>
