@@ -35,6 +35,7 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     suits = models.TextField()
+    stock_qty = models.IntegerField(default=0)
     on_sale = models.BooleanField(default=False, null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
