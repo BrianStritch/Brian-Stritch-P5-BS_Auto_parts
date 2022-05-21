@@ -1,7 +1,8 @@
 html {
     height: 100%;
-    background-color: white;
-    /* background-color: black; */
+    /* background-color: white; */
+    padding-top: 10vh;
+    width: 100vw;
 }
 
 body {
@@ -15,7 +16,8 @@ body {
 #dim-cover{
     background-color: rgba(0, 0, 0, 0.590);
     height: 100vh;
-    width: auto;
+    width: 100vw;
+    padding-top: 12vh;
 }
 
 
@@ -112,6 +114,8 @@ a:hover{
 }
 
 
+
+
 /****************** Footer styling ******************************/
 
 #footer{
@@ -119,6 +123,7 @@ a:hover{
     color: white;
     position: relative;
     z-index: 0;
+    margin-top: 18vh;
 }
 
 #footer i{
@@ -130,8 +135,9 @@ a:hover{
 
 /****************** index page styling ***************************/
 
+
 .site-search-box{
-    margin: 250px 0 50px 50px;
+    margin: 50px 0 25px 50px;
 }
 .vehicle-search-box{
     margin: 0px 0 50px 50px;
@@ -145,12 +151,111 @@ a:hover{
     color: black;
     background-color: white;
 }
+@media(min-width:986px){
+    html{
+        padding-top: 16vh;
+    }
+    #dim-cover-bag{
+        padding-top: 13vh;
+    }
+}
 
+@media(max-width:986px){
+    #dim-cover{
+        padding-top: 13vh;
+    }
+    #dim-cover-bag{
+        padding-top: 13vh;
+    }
+    #footer{
+        margin-top: 8vh;
+    }
+}
 
+@media(max-width:576px){
+    html{
+        padding-top: 18vh;
+        width: 100vw;
+    }
+    #dim-cover{        
+        padding-top: 7vh;
+        width: 100vw;
+    }
+    
+    .w-100{
+        width: 77% !important;
+    }
+    .card{
+        max-width: 70vw;
+    }
+    .card-body{
+        width: 70vw;
+    }
+    .site-search-box{
+        margin: 5% 0 6% 13%;
+    }
+    .vehicle-search-box {
+        margin: 5% 0 6% 13%;
+    }
+    .carousel {
+        position: relative;
+        width: 75vw;
+    }  
+
+    .carousel-indicators {
+        position: relative;
+        right: 0;
+        bottom: -10em;
+        left: -36px;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin-right: 0%;
+        margin-bottom: 1rem;
+        margin-left: 0%;
+        list-style: none;
+    }
+    .row>* {
+        flex-shrink: 1;
+        width: 100%;
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x) * .5);
+        padding-left: calc(var(--bs-gutter-x) * .5);
+        margin-top: var(--bs-gutter-y);
+    }
+    .carousel-control-next {
+        right: 10%;
+    }
+    .carousel-control-prev {
+        left: -13%;
+    }
+    #footer{
+        width: 100vw;
+    }
+    
+}
+
+@media(max-width:432px){
+    html{
+        padding-top: 10vh;
+    }
+    .nav-link{
+        font-size: 10px;
+        padding: 0.5rem 1px 0.5rem 19px;
+    }
+    .search-box-width{
+        width: 80vw;
+    }
+    .banner{
+        font-size: 10px;
+    }
+}
 
 /* ******************* Products page styling ***************************/
 .logo-font{
     color: black;
+    text-align: center;
 }
 
 .product-heading{
@@ -158,6 +263,8 @@ a:hover{
     z-index: 0;
     align-items: center;
     justify-content: center;
+    margin-bottom: 3vh;
+    
 }
 
 .product-container{
@@ -180,9 +287,7 @@ hr.orange-hr{
     /* background-color: white; */
 }
 
-.black-bg{
-    margin: 250px 0 50px 0;
-}
+
 a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
@@ -211,8 +316,11 @@ a.category-badge > span.badge:hover {
 .btt-link,
 .update-link,
 .remove-item {
-    cursor: pointer;
-    
+    cursor: pointer;    
+}
+
+@media(max-width:996px){
+
 }
 
 /************* Product detail page *********************/
@@ -257,4 +365,25 @@ a.category-badge > span.badge:hover {
 
 .border-black {
     border: 1px solid black !important;
+}
+.product-detail-heading{
+    position: relative;
+    z-index: 0;
+    align-items: center;
+    justify-content: center;
+    left: -10vw;
+    margin: 5vw auto;
+    
+}
+.offset-1 {
+    margin-left: 1.333333%;
+}
+
+/* ********************* shopping bag page *******************************/
+
+.float-right{
+    float: right;
+}
+.bag-margin{
+    margin-left: 7vw;
 }

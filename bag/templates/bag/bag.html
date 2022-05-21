@@ -4,7 +4,7 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="black-bg product-heading">
-    <div class="container mb-2 ">
+    <div class="container mb-2 bag-margin">
         <div class="row">
             <div class="col">
                 <hr>
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="container mb-2">
+    <div class="container mb-2 bag-margin">
         <div class="row">
             <div class="col">
                 {% if bag_items %}                
@@ -47,7 +47,7 @@
                                     <p class="my-0">€{{ item.product.price }}</p>
                                 </td>
                                 <td class="py-3">
-                                    <form class="form update-form" method="POST" action="">
+                                    <form class="form update-form" method="POST" action="{% url 'edit_bag' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group">
