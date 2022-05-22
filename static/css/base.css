@@ -271,6 +271,11 @@ a:hover{
     border-radius: 5px;
 }
 
+.outer-product-container{
+    
+    margin-left: 5vw;
+}
+
 hr.orange-hr{
     border: 5px solid black;
     border-radius: 2px;
@@ -342,6 +347,15 @@ a.category-badge > span.badge:hover {
     background-color: orangered;
     color: black;
 }
+.btn-makes{
+    color: orangered;
+    background-color: black;
+}
+.btn-makes:hover{
+    background-color: orangered;
+    color: black;    
+    border: 1px solid orangered;
+}
 .btn-orangered:hover,
 .btn-orangered:focus,
 .btn-orangered:active{
@@ -390,6 +404,7 @@ a.category-badge > span.badge:hover {
     background-color: orangered;
     color: black;
 }
+
 
 /* ********************* shopping bag page *******************************/
 .outer-container{
