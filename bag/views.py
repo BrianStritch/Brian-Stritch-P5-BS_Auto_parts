@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.db.models import Q
 from products.models import Product, Category, Manufacturer
@@ -88,11 +88,37 @@ def edit_bag(request, item_id):
             bag[item_id]['items_by_size'][size] = quantity
         else:
             del bag[item_id]['items_by_size'][size]
+            if not bag[item_id]['items_by_size']:
+                bag.pop(item_id)
     else:
         if quantity > 0:
             bag[item_id] = quantity
         else:
-            bag.pop[item_id]
+            bag.pop(item_id)
 
     request.session['bag'] = bag 
     return redirect(reverse('view_bag'))
+
+
+def delete_bag_item(request, item_id):
+    """ remove a selected product from the shopping bag """
+
+    try:
+        size = None
+        if 'product_size' in request.POST:
+            size = request.POST['product_size']
+
+        bag = request.session.get('bag', {})
+
+        if size:
+            del bag[item_id]['items_by_size'][size]
+            if not bag[item_id]['items_by_size']:
+                bag.pop(item_id)
+        else:        
+            bag.pop(item_id)
+
+        request.session['bag'] = bag 
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
+

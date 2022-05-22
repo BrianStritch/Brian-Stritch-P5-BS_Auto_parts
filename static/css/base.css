@@ -378,9 +378,24 @@ a.category-badge > span.badge:hover {
 .offset-1 {
     margin-left: 1.333333%;
 }
+.input-group .btn {
+    position: relative;
+    z-index: 2;
+    color: orangered;
+    background-color: black;
+}
+.input-group .btn:hover {
+    position: relative;
+    z-index: 2;
+    background-color: orangered;
+    color: black;
+}
 
 /* ********************* shopping bag page *******************************/
-
+.outer-container{
+    width: 100vw;
+    min-height: 75vh;
+}
 .float-right{
     float: right;
 }
