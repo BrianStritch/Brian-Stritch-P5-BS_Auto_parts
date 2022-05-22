@@ -113,8 +113,36 @@ a:hover{
     }
 }
 
+/* ********************* Toasts **********************************/
+.message-container{
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 20000;
+}
 
+.custom-toast{
+    overflow: visible;    
+}
 
+.toast-capper{
+    height: 2px;
+}
+.toast-header{
+    justify-content: space-between;
+}
+.toast-close-btn{
+    background-color: black;
+    border: 1px solid orangered;
+    text-transform: uppercase;
+    color: orange;
+}
+.toast-close-btn:hover{
+    background-color: orangered;
+    border: 1px solid black;
+    color: black;
+    text-transform: uppercase;
+}
 
 /****************** Footer styling ******************************/
 
