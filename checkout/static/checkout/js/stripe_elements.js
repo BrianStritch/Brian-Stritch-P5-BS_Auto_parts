@@ -66,6 +66,7 @@ form.addEventListener('submit', function(ev) {
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
                 /* this is where i can call a function to update the stock quantity */
+                
             }
         }
     });
