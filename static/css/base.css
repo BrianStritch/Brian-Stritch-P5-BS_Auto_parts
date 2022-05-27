@@ -38,6 +38,9 @@ font-family: "Raleway", sans-serif;
 .white{
     color: white;
 }
+.text-md-right{
+    text-align: right;
+}
 
 /* *************** Header *****************************/
 #topnav{
