@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.conf import settings
-from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 
 from .forms import Order, OrderForm
@@ -23,6 +22,7 @@ def cache_checkout_data(request):
             'username': request.user,
         })
         return HttpResponse(status=200)
+
     except Exception as e:
         messages.error(request, 'Sorry but your payment \
              cannot be processed at this time.\
