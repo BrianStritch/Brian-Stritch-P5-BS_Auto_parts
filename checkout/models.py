@@ -7,6 +7,8 @@ from django.db import models
 from django.conf import settings
 from products.models import Product
 
+from django_countries.fields import CountryField
+
 
 class Order(models.Model):
     """
@@ -37,8 +39,8 @@ class Order(models.Model):
         blank=False
         )
 
-    country = models.CharField(
-        max_length=40,
+    country = CountryField(
+        blank_label='Country *',
         null=False,
         blank=False
         )
