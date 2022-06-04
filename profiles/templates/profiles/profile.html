@@ -18,15 +18,18 @@
 {% block content %}
 <div class="container-fluid outer-container">
     <div class="overlay"></div>    
-    <div class="container mb-2">
+    <div class="container mb-2 high-z">
         <div class="row">
             <div class="col">
                 <hr>
                 <h3 class="logo-font mb-4 high_z">My Profile</h3>
                 <hr>
             </div>
-        </div>    
+        </div>
+       {{ profile }}
+         
     </div>
+    
 </div>
 
 {% endblock %}

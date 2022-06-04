@@ -8,9 +8,15 @@ body {
     background: url('/media/bg_images/2jz-bg.JPG') no-repeat center center fixed;
     background-size: cover;
     height: calc(120vh - 164px);
+    min-height: 100vh;
     width: 100vw;
     font-family: "Open Sans", sans-serif;
     color: #313030;
+    position: relative;
+    /******/
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
 }
 #dim-cover{
     background-color: rgba(0, 0, 0, 0.590);
@@ -40,7 +46,9 @@ font-family: "Raleway", sans-serif;
 .text-md-right{
     text-align: right;
 }
-
+.container, .container-fluid{
+    flex:1
+}
 /* *************** Header *****************************/
 #topnav{
     background-color: orangered;
@@ -213,7 +221,10 @@ a:hover{
     color: white;
     position: relative;
     z-index: 0;
-    margin-top: 18vh;
+    margin-top: 5vh;
+    width: 100vw;
+    flex: 1;
+    
 }
 
 #footer i{
