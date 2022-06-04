@@ -102,6 +102,11 @@ a:hover{
 .burger-logo{
     display: none;
 }
+.dropdown-menu.show {
+    display: block;
+    border: 1px solid black !important;
+    border-radius: 5px !important;
+}
 
 @media(max-width: 992px){
     .burger-logo{
@@ -337,6 +342,30 @@ a:hover{
     }
 }
 
+
+/**************************** allauth templates ***************************/
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allauth-card{
+    background-color: rgba(0, 0, 0, 0.707);
+    color: rgb(255, 255, 255);
+}
+
+.allauth-card input{
+    float: right;
+}
+.high-z{
+    position: relative;
+    z-index: 1000;
+}
+.border-orange{
+    border: 1px solid orangered;
+}
+
 /* ******************* Products page styling ***************************/
 .logo-font{
     color: black;
@@ -501,20 +530,4 @@ a.category-badge > span.badge:hover {
 }
 .bag-margin{
     margin-left: 7vw;
-}
-
-/**************************** allauth templates ***************************/
-.center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.allauth-card{
-    background-color: white;
-    color: black;
-}
-.high-z{
-    position: relative;
-    z-index: 1000;
 }
