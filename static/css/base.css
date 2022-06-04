@@ -1,6 +1,5 @@
 html {
     height: 100%;
-    /* background-color: white; */
     padding-top: 10vh;
     width: 100vw;
 }
@@ -67,14 +66,8 @@ a:hover{
 }
 .white-hover:hover,
 .navbar-light .navbar-nav .nav-link:hover{
-    /* border: 1px solid black;
-    box-shadow: 5px 5px 5px black;
-    border-radius:5px; */
     color: white;
-    font-weight: bolder;
-    /* background-color: rgba(0, 0, 0, 0.404); */   
-    
-    
+    font-weight: bolder;  
 }
 .navbar-nav .dropdown-menu,
 .dropdown-menu{
@@ -508,4 +501,20 @@ a.category-badge > span.badge:hover {
 }
 .bag-margin{
     margin-left: 7vw;
+}
+
+/**************************** allauth templates ***************************/
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allauth-card{
+    background-color: white;
+    color: black;
+}
+.high-z{
+    position: relative;
+    z-index: 1000;
 }
