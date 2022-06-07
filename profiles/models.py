@@ -47,7 +47,7 @@ class UserProfile(models.Model):
         )
 
     default_country = CountryField(
-        blank_label='Country *',
+        blank_label='Country',
         null=True,
         blank=True
         )

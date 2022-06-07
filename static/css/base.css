@@ -49,6 +49,10 @@ font-family: "Raleway", sans-serif;
 .container, .container-fluid{
     flex:1
 }
+.high_z{
+    position: relative;
+    z-index: 1000;
+}
 /* *************** Header *****************************/
 #topnav{
     background-color: orangered;
