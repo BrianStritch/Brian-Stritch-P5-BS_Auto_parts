@@ -1,0 +1,1 @@
+Confirmation email for BS Auto Parts order number : {{ order.order_number }}

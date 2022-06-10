@@ -1,3 +1,29 @@
+
+
+
+
+export STRIPE_PUBLIC_KEY=pk_test_51L2kJDFe61CNoFimnkCIY2EHIthg1GzRGHUpIXHcjcQWlNrEZ0b09VeF0n9D8rkZhih6YTfbAtT6reUOZSJ3GLtL00iIgRfHze
+
+export STRIPE_SECRET_KEY=sk_test_51L2kJDFe61CNoFim68Tih9OjqdtSvwa77Zet2pqcwKWOX21mDquNaLoDNznmioXya4LRgEIQQRO1suvAThUqvGq700KJBC1Jc6
+
+export STRIPE_WH_SECRET=whsec_v2RdruDrpg7GT0PPMfY1JDN1uilcS6D1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome BrianStritch,

@@ -38,13 +38,13 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        bag = request.session.get('bag', {})
+        bag = request.session.get('bag', {})        
 
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
+            'county': request.POST['county'],
             'postcode': request.POST['postcode'],
             'town_or_city': request.POST['town_or_city'],
             'street_address1': request.POST['street_address1'],
@@ -103,6 +103,7 @@ def checkout(request):
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
+        # print(current_bag)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
@@ -155,7 +156,7 @@ def checkout_success(request, order_number):
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
         order.user_profile = profile
-        order.save()
+        order.save()        
 
         # Save the user's info
         if save_info:

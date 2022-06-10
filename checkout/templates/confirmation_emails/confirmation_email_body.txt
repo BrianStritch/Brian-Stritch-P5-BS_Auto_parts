@@ -1,0 +1,25 @@
+Hello {{ order.full_name }},
+
+This is a confirmation email of your order with BS AutoParts.com . Your order information
+is as follows:
+
+Order number : {{ order.order_number }}
+Order date : {{ order.date }}
+
+Order total : €{{ order.order_total }}
+Delivery cost : €{{ order.delivery_cost }}
+Grand Total : €{{ order.grand_total }}
+
+YOur order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+The contact number we have on file is {{ order.phone_number }}, which we will relay to the delivery driver.
+
+If you have any further queries please do not hesitate to contact us at {{ contact_email }}.
+
+Thank you for placing an order with BS AutoParts, your order is currently
+being processed and a further update email will follow to inform you of your
+carrier details along with the delivery tracking number.
+
+Yours Sincerely,
+
+BS AutoParts
