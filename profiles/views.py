@@ -10,21 +10,26 @@ def profile(request):
     A view to display a users profile
     """
     profile = get_object_or_404(UserProfile, user=request.user)
-    form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your profile has been updated successfully')
+        else:
+            messages.error(request, 'Update failed. Please ensure form data is correct.')
+    else:
+        form = UserProfileForm(instance=profile)
+
+    orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
         'profile': profile,
         'form': form,
         'orders': orders,
-        'on_profile_page': True,
+        'stop_toast_cart': True,
         }
 
     return render(request, template, context)
