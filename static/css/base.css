@@ -53,6 +53,9 @@ font-family: "Raleway", sans-serif;
     position: relative;
     z-index: 1000;
 }
+.margin-0-auto{
+    margin: 0 auto;
+}
 /* *************** Header *****************************/
 #topnav{
     background-color: orangered;
