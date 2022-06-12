@@ -1,4 +1,7 @@
-
+pip3 install Django==3.2 <br>
+pip3 install django-crispy-forms <br>
+pip3 install django-countries==7.2.1 <br>
+pip3 install django-allauth==0.41.0 <br>
 
 
 

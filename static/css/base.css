@@ -308,6 +308,9 @@ a:hover{
     .card-body{
         width: 70vw;
     }
+    .card-img, .card-img-top{
+        max-height: 15em;
+    }
     .site-search-box{
         margin: 5% 0 6% 13%;
     }
