@@ -44,7 +44,10 @@ font-family: "Raleway", sans-serif;
     color: white;
 }
 .text-md-right{
-    text-align: right;
+    text-align: right !important;
+}
+.text-md-left{
+    text-align: left !important;
 }
 .container, .container-fluid{
     flex:1
@@ -64,6 +67,9 @@ font-family: "Raleway", sans-serif;
 }
 .display-content{
     display: contents !important;
+}
+.card-img, .card-img-top{
+    max-height: 15em;
 }
 /* *************** Header *****************************/
 #topnav{
@@ -308,9 +314,7 @@ a:hover{
     .card-body{
         width: 70vw;
     }
-    .card-img, .card-img-top{
-        max-height: 15em;
-    }
+    
     .site-search-box{
         margin: 5% 0 6% 13%;
     }

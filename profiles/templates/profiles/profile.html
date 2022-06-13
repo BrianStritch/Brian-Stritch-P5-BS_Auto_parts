@@ -24,6 +24,16 @@
                 <hr>
                 <h3 class="logo-font mb-4 high_z">{{ user.username }}'s Profile Details</h3>
                 <hr>
+                <h5 class="logo-font high-z text-md-left">USER PROFILE</h5>
+                <button class="btn btn-outline-black rounded-0 btn-lg">
+                   <a href="{% url 'edit_profile' %}">Edit Profile</a> 
+                </button>
+                <button class="btn btn-outline-black rounded-0 btn-lg">
+                    <a class="text-danger" href="{% url 'delete_profile' user.id %}">Delete Account</a>
+                </button>                                                      
+                    
+                
+                <hr>
             </div>
         </div>
         <div class="row">

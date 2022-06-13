@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container ">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid outer-container">
+    <div class="overlay"></div>    
+    <div class="container mb-2 high-z">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h3 class="logo-font mb-4 high_z">{{ user.username }}'s Profile Details</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row margin-0-auto">
+            <div class="col-8 col-lg-6">
+                <hr>
+            <h2 class="text-danger">DELETE USER PROFILE FOR {{ user.username }}</h2>
+            <br>
+            <hr>
+            <form  method="POST">                 
+                {% csrf_token %}
+                <hr>
+                <strong >Are You Sure You Want To <span class="text-danger">DELETE</span> your account?</strong>
+                <hr>
+                <button type="submit" class="btn btn-outline-black rounded-0 btn-lg " ><span class="text-danger">DELETE ACCOUNT !</span></button> 
+            </form> 
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+
+
+{% block postloadjs %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+{% endblock %}
