@@ -2,7 +2,16 @@ pip3 install Django==3.2 <br>
 pip3 install django-crispy-forms <br>
 pip3 install django-countries==7.2.1 <br>
 pip3 install django-allauth==0.41.0 <br>
-
+ <br>
+python3 manage.py loaddata categories
+python3 manage.py loaddata manufacturers
+python3 manage.py loaddata products
+python3 manage.py makemigrations --dry-run <br>
+python3 manage.py migrate --plan <br>
+ <br>
+pip3 install stripe <br>
+pip3 install pillow <br>
+pip3 install oauth lib <br>
 
 
 export STRIPE_PUBLIC_KEY=pk_test_51L2kJDFe61CNoFimnkCIY2EHIthg1GzRGHUpIXHcjcQWlNrEZ0b09VeF0n9D8rkZhih6YTfbAtT6reUOZSJ3GLtL00iIgRfHze
