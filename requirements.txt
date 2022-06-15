@@ -23,6 +23,7 @@ Django==3.2
 django-allauth==0.41.0
 django-countries==7.2.1
 django-crispy-forms==1.14.0
+django-summernote==0.8.20.0
 docutils==0.18.1
 entrypoints==0.4
 executing==0.8.3

@@ -181,8 +181,8 @@
                     {% if request.user == review.author %}
                     <div class="col-9 col-lg-3 ">                    
                         <small class="ml-3">
-                            <a href="#">Edit Review</a>                                            
-                            <a class="text-danger" href="#">Delete Review</a>
+                            <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
+                            <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>
                         </small>
                     </div>
                     {% endif %}

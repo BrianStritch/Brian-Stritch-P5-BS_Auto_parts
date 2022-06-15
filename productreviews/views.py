@@ -2,12 +2,14 @@
     imports  ------Reviews views.py----------------------
 """
 # third party imports
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.template.defaultfilters import slugify
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.contrib import messages
+
 # internal imports
 from products.models import Product
 from .models import ProductReview, ProductReviewComment
@@ -70,7 +72,9 @@ class CreateProductReview(TemplateView):
         return HttpResponseRedirect(reverse('products'))
 
 
-class EditProductReview(UpdateView):
+
+class EditProductReview(TemplateView):
+
     """
         Class based view to display edit booking
         page with booking form relative to the
@@ -78,13 +82,51 @@ class EditProductReview(UpdateView):
         the built in django updateview for saving
         updated data to the database.
     """
-    model = ProductReview
+        
     template_name = 'product_reviews/edit_product_review.html'
-    fields = [
-        'title',
-        'content',
-        'excerpt',
-        ]
+
+    def get(self, request, pk, *args, **kwargs):
+        product_review = get_object_or_404(ProductReview, product=pk)
+        product = get_object_or_404(Product, pk=pk)
+        form = CreateProductReviewForm(instance=product_review)
+        
+        context = {
+            'form': form,
+            'product': product,
+        }
+        return render(request, self.template_name, context)
+    
+    def post(self, request, pk):
+        """
+        POST request for processing the CreateProductReviewForm
+        data passed from the create review page and if
+        form is valid saves booking to database.
+        """
+        product = get_object_or_404(Product, pk=pk)
+        product_review = get_object_or_404(ProductReview, product=pk)
+        form = CreateProductReviewForm(request.POST, instance=product_review)
+        if form.is_valid():
+            product_review.status=0
+            form.instance.product = product
+            form.instance.author = request.user
+            title = form.cleaned_data['title']
+            form.instance.slug = slugify(title)
+            content = form.cleaned_data['content']
+            excerpt = form.cleaned_data['excerpt']
+            product_review = form.save(commit=False)
+            product_review.post = product_review
+            product_review.save()
+            messages.success(request, f'Your review has been updated for { product.name },\
+                 your review has been re-submitted to administration for approval.')
+            return HttpResponseRedirect(reverse('products'))
+        else:
+            form = CreateProductReviewForm()
+            messages.error(request, 'your update has failed')
+            return render(request, self.template_name, {'form': form})
+
+        return HttpResponseRedirect(reverse('products'))
+
+    
 
 
 class DeleteProductReview(DeleteView):

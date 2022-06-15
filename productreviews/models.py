@@ -51,7 +51,7 @@ class ProductReview(models.Model):
             function to define the reverse URL
             for after a product review is created or edited
         """
-        return reverse('reviews')  # --------------------- set reverse url --------------
+        return reverse('products')  # --------------------- set reverse url --------------
 
     def save(self, *args, **kwargs):
         """
@@ -113,4 +113,4 @@ class ProductReviewComment(models.Model):
             function to define the reverse URL
             for after a comment is created or edited
         """
-        return reverse('reviews')   # --------------------- set reverse url --------------
+        return reverse('products')   # --------------------- set reverse url --------------
