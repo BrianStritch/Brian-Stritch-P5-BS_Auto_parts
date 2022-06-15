@@ -12,6 +12,7 @@ python3 manage.py migrate --plan <br>
 pip3 install stripe <br>
 pip3 install pillow <br>
 pip3 install oauth lib <br>
+pip3 install django-summernote <br>
 
 
 export STRIPE_PUBLIC_KEY=pk_test_51L2kJDFe61CNoFimnkCIY2EHIthg1GzRGHUpIXHcjcQWlNrEZ0b09VeF0n9D8rkZhih6YTfbAtT6reUOZSJ3GLtL00iIgRfHze

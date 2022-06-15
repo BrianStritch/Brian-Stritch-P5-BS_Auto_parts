@@ -274,6 +274,8 @@ a:hover{
     color: black;
     background-color: white;
 }
+
+
 @media(min-width:986px){
     html{
         padding-top: 16vh;
@@ -500,6 +502,7 @@ a.category-badge > span.badge:hover {
 .remove-item {
     cursor: pointer;    
 }
+
 
 @media(max-width:996px){
 

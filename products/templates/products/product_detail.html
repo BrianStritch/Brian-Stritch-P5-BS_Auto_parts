@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'product_reviews/css/product_review.css' %}">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container ">
         <div class="row">
@@ -126,8 +130,78 @@
                 </div>                
                 {% endif %}
             </div>
+                       
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 high-z">
+            <hr>
+            <h4 class="text-center "> <strong>Product Reviews:</strong> </h4>
+            <hr>
+        </div>
+        {% if request.user.is_authenticated %}
+            {% if request.user == review.author %}
+            <h3 class="text-black text-center high-z">You have already commented on this Product. Please see below:</h3>
+
+            {% else %}
+                <div class=" high-z text-center">
+                    <a href="{% url 'create_product_review' product.id %}" class="btn btn-outline-black rounded-0 mt-5 ">Create Review</a>
+                </div> 
+            {% endif %}      
+        {% endif %} 
+    </div>
+    {% if review  %}
+        {% if review.status == 1 %}
+        <div class="row high-z product-review-outer  comment-scroll">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-10 col-lg-4 product-review-details">
+                        <h3> <i>Title:</i>  {{ review.title }}</h3>                
+                        <p><i>Content:</i>  {{ review.content }}</p>                    
+                        <p><i>Created by :</i>  {{ review.author }} on {{ review.created_on }}</p> 
+                    </div>
+                    
+                    <div class="col-10 col-lg-8 comments-box">
+                        <h3><i>Comments:</i></h3>
+                        <strong>
+                            comments go here in this div
+                        </strong>
+                        
+                    </div>
+
+                </div>
+                <div class="row product-review-details">
+                    <div class="col-1 col-lg-1">
+                        {% with comments.count as total_comments %}
+                        <strong class="text-secondary"><i class="far fa-comments"></i>
+                            {{ total_comments }}
+                        </strong>
+                        {% endwith %}
+                    </div>
+                    {% if request.user == review.author %}
+                    <div class="col-9 col-lg-3 ">                    
+                        <small class="ml-3">
+                            <a href="#">Edit Review</a>                                            
+                            <a class="text-danger" href="#">Delete Review</a>
+                        </small>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                
+            </div>
+        </div>
+        {% else %}
+        <div class="row text-black high-z text-center">
+            <h4>Your review is currently pending approval by admin and will appear shortly.</h4>
+        </div>
+        {% endif%}
+    {% else %}
+    <div class="row text-black high-z text-center">
+        <h4>This Product has no reviews yet!</h4>
+    </div>
+
+    {% endif %}
     
 </div>
 {% endblock %}

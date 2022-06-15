@@ -1,0 +1,17 @@
+.product-review-outer{
+    background-color: rgb(0, 0, 0);
+    border: 2px solid orangered;
+    color: white;
+    margin: 3vw;
+}
+.product-review-details{
+    border: 1px solid orangered;
+}
+.comments-box{
+    background-color: #ff45008a;    
+    color: white;
+}
+.comment-scroll{
+    max-height: 416px;
+    overflow-y: auto;
+}

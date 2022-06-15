@@ -5,6 +5,7 @@ from django.db.models.functions import Lower
 from django.db.models import Q
 from .models import Product, Category, Manufacturer
 from .forms import ProductForm
+from productreviews.models import ProductReview, ProductReviewComment
 
 
 def all_products(request):
@@ -86,9 +87,16 @@ def product_detail(request, product_id):
     """ 
     A view to show individual product details
     """
-    product = get_object_or_404(Product, pk=product_id)
+    products = get_object_or_404(Product, pk=product_id)
+     
+    try:
+      product_review = get_object_or_404(ProductReview, product=product_id)
+    except:
+      product_review = None
+
     context = {
-      'product': product,  
+      'product': products,
+      'review': product_review
     }
     return render(request, 'products/product_detail.html', context)
 

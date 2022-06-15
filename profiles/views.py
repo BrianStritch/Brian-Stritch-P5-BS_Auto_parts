@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import UserProfile
 from .forms import UserAccountDetailsForm, UserProfileForm, EditProfileForm
+from django.contrib.auth.forms import UserCreationForm
 from checkout.models import Order
 
 
@@ -24,7 +25,7 @@ class SignUp(TemplateView):
         GET request for rendering the sign up
         page including the User account details form
         """
-        form = UserAccountDetailsForm()
+        form = UserCreationForm()
         return render(
             request,
             self.template_name,
@@ -39,24 +40,24 @@ class SignUp(TemplateView):
         form is valid saves user to database.
         """
         if request.method == 'POST':
-            form = UserAccountDetailsForm(request.POST)
+            form = UserCreationForm(request.POST)
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect(reverse('home'))
 
             else:
-                form = UserAccountDetailsForm()
-                details = {
+                form = UserCreationForm()
+                context = {
                     'form': form,
                 }
-                return render(request, self.template_name, details)
+                return render(request, self.template_name, context)
 
         else:
-            form = UserAccountDetailsForm()
-            details = {
+            form = UserCreationForm()
+            context = {
                 'form': form,
             }
-            return render(request, self.template_name, details)
+            return render(request, self.template_name, context)
 
 
 
