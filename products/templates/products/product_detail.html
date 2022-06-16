@@ -141,7 +141,7 @@
         </div>
         {% if request.user.is_authenticated %}
             {% if request.user == review.author %}
-            <h3 class="text-black text-center high-z">You have already commented on this Product. Please see below:</h3>
+            <h3 class="text-black text-center high-z">You have already reviewed this Product. Please see below:</h3>
 
             {% else %}
                 <div class=" high-z text-center">
@@ -164,7 +164,14 @@
                     <div class="col-10 col-lg-8 comments-box">
                         <h3><i>Comments:</i></h3>
                         <strong>
-                            comments go here in this div
+                            {% for comment in comments %}
+                            <div class="card">
+                                <div class="card-body text-white high-z">
+                                    <p>body{{ comment.body }}</p>
+                                    <p>by: {{comment.author}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </strong>
                         
                     </div>
@@ -183,8 +190,12 @@
                         <small class="ml-3">
                             <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
                             <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>
+                            <a href="{% url 'review_comment' review.slug  %}">Create comment</a>
+                            review slug = {{ review.slug }}
                         </small>
                     </div>
+                    
+
                     {% endif %}
                 </div>
                 

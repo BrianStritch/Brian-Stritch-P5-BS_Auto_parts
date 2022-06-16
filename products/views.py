@@ -88,15 +88,26 @@ def product_detail(request, product_id):
     A view to show individual product details
     """
     products = get_object_or_404(Product, pk=product_id)
-     
+    liked = False
+
     try:
       product_review = get_object_or_404(ProductReview, product=product_id)
+      try:
+        comments = product_review.comments.filter(approved=True).order_by('created_on')
+        if product_review.likes.filter(id=self.request.user.id).exists():
+              liked = True
+      except:
+        comments = None
+
     except:
       product_review = None
+      
 
     context = {
       'product': products,
-      'review': product_review
+      'review': product_review,
+      "commented": False,
+      "liked": liked,
     }
     return render(request, 'products/product_detail.html', context)
 
