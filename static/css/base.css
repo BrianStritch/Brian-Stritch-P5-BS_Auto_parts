@@ -585,6 +585,14 @@ a.category-badge > span.badge:hover {
     color: black;
 }
 
+@media(max-width:996px){
+    .product-detail-heading{
+        position: relative;
+        left: 0;
+        
+    }
+}
+
 
 /* ********************* shopping bag page *******************************/
 .outer-container{

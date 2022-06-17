@@ -62,7 +62,6 @@ class CreateProductReview(TemplateView):
         return HttpResponseRedirect(reverse('products'))
 
 
-
 class EditProductReview(TemplateView):
 
     """
@@ -115,8 +114,6 @@ class EditProductReview(TemplateView):
 
         return HttpResponseRedirect(reverse('products'))
 
-    
-
 
 class DeleteProductReview(DeleteView):
     """
@@ -127,96 +124,105 @@ class DeleteProductReview(DeleteView):
     template_name = 'product_reviews/delete_product_review.html'
     success_url = reverse_lazy('products')
 
-####################################################################################################################
-class ProductReviewComment(TemplateView):
+###############################  Reviews Comments  ####################################################
+class ReviewsComments(View):
     """
-    Class based view to render the product review form page
+        Class based view to display the selected
+        reviews specific details and comments.
     """
+    template_name = "product_reviews/create_product_review_comment.html"
 
-    def get(self, request, pk):
-        review = get_object_or_404(ProductReview, product = pk)
-        template_name = 'product_reviews/create_product_review_comment.html'
+    def get(self, request, slug):
+        """
+        class based function to render the reviews detail page
+        diaplaying the review details for the selected review
+        and renders the commentform and displays all comments
+        related to the specific review.
+        """
         form = ProductReviewCommentForm()
-        context = {
-            'review': review,
-            'form':form,
-        }
-        return render(request, template_name, context)
+        queryset = ProductReview.objects.filter(status=1) 
+        review = get_object_or_404(queryset, slug=slug) 
+        comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
+        liked = False
 
-    def post(self, request, pk):
-        """
-        POST request for processing the CreateProductReviewForm
-        data passed from the create review page and if
-        form is valid saves booking to database.
-        """
-        product = get_object_or_404(Product, pk=pk)        
         
-        form = ProductReviewCommentForm(request.POST)
-        print(form)
-        if form.is_valid():
-            # form.instance.id = 
-            # product = form.save()
-            messages.success(request, 'Your comment has been succesfully added.')
-            return redirect(reverse('product_detail', args=[product.id ]))      
-        else:
-            messages.error(request, 'Failed to add comment. Please check your form details.')        
-            form = ProductForm()
-            template = 'product_reviews/create_product_review_comment.html'
-            context = {
+        
+        if review.likes.filter(id=request.user.id).exists():
+            liked = True
+            try:
+                comments = review.comments.filter(approved=True).order_by('created_on')
+            except:
+                comments = None
+            liked = False
+            if review.likes.filter(id=self.request.user.id).exists():
+                liked = True
+
+        return render(
+            request,
+            self.template_name,
+            {
+                "review": review,
+                "comments": comments,
+                "commented": False,
+                "liked": liked,
                 'form': form,
-                'stop_toast_cart': True,
-            }
-            return render(request, template, context)
+
+            },
+        )
+
+    def post(self, request, slug):
+        """
+        POST request for processing the CommentForm
+        data passed from the reviews details page and if
+        form is valid saves comment to database.
+        """
+        products = Product.objects.all()
+        queryset = ProductReview.objects.filter(status=1) 
+        review = get_object_or_404(queryset, slug=slug) 
+        comments = review.product_review_comments.filter(approved=True).order_by('created_on')
+        liked = False
+        try:
+            comments = review.comments.filter(approved=True).order_by('created_on')
+        except:
+            comments = None
+        liked = False
+        if review.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        form = ProductReviewCommentForm(data=request.POST)
+
+        if  form.is_valid():
+            form.instance.email = request.user.email
+            form.instance.name = request.user.username
+            comment = form.save(commit=False)
+            comment.product_review = review
+            comment.save()
+            messages.success(request, 'Your comment has been created \
+                succesfully and is pending approval and will appear shortly.') 
+
+        else:
+            form = ProductReviewCommentForm()
+            messages.error(request, 'Your comment has not been created, please check \
+                your form data and re submit.')
+        
+        template_name = 'products/products.html'
 
 
+        return render(
+            request,
+            template_name,
+            {
+                "review": review,
+                "comments": comments,
+                "commented": True,
+                "liked": liked,
+                'form': form,
+                'products':products
+            },
+        )
 
 
-
-
-
-
-
-
-
-    # def post(self, request, slug):
-    #     """
-    #     POST request for processing the ProductReviewCommentForm
-    #     data passed from the reviews details page and if
-    #     form is valid saves comment to database.
-    #     """
-    #     queryset = Review.objects.filter(status=1)
-    #     review = get_object_or_404(queryset, slug=slug)
-    #     comments = review.comments.filter(approved=True).order_by('created_on')
-    #     liked = False
-    #     if review.likes.filter(id=self.request.user.id).exists():
-    #         liked = True
-
-    #     comment_form = ProductReviewCommentForm(data=request.POST)
-
-    #     if comment_form.is_valid():
-    #         comment_form.instance.email = request.user.email
-    #         comment_form.instance.name = request.user.username
-    #         comment = comment_form.save(commit=False)
-    #         comment.post = review
-    #         comment.save()
-
-    #     else:
-    #         comment_form = ProductReviewCommentForm()
-
-    #     return render(
-    #         request,
-    #         "product_reviews/create_product_review_comment.html",
-    #         {
-    #             "review": review,
-    #             "comments": comments,
-    #             "commented": True,
-    #             "liked": liked,
-    #             'comment_form': ProductReviewCommentForm(),
-    #         },
-    #     )
-
-
-class EditComment(UpdateView):
+class EditComment(TemplateView):
     """
         Class based view to display edit comment
         page with comment form relative to the
@@ -224,11 +230,48 @@ class EditComment(UpdateView):
         the built in django updateview for saving
         updated data to the database.
     """
-    model = ProductReviewComment
-    template_name = 'product_reviews/create_product_review_comment.html'
-    fields = [
-        'body',
-        ]
+
+    """
+        Class based view to display edit product review
+        page with createproductreview form relative to the
+        current selected product review and for saving
+        updated data to the database.
+    """
+        
+    template_name = 'product_reviews/edit_product_review_comment.html'
+
+    def get(self, request, pk, *args, **kwargs):
+    
+        comment = get_object_or_404(ProductReviewComment, pk=pk)
+        form = ProductReviewCommentForm(instance=comment)
+        template_name = 'product_reviews/edit_product_review_comment.html'
+        context = {
+            'form': form,
+            'comment': comment,
+        }
+        return render(request, template_name, context)
+    
+    def post(self, request, pk):
+        """
+        POST request for processing the CreateProductReviewForm
+        data passed from the create product review page and if
+        form is valid saves booking to database.
+        """
+        comment = get_object_or_404(ProductReviewComment, pk=pk)
+        form = ProductReviewCommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment.approved=False
+            form.instance.body = form.cleaned_data['body']            
+            form.save()
+            messages.success(request, f'Your comment has been updated and,\
+                 your review has been re-submitted to administration for approval.')
+            return HttpResponseRedirect(reverse('products'))
+        else:
+            form = ProductReviewCommentForm()
+            messages.error(request, 'your update has failed')
+            return render(request, self.template_name, {'form': form})
+
+        return HttpResponseRedirect(reverse('products'))
 
 
 class DeleteComment(DeleteView):
@@ -237,8 +280,8 @@ class DeleteComment(DeleteView):
         comment using the built in Django Deleteview.
     """
     model = ProductReviewComment
-    template_name = 'reviews/delete_comment.html'
-    success_url = reverse_lazy('reviews')
+    template_name = 'product_reviews/delete_product_review_comment.html'
+    success_url = reverse_lazy('products')
 
 
 class ReviewLike(View):
@@ -261,82 +304,3 @@ class ReviewLike(View):
 
 ##################################################################################################
 
-class ReviewsComments(View):
-    """
-        Class based view to display the selected
-        reviews specific details and comments.
-    """
-    template_name = "product_reviews/create_product_review_comment.html"
-
-    def get(self, request, slug):
-        """
-        class based function to render the reviews detail page
-        diaplaying the review details for the selected review
-        and renders the commentform and displays all comments
-        related to the specific review.
-        """
-        form = ProductReviewCommentForm()
-        queryset = ProductReview.objects.filter(status=1)
-        review = get_object_or_404(queryset, slug=slug)
-        try:
-            comments = review.comments.filter(approved=True).order_by('created_on')
-        except:
-            comments = None
-        liked = False
-        if review.likes.filter(id=self.request.user.id).exists():
-            liked = True
-
-        return render(
-            request,
-            self.template_name,
-            {
-                "review": review,
-                "comments": comments,
-                "commented": False,
-                "liked": liked,
-                'form': form,
-
-            },
-        )
-
-    def post(self, request, slug):
-        """
-        POST request for processing the CommentForm
-        data passed from the reviews details page and if
-        form is valid saves comment to database.
-        """
-        
-        queryset = ProductReview.objects.filter(status=1)
-        review = get_object_or_404(queryset, slug=slug)
-        try:
-            comments = review.comments.filter(approved=True).order_by('created_on')
-        except:
-            comments = None
-        liked = False
-        if review.likes.filter(id=self.request.user.id).exists():
-            liked = True
-
-        form = ProductReviewCommentForm(data=request.POST)
-
-        if  form.is_valid():
-            form.instance.email = request.user.email
-            form.instance.name = request.user.username
-            comment = form.save(commit=False)
-            comment.post = review
-            # comment.save() 
-
-        else:
-            form = ProductReviewCommentForm()
-
-
-        return render(
-            request,
-            "product_reviews/create_product_review_comment.html",
-            {
-                "review": review,
-                "comments": comments,
-                "commented": True,
-                "liked": liked,
-                'form': form,
-            },
-        )

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'product_reviews/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'product_reviews/css/product_review.css' %}">
 {% endblock %}
 
 
@@ -44,12 +44,12 @@
             </div>
             <div class="col-lg-1"></div>
             <div class="col-8 col-lg-7">
-                <div class="row high-z product-review-outer  comment-scroll">
+                <div class="row high-z product-review-outer">
                     <div class="card">
                         <div class="card-body">
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="col-10 col-lg-5 product-review-details">
+                                    <div class="col-10 col-lg-5 product-review-details text-black">
                                         <h3><strong><i>Title:</i></strong> <br>{{ review.title }}</h3> 
                                         <hr>               
                                         <p><strong><i>Content:</i></strong>  <br>{{ review.content }}</p>
@@ -57,14 +57,14 @@
                                         <p><strong><i>Created by :</i></strong> <br>{{ review.author }} on {{ review.created_on }}</p> 
                                     </div>
                                     
-                                    <div class="col-10 col-lg-7 comments-box">
-                                        <h3><i>Comments:</i></h3>
+                                    <div class="col-10 col-lg-7 comments-box  comment-scroll">
+                                        <h3 class="text-black"><i>Comments:</i></h3>
                                         <strong>
                                             {% for comment in comments %}
-                                            <div class="card">
+                                            <div class="card comment-card">
                                                 <div class="card-body">
                                                     <p>{{ comment.body }}</p>
-                                                    <p>by: {{comment.author}}</p>
+                                                    <p ><i class="text-black">Comment by:</i> {{comment.name}}, <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
                                                 </div>
                                             </div>
                                             {% endfor %}

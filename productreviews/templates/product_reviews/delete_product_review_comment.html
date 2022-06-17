@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container ">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid outer-container">
+    <div class="overlay"></div>    
+    <div class="container mb-2 high-z">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h3 class="logo-font mb-4 high_z"></h3>
+                <hr>
+                <h5 class="logo-font high-z text-md-left">Delete Comment posted by {{request.user}}</h5>
+                
+                <form  method="POST" style="margin-top: 1.3em;">                 
+                    {% csrf_token %}
+                    <hr>
+                    <strong>Are You Sure You Want To DELETE this comment?</strong>
+                    <hr>
+                    <button class="btn btn-outline-black rounded-0 btn-lg text-md-left">
+                   <a href="{% url 'products' %}">Cancel</a> 
+                    </button>
+                    <button type="submit" class="btn btn-outline-black rounded-0 btn-lg text-md-right" >DELETE COMMENT !</button> 
+                </form> 
+                                                                     
+                    
+                
+                <hr>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -89,26 +89,27 @@ def product_detail(request, product_id):
     """
     products = get_object_or_404(Product, pk=product_id)
     liked = False
-
     try:
-      product_review = get_object_or_404(ProductReview, product=product_id)
-      try:
-        comments = product_review.comments.filter(approved=True).order_by('created_on')
-        if product_review.likes.filter(id=self.request.user.id).exists():
-              liked = True
-      except:
-        comments = None
+      queryset = ProductReview.objects.filter(status=1)  
+      review = get_object_or_404(queryset, product=product_id )
+      comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
+      liked = False
+      if review.likes.filter(id=request.user.id).exists():
+          liked = True
 
-    except:
-      product_review = None
-      
-
-    context = {
+      context = {
       'product': products,
-      'review': product_review,
+      "comments": comments,
+      'review': review,
       "commented": False,
       "liked": liked,
-    }
+      }
+    except:
+      print('no comments')
+
+      context = {
+        'product': products,
+      }
     return render(request, 'products/product_detail.html', context)
 
 

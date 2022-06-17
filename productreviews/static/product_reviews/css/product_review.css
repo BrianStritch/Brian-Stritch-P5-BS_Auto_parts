@@ -12,6 +12,11 @@
     color: white;
 }
 .comment-scroll{
-    max-height: 416px;
+    max-height: 275px;
     overflow-y: auto;
+}
+.comment-card{
+    background-color: #6c757d;
+    border: 1px solid black;
+    color: black;
 }
