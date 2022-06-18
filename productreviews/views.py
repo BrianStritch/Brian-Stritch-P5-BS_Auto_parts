@@ -289,18 +289,22 @@ class ReviewLike(View):
         Class based view to toggle the liked status for
         the selected comment and saving to the database.
     """
-    def post(self, request, slug):
+    def post(self, request, pk):
         """
         POST request for processing the review liked status
         data passed from the reviews details page and if
         form is valid updates and saves status to database.
         """
-        post = get_object_or_404(Review, slug=slug)
-        if post.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
+        review = get_object_or_404(ProductReview, id=pk)
+        if review.likes.filter(id=request.user.id).exists():
+            review.likes.remove(request.user)
+            messages.success(request, 'You have succesfully liked this review.')
         else:
-            post.likes.add(request.user)
-        return HttpResponseRedirect(reverse('review_details', args=[slug]))
+            review.likes.add(request.user)
+            messages.success(request, 'You have succesfully un-liked this review.')
+
+        return HttpResponseRedirect(reverse('product_detail', args=[pk]))
+
 
 ##################################################################################################
 

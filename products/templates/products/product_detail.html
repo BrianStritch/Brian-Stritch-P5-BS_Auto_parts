@@ -198,23 +198,40 @@
                             <div class="row text-black high-z text-center">
                                 <h4>This review has no comments yet!</h4>
                             </div>
-                            {% endif %}
-                            
+                            {% endif %}                            
                         </strong>
-                        
                     </div>
-
                 </div>
+                <!-- -------------- comment count and likes with like form input --------------------->
                 <div class="row product-review-details">
-                    <div class="col-1 col-lg-1">
+                    <div class="col-2 col-lg-2">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
                             {{ total_comments }}
                         </strong>
-                        {% endwith %}
+                        {% endwith %}                    
+                        <strong>
+                            {% if user.is_authenticated %}
+                                <form class="d-inline like-btn-outline" action="{% url 'review_like' review.pk %}" method="POST">
+                                    {% csrf_token %}                                    
+                                    {% if liked %}
+                                        <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                                            <i class="fas fa-heart red"></i>
+                                        </button>
+                                    {% else %}
+                                        <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" >
+                                            <i class="far fa-heart white"></i>
+                                        </button>
+                                    {% endif %}    
+                                </form>
+                            {% else %}
+                                <span class="text-secondary"> <i class="far fa-heart white"></i> </span>                                
+                            {% endif %}
+                            <span class="text-secondary">{{ review.number_of_likes }}</span>
+                        </strong>                        
                     </div>
                     {% if request.user == review.author %}
-                    <div class="col-7 col-lg-3 ">                    
+                    <div class="col-7 col-lg-2 ">                    
                         <small class="ml-3">
                             <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
                             <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>

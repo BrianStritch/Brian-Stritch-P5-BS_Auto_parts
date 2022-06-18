@@ -71,6 +71,12 @@ font-family: "Raleway", sans-serif;
 .card-img, .card-img-top{
     max-height: 15em;
 }
+.red{
+    color: red;
+}
+.btn-like{
+    background-color: black;
+}
 /* *************** Header *****************************/
 #topnav{
     background-color: orangered;
