@@ -43,13 +43,14 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
+    'crispy_forms',
     'home',
     'products',
     'productreviews',
     'bag',
     'checkout',
     'profiles',
-    'crispy_forms',
+    'forum',    
 ]
 
 MIDDLEWARE = [
