@@ -109,7 +109,7 @@ soupsieve==2.3.2.post1
 sqlparse==0.4.2
 stack-data==0.2.0
 stevedore==3.5.0
-stripe==3.3.0
+stripe==3.4.0
 terminado==0.15.0
 tinycss2==1.1.1
 toml==0.10.2

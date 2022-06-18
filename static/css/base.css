@@ -1,7 +1,7 @@
 html {
     height: 100%;
     padding-top: 10vh;
-    width: 100vw;
+    width: 100%;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
     background-size: cover;
     height: calc(120vh - 164px);
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     font-family: "Open Sans", sans-serif;
     color: #313030;
     position: relative;
@@ -256,6 +256,28 @@ a:hover{
     color: white;
 }
 
+/****************** home page styling *****************************/
+.home-card{
+    width: 25vw;
+    min-width: 301px;
+    flex-wrap: wrap; 
+    margin: 2vh 0;   
+}
+.dim{
+    background-color: rgba(0, 0, 0, 0.521);
+}
+.home-app-heading{
+    color: orangered;
+}
+.bottom-margin{
+    margin-bottom: 11vh;
+}
+@media(max-width:576px){
+    .card-margin{
+        margin: auto;
+    }
+}
+
 /****************** index page styling ***************************/
 
 
@@ -312,6 +334,7 @@ a:hover{
     }
     .card{
         max-width: 70vw;
+        
     }
     .card-body{
         width: 70vw;
@@ -515,6 +538,9 @@ a.category-badge > span.badge:hover {
     border: 1px solid black;
 }
 
+.product-detail-image{
+    max-height: 40vh !important;
+}
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
@@ -566,7 +592,7 @@ a.category-badge > span.badge:hover {
     align-items: center;
     justify-content: center;
     left: -10vw;
-    margin: 5vw auto;
+    margin: 0vw auto;
     
 }
 .offset-1 {

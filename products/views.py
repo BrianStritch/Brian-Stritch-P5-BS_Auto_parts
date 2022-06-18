@@ -96,12 +96,17 @@ def product_detail(request, product_id):
       liked = False
       if review.likes.filter(id=request.user.id).exists():
           liked = True
+      query = comments.filter(name=request.user)
+      commented = False
+      if query:
+        commented = True
+      
 
       context = {
       'product': products,
       "comments": comments,
       'review': review,
-      "commented": False,
+      "commented": commented,
       "liked": liked,
       }
     except:
