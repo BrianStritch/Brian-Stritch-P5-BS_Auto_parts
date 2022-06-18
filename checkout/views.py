@@ -58,6 +58,7 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
+            print( 'this is order print 1', order)
             order.save()
 
             for item_id, item_data in bag.items():
@@ -148,7 +149,7 @@ def checkout_success(request, order_number):
     """
     A view to handle succesful checkouts
     """
-    
+    bag = request.session.get('bag', {})
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
