@@ -577,10 +577,7 @@ a.category-badge > span.badge:hover {
 
 .shop-now-button:hover,
 .shop-now-button:active,
-.shop-now-button:focus,
-/* .btn-black:hover,
-.btn-black:active,
-.btn-black:focus */{ 
+.shop-now-button:focus{ 
     background: #222;
     color: white;
 }

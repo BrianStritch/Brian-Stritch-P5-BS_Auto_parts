@@ -298,10 +298,10 @@ class ReviewLike(View):
         review = get_object_or_404(ProductReview, id=pk)
         if review.likes.filter(id=request.user.id).exists():
             review.likes.remove(request.user)
-            messages.success(request, 'You have succesfully liked this review.')
+            messages.success(request, 'You have succesfully un-liked this review.')
         else:
             review.likes.add(request.user)
-            messages.success(request, 'You have succesfully un-liked this review.')
+            messages.success(request, 'You have succesfully liked this review.')
 
         return HttpResponseRedirect(reverse('product_detail', args=[pk]))
 
