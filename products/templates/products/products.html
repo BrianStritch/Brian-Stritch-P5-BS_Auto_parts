@@ -91,6 +91,18 @@
                                                 <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                                             </small>
                                             {% endif %}
+                                            <br>
+                                            
+                                            <!-- {% for favourite in favourites  %}
+                                            {% if favourite.products.id == product.id  %}
+                                                    <i class="fas fa-star red"></i><strong class="text-black"> Added to favourites</strong>
+                                                    
+                                            {% endif %}
+                                            {% endfor %}                                                                
+                                            {% if Favourite == False %}
+                                                    <i class="far fa-star text-black"></i><strong class="text-black"> Not in Favourites</strong> 
+                                            
+                                            {% endif %} -->
                                         </div>
                                     </div>
                                 </div>

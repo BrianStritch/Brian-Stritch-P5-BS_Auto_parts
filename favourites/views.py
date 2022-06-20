@@ -3,10 +3,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.views import generic, View
+from django.http import HttpResponseRedirect
+
 
 from products.models import Product
-# from util.util import setup_pagination
 from .models import Favourites
+from .forms import Favouriteform
 
 
 
@@ -17,13 +20,43 @@ def view_favourites(request):
     
     """
     template_name = 'favourites/favourites.html'
-    products = Product.objects.all()
+    favourites = Favourites.objects.filter(username=request.user)
     context = {
-        'favourites': products,
+        'favourites': favourites,
     }
     return render(request, template_name, context)
-    
 
+
+class ToggleFavourite(View):
+    """
+        Class based view to toggle the favourite status for
+        the selected product and user and saving to the database.
+    """
+    
+    def post(self, request, pk):
+        
+        """
+        POST request for processing the favourite status
+        data passed from the reviews details page and if
+        form is valid updates and saves status to database.
+        """
+        product = get_object_or_404(Product, id=pk)
+        
+        try:
+            favourite = get_object_or_404(Favourites, products=pk)
+            print('found favourite', favourite)
+            favourite.delete()
+            messages.success(request, 'You have succesfully removed this product from your favourites.')
+            return HttpResponseRedirect(reverse('product_detail', args=[pk]))
+        except:            
+            Favourites.objects.create(
+                username = request.user,
+                products = product
+            )            
+            messages.success(request, 'You have succesfully added this product to your favourites.')            
+            return HttpResponseRedirect(reverse('product_detail', args=[pk]))
+
+        return HttpResponseRedirect(reverse('product_detail', args=[pk]))
     
 
 

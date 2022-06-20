@@ -7,12 +7,15 @@ class FavouritesAdmin(admin.ModelAdmin):
     """
     list_display = (
         'username',
+        'products'
     )
     search_fields = (
         'username',
+        'products'
     )
     list_filter = (
         'username',
+        
     )
     list_per_page = 20
 

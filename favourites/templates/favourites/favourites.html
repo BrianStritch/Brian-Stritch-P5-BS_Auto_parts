@@ -17,7 +17,7 @@
     <div class="container-fluid ">
         <div class="row">
             <div class="col text-center mt-3 product-heading">
-                <h2 class="logo-font ">Favourites</h2>
+                <h2 class="logo-font ">{{ request.user }}'s Favourite items:</h2>
                 {% for c in current_categories %}
                     <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
                         <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
@@ -31,13 +31,13 @@
                     {% for favourite in favourites %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-2">
-                                {% if favourite.product.image %}
-                                <a href="#">
-                                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% if favourite.products.image %}
+                                <a href="{% url 'product_detail' favourite.products.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ favourite.products.image.url }}" alt="{{ favourite.products.name }}">
                                 </a>
                                 {% else %}
-                                <a href="#">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                <a href="{% url 'product_detail' favourite.products.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ favourite.products.name }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
@@ -46,24 +46,40 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="mb-0 font-weight-bold text-black">{{ product.name }}</p>
-                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
-                                            {% if product.category %}
+                                            <p class="mb-0 font-weight-bold text-black">{{ favourite.products.name }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">€{{ favourite.products.price }}</p>
+                                            {% if favourite.products.category %}
                                                 <p class="small mt-1 mb-0">
                                                     <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                        <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                        <i class="fas fa-tag mr-1"></i>{{ favourite.products.category.friendly_name }}
                                                     </a>
                                                 </p>
                                             {% endif %}
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                            {% if favourite.products.rating %}
+                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ favourite.products.rating }} / 5</small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
-                                            {% if request.user.is_superuser %}
+                                            <br>
+                                            {% if request.user.is_authenticated %}
                                             <small class="ml-3">
-                                                <a href="#">Edit</a>                                            
-                                                <a class="text-danger" href="#">Delete</a>
+                                                <!-- *******************  this is the space for favourites form **************** -->
+                                                <form class="d-inline like-btn-outline" action="{% url 'toggle-favourite' favourite.products.pk %}" method="POST"> <!---->
+                                                    {% csrf_token %}                                    
+                                                    {% if favourite %}
+                                                        <input type="hidden" value="{{ favourite.products.pk }}" id="products">
+                                                        <input type="hidden" value="{{ request.user.username }}" id="username">
+                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.id }}" class="btn-like like-btn-outline" id="like-btn">
+                                                            <i class="fas fa-star red"></i><strong class="text-white">Remove from favourites</strong>
+                                                        </button>
+                                                    {% else %}
+                                                        <input type="hidden" value="{{ favourite.products.pk }}" id="products">
+                                                        <input type="hidden" value="{{ request.user.username }}" id="username">
+                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.pk }}" class="btn-like like-btn-outline" >
+                                                            <i class="far fa-star white"></i><strong class="text-white"> Add to Favourites</strong> 
+                                                        </button>
+                                                    {% endif %}    
+                                                </form>
                                             </small>
                                             {% endif %}
                                         </div>

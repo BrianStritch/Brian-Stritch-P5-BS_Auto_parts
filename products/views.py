@@ -6,6 +6,7 @@ from django.db.models import Q
 from .models import Product, Category, Manufacturer
 from .forms import ProductForm
 from productreviews.models import ProductReview, ProductReviewComment
+from favourites.models import Favourites
 
 
 def all_products(request):
@@ -24,6 +25,7 @@ def all_products(request):
     # current_sorting = None,None
 
     if request.GET:
+      
 
       if 'sort' in request.GET:
         sortkey = request.GET['sort']
@@ -71,6 +73,9 @@ def all_products(request):
         
         products = Product.objects.all().filter(on_sale=True)
 
+    
+    favourites = Favourites.objects.all()
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -79,6 +84,7 @@ def all_products(request):
       'search_term': query,
       'current_categories': categories,
       'current_sorting': current_sorting,
+      'favourites': favourites,
     }
     return render(request, 'products/products.html', context)
     
@@ -88,8 +94,10 @@ def product_detail(request, product_id):
     A view to show individual product details
     """
     products = get_object_or_404(Product, pk=product_id)
+    
     liked = False
     try:
+      
       queryset = ProductReview.objects.filter(status=1)  
       review = get_object_or_404(queryset, product=product_id )
       comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
@@ -100,7 +108,12 @@ def product_detail(request, product_id):
       commented = False
       if query:
         commented = True
-      
+      try:
+        favourites = get_object_or_404(Favourites, products=products)
+        
+      except:
+        favourites = False
+        
 
       context = {
       'product': products,
@@ -108,12 +121,18 @@ def product_detail(request, product_id):
       'review': review,
       "commented": commented,
       "liked": liked,
+      'favourites': favourites,
       }
     except:
-      print('no comments')
+      try:
+        favourites = get_object_or_404(Favourites, products=products)
+        
+      except:
+        favourites = False
 
       context = {
         'product': products,
+        'favourites': favourites,
       }
     return render(request, 'products/product_detail.html', context)
 
