@@ -13,6 +13,11 @@ pip3 install oauth lib <br>
 pip3 install django-summernote <br>
 pip3 install cloudinary <br>
 <br>
+pip3 install dj_database_url <br>
+pip3 install psycopg2-binary <br>
+<br>
+pip3 freeze > requirements.txt <br>
+<br>
 python3 manage.py makemigrations --dry-run <br>
 python3 manage.py makemigrations <br>
 python3 manage.py migrate --plan <br>
