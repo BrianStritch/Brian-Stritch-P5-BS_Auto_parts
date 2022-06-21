@@ -1,0 +1,1 @@
+web: gunicorn BS_Auto_Parts.wsgi:application

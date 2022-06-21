@@ -17,6 +17,7 @@ pip3 install dj_database_url <br>
 pip3 install psycopg2-binary <br>
 <br>
 pip3 freeze > requirements.txt <br>
+pip3 install gunicorn <br>
 <br>
 python3 manage.py makemigrations --dry-run <br>
 python3 manage.py makemigrations <br>

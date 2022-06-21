@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4lpy$0mn_oz6%l&9ebsqj5@u&179ca+*&z%8ex1&cpfoxfqm%o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['brian-stritch-p5-bs-auto-parts.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -123,16 +123,21 @@ WSGI_APPLICATION = 'BS_Auto_Parts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 # DATABASES = {
-#     'default': dj_database_url.parse('postgres://amfyoetxracwpl:ed98bc84a8b7473a5d045492dec8087b4fc323d21e9fb81a2e30ba6fe10f6a20@ec2-34-247-172-149.eu-west-1.compute.amazonaws.com:5432/d12q3oe0gh82f2')
-# }
+#             'default': dj_database_url.parse('postgres://amfyoetxracwpl:ed98bc84a8b7473a5d045492dec8087b4fc323d21e9fb81a2e30ba6fe10f6a20@ec2-34-247-172-149.eu-west-1.compute.amazonaws.com:5432/d12q3oe0gh82f2')
+#         }
 
 
 # Password validation
