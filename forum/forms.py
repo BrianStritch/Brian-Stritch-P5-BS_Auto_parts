@@ -18,7 +18,8 @@ class CreateForumPostForm(forms.ModelForm):
         fields = (
             'title',
             'content',
-            'excerpt'
+            'excerpt',
+            'topic',
             )
 
 class ForumPostCommentForm(forms.ModelForm):
