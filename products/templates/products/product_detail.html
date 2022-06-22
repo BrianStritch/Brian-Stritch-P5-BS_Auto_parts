@@ -53,18 +53,17 @@
                         <a href="{% url 'edit_product' product.id %}">Edit</a>                                            
                         <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                     </small>
-                    <br>
+                    
                 {% endif %}
-                <form class="d-inline like-btn-outline" action="{% url 'toggle-favourite' product.pk %}" method="POST"> <!---->
+                <br>
+                <form class="d-inline like-btn-outline" action="{% url 'toggle-favourite' product.pk %}" method="POST">
                     {% csrf_token %}
-                        
                         {% if favourites.products.id == product.id %}
-                            <input type="hidden" value="{{ product.id }}" id="products">
-                            <input type="hidden" value="{{ request.user.username }}" id="username">
-                            <button type="submit" name="favourite_id" value="{{ product.pk }}" class="btn-like like-btn-outline" id="like-btn">
-                                <i class="fas fa-star red"></i><strong class="text-white"> Remove from favourites</strong>
-                            </button>
-                                                                                                    
+                        <input type="hidden" value="{{ product.id }}" id="products">
+                        <input type="hidden" value="{{ request.user.username }}" id="username">
+                        <button type="submit" name="favourite_id" value="{{ product.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                            <i class="fas fa-star gold"></i><strong class="text-white"> Remove from favourites</strong>
+                        </button>                                                                                                    
                         {% else %}
                         <input type="hidden" value="{{ product.id }}" id="products">
                         <input type="hidden" value="{{ request.user.username }}" id="username">
@@ -72,9 +71,6 @@
                             <i class="far fa-star white"></i><strong class="text-white"> Add to Favourites</strong> 
                         </button>
                         {% endif %}
-                        
-                    
-                        
                 </form>
                 <p class="mt-3">Product description: <br>{{ product.description }}</p>
                 <hr>               
