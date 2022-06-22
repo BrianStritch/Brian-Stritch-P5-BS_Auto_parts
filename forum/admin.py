@@ -4,7 +4,7 @@ from .models import ForumCategory, ForumPostComment, ForumPost,ForumTopics
 
 
 @admin.register(ForumPost)
-class ForumPostAdmin(SummernoteModelAdmin):
+class ForumPostAdmin(admin.ModelAdmin):
     """
     Class to set the fields to be displayed in the django
     admin panel in the review fields
