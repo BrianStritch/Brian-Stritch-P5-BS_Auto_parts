@@ -69,14 +69,14 @@
                                                     {% if favourite %}
                                                         <input type="hidden" value="{{ favourite.products.pk }}" id="products">
                                                         <input type="hidden" value="{{ request.user.username }}" id="username">
-                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.id }}" class="btn-like like-btn-outline bg-white text-black" id="like-btn">
-                                                            <i class="fas fa-star gold"></i><strong class="text-white">Remove from favourites</strong>
+                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.id }}" class="btn-like like-btn-outline bg-white" id="like-btn">
+                                                            <i class="fas fa-star gold"></i><strong class="text-black">Remove from favourites</strong>
                                                         </button>
                                                     {% else %}
                                                         <input type="hidden" value="{{ favourite.products.pk }}" id="products">
                                                         <input type="hidden" value="{{ request.user.username }}" id="username">
-                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.pk }}" class="btn-like like-btn-outline bg-white text-black" >
-                                                            <i class="far fa-star white"></i><strong class="text-white"> Add to Favourites</strong> 
+                                                        <button type="submit" name="favourite_id" value="{{ favourite.products.pk }}" class="btn-like like-btn-outline bg-white" >
+                                                            <i class="far fa-star white"></i><strong class="text-black"> Add to Favourites</strong> 
                                                         </button>
                                                     {% endif %}    
                                                 </form>
