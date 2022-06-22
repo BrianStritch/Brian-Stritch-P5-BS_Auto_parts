@@ -24,6 +24,9 @@ class ForumCategory(models.Model):
 
 class ForumTopics(models.Model):
 
+    class Meta:
+        verbose_name_plural = 'Forum Topics'
+
     forum_category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
@@ -40,6 +43,7 @@ class ForumPost(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='forum_posts')
     category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE, related_name='forum_posts_category' )
+    topic = models.ForeignKey(ForumTopics, on_delete=models.CASCADE, related_name='forum_posts_topic')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     excerpt = models.TextField(blank=True)
