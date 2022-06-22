@@ -12,10 +12,12 @@ pip3 install pillow <br>
 pip3 install oauth lib <br>
 pip3 install django-summernote <br>
 pip3 install cloudinary <br>
-
+npm i -g heroku <br>
 <br>
 pip3 install dj_database_url <br>
 pip3 install psycopg2-binary <br>
+pip install heroku3 <br>
+heroku login -i <br>
 <br>
 pip3 freeze > requirements.txt <br>
 pip3 install gunicorn <br>
