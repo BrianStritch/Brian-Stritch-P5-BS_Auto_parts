@@ -18,6 +18,8 @@ pip3 install psycopg2-binary <br>
 <br>
 pip3 freeze > requirements.txt <br>
 pip3 install gunicorn <br>
+pip3 install boto3 <br>
+pip3 install django-storages <br>
 <br>
 python3 manage.py makemigrations --dry-run <br>
 python3 manage.py makemigrations <br>
