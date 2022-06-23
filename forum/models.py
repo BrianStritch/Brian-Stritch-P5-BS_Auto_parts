@@ -30,6 +30,7 @@ class ForumTopics(models.Model):
     forum_category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    excerpt = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
@@ -61,6 +62,9 @@ class ForumPost(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+    
+    def number_of_posts(self):
+        return self.title.count()
 
 
 class ForumPostComment(models.Model):

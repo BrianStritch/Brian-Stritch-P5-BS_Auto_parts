@@ -17,45 +17,20 @@
 
 {% block content %}
 <div class="overlay forum"></div>
-<div class="container-fluid forum-banner">
-    
-    
-    <div class="row">
-        <div class="col-12 high-z bg-black text-white">
-            <hr class="hr">
-            <h4 class="text-center "> <strong>Members Forum 66 :</strong> </h4>
-            <hr class="hr">
-            {{ topics }}
-            {% for topic in topics %}
-            <p class="text-white">topic id = {{ topic.id }}</p>
-            <p class="text-white">author name = {{ topic.name }}</p>
-            {% endfor %}
-            <hr>
-            {% for p in post %}
-            {{ p }}
-            <p class="text-white">post id = {{ p.id }}</p>
-            <p class="text-white">author id = {{ p.author }}</p>
-            <p class="text-white">content= {{ p.content }}</p>
-            <p class="text-white">created_on  = {{ p.created_on }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-    <div class="row bg-black high-z">
-        <div class="col-12 text-white bg-white high-z">
-            
 
 
-        </div>
-        <!-- <form action="#">
-            {{ form.as_p }}
-            <button type="submit">submit</button>
-        </form> -->
+
+    <div class="container-fluid forum-banner">
         
         
-    </div>
-    
-        <!-- {% for category in categories %}
+        <div class="row">
+            <div class="col-12 high-z bg-black text-white">
+                <hr class="hr">
+                <h4 class="text-center "> <strong>Members Forum :</strong> </h4>
+                <hr class="hr">
+            </div>
+        </div>
+        {% for category in categories %}
         <div class="row high-z flex-and-center column">
             <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
                 <div class="row">
@@ -75,10 +50,10 @@
                 
             {% for topic in topics %} 
             {% if category == topic.forum_category %}
-            <div class="col-11 col-md-5 col-lg-5 forum-topic-box">
+            <div class="col-12 col-md-6 col-lg-6 forum-topic-box">
                 <div class="row forum-topic">
                     <a href="#">
-                    <div class="col-10">
+                    <div class="col-12">
                         {{ topic.name }} 
                         </div>
                     </a>            
@@ -87,6 +62,7 @@
             {% endif %}
             {% endfor %}            
         </div>
-        {% endfor %}  -->  
+        {% endfor %}    
     </div>
+
 {% endblock %}
