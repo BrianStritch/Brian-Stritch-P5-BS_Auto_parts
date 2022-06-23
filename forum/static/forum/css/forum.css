@@ -28,3 +28,9 @@
 .forum-topic a {
     color: black;
 }
+.hr{
+    border: 2px solid yellow;
+}
+.forum-banner{
+    margin-top: -5vh;
+}
