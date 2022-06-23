@@ -84,7 +84,7 @@ class ForumTopicsAdmin(admin.ModelAdmin):
         'name',        
     )
     prepopulated_fields = {
-        'slug': ('name',)
+        'slug': ('forum_category','name',)
         }
 
     ordering = ('friendly_name',)

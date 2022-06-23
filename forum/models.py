@@ -66,7 +66,7 @@ class ForumTopics(models.Model):
             function to edit and save the slug
             for after a review is created or edited
         """
-        self.slug = slugify(self.forum_category)
+        self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def get_friendly_name(self):
@@ -75,7 +75,7 @@ class ForumTopics(models.Model):
 
 class ForumPost(models.Model):
 
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=199, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User,  on_delete=models.CASCADE)    
     topic = models.ForeignKey(ForumTopics,null=True, blank=True,  on_delete=models.CASCADE)
