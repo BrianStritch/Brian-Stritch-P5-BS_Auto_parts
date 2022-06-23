@@ -1,3 +1,6 @@
+.forum{
+    background: url('/media/bg-4.jpg') no-repeat center center fixed;
+}
 .forum-header{
     width: 95vw;
     height: 5vh;
