@@ -64,3 +64,51 @@ def forum(request):
             'post': forum_post,
         }
     return render(request, template_name, context)
+
+
+def Topic_detail(request, slug):
+    """ 
+    A view to show individual product details
+    """
+    topics = get_object_or_404(ForumTopics, slug=slug)
+    
+    liked = False
+    try:
+      
+      queryset = ForumPost.objects.filter(status=1)  
+      review = get_object_or_404(queryset, product=product_id )
+      comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
+      liked = False
+      if review.likes.filter(id=request.user.id).exists():
+          liked = True
+      query = comments.filter(name=request.user)
+      commented = False
+      if query:
+        commented = True
+      try:
+        favourites = get_object_or_404(Favourites, products=products)
+        
+      except:
+        favourites = False
+        
+
+      context = {
+      'product': products,
+      "comments": comments,
+      'review': review,
+      "commented": commented,
+      "liked": liked,
+      'favourites': favourites,
+      }
+    except:
+      try:
+        favourites = get_object_or_404(Favourites, products=products)
+        
+      except:
+        favourites = False
+
+      context = {
+        'product': products,
+        'favourites': favourites,
+      }
+    return render(request, 'products/product_detail.html', context)

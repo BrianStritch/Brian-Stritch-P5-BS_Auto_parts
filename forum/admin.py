@@ -70,6 +70,9 @@ class ForumCategoryAdmin(admin.ModelAdmin):
         'friendly_name',
         'name',        
     )
+    prepopulated_fields = {
+        'slug': ('name',)
+        }
 
     ordering = ('friendly_name',)
 
@@ -80,5 +83,8 @@ class ForumTopicsAdmin(admin.ModelAdmin):
         'friendly_name',
         'name',        
     )
+    prepopulated_fields = {
+        'slug': ('name',)
+        }
 
     ordering = ('friendly_name',)

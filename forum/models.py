@@ -13,13 +13,30 @@ class ForumCategory(models.Model):
         verbose_name_plural = 'Forum Categories'
 
     name = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=200, unique=True)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name
 
     def get_friendly_name(self):
         return self.friendly_name
+    
+    def get_absolute_url(self):
+        """
+            function to define the reverse URL
+            for after a product review is created or edited
+        """
+        return reverse('forum')  
+
+    def save(self, *args, **kwargs):
+        """
+            function to edit and save the slug
+            for after a review is created or edited
+        """
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class ForumTopics(models.Model):
@@ -29,11 +46,28 @@ class ForumTopics(models.Model):
 
     forum_category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=254)
+    slug = models.SlugField(max_length=200, unique=True)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     excerpt = models.TextField(blank=True)
+    
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        """
+            function to define the reverse URL
+            for after a product review is created or edited
+        """
+        return reverse('forum')  
+
+    def save(self, *args, **kwargs):
+        """
+            function to edit and save the slug
+            for after a review is created or edited
+        """
+        self.slug = slugify(self.forum_category)
+        super().save(*args, **kwargs)
 
     def get_friendly_name(self):
         return self.friendly_name
@@ -59,6 +93,21 @@ class ForumPost(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        """
+            function to define the reverse URL
+            for after a product review is created or edited
+        """
+        return reverse('forum')  
+
+    def save(self, *args, **kwargs):
+        """
+            function to edit and save the slug
+            for after a review is created or edited
+        """
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def number_of_likes(self):
         return self.likes.count()
@@ -82,4 +131,3 @@ class ForumPostComment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-

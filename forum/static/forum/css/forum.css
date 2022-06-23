@@ -37,7 +37,7 @@
 }
 .forum-topic-box{
     background-color: rgba(0, 0, 0, 0.608);
-    padding: 1vh ;
+    padding: 3vh ;
     border-radius: 5vh;
 }
 .forum-heading-box{
@@ -47,4 +47,13 @@
     margin-bottom: -1vh;
     border-radius: 5vh;
     width: 60%;
+}
+.forum-excerpt{
+    height: 3vh;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5vh;
+    margin:0px 5px 5px 5px;
+    background-color: orangered;
 }
