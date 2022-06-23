@@ -23,42 +23,60 @@
     <div class="row">
         <div class="col-12 high-z bg-black text-white">
             <hr class="hr">
-            <h4 class="text-center "> <strong>Members Forum :</strong> </h4>
+            <h4 class="text-center "> <strong>Members Forum 66 :</strong> </h4>
             <hr class="hr">
+            {{ topics }}
+            {% for topic in topics %}
+            <p class="text-white">topic id = {{ topic.id }}</p>
+            {% endfor %}
         </div>
     </div>
-    {% for category in categories %}
-    <div class="row high-z flex-and-center column">
-        <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
-            <div class="row">
-                <div class="col-12 forum-header">                
-                    <h2>
-                        <strong>
-                            {% if category.name == 'Main' %}
-                            Main topics
-                            {% else %}
-                            {{ category.name }}
-                            {% endif %}
-                        </strong>
-                    </h2>    
-                </div>                            
-            </div>
-        </div>      
+    <div class="row bg-black high-z">
+        <div class="col-12 text-white bg-white high-z">
             
-        {% for topic in topics %} 
-        {% if category == topic.forum_category %}
-        <div class="col-11 col-md-5 col-lg-5 forum-topic-box">
-            <div class="row forum-topic">
-                <a href="#">
-                <div class="col-10">
-                    {{ topic.name }} 
-                    </div>
-                </a>            
-            </div> 
-        </div>        
-        {% endif %}
-        {% endfor %}            
+
+
+        </div>
+        <!-- <form action="#">
+            {{ form.as_p }}
+            <button type="submit">submit</button>
+        </form> -->
+        
+        
     </div>
-    {% endfor %}    
-</div>
+    
+        <!-- {% for category in categories %}
+        <div class="row high-z flex-and-center column">
+            <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
+                <div class="row">
+                    <div class="col-12 forum-header">                
+                        <h2>
+                            <strong>
+                                {% if category.name == 'Main' %}
+                                Main topics
+                                {% else %}
+                                {{ category.name }}
+                                {% endif %}
+                            </strong>
+                        </h2>    
+                    </div>                            
+                </div>
+            </div>      
+                
+            {% for topic in topics %} 
+            {% if category == topic.forum_category %}
+            <div class="col-11 col-md-5 col-lg-5 forum-topic-box">
+                <div class="row forum-topic">
+                    <a href="#">
+                    <div class="col-10">
+                        {{ topic.name }} 
+                        </div>
+                    </a>            
+                </div> 
+            </div>        
+            {% endif %}
+            {% endfor %}            
+        </div>
+        {% endfor %}  -->  
+    </div>
 {% endblock %}

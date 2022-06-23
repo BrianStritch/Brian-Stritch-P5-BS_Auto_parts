@@ -43,7 +43,7 @@ class ForumPost(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)    
-    topic = models.ForeignKey(ForumTopics, on_delete=models.CASCADE)
+    topic = models.ForeignKey(ForumTopics, null=True, blank=True, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     excerpt = models.TextField(blank=True)

@@ -10,6 +10,9 @@ def forum(request):
     products = Product.objects.all()
     makes = Manufacturer.objects.all().order_by('name')
     template_name = 'forum/forum.html'
+    form = CreateForumPostForm
+    forum_categories = ForumCategory.objects.all()
+    topics = ForumTopics.objects.all()
 
     query = None
     categories = None
@@ -39,11 +42,12 @@ def forum(request):
         current_sorting = f'{sort}_{direction}'
 
         context = {
-        'products': products,
-        'makes':makes,
-        'search_term': query,
-        'current_categories': categories,
-        'current_sorting': current_sorting,
+            'form':form,
+            'products': products,
+            'makes':makes,
+            'search_term': query,
+            'current_categories': categories,
+            'current_sorting': current_sorting,
         }
         return render(request, 'products/products.html', context)
 
@@ -53,7 +57,8 @@ def forum(request):
         topics = ForumTopics.objects.all()
 
         context = {
-            'categories': categories,
+            'form':form,
+            'categories': forum_categories,
             'topics': topics,
         }
     return render(request, template_name, context)
