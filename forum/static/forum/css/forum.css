@@ -37,13 +37,13 @@
 }
 .forum-topic-box{
     background-color: rgba(0, 0, 0, 0.608);
-    padding: 3vh ;
+    padding: 1vh ;
     border-radius: 5vh;
 }
 .forum-heading-box{
     background-color: rgba(0, 0, 0, 0.608);
     padding: 3vh ;
-    padding-bottom: 0;
+    padding-bottom: 1vh;
     border-radius: 5vh;
+    width: 100%;
 }
-.
