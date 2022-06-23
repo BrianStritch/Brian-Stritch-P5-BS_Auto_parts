@@ -27,16 +27,35 @@
             <hr>
         </div>
     </div>
-    {% for category in categories %}
+    <div class="row high-z bg-white text-black">
+        {% for category in categories %}
+        <div class="col-12">
+            <strong>{{ category.name }}</strong>    
+        </div>
+        {% for topic in topics %} 
+        {% if category == topic.forum_category %}
+         <div class="row">
+            <a href="#">
+               <div class="col-12">
+                {{ topic.name }} 
+                </div>
+            </a>            
+         </div>
+         {% endif %}
+        {% endfor %}
+    </div>
+    
     <p>{{ category.name }}</p>
     <div> category topic = {{ cagegory.topic }} <br>
-        {% for topic in topics %}
+     
+        
         <p> topic name = {{ topic.name }}</p>
+        topic category = {{ cagegory.forum_category }} <br>
         {% endfor %}
     </div>
 
         
-    {% endfor %}
+    
     
 </div>
 {% endblock %}
