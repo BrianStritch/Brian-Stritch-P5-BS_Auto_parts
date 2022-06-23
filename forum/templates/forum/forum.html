@@ -27,7 +27,16 @@
             <hr>
         </div>
     </div>
-    
+    {% for category in categorys %}
+    <p>{{ category.name }}</p>
+    <div> category topic = {{ cagegory.topic }} <br>
+        {% for topic in topics %}
+        <p> topic name = {{ topic.name }}</p>
+        {% endfor %}
+    </div>
+
+        
+    {% endfor %}
     
 </div>
 {% endblock %}
