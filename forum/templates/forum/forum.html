@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'product_reviews/css/product_review.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -28,13 +28,13 @@
         </div>
     </div>
     {% for category in categories %}
-    <div class="row high-z bg-white text-black">        
-        <div class="col-12">
-            <strong>{{ category.name }}</strong>    
+    <div class="row high-z bg-white text-black flex-and-center">        
+        <div class="col-12 forum-header">
+            <h2><strong>{{ category.name }}</strong> </h2>   
         </div>
         {% for topic in topics %} 
         {% if category == topic.forum_category %}
-        <div class="row">
+        <div class="row forum-topic">
             <a href="#">
             <div class="col-12">
                 {{ topic.name }} 

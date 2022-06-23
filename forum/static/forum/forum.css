@@ -1,0 +1,16 @@
+.forum-header{
+    width: 95vw;
+    height: 5vh;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.forum-topic{
+    width: 85vw;
+    height: 3vh;
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
