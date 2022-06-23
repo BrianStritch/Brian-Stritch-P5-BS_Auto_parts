@@ -2,7 +2,6 @@
     background: url('/media/bg-4.jpg') no-repeat center center fixed;
 }
 .forum-header{
-    width: 95vw;
     height: 5vh;
     text-align: center;
     background-color: white;
@@ -13,7 +12,6 @@
     color: orangered !important;
 }
 .forum-topic{
-    width: 85vw;
     height: 3vh;
     text-align: center;
     background-color: white;
@@ -33,4 +31,10 @@
 }
 .forum-banner{
     margin-top: -5vh;
+}
+.column{
+    flex-direction: column;
+}
+.forum-topic-box{
+    background-color: black;
 }
