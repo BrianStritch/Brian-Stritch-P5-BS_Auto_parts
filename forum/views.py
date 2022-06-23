@@ -53,7 +53,6 @@ def forum(request):
         topics = ForumTopics.objects.all()
 
         context = {
-            'home':True,
             'categories': categories,
             'topics': topics,
         }
