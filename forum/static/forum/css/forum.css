@@ -4,7 +4,10 @@
     text-align: center;
     background-color: white;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 5vh;
+    margin: 5px;
+    background-color: black;
+    color: orangered !important;
 }
 .forum-topic{
     width: 85vw;
@@ -12,5 +15,13 @@
     text-align: center;
     background-color: white;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 5vh;
+    margin: 5px;
+    background-color: orangered;
+}
+.forum-topic:hover{
+    background-color: orange;
+}
+.forum-topic a {
+    color: black;
 }
