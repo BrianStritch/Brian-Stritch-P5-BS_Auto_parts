@@ -36,5 +36,7 @@
     flex-direction: column;
 }
 .forum-topic-box{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.608);
+    padding: 3vh ;
+    border-radius: 5vh;
 }
