@@ -30,13 +30,18 @@
     {% for category in categories %}
     <div class="row high-z flex-and-center column">        
         <div class="col-12 col-md-6 col-lg-6 forum-header">
-            <h2><strong>
-                {% if category.name == 'Main' %}
-                Main topics
-                {% else %}
-                {{ category.name }}
-                {% endif %}
-            </strong> </h2>   
+            <div class="forum-topic-box">
+               <h2>
+                    <strong>
+                        {% if category.name == 'Main' %}
+                        Main topics
+                        {% else %}
+                        {{ category.name }}
+                        {% endif %}
+                    </strong>
+                </h2>    
+            </div>
+            
         </div>
         {% for topic in topics %} 
         {% if category == topic.forum_category %}
