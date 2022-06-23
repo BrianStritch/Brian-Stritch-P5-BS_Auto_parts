@@ -28,10 +28,10 @@
         </div>
     </div>
     {% for category in categories %}
-    <div class="row high-z flex-and-center column">        
-        <div class="col-12 col-md-6 col-lg-6 forum-header">
-            <div class="forum-heading-box">
-               <h2>
+    <div class="row high-z flex-and-center column">
+        <div class="forum-heading-box">      
+            <div class="col-12 col-md-6 col-lg-6 forum-header">                
+                <h2>
                     <strong>
                         {% if category.name == 'Main' %}
                         Main topics
@@ -40,8 +40,7 @@
                         {% endif %}
                     </strong>
                 </h2>    
-            </div>
-            
+            </div>            
         </div>
         {% for topic in topics %} 
         {% if category == topic.forum_category %}
