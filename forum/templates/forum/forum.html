@@ -28,7 +28,17 @@
             {{ topics }}
             {% for topic in topics %}
             <p class="text-white">topic id = {{ topic.id }}</p>
+            <p class="text-white">author name = {{ topic.name }}</p>
             {% endfor %}
+            <hr>
+            {% for p in post %}
+            {{ p }}
+            <p class="text-white">post id = {{ p.id }}</p>
+            <p class="text-white">author id = {{ p.author }}</p>
+            <p class="text-white">content= {{ p.content }}</p>
+            <p class="text-white">created_on  = {{ p.created_on }}</p>
+            {% endfor %}
+
         </div>
     </div>
     <div class="row bg-black high-z">

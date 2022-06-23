@@ -55,10 +55,12 @@ def forum(request):
         
         categories = ForumCategory.objects.all()
         topics = ForumTopics.objects.all()
+        forum_post = ForumPost.objects.all()
 
         context = {
             'form':form,
             'categories': forum_categories,
             'topics': topics,
+            'post': forum_post,
         }
     return render(request, template_name, context)
