@@ -6,6 +6,7 @@ from django.db.models import Q
 from products.models import Product, Category, Manufacturer
 
 
+
 def forum(request):
     products = Product.objects.all()
     makes = Manufacturer.objects.all().order_by('name')
@@ -66,49 +67,41 @@ def forum(request):
     return render(request, template_name, context)
 
 
-def Topic_detail(request, slug):
+def Topic_list(request, slug, *args , **kwargs ):
     """ 
     A view to show individual product details
     """
-    topics = get_object_or_404(ForumTopics, slug=slug)
+    # topic = get_object_or_404(ForumTopics, slug=slug)
+    # forum_post = get_object_or_404(ForumPost, topic=topic )
+    # post = ForumPost.objects.filter(status=1)  
+    topic = get_object_or_404(ForumTopics, slug=slug)
+    # topic = ForumTopics.objects.filter()  
+    #  queryset= get_object_or_404(queryset, )
     
-    liked = False
-    try:
-      
-      queryset = ForumPost.objects.filter(status=1)  
-      review = get_object_or_404(queryset, product=product_id )
-      comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
-      liked = False
-      if review.likes.filter(id=request.user.id).exists():
-          liked = True
-      query = comments.filter(name=request.user)
-      commented = False
-      if query:
-        commented = True
-      try:
-        favourites = get_object_or_404(Favourites, products=products)
-        
-      except:
-        favourites = False
-        
+    posts = ForumPost.objects.all()
 
-      context = {
-      'product': products,
-      "comments": comments,
-      'review': review,
-      "commented": commented,
-      "liked": liked,
-      'favourites': favourites,
-      }
-    except:
-      try:
-        favourites = get_object_or_404(Favourites, products=products)
-        
-      except:
-        favourites = False
+    # comments = review.product_review_comments.filter(approved=True).order_by('created_on')     
+    
+    # comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
+    # liked = False
+    # if post.likes.filter(id=request.user.id).exists():
+    #     liked = True
+    # query = comments.filter(name=request.user)
+    # commented = False
+    # if query:
+    #   commented = True
+    
+    template_name = 'forum/topic_details.html'
+    context = {
+    # "comments": comments,
+    'posts': posts,
+    # "commented": commented,
+    # "liked": liked,
+    'topic': topic,
+    }
+          
+    return render(request, template_name, context)
 
-      context = {
-        'product': products,
-        'favourites': favourites,
-      }
-    return render(request, 'products/product_detail.html', context)
+def PostDetail(request, slug, *args , **kwargs):
+  post = get_object_or_404(ForumPost, slug=slug)
+  template_name = 'forum/post_detail.html'

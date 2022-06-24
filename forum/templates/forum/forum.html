@@ -52,7 +52,7 @@
             {% if category == topic.forum_category %}
             <div class="col-12 col-md-6 col-lg-6 forum-topic-box">
                 <div class="row forum-topic">
-                    <a href="#">
+                    <a href="{% url 'topic_list' topic.slug %}">
                         <div class="col-12 ">
                             <div class="row">
                                 <div class="col-12">{{ topic.name }}</div>

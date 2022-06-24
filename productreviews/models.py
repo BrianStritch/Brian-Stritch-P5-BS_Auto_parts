@@ -61,7 +61,7 @@ class ProductReview(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def __str__(self):
+    def __str__(self): 
         """
             function to return the review title as a string
         """

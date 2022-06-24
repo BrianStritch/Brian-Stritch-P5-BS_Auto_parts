@@ -17,76 +17,37 @@
 
 {% block content %}
 <div class="overlay forum"></div>
-<div class="container-fluid forum-banner">
-    
-    
-    <div class="row">
-        <div class="col-12 high-z bg-black text-white">
+<div class="container-fluid forum-banner">  
+    <div class="row ">
+        <div class="col-12 high-z bg-black text-white mt-5">
             <hr class="hr">
-            <h4 class="text-center "> <strong>Members Forum 66 :</strong> </h4>
-            <hr class="hr">
-            {{ topics }}
-            {% for topic in topics %}
-            <p class="text-white">topic id = {{ topic.id }}</p>
-            <p class="text-white">author name = {{ topic.name }}</p>
-            {% endfor %}
-            <hr>
-            {% for p in post %}
-            {{ p }}
-            <p class="text-white">post id = {{ p.id }}</p>
-            <p class="text-white">author id = {{ p.author }}</p>
-            <p class="text-white">content= {{ p.content }}</p>
-            <p class="text-white">created_on  = {{ p.created_on }}</p>
-            {% endfor %}
-
-        </div>
-    </div>
-    <div class="row bg-black high-z">
-        <div class="col-12 text-white bg-white high-z">
+            <h4 class="text-center "> <strong> {{ topic.friendly_name }} posts:</strong> </h4>
+            <hr class="hr">            
+            <div class="text-center">
+                <a href="#" class="btn btn-outline-black rounded-0">Create Post</a>
+            </div>
             
-
-
+            {% for post in posts %}
+                {% if post.topic == topic %}
+                <a href="#">
+                    <div class="row">
+                        <hr class="hr">
+                        <div class="col-2">      
+                            <p class="text-white">title  = {{ post.title }}</p>                        
+                            <br>               
+                        </div>            
+                        <div class="col-10">
+                            <p class="text-white">author id = {{ post.author }}|
+                            excerpt= {{ post.excerpt }}</p>
+                            <br>               
+                        </div> 
+                        <hr class="hr">
+                    </div>  
+                </a>                         
+                {% endif %}
+            {% endfor %} 
         </div>
-        <!-- <form action="#">
-            {{ form.as_p }}
-            <button type="submit">submit</button>
-        </form> -->
-        
-        
     </div>
     
-        <!-- {% for category in categories %}
-        <div class="row high-z flex-and-center column">
-            <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
-                <div class="row">
-                    <div class="col-12 forum-header">                
-                        <h2>
-                            <strong>
-                                {% if category.name == 'Main' %}
-                                Main topics
-                                {% else %}
-                                {{ category.name }}
-                                {% endif %}
-                            </strong>
-                        </h2>    
-                    </div>                            
-                </div>
-            </div>      
-                
-            {% for topic in topics %} 
-            {% if category == topic.forum_category %}
-            <div class="col-11 col-md-5 col-lg-5 forum-topic-box">
-                <div class="row forum-topic">
-                    <a href="#">
-                    <div class="col-10">
-                        {{ topic.name }} 
-                        </div>
-                    </a>            
-                </div> 
-            </div>        
-            {% endif %}
-            {% endfor %}            
-        </div>
-        {% endfor %}  -->  
-    </div>
+ 
 {% endblock %}
