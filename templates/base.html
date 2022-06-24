@@ -151,9 +151,15 @@
                             aria-controls="main-nav" aria-label="toggle navigation" aria-expanded="false">
                             <span class="navbar-toggler-icon"></span>
                         </button>
+                        
                         {% include 'includes/mobile-top-header.html' %}
-                        {% if not home %} 
-                        {% include 'includes/main-nav.html' %}
+                        {% if not home %}
+                            {% if forum %}                        
+                            {% include 'includes/forum-nav.html' %}
+                            {% else %}
+                            {% include 'includes/main-nav.html' %}
+                            {% endif %}
+                            
                         {% endif %}
                         
 

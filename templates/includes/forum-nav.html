@@ -1,0 +1,31 @@
+
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav w-auto mx-auto">
+        <li class="nav-item burger-logo">
+            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                <h2 class="logo-font text-black my-0"><strong>BS Auto Parts</strong></h2>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Main site pages
+            </a>
+            <div class="dropdown-menu" aria-labelledby="all-products-link">
+                <a href="{% url 'shop'%}" class="dropdown-item">Shop</a>
+                <a href="{% url 'products'%}" class="dropdown-item ">all Products</a>
+                <a href="{% url 'products'%}?sale=on_sale" class="dropdown-item ">Clearance</a>
+            </div>
+        </li>
+        {% if request.user.is_superuser %}
+        <li class="nav-item dropdown">
+            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="suspension_steering-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Forum Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="suspension_steering-link">
+                <a href="{% url 'create_category'%}" class="dropdown-item">Create Category</a>
+                <a href="{% url 'create_topic' %}" class="dropdown-item">Create Topic</a>
+            </div>
+        </li>
+        {% endif %}
+    </ul>
+</div>

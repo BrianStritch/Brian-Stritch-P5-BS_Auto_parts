@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container ">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid outer-container">
+    <div class="overlay"></div>    
+    <div class="container mb-2 high-z">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h3 class="logo-font mb-4 high_z">Forum Admin</h3>                               
+                <hr>
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col-12 flex-and-center">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-muted">Create forum Topic</p>
+                        <form  method="POST" style="margin-top: 1.3em;">                 
+                            {% csrf_token %}
+                            <hr>
+                            <strong>Are You Sure You Want To DELETE this topic?</strong>
+                            <hr>
+                            <button class="btn btn-outline-black rounded-0 btn-lg text-md-left">
+                           <a href="{% url 'forum' %}">Cancel</a> 
+                            </button>
+                            <button type="submit" class="btn btn-outline-black rounded-0 btn-lg text-md-right" >DELETE TOPIC !</button> 
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

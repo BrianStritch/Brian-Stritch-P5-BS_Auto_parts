@@ -22,6 +22,15 @@
         <div class="col-12 high-z bg-black text-white mt-5">
             <hr class="hr">
             <h4 class="text-center "> <strong> {{ topic.friendly_name }} posts:</strong> </h4>
+            {% if request.user.is_superuser %}
+            <div class="text-center">
+               <small class="ml-3">
+                    <a href="{% url 'edit_forum_topic' topic.id %}">Edit</a>                                            
+                    <a class="text-danger" href="{% url 'delete_forum_topic' topic.id %}">Delete</a>
+                </small> 
+            </div>
+            
+            {% endif %} 
             <hr class="hr">            
             <div class="text-center">
                 <a href="#" class="btn btn-outline-black rounded-0">Create Post</a>
