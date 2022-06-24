@@ -41,7 +41,7 @@
                                             {% if comment.approved %}
                                                 <div class="card comment-card">
                                                     <div class="card-body high-z text-black">
-                                                        <p><i>Comment:</i> {{ comment.body }} </p>
+                                                        <p><i class="fas fa-comments"></i> {{ comment.body }} </p>
                                                         <p ><i class="text-black">Comment by:</i> {{comment.name}}, <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
                                                         {% if request.user.username == comment.name %}
                                                         <div class="row">

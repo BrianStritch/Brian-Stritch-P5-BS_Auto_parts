@@ -32,13 +32,12 @@
                 <a href="{% url 'post_detail' post.slug %}">
                     <div class="row">
                         <hr class="hr">
-                        <div class="col-2">      
-                            <p class="text-white">title  = {{ post.title }}</p>                        
+                        <div class="col-4">      
+                            <p class="text-white">{{ post.title }}</p>                        
                             <br>               
                         </div>            
-                        <div class="col-10">
-                            <p class="text-white">author id = {{ post.author }}|
-                            excerpt= {{ post.excerpt }}</p>
+                        <div class="col-8">
+                            <p class="text-white">{{ post.excerpt }}</p>
                             <br>               
                         </div> 
                         <hr class="hr">
