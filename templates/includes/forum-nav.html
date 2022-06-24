@@ -16,6 +16,11 @@
                 <a href="{% url 'products'%}?sale=on_sale" class="dropdown-item ">Clearance</a>
             </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="{% url 'forum' %}" >
+                Forum Home
+            </a>            
+        </li>
         {% if request.user.is_superuser %}
         <li class="nav-item dropdown">
             <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="suspension_steering-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
