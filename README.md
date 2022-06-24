@@ -12,8 +12,8 @@ pip3 install pillow <br>
 pip3 install oauth lib <br>
 pip3 install django-summernote <br>
 pip3 install cloudinary <br>
-<!-- npm i -g heroku <br>
-pip install heroku3 <br> -->
+npm i -g heroku <br>
+pip install heroku3 <br>
 <br>
 pip3 install dj_database_url <br>
 pip3 install psycopg2-binary <br>

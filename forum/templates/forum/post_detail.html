@@ -16,29 +16,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay forum"></div>
+<div class="overlay bg-black"></div>
 <div class="container-fluid forum-banner">  
     <div class="row ">
         <div class="col-12 high-z bg-black text-white mt-5">
             <hr class="hr">
-            <h4 class="text-center "> <strong> {{ post.title }}</strong> </h4>
-            <hr class="hr">            
-            <!-- <div class="text-center">
-                <a href="#" class="btn btn-outline-black rounded-0">Create Comment</a>
-            </div>                         
-            <div class="row">
-                <hr class="hr">
-                <div class="col-4">      
-                    <p class="text-white">title  = {{ post.title }}</p>                        
-                    <br>               
-                </div>            
-                <div class="col-8">
-                    <p class="text-white">author id = {{ post.author }}|
-                    excerpt= {{ post.excerpt }}</p>
-                    <br>               
-                </div> 
-                <hr class="hr">
-            </div>   -->
+            <h4 class="text-center "> <strong> {{ post.title}}</strong> </h4>
+            <hr class="hr"> 
             {% if post  %}    
                 {% if post.status == 1 %}
                 <div class="row high-z product-review-outer ">
@@ -133,7 +117,7 @@
                                 
                                 <small>                            
                                 <a class="text-md-right {% if commented %} d-none {% endif %}" 
-                                        href="{% url 'review_comment' review.slug  %}">Create Comment</a>
+                                        href="#">Create Comment</a>
                                 </small>
                             </div>
                         </div>
@@ -148,7 +132,7 @@
             <div class="row text-black high-z text-center">
                 <h4>This Product has no reviews yet!</h4>
             </div>                         
-               
+            {% endif%}   
              
         </div>
     </div>

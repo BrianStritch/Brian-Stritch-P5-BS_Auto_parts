@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay forum"></div>
+<div class="overlay bg-black"></div>
 <div class="container-fluid forum-banner">  
     <div class="row ">
         <div class="col-12 high-z bg-black text-white mt-5">
@@ -29,7 +29,7 @@
             
             {% for post in posts %}
                 {% if post.topic == topic %}
-                <a href="#">
+                <a href="{% url 'post_detail' post.slug %}">
                     <div class="row">
                         <hr class="hr">
                         <div class="col-2">      

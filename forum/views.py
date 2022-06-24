@@ -80,16 +80,7 @@ def Topic_list(request, slug, *args , **kwargs ):
     
     posts = ForumPost.objects.all()
 
-    # comments = review.product_review_comments.filter(approved=True).order_by('created_on')     
     
-    # comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
-    # liked = False
-    # if post.likes.filter(id=request.user.id).exists():
-    #     liked = True
-    # query = comments.filter(name=request.user)
-    # commented = False
-    # if query:
-    #   commented = True
     
     template_name = 'forum/topic_details.html'
     context = {
@@ -103,5 +94,24 @@ def Topic_list(request, slug, *args , **kwargs ):
     return render(request, template_name, context)
 
 def PostDetail(request, slug, *args , **kwargs):
-  post = get_object_or_404(ForumPost, slug=slug)
-  template_name = 'forum/post_detail.html'
+    post = get_object_or_404(ForumPost, slug=slug)
+    #   topic = get_object_or_404(ForumTopics, topic=request.topic)
+    template_name = 'forum/post_detail.html'
+    # comments = review.product_review_comments.filter(approved=True).order_by('created_on')     
+        
+        # comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
+        # liked = False
+        # if post.likes.filter(id=request.user.id).exists():
+        #     liked = True
+        # query = comments.filter(name=request.user)
+        # commented = False
+        # if query:
+        #   commented = True
+    context = {
+        
+        'post': post,
+        # "commented": commented,
+        # "liked": liked,
+        # 'topic': topic,
+        }
+    return render(request, template_name, context)
