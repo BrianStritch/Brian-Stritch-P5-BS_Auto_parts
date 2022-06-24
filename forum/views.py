@@ -1,11 +1,11 @@
-from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
-from forum.forms import ForumCategoryForm, ForumPostCommentForm, ForumTopicsForm, CreateForumPostForm
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.db.models import Q
 from products.models import Product, Category, Manufacturer
-
+from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
+from forum.forms import ForumCategoryForm, ForumPostCommentForm, ForumTopicsForm, CreateForumPostForm
 
 
 def forum(request):
@@ -118,7 +118,7 @@ def PostDetail(request, slug, *args , **kwargs):
         }
     return render(request, template_name, context)
 
-
+###############################  Forum Categories  ####################################################
 class CreateCategory(TemplateView):
 
     def get(self, request):
@@ -277,7 +277,7 @@ class DeleteCategory(TemplateView):
             }
         return render(request, template_name, context)
     
-
+###############################  Forum Topics  ####################################################
 class CreateTopic(TemplateView):
 
     def get(self, request):
@@ -437,4 +437,8 @@ class DeleteTopic(TemplateView):
         return render(request, template_name, context)
     
 
-    
+###############################  Forum Posts  ####################################################  
+
+
+
+###############################  Forum Post Comments  ####################################################

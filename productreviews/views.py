@@ -230,13 +230,6 @@ class EditComment(TemplateView):
         the built in django updateview for saving
         updated data to the database.
     """
-
-    """
-        Class based view to display edit product review
-        page with createproductreview form relative to the
-        current selected product review and for saving
-        updated data to the database.
-    """
         
     template_name = 'product_reviews/edit_product_review_comment.html'
 
