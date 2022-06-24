@@ -96,22 +96,21 @@ def Topic_list(request, slug, *args , **kwargs ):
 def PostDetail(request, slug, *args , **kwargs):
     post = get_object_or_404(ForumPost, slug=slug)
     #   topic = get_object_or_404(ForumTopics, topic=request.topic)
-    template_name = 'forum/post_detail.html'
-    # comments = review.product_review_comments.filter(approved=True).order_by('created_on')     
+    template_name = 'forum/post_detail.html'    
         
-        # comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
-        # liked = False
-        # if post.likes.filter(id=request.user.id).exists():
-        #     liked = True
-        # query = comments.filter(name=request.user)
-        # commented = False
-        # if query:
-        #   commented = True
+    comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        liked = True
+    query = comments.filter(name=request.user)
+    commented = False
+    if query:
+        commented = True
     context = {
         
         'post': post,
-        # "commented": commented,
-        # "liked": liked,
-        # 'topic': topic,
+        "commented": commented,
+        "liked": liked,
+        'comments': comments,
         }
     return render(request, template_name, context)

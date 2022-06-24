@@ -40,8 +40,8 @@
                                         {% for comment in comments %}
                                             {% if comment.approved %}
                                                 <div class="card comment-card">
-                                                    <div class="card-body high-z">
-                                                        <p>{{ comment.body }}</p>
+                                                    <div class="card-body high-z text-black">
+                                                        <p><i>Comment:</i> {{ comment.body }} </p>
                                                         <p ><i class="text-black">Comment by:</i> {{comment.name}}, <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
                                                         {% if request.user.username == comment.name %}
                                                         <div class="row">
@@ -67,7 +67,7 @@
                                             {% endif %}
                                         {% endfor %}
                                     {% else %}
-                                    <div class="row text-black high-z text-center">
+                                    <div class="row text-white high-z text-center">
                                         <h4>This Post has no comments yet!</h4>
                                     </div>
                                     {% endif %}                            
