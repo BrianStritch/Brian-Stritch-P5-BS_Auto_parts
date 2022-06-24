@@ -7,10 +7,10 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="forum-nav-links" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Main site pages
             </a>
-            <div class="dropdown-menu" aria-labelledby="all-products-link">
+            <div class="dropdown-menu" aria-labelledby="forum-nav-links">
                 <a href="{% url 'shop'%}" class="dropdown-item">Shop</a>
                 <a href="{% url 'products'%}" class="dropdown-item ">all Products</a>
                 <a href="{% url 'products'%}?sale=on_sale" class="dropdown-item ">Clearance</a>
@@ -23,10 +23,10 @@
         </li>
         {% if request.user.is_superuser %}
         <li class="nav-item dropdown">
-            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="suspension_steering-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font2 font-weight-bold nav-link  mr-5" href="#" id="forum-admin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Forum Admin
             </a>
-            <div class="dropdown-menu" aria-labelledby="suspension_steering-link">
+            <div class="dropdown-menu" aria-labelledby="forum-admin">
                 <a href="{% url 'create_category'%}" class="dropdown-item">Create Category</a>
                 <a href="{% url 'create_topic' %}" class="dropdown-item">Create Topic</a>
             </div>
