@@ -2,7 +2,6 @@
     background: url('/media/bg-4.jpg') no-repeat center center fixed;
 }
 .forum-header{
-    height: 5vh;
     text-align: center;
     background-color: white;
     border: 1px solid black;
@@ -12,7 +11,7 @@
     color: orangered !important;
 }
 .forum-topic{
-    height: 3vh;
+    
     text-align: center;
     background-color: white;
     border: 1px solid black;
@@ -49,7 +48,7 @@
     width: 60%;
 }
 .forum-excerpt{
-    height: 3vh;
+    min-height: 3vh;
     text-align: center;
     background-color: white;
     border: 1px solid black;
