@@ -33,11 +33,12 @@
             {% endif %} 
             <hr class="hr">            
             <div class="text-center">
-                <a href="#" class="btn btn-outline-black rounded-0">Create Post</a>
+                <a href="{% url 'create_post' topic.pk %}" class="btn btn-outline-black rounded-0">Create Post</a>
             </div>
             
             {% for post in posts %}
                 {% if post.topic == topic %}
+                {% if post.status == 1 %}
                 <a href="{% url 'post_detail' post.slug %}">
                     <div class="row">
                         <hr class="hr">
@@ -52,6 +53,7 @@
                         <hr class="hr">
                     </div>  
                 </a>                         
+                {% endif %}
                 {% endif %}
             {% endfor %} 
         </div>

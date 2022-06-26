@@ -11,4 +11,7 @@ urlpatterns = [
     path('create_topic/', views.CreateTopic.as_view(), name='create_topic'),
     path('edit_forum_topic/<int:pk>/', views.EditTopic.as_view(), name='edit_forum_topic'),
     path('delete_forum_topic/<int:pk>/', views.DeleteTopic.as_view(), name='delete_forum_topic'),
+    path('create_post/<int:pk>/', views.CreatePost.as_view(), name='create_post'),
+    path('edit_forum_post/<int:pk>/', views.EditPost.as_view(), name='edit_forum_post'),
+    path('delete_forum_post/<int:pk>/', views.DeletePost.as_view(), name='delete_forum_post'),
 ]

@@ -31,7 +31,14 @@
                             <div class="col-12 col-lg-4 product-review-details">
                                 <h3> <i>Title:</i>  {{ post.title }}</h3>                
                                 <p><i>Content:</i>  {{ post.content }}</p>                    
-                                <p><i>Created by :</i>  {{ post.author }} on {{ post.created_on }}</p> 
+                                <p><i>Created by :</i>  {{ post.author }} on {{ post.created_on }}</p>
+                                <hr>
+                                {% if request.user == post.author %}
+                                <small class="ml-3">
+                                    <a href="{% url 'edit_forum_post' post.pk %}">Edit</a>
+                                    <a class="text-danger" href="{% url 'delete_forum_post' post.pk %}">Delete</a>
+                                </small>
+                                {% endif %} 
                             </div>                    
                             <div class="col-12 col-lg-8 comments-box  comment-scroll">
                                 <h3 ><i>Comments:</i></h3>

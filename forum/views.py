@@ -8,6 +8,7 @@ from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
 from forum.forms import ForumCategoryForm, ForumPostCommentForm, ForumTopicsForm, CreateForumPostForm
 
 
+
 def forum(request):
     """
     Renders a view displaying all forum categories with main
@@ -438,7 +439,277 @@ class DeleteTopic(TemplateView):
     
 
 ###############################  Forum Posts  ####################################################  
+class CreatePost(TemplateView):
+
+    def get(self, request, pk):
+        """ 
+        Add a Post to the Forum topic selected
+        """
+        topic = get_object_or_404(ForumTopics, pk=pk)
+        form = CreateForumPostForm
+        template_name = 'forum/create_forum_post.html'
+
+        context = {
+            'topic': topic,
+            'form': form,
+            'stop_toast_cart': True,
+            'forum':True,
+        }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        
+        form = CreateForumPostForm(request.POST)
+        
+        if form.is_valid():
+            form.instance.author = request.user
+            post = form.save()
+            messages.success(request, 'Your post has been sent to admin for approval and\
+                will appear shortly.')            
+            forum_categories = ForumCategory.objects.all()
+            topics = ForumTopics.objects.all()
+            template_name = 'forum/forum.html'
+            context = {
+                'categories': forum_categories,
+                'topics': topics,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
+       
+        else:
+            messages.error(request, 'Failed to add Post. Please check your form details.')
+            form = CreateForumPostForm()
+            template = 'forum/create_forum_post.html'
+            context = {
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template, context)
 
 
+class EditPost(TemplateView):
+    """ 
+    Edit a selected topic post in the forum
+    """
+
+    def get(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        topic = post.topic
+        form = CreateForumPostForm(instance=post)        
+        template_name = 'forum/edit_forum_post.html'
+        messages.info(request, f'You are currently editing {post.title}')
+        context = {
+            'topic': topic,
+            'post': post,
+            'form':form,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        form = CreateForumPostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.instance.status = 0           
+            form.save()
+            messages.success(request, f'You have succesfully updated post {post.title}. \
+                Your post has been submitted to admin for approval and will appear shortly.') 
+            forum_categories = ForumCategory.objects.all()
+            topics = ForumTopics.objects.all()          
+            template = 'forum/forum.html'
+            context = {                
+                'categories': forum_categories,
+                'topics': topics,
+                'forum': True,
+                'stop_toast_cart': True,
+            }
+            return render(request, template, context)
+
+        else:
+            messages.error(request, f'Failed to update post {post.title}. Please check your data is valid') 
+            post = get_object_or_404(ForumPost, pk=pk) 
+            topic = post.topic      
+            form = CreateForumPostForm(instance=post)
+            messages.info(request, f'You are currently editing {post.title}')
+            template = 'forum/edit_forum_post.html'
+            context = {
+                'topic': topic,
+                'post': post,
+                'form': form,
+                'forum': True,
+                'stop_toast_cart': True,
+            }
+            return render(request, template, context)
+  
+
+class DeletePost(TemplateView):
+    """
+    Delete a selected topic post in the forum
+    """
+    def get(self, request, pk):        
+        post = get_object_or_404(ForumPost, pk=pk)
+        template_name = 'forum/delete_forum_post.html'
+        messages.info(request, f'You are currently deleting {post.title}')
+        context = {
+            'post': post,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        post.delete()
+        messages.success(request, 'You have successfully deleted the forum post')
+        forum_categories = ForumCategory.objects.all()
+        topics = ForumTopics.objects.all() 
+        template_name = 'forum/forum.html'
+        context = {                                
+            'categories': forum_categories,
+            'topics': topics,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+    
 
 ###############################  Forum Post Comments  ####################################################
+class CreateForumComment(TemplateView):
+
+    def get(self, request, pk):
+        """ 
+        Add a comment to the Forum topic Post selected
+        """
+        topic = get_object_or_404(ForumTopics, pk=pk)
+        form = CreateForumPostForm
+        template_name = 'forum/create_forum_post.html'
+
+        context = {
+            'topic': topic,
+            'form': form,
+            'stop_toast_cart': True,
+            'forum':True,
+        }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        
+        form = CreateForumPostForm(request.POST)
+        
+        if form.is_valid():
+            form.instance.author = request.user
+            post = form.save()
+            messages.success(request, 'Your post has been sent to admin for approval and\
+                will appear shortly.')            
+            forum_categories = ForumCategory.objects.all()
+            topics = ForumTopics.objects.all()
+            template_name = 'forum/forum.html'
+            context = {
+                'categories': forum_categories,
+                'topics': topics,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
+       
+        else:
+            messages.error(request, 'Failed to add Post. Please check your form details.')
+            form = CreateForumPostForm()
+            template = 'forum/create_forum_post.html'
+            context = {
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template, context)
+
+
+class EditForumComment(TemplateView):
+    """ 
+    Edit a comment of a selected topic post in the forum
+    """
+
+    def get(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        topic = post.topic
+        form = CreateForumPostForm(instance=post)        
+        template_name = 'forum/edit_forum_post.html'
+        messages.info(request, f'You are currently editing {post.title}')
+        context = {
+            'topic': topic,
+            'post': post,
+            'form':form,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        form = CreateForumPostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.instance.status = 0           
+            form.save()
+            messages.success(request, f'You have succesfully updated post {post.title}. \
+                Your post has been submitted to admin for approval and will appear shortly.') 
+            forum_categories = ForumCategory.objects.all()
+            topics = ForumTopics.objects.all()          
+            template = 'forum/forum.html'
+            context = {                
+                'categories': forum_categories,
+                'topics': topics,
+                'forum': True,
+                'stop_toast_cart': True,
+            }
+            return render(request, template, context)
+
+        else:
+            messages.error(request, f'Failed to update post {post.title}. Please check your data is valid') 
+            post = get_object_or_404(ForumPost, pk=pk) 
+            topic = post.topic      
+            form = CreateForumPostForm(instance=post)
+            messages.info(request, f'You are currently editing {post.title}')
+            template = 'forum/edit_forum_post.html'
+            context = {
+                'topic': topic,
+                'post': post,
+                'form': form,
+                'forum': True,
+                'stop_toast_cart': True,
+            }
+            return render(request, template, context)
+  
+
+class DeleteForumComment(TemplateView):
+    """
+    Delete a selected topic post comment in the forum
+    """
+    def get(self, request, pk):        
+        post = get_object_or_404(ForumPost, pk=pk)
+        template_name = 'forum/delete_forum_post.html'
+        messages.info(request, f'You are currently deleting {post.title}')
+        context = {
+            'post': post,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+
+    def post(self, request, pk):
+        post = get_object_or_404(ForumPost, pk=pk)
+        post.delete()
+        messages.success(request, 'You have successfully deleted the forum post')
+        forum_categories = ForumCategory.objects.all()
+        topics = ForumTopics.objects.all() 
+        template_name = 'forum/forum.html'
+        context = {                                
+            'categories': forum_categories,
+            'topics': topics,
+            'forum': True,
+            'stop_toast_cart': True,
+            }
+        return render(request, template_name, context)
+   
