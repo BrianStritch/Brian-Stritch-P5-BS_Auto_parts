@@ -33,7 +33,7 @@ class ForumPostCommentForm(forms.ModelForm):
         set the fields in the create comment model form
         """
         model = ForumPostComment
-        fields = ('body',)
+        fields = ('body',) 
 
 class ForumCategoryForm(forms.ModelForm):
     """

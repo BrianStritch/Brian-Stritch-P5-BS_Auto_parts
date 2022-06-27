@@ -107,7 +107,7 @@ def product_detail(request, product_id):
       query = comments.filter(name=request.user)
       commented = False
       if query:
-        commented = True
+        commented = True 
       try:
         favourites = get_object_or_404(Favourites, products=products)
         
