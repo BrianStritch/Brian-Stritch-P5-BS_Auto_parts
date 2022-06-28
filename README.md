@@ -37,7 +37,7 @@ python3 manage.py loaddata products <br>
 <br>
 
 python3 manage.py createsuperuser <br>
-
+python3 manage.py startapp appname <br>
 <br>
 export STRIPE_PUBLIC_KEY=pk_test_51L2kJDFe61CNoFimnkCIY2EHIthg1GzRGHUpIXHcjcQWlNrEZ0b09VeF0n9D8rkZhih6YTfbAtT6reUOZSJ3GLtL00iIgRfHze
 <br>
