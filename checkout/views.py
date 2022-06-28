@@ -39,7 +39,7 @@ def checkout(request):
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})        
-
+        print(bag)
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -104,7 +104,7 @@ def checkout(request):
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
-        # print(current_bag)
+        print('current bag =',current_bag)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
