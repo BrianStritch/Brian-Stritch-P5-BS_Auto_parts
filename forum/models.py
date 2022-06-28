@@ -130,5 +130,8 @@ class ForumPostComment(models.Model):
         ordering = ['created_on']
         verbose_name_plural = 'Forum Post comments'
 
+    def number_of_likes(self):
+        return self.likes.count()
+
     def __str__(self):
         return f"Comment {self.body} by {self.name}"

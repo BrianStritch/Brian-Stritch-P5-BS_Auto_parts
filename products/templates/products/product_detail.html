@@ -181,16 +181,16 @@
                         <p><i>Content:</i>  {{ review.content }}</p>                    
                         <p><i>Created by :</i>  {{ review.author }} on {{ review.created_on }}</p> 
                     </div>                    
-                    <div class="col-12 col-lg-8 comments-box  comment-scroll">
+                    <div class="col-12 col-lg-8 comment-scroll">
                         <h3 ><i>Comments:</i></h3>
                         <strong>
                             {% if comments %}                                
                                 {% for comment in comments %}
                                     {% if comment.approved %}
-                                        <div class="card comment-card">
-                                            <div class="card-body high-z">
+                                        <div class="card mt-2">
+                                            <div class="card-body high-z text-black">
                                                 <p>{{ comment.body }}</p>
-                                                <p ><i class="text-black">Comment by:</i> {{comment.name}}, <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
+                                                <p ><i class="text-black">Comment by:</i> {{comment.name}} | <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
                                                 {% if request.user.username == comment.name %}
                                                 <div class="row">
                                                     <div class="col">

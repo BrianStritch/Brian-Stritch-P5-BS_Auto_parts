@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 from django.db.models import Q
+from django.views.generic import TemplateView, UpdateView, DeleteView
 from .models import Product, Category, Manufacturer
 from .forms import ProductForm
 from productreviews.models import ProductReview, ProductReviewComment
@@ -195,19 +196,34 @@ def edit_product(request, product_id):
     'stop_toast_cart': True,
   }
   return render(request, template, context)
-  
 
-@login_required
-def delete_product(request, product_id):
-  """
-  Delete a product from the store
-  """
-  if not request.user.is_superuser:
-    messages.error(request, 'Only staff have access to this feature.')
-    return redirect(reverse('home'))
 
-  product = get_object_or_404(Product, pk=product_id)
-  product.delete()
-  messages.success(request, 'Your selected product has been removed from the store')
-  return redirect(reverse('products'))
+class DeleteProduct(TemplateView):
+    """
+    Delete a product from the store
+    """    
+    def get(self, request, product_id):        
+        product = get_object_or_404(Product, pk=product_id)
+        if request.user.is_superuser:        
+          template_name = 'products/delete_product.html'
+          messages.info(request, f'You are currently deleting {product.name}')
+          context = {
+              'product': product,
+              'stop_toast_cart': True,
+              }
+          return render(request, template_name, context)
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('home'))
 
+    def post(self, request, product_id): 
+        if request.user.is_superuser:        
+          product = get_object_or_404(Product, pk=product_id)
+          product.delete()
+          messages.success(request, 'You have successfully deleted your product.')        
+          return redirect(reverse('products'))
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('home'))
+        
+    

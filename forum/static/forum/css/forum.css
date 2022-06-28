@@ -60,3 +60,6 @@
     max-height: 275px;
     overflow-y: auto;
 }
+.hover-off:hover{
+    cursor: default;
+}

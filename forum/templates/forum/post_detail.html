@@ -45,18 +45,49 @@
                                                         <p><i class="fas fa-comments"></i> {{ comment.body }} </p>
                                                         <p ><i class="text-black">Comment by:</i> {{comment.name}} | <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
                                                         {% if request.user.username == comment.name %}
-                                                        <div class="row">
-                                                            <div class="col">
-                                                            <small class="">
-                                                                {% if request.user.is_authenticated %}
-                                                                    <a class="text-md-left {% if request.user.username == comment.name %} d-inline {% endif %}" href="{% url 'edit_forum_comment' comment.pk %}">Edit Comment</a>
-                                                                    <a class="text-md-left text-danger {% if request.user.userame == comment.name %} d-inline {% endif %}" href="{% url 'delete_forum_comment' comment.pk  %}">Delete Comment</a>
-                                                                {% endif %}
-                                                                </small> 
+                                                            {% if comment in comments_liked %}
+                                                                <button  class="btn-like like-btn-outline hover-off" >
+                                                                    <i class="fas fa-heart red"></i>
+                                                                </button>                                                            
+                                                                {% else %}                               
+                                                                <button  class="btn-like like-btn-outline hover-off" >
+                                                                    <i class="far fa-heart white"></i>
+                                                                </button>                                   
+                                                            {% endif %}
+                                                            <span class="text-secondary">{{ comment.number_of_likes }}</span>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                <small class="">
+                                                                    {% if request.user.is_authenticated %}
+                                                                        <a class="text-md-left {% if request.user.username == comment.name %} d-inline {% endif %}" href="{% url 'edit_forum_comment' comment.pk %}">Edit Comment</a>
+                                                                        <a class="text-md-left text-danger {% if request.user.userame == comment.name %} d-inline {% endif %}" href="{% url 'delete_forum_comment' comment.pk  %}">Delete Comment</a>
+                                                                    {% endif %}
+                                                                    </small> 
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        
-                                                        {% endif %}
+                                                        {% else %}
+                                                            <strong>
+                                                                <!-- -------------- comment likes count with like form input --------------------->
+                                                                {% if user.is_authenticated %}
+                                                                    <form class="d-inline like-btn-outline" action="{% url 'forum_comment_like' comment.pk %}" method="POST">
+                                                                        {% csrf_token %}                                                                        
+                                                                        <!-- likes for comments -->                                  
+                                                                        {% if comment in comments_liked %}
+                                                                            <button type="submit" name="post_id" value="{{ comment.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                                                                                <i class="fas fa-heart red"> </i>
+                                                                            </button>
+                                                                        {% else %}
+                                                                            <button type="submit" name="post_id" value="{{ comment.pk }}" class="btn-like like-btn-outline" >
+                                                                                <i class="far fa-heart white"></i>
+                                                                            </button>
+                                                                        {% endif %}    
+                                                                    </form>
+                                                                {% else %}
+                                                                    <span class="text-secondary"> <i class="far fa-heart white"></i> </span>                                
+                                                                {% endif %}
+                                                                <span class="text-secondary">{{ comment.number_of_likes }}</span>
+                                                            </strong>
+                                                        {% endif %} 
                                                     </div>
                                                 </div>
                                             {% else %}
@@ -86,8 +117,8 @@
                                 <strong>
                                     {% if user.is_authenticated %}
                                         <form class="d-inline like-btn-outline" action="{% url 'post_like' post.pk %}" method="POST">
-                                            {% csrf_token %}                                    
-                                            {% if liked %}
+                                            {% csrf_token %}                                  
+                                            {% if post_liked %}
                                                 <button type="submit" name="post_id" value="{{ post.pk }}" class="btn-like like-btn-outline" id="like-btn">
                                                     <i class="fas fa-heart red"></i>
                                                 </button>
@@ -107,8 +138,8 @@
                                 {% if request.user == post.author %}
                                     <div class="col-7 col-lg-2 ">                    
                                         <small class="ml-3">
-                                            <a href="#">Edit Post</a>                                            
-                                            <a class="text-danger" href="#">Delete Post</a>
+                                            <a href="{% url 'edit_forum_post' post.pk %}">Edit Post</a>                                            
+                                            <a class="text-danger" href="{% url 'delete_forum_post' post.pk %}">Delete Post</a>
                                             
                                         </small>
                                     </div> 

@@ -17,5 +17,6 @@ urlpatterns = [
     path('forum_post/like/<int:pk>/',views.PostLike.as_view(),name='post_like'),
     path('create_forum_comment/<int:pk>/', views.CreateForumComment.as_view(), name='create_forum_comment'),
     path('edit_forum_comment/<int:pk>/', views.EditForumComment.as_view(), name='edit_forum_comment'),
-    path('delete_forum_comment/<int:pk>/', views.DeleteForumComment.as_view(), name='delete_forum_comment'), 
+    path('delete_forum_comment/<int:pk>/', views.DeleteForumComment.as_view(), name='delete_forum_comment'),
+    path('forum_comment/like/<int:pk>/',views.CommentLike.as_view(),name='forum_comment_like'),
 ]

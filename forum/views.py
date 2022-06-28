@@ -100,21 +100,30 @@ def PostDetail(request, slug, *args , **kwargs):
     to the specific post selected
     '''
     post = get_object_or_404(ForumPost, slug=slug)
-    template_name = 'forum/post_detail.html'    
+    template_name = 'forum/post_detail.html'
         
-    comments = post.forum_post_comments.filter(approved=True).order_by('created_on') 
-    liked = False
+    
+    post_liked = False
     if post.likes.filter(id=request.user.id).exists():
-        liked = True
+       post_liked = True
+    
+    comments = post.forum_post_comments.filter(approved=True).order_by('created_on')
+    comments_liked = comments.filter(likes=True)
+    
+
+   
+
+
+
     query = comments.filter(name=request.user)
     commented = False
     if query:
         commented = True
     context = {
-        
+        'comments_liked':comments_liked,
         'post': post,
         "commented": commented,
-        "liked": liked,
+        "post_liked": post_liked,
         'comments': comments,
         'stop_toast_cart': True,
         'forum':True,
@@ -513,6 +522,7 @@ class EditPost(TemplateView):
 
     def post(self, request, pk):
         post = get_object_or_404(ForumPost, pk=pk)
+        
         form = CreateForumPostForm(request.POST, instance=post)
         if form.is_valid():
             form.instance.status = 0           
@@ -529,6 +539,7 @@ class EditPost(TemplateView):
                 'stop_toast_cart': True,
             }
             return render(request, template, context)
+            
 
         else:
             messages.error(request, f'Failed to update post {post.title}. Please check your data is valid') 
@@ -746,6 +757,7 @@ class DeleteForumComment(TemplateView):
             'stop_toast_cart': True,
             }
         return render(request, template_name, context)
+
    
 class CommentLike(View):
     """
@@ -762,7 +774,7 @@ class CommentLike(View):
         post = comment.post
         slug = post.slug
         if comment.likes.filter(id=request.user.id).exists():
-            post.likes.remove(request.user)
+            comment.likes.remove(request.user)
             messages.success(request, 'You have succesfully un-liked this comment.')
         else:
             comment.likes.add(request.user)
