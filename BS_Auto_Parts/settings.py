@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'storages',
     'home',
+    'contact_us',
     'products',
     'favourites',
     'productreviews',
