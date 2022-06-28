@@ -19,8 +19,7 @@ body {
 }
 #dim-cover{
     background-color: rgba(0, 0, 0, 0.590);
-    height: 100%;
-    width: 100%;
+    height: 200%;
     padding-top: 12vh;
 }
 
@@ -273,7 +272,7 @@ a:hover{
 .dim{
     background-color: rgba(0, 0, 0, 0.521);
 }
-.home-app-heading{
+.home-app-heading{ 
     color: orangered;
 }
 .bottom-margin{
