@@ -633,3 +633,22 @@ a.category-badge > span.badge:hover {
 .bag-margin{
     margin-left: 7vw;
 }
+
+@media(max-width:320px){
+    .nav-link{
+        padding: 0.15rem;
+    }
+    .nav-link i.fa-lg{
+        font-size: 1em;
+        line-height: 0.45em;
+    }
+    .navbar-toggler{
+        margin-left: 10px;
+        font-size: 0.75rem;
+
+    }
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        padding-right: 0;
+    }
+
+}
