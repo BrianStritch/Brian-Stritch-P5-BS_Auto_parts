@@ -643,12 +643,22 @@ a.category-badge > span.badge:hover {
         line-height: 0.45em;
     }
     .navbar-toggler{
-        margin-left: 10px;
-        font-size: 0.75rem;
+        margin-left: 0px;
+        font-size: 0.55rem;
+        padding: 0.25rem 0.55rem;
 
+    }
+    .navbar-toggler-icon {
+        width: 1.2em;
+        height: 1.2em;
+        font-size: 0.8rem;
     }
     .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
         padding-right: 0;
+    }
+    .navbar {
+        padding-top: 0.5rem; 
+        padding-bottom: 0.5rem;
     }
 
 }
