@@ -1,5 +1,10 @@
+.body-padding-top{
+    padding-top: 3.5em;
+}
+
 .forum{
     background: url('/media/bg-4.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 .forum-header{
     text-align: center;
@@ -62,4 +67,28 @@
 }
 .hover-off:hover{
     cursor: default;
+}
+
+/* ********************** MEDIA QUERIES ***********************/
+
+@media(max-width:996px){
+    .body-padding-top{
+        padding-top: 1.5em;
+    }
+    
+}
+@media(max-width:321px){
+    .body-padding-top{
+        padding-top: 0.25em;
+    }
+    .forum-heading-box {
+        width: 90%;
+    }
+    .forum-topic-box {
+        max-width: 80vw;
+    }
+    .forum-banner {
+        margin-top: -12vh;
+    }
+    
 }

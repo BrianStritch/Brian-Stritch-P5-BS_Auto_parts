@@ -64,7 +64,7 @@
     <title>BS Auto Parts {% block extra_title %} {% endblock %}</title>
 </head>
 
-<body >
+<body class="{% if forum %}body-padding-top{% endif %}">
     <section id="dim-cover">
         <header class="container-fluid fixed-top">
             <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
@@ -254,7 +254,7 @@
                     <div class="credits">Designed by <a href="https://github.com/BrianStritch" target="_blank">Brian Stritch</a>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 text-center text-lg-center pt-3 pt-lg-0">                    
+                <div class="col-12 col-md-4 text-center text-lg-center pt-3 pt-lg-0 {% if bttoff %}d-none{% endif %}">                    
                     <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
                         <i class="fas fa-arrow-up"></i>
                         back to top of page
