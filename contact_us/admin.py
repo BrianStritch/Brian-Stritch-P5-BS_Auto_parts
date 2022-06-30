@@ -26,7 +26,16 @@ class SiteUsersContactDetailsAdmin(admin.ModelAdmin):
     summernote_fields = (
         'message'
         )
+    actions = [
+        'update_status_complete',
+        ]
 
+    def update_status_complete(self, request, queryset):
+        """
+        class based function to update the comment status
+        from the selection in the django admin view
+        """
+        queryset.update(status=True)
 
 @admin.register(ExistingUsersContactDetails)
 class ExistingUsersContactDetailsAdmin(admin.ModelAdmin):
@@ -47,4 +56,13 @@ class ExistingUsersContactDetailsAdmin(admin.ModelAdmin):
     summernote_fields = (
         'message'
         )
+    actions = [
+        'update_status_complete',
+        ]
 
+    def update_status_complete(self, request, queryset):
+        """
+        class based function to update the comment status
+        from the selection in the django admin view
+        """
+        queryset.update(status=True)
