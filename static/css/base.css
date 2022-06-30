@@ -309,6 +309,10 @@ a:hover{
     height: 345px;
 }
 /* ****************** carousel css from bootstrap ****************/
+#carousel-container{
+    width: 420px !important;
+    height: 380px !important;
+}
 .carousel-inner>.item>a>img,
 .carousel-inner>.item>img,
 .img-responsive,
