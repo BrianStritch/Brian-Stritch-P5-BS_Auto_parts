@@ -15,11 +15,13 @@ class SiteUsersContactDetailsAdmin(admin.ModelAdmin):
         'surname',
         'email',
         'created_on',
+        'status'
         )
    
     search_fields = [
         'name',
         'surname',
+        'status',
         ]
     summernote_fields = (
         'message'
@@ -35,10 +37,12 @@ class ExistingUsersContactDetailsAdmin(admin.ModelAdmin):
     
     list_display = (
         'user',
-        'created_on'
+        'created_on',
+        'status'
         )
     search_fields = [
         'user',
+        'status'
         ]
     summernote_fields = (
         'message'

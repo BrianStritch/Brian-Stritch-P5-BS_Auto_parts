@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 from .models import ExistingUsersContactDetails, SiteUsersContactDetails
 from contact_us.forms import CreateSiteUsersContactDetailsForm , CreateSimpleUsersContactForm , CreateExistingUsersContactForm
@@ -12,13 +14,32 @@ class ContactUs(TemplateView):
         form = CreateSiteUsersContactDetailsForm
         template_name = 'contact_us/contact_us.html'
         context = {
-            'form': form
+            'form': form,            
+            'stop_toast_cart': True,
+            'forum':True,
         }
         return render(request, template_name, context)
 
     def post(self,request):
+        form = CreateSiteUsersContactDetailsForm(request.POST)
+        if form.is_valid():
+            contact = form.save()
+            messages.success(request, 'Your message has been succesfully\
+                 submitted and Admin will be in contact shortly.')            
+            return redirect('home')            
+       
+        else:
+            messages.error(request, 'Failed to send message. Please check your form details.')
+            form = CreateSiteUsersContactDetailsForm(request.POST)
+            template = 'contact_us/contact_us.html'
+            context = {
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template, context)
 
-        return redirect('home')
+        
 
 
 class SimpleContactUs(TemplateView):
@@ -31,8 +52,25 @@ class SimpleContactUs(TemplateView):
         return render(request, template_name, context)
 
     def post(self,request):
+        form = CreateSimpleUsersContactForm(request.POST)
+        if form.is_valid():
+            contact = form.save()
+            messages.success(request, 'Your message has been succesfully\
+                 submitted and Admin will be in contact shortly.')            
+            return redirect('home')            
+       
+        else:
+            messages.error(request, 'Failed to send message. Please check your form details.')
+            form = CreateSimpleUsersContactForm(request.POST)
+            template = 'contact_us/contact_us.html'
+            context = {
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template, context)
 
-        return redirect('home')
+        
 
 
 class ExistingUsersContactUs(TemplateView):
@@ -46,6 +84,24 @@ class ExistingUsersContactUs(TemplateView):
         }
         return render(request, template_name, context)
 
-    def post(self,request):
+    def post(self,request, pk):
+        form = CreateExistingUsersContactForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            contact = form.save()
+            messages.success(request, 'Your message has been succesfully\
+                 submitted and Admin will be in contact shortly.')            
+            return redirect('home')            
+       
+        else:
+            messages.error(request, 'Failed to send message. Please check your form details.')
+            form = CreateExistingUsersContactForm(request.POST)
+            template = 'contact_us/contact_us.html'
+            context = {
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template, context)
 
-        return redirect('home')
+        

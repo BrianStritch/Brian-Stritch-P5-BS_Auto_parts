@@ -92,17 +92,19 @@
                                                 <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                                             </small>
                                             {% endif %}
-                                            <br>
+                                            <br>                                            
+                                                <!-- {% for favourite in favourites %}
+                                                    {% if product.name == favourite.products.name  %}
+                                                        {% if request.user == favourite.username %}
+                                                            <i class="fas fa-star gold"></i><strong class="text-black"> Added to favourites</strong> 
+                                                        {% endif %}
+                                                    {% endif %}                                                    
+                                                {% endfor %} -->
+                                                
+                                                
+
+                                                
                                             
-                                            
-                                            {% if product in favourites  %}
-                                                    <i class="fas fa-star gold"></i><strong class="text-black"> Added to favourites</strong>
-                                                    
-                                                                                                           
-                                            {% else %}
-                                                    <i class="far fa-star text-black"></i><strong class="text-black"> Not in Favourites</strong> 
-                                            
-                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

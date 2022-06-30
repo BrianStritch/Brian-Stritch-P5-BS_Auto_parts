@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 from django.shortcuts import reverse
 
 
-STATUS = ((0, 'Draft'), (1, 'Published'))
+STATUS = ((0, 'Draft'), (1, 'Published')) 
 
 
 class ForumCategory(models.Model):

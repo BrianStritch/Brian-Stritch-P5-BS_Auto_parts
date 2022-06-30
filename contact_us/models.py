@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
 
+STATUS = ((0, 'Pending'), (1, 'Completed'))
+
 class SiteUsersContactDetails(models.Model):
     """
     A model for obtaining users information who wish
@@ -15,6 +17,8 @@ class SiteUsersContactDetails(models.Model):
     email = models.EmailField(blank=False)
 
     message = models.TextField(blank=True)
+
+    status = models.IntegerField(choices=STATUS, default=0)
 
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -60,6 +64,11 @@ class SiteUsersContactDetails(models.Model):
         blank=True
         )
     
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Site Users Contact Details' 
+
+
     def __str__(self):
         return f'{self.name} {self.surname}'
 
@@ -74,6 +83,12 @@ class ExistingUsersContactDetails(models.Model):
 
     message = models.TextField(max_length=250, blank=True)
 
+    status = models.IntegerField(choices=STATUS, default=0)
+
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_on']
+        verbose_name_plural = 'Existing Users Contact Details' 
 
   

@@ -17,6 +17,7 @@ def all_products(request):
     """
     products = Product.objects.all()
     makes = Manufacturer.objects.all().order_by('name')
+    
 
     query = None
     categories = None
@@ -76,10 +77,12 @@ def all_products(request):
 
     
     favourites = Favourites.objects.all()
+    
 
     current_sorting = f'{sort}_{direction}'
 
     context = {
+      'notfav': False,
       'products': products,
       'makes':makes,
       'search_term': query,
