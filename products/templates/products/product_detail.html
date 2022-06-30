@@ -55,7 +55,8 @@
                     </small>
                     
                 {% endif %}
-                <br>
+                <br>                                
+                {% if request.user.is_authenticated %}
                 <form class="d-inline like-btn-outline" action="{% url 'toggle-favourite' product.pk %}" method="POST">
                     {% csrf_token %}
                         {% if favourites.products.id == product.id %}
@@ -72,6 +73,7 @@
                         </button>
                         {% endif %}
                 </form>
+                {% endif %}
                 <p class="mt-3">Product description: <br>{{ product.description }}</p>
                 <hr>               
                 <p class="mt-3">Suits the following vehicles: <br>{{ product.suits }}</p>
@@ -272,9 +274,11 @@
             </div>
         </div>
         {% else %}
+        {% if request.user == review.author %}
         <div class="row text-black high-z text-center">
             <h4>Your review is currently pending approval by admin and will appear shortly.</h4>
         </div>
+        {% endif%}
         {% endif%}
     {% else %}
     <div class="row text-black high-z text-center">

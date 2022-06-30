@@ -102,9 +102,9 @@ def product_detail(request, product_id):
     liked = False
     try:
       
-      queryset = ProductReview.objects.filter(status=1)  
+      queryset = ProductReview.objects.all()  
       review = get_object_or_404(queryset, product=product_id )
-      comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
+      comments = review.product_review_comments.all().order_by('created_on') 
       liked = False
       if review.likes.filter(id=request.user.id).exists():
           liked = True
