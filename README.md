@@ -30,7 +30,8 @@ python3 manage.py makemigrations <br>
 python3 manage.py migrate --plan <br>
 python3 manage.py migrate <br>
 <br> 
-
+python3 manage.py runserver <br> 
+<br> 
 python3 manage.py loaddata categories <br>
 python3 manage.py loaddata manufacturers <br>
 python3 manage.py loaddata products <br>

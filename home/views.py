@@ -52,6 +52,7 @@ def home(request):
         home = True
         context = {
             'home': home,
+            'scrolloff':True
         }
         return render(request, template, context)
 
@@ -103,6 +104,8 @@ def index(request):
 
         context = {
             'makes': makes,
+            'scrolloff':True,
+            
         }
         return render(request,'home/index.html', context)    
     
