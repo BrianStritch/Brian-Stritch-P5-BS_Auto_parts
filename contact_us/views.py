@@ -13,7 +13,6 @@ class ContactUs(TemplateView):
     def get(self,request):
         form = CreateSiteUsersContactDetailsForm
         template_name = 'contact_us/contact_us.html'
-        messages.info(request, 'this is a test message')
         context = {
             'form': form,            
             'stop_toast_cart': True,
@@ -27,7 +26,14 @@ class ContactUs(TemplateView):
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.')            
-            return redirect('home')            
+            template_name = 'home/home.html' 
+            context = {
+                'stop_toast_cart': True,
+                'home': True,
+                'bttoff':True
+
+            } 
+            return render(request, template_name, context)             
        
         else:
             messages.error(request, 'Failed to send message. Please check your form details.')
@@ -48,7 +54,8 @@ class SimpleContactUs(TemplateView):
         form = CreateSimpleUsersContactForm
         template_name = 'contact_us/contact_us.html'
         context = {
-            'form': form
+            'form': form,
+            'stop_toast_cart': True,
         }
         return render(request, template_name, context)
 
@@ -57,8 +64,16 @@ class SimpleContactUs(TemplateView):
         if form.is_valid():
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
-                 submitted and Admin will be in contact shortly.')            
-            return redirect('home')            
+                 submitted and Admin will be in contact shortly.') 
+            template_name = 'home/home.html' 
+            context = {
+                'stop_toast_cart': True,
+                'home': True,
+                'bttoff':True
+
+            } 
+            return render(request, template_name, context)         
+                        
        
         else:
             messages.error(request, 'Failed to send message. Please check your form details.')
@@ -78,11 +93,12 @@ class ExistingUsersContactUs(TemplateView):
     def get(self,request, pk):
         user = get_object_or_404(User, pk=pk)
         form = CreateExistingUsersContactForm
-        messages.success(request, 'this is a test message')
         template_name = 'contact_us/contact_us.html'
         context = {
             'form': form,
-            'user': user
+            'user': user,
+            'stop_toast_cart': True,
+
         }
         return render(request, template_name, context)
 
@@ -93,7 +109,14 @@ class ExistingUsersContactUs(TemplateView):
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.')            
-            return redirect('home')            
+            template_name = 'home/home.html' 
+            context = {
+                'stop_toast_cart': True,
+                'home': True,
+                'bttoff':True
+
+            } 
+            return render(request, template_name, context)             
        
         else:
             messages.error(request, 'Failed to send message. Please check your form details.')
