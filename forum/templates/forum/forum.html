@@ -5,14 +5,17 @@
     <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
 {% endblock %}
 
-{% block page_header %}
-    <div class="container header-container ">
-        <div class="row">
-            <div class="col">
-                
+{% block page_header %}    
+        <div class="row high-z bg-black pt-1">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'forum' %}" aria-current="page">Forum</a></li>                        
+                    </ol>
+                  </nav>
             </div>
         </div>
-    </div>
 {% endblock %}
 
 {% block content %}
@@ -25,6 +28,7 @@
                 <hr class="hr">
             </div>
         </div>
+        
         {% for category in categories %}
         <div class="row high-z flex-and-center column">
             <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
