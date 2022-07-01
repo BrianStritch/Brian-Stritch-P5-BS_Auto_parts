@@ -260,8 +260,7 @@ a:hover{
     
 }
 .footer-home{
-    position: fixed !important;
-    bottom: 0;
+font-size: smallest !important;
 }
 #footer i{
     color: orangered;
@@ -890,7 +889,7 @@ a.category-badge > span.badge:hover {
         left: -13%;
     }
     #footer{
-        width: 109%;
+        width: 100%;
         padding: 2px;
     }
     
@@ -902,7 +901,13 @@ a.category-badge > span.badge:hover {
     }
     .nav-link{
         font-size: 10px;
-        padding: 0.5rem 1px 0.5rem 19px;
+        padding: 0.5rem 1px 0.5rem 0px;
+    }
+    nav{
+        margin-left: 40px;
+    }
+    .forum-banner {
+        margin-top: -19vh;
     }
     .search-box-width{
         width: 80vw;

@@ -77,6 +77,21 @@
     }
     
 }
+@media(max-width:420px){
+    .body-padding-top{
+        padding-top: 0.25em;
+    }
+    .forum-heading-box {
+        width: 90%;
+    }
+    .forum-topic-box {
+        max-width: 80vw;
+    }
+    .forum-banner {
+        margin-top: -13vh;
+    }
+    
+}
 @media(max-width:321px){
     .body-padding-top{
         padding-top: 0.25em;
