@@ -94,12 +94,13 @@ def Topic_list(request, slug, *args , **kwargs ):
           
     return render(request, template_name, context)
 
-def PostDetail(request, slug, *args , **kwargs):
+def PostDetail(request, pk, *args , **kwargs):
     '''
     renders a view to display forum post detail relating
     to the specific post selected
     '''
-    post = get_object_or_404(ForumPost, slug=slug)
+    
+    post = get_object_or_404(ForumPost, pk= pk)
     template_name = 'forum/post_detail.html'
         
     

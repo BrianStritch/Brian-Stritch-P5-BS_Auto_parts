@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.forum, name='forum'),
     path('topic/<slug:slug>/', views.Topic_list, name='topic_list'),
-    path('post_detail/<slug:slug>/', views.PostDetail, name='post_detail'),
+    path('post_detail/<int:pk>/', views.PostDetail, name='post_detail'),
     path('create_category/', views.CreateCategory.as_view(), name='create_category'),
     path('edit_forum_category/<int:pk>/', views.EditCategory.as_view(), name='edit_forum_category'),
     path('delete_forum_category/<int:pk>/', views.DeleteCategory.as_view(), name='delete_forum_category'),
@@ -18,5 +18,5 @@ urlpatterns = [
     path('create_forum_comment/<int:pk>/', views.CreateForumComment.as_view(), name='create_forum_comment'),
     path('edit_forum_comment/<int:pk>/', views.EditForumComment.as_view(), name='edit_forum_comment'),
     path('delete_forum_comment/<int:pk>/', views.DeleteForumComment.as_view(), name='delete_forum_comment'),
-    path('forum_comment/like/<int:pk>/',views.CommentLike.as_view(),name='forum_comment_like'),
+    path('forum_comment/like/<int:pk>/',views.CommentLike.as_view(),name='forum_comment_like'), 
 ]

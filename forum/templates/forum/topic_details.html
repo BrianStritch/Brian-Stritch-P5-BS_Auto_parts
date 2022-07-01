@@ -39,7 +39,7 @@
             {% for post in posts %}
                 {% if post.topic == topic %}
                 {% if post.status == 1 %}
-                <a href="{% url 'post_detail' post.slug %}">
+                <a href="{% url 'post_detail' post.pk %}">
                     <div class="row">
                         <hr class="hr">
                         <div class="col-4">      
