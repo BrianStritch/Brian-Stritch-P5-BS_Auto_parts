@@ -51,7 +51,7 @@
                                 <small class="text-muted">Order details:</small>
                             </div>
                         </div>
-                        
+                        <p>orderlineitems = {{ order.lineitems }}</p>
                         {% for item in order.lineitems.all %}
                         <div class="row">
                             <div class="col-12 col-md-4">

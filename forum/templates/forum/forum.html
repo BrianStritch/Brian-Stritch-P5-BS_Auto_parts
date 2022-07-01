@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_header %}    
-        <div class="row high-z bg-black pt-1">
+        <div class="row  bg-black pt-1">
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -15,20 +15,16 @@
                     </ol>
                   </nav>
             </div>
+            <div class="col-12 bg-black text-white">                
+                <h4 class="text-center "><strong>Members Forum :</strong></h4>
+                <hr class="hr">
+            </div>
         </div>
 {% endblock %}
 
 {% block content %}
 <div class="overlay forum"></div>
     <div class="container-fluid forum-banner">
-        <div class="row">
-            <div class="col-12 high-z bg-black text-white">
-                <hr class="hr">
-                <h4 class="text-center "> <strong>Members Forum :</strong> </h4>
-                <hr class="hr">
-            </div>
-        </div>
-        
         {% for category in categories %}
         <div class="row high-z flex-and-center column">
             <div class="col-12 col-md-6 col-lg-6 forum-heading-box">
@@ -47,8 +43,7 @@
                         {% endif %}  
                     </div>                            
                 </div>
-            </div>      
-                
+            </div>
             {% for topic in topics %} 
             {% if category == topic.forum_category %}
             <div class="col-12 col-md-6 col-lg-6 forum-topic-box">

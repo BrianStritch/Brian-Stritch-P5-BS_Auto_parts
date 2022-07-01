@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_header %}
-<div class="row high-z bg-black">
+<div class="row  bg-black">
     <div class="col-12">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -15,7 +15,12 @@
               <li class="breadcrumb-item active"><a href="{% url 'topic_list' post.topic.slug %}">{{ topic.friendly_name }} posts</a></li>
               <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
             </ol>
-          </nav>
+        </nav>
+    </div>
+    <div class="col-12">
+        <hr class="hr">
+        <h4 class="text-center text-white"><strong>{{ post.title}}</strong></h4>
+        <hr class="hr"> 
     </div>
 </div>
 
@@ -26,16 +31,13 @@
 <div class="container-fluid forum-banner">  
     <div class="row ">
         <div class="col-12 high-z bg-black text-white mt-5">
-            <hr class="hr">
-            <h4 class="text-center "> <strong> {{ post.title}}</strong> </h4>
-            <hr class="hr"> 
             {% if post  %}    
                 {% if post.status == 1 %}
                 <div class="row high-z product-review-outer ">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 col-lg-4 product-review-details">
-                                <h3> <i>Title:</i>  {{ post.title }}</h3>                
+                                <h3> <i>Title:</i> {{ post.title }}</h3>                
                                 <p><i>Content:</i>  {{ post.content }}</p>                    
                                 <p><i>Created by :</i>  {{ post.author }} on {{ post.created_on }}</p>
                                 <hr>                                

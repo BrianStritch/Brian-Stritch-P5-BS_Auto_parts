@@ -179,9 +179,11 @@ def checkout_success(request, order_number):
         your order number is {order_number}. A confirmation email \
             will be sent to {order.email}.')
     
-    if 'bag' in request.session:        
+    # if 'bag' in request.session:        
         # this is where i can add function to update stock quantity
-        del request.session['bag']
+        # del request.session['bag']        
+        
+    print(bag)
 
     template = 'checkout/checkout_success.html'
     context = {
