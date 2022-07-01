@@ -51,7 +51,7 @@ class CreateProductReview(TemplateView):
             title = form.cleaned_data['title']
             form.instance.slug = slugify(title)
             content = form.cleaned_data['content']
-            excerpt = form.cleaned_data['excerpt']
+            summary = form.cleaned_data['summary']
             product_review = form.save(commit=False)
             product_review.post = product_review
             product_review.save()
@@ -100,7 +100,7 @@ class EditProductReview(TemplateView):
             title = form.cleaned_data['title']
             form.instance.slug = slugify(title)
             content = form.cleaned_data['content']
-            excerpt = form.cleaned_data['excerpt']
+            summary = form.cleaned_data['summary']
             product_review = form.save(commit=False)
             product_review.post = product_review
             product_review.save()

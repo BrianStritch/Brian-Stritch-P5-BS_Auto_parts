@@ -18,7 +18,7 @@ class CreateForumPostForm(forms.ModelForm):
         fields = (
             'title',
             'content',
-            'excerpt',
+            'summary',
             'topic',
             )
 
@@ -58,4 +58,4 @@ class ForumTopicsForm(forms.ModelForm):
         set the fields in the create forum topic model form
         """
         model = ForumTopics
-        fields = ('name', 'friendly_name', 'forum_category', 'excerpt')
+        fields = ('name', 'friendly_name', 'forum_category', 'summary')

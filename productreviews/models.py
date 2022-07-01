@@ -31,7 +31,7 @@ class ProductReview(models.Model):
 
     content = models.TextField()    
 
-    excerpt = models.TextField(blank=True)
+    summary = models.TextField(blank=True)
 
     created_on = models.DateTimeField(auto_now_add=True)
 

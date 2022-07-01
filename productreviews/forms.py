@@ -35,5 +35,5 @@ class CreateProductReviewForm(forms.ModelForm):
         fields = (
             'title',
             'content',
-            'excerpt'
+            'summary'
             )

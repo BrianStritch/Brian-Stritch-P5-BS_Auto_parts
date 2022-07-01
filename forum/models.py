@@ -48,7 +48,7 @@ class ForumTopics(models.Model):
     name = models.CharField(max_length=254)
     slug = models.SlugField(max_length=200, unique=True)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
-    excerpt = models.TextField(blank=True)
+    summary = models.TextField(blank=True)
     
 
     def __str__(self):
@@ -81,7 +81,7 @@ class ForumPost(models.Model):
     topic = models.ForeignKey(ForumTopics,null=True, blank=True,  on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    excerpt = models.TextField(blank=True)
+    summary = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='forum_post_likes', blank=True)
