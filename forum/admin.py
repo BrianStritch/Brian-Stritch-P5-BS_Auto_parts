@@ -29,6 +29,16 @@ class ForumPostAdmin(admin.ModelAdmin):
     summernote_fields = (
         'content'
         )
+    actions = [
+        'approve_posts',
+        ]
+
+    def approve_posts(self, request, queryset):
+        """
+        class based function to update the comment status
+        from the selection in the django admin view
+        """
+        queryset.update(status=True)
 
 
 @admin.register(ForumPostComment)

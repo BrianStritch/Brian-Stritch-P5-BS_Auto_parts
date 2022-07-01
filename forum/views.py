@@ -578,7 +578,7 @@ class PostLike(View):
         form is valid updates and saves status to database.
         """
         post = get_object_or_404(ForumPost, pk=pk)
-        slug = post.slug
+        pk = post.pk
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
             messages.success(request, 'You have succesfully un-liked this post.')
@@ -586,7 +586,7 @@ class PostLike(View):
             post.likes.add(request.user)
             messages.success(request, 'You have succesfully liked this post.')
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
 ###############################  Forum Post Comments  ####################################################
 class CreateForumComment(TemplateView):
@@ -613,7 +613,7 @@ class CreateForumComment(TemplateView):
         
         form = ForumPostCommentForm(request.POST)
         post = get_object_or_404(ForumPost, pk=pk)        
-        slug = post.slug
+        pk = post.pk
         if form.is_valid():
             form.instance.post = post
             form.instance.name = request.user.username
@@ -621,7 +621,7 @@ class CreateForumComment(TemplateView):
             post = form.save()
             messages.success(request, 'Your comment has been sent to admin for approval and\
                 will appear shortly.')            
-            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+            return HttpResponseRedirect(reverse('post_detail', args=[pk]))
        
         else:
             messages.error(request, 'Failed to add Comment. Please check your form details.')
@@ -661,7 +661,7 @@ class EditForumComment(TemplateView):
 
     def post(self, request, pk):
         comment = get_object_or_404(ForumPostComment, pk=pk)
-        slug = comment.post.slug
+        pk = comment.post.pk
         form = ForumPostCommentForm(request.POST, instance=comment)
         if form.is_valid():
             form.instance.approved = False           
@@ -669,7 +669,7 @@ class EditForumComment(TemplateView):
             messages.success(request, f'You have succesfully updated your comment. \
                 Your comment has been submitted to admin for approval and will appear shortly.') 
             
-            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+            return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
         else:
             messages.error(request, f'Failed to update comment. Please check your data is valid') 
@@ -707,10 +707,10 @@ class DeleteForumComment(TemplateView):
 
     def post(self, request, pk):
         comment = get_object_or_404(ForumPostComment, pk=pk)
-        slug = comment.post.slug
+        pk = comment.post.pk
         comment.delete()
         messages.success(request, 'You have successfully deleted the forum comment')
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
    
 class CommentLike(View):
@@ -725,7 +725,7 @@ class CommentLike(View):
         form is valid updates and saves status to database.
         """
         comment = get_object_or_404(ForumPostComment, pk=pk)        
-        slug = comment.post.slug
+        pk = comment.post.pk
         if comment.likes.filter(id=request.user.id).exists():
             comment.likes.remove(request.user)
             messages.success(request, 'You have succesfully un-liked this comment.')
@@ -733,4 +733,4 @@ class CommentLike(View):
             comment.likes.add(request.user)
             messages.success(request, 'You have succesfully liked this comment.')
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[pk]))
