@@ -13,6 +13,7 @@ class ContactUs(TemplateView):
     def get(self,request):
         form = CreateSiteUsersContactDetailsForm
         template_name = 'contact_us/contact_us.html'
+        messages.info(request, 'this is a test message')
         context = {
             'form': form,            
             'stop_toast_cart': True,
@@ -77,6 +78,7 @@ class ExistingUsersContactUs(TemplateView):
     def get(self,request, pk):
         user = get_object_or_404(User, pk=pk)
         form = CreateExistingUsersContactForm
+        messages.success(request, 'this is a test message')
         template_name = 'contact_us/contact_us.html'
         context = {
             'form': form,

@@ -5,6 +5,8 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
     var e = jQuery.fn.jquery.split(" ")[0].split(".");
     if (e[0] < 2 && e[1] < 9 || 1 == e[0] && 9 == e[1] && e[2] < 1 || 3 < e[0]) throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4")
 }(),
+
+
 function (n) {
     "use strict";
     n.fn.emulateTransitionEnd = function (t) {
@@ -39,6 +41,8 @@ function (n) {
         })
     })
 }(jQuery),
+
+
 function (s) {
     "use strict";
     var e = '[data-dismiss="alert"]',
@@ -67,6 +71,8 @@ function (s) {
         return s.fn.alert = t, this
     }, s(document).on("click.bs.alert.data-api", e, a.prototype.close)
 }(jQuery),
+
+
 function (s) {
     "use strict";
     var n = function (t, e) {
@@ -109,6 +115,8 @@ function (s) {
         s(t.target).closest(".btn").toggleClass("focus", /^focus(in)?$/.test(t.type))
     })
 }(jQuery),
+
+
 function (p) {
     "use strict";
     var c = function (t, e) {
@@ -1037,3 +1045,12 @@ function (l) {
         })
     })
 }(jQuery);
+
+
+/* *************** Function to toggle toasts display property *************/
+$('#close_btn').click(closeMessageBox);
+function closeMessageBox() {
+    document.getElementById('msg-box').classList.remove('d-block');
+    document.getElementById('msg-box').classList.add('d-none');
+}
+
