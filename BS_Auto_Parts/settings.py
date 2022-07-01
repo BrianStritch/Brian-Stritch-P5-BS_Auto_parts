@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','')
 DEBUG = True
 # DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['brian-stritch-p5-bs-auto-parts.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['brian-stritch-p5-bs-auto-parts.herokuapp.com', 'brian-p5.herokuapp.com', 'localhost']
  
 
 # Application definition
