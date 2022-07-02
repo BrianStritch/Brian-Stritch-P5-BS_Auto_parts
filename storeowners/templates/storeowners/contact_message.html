@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container ">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'store_management' %}">Store Management</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'contact_query' %}">Contact Us List</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Contact Message</li>                       
+                </ol>
+              </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container mb-2 text-center mb-5">
+    <div class="row">
+        <div class="col-12 col-md-6 high-z margin-0-auto">
+            <hr>
+            <h3 class="logo-font mb-4">Store Management</h3>
+            <h5 class="logo-font text-muted ">Contact message details:</h5>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>        
+        <div class="col-12 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="logo-font">Message Details:</h3>
+                    <hr>
+                    <h5>Name: {{user.name}}{{user.user}}</h5>
+                    <h5>User email: {{user.email }}</h5>
+                    <p>Message:{{ user.message }}</p>
+                    <form class="d-inline like-btn-outline" action="{%url 'update_new_query' user.pk %}" method="POST">
+                        {% csrf_token %}
+                        {% if user.status == 0 %}
+                            <button type="submit" name="user_id" value="{{ user.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                                <i class="fas fa-check green">Set status to completed.</i>
+                            </button>                           
+                        {% else %}
+                            <button type="submit" name="user_id" value="{{ user.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                                <i class="fas fa-check red">Set status to incomplete.</i>
+                            </button>
+                        {% endif  %}                          
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>  
+</div>
+
+{% endblock %}
+

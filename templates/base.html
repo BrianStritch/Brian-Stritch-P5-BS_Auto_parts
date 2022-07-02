@@ -74,13 +74,14 @@
                     </a>
                 </div>
 
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <div class="col-12 col-lg-2 my-auto py-1 py-lg-0">
                     {% if messages %}
                     <div class="message-container">
                     </div>
                     {% endif %}
                 </div>
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 ">
+                <div class="col-lg-1 d-md-none"></div>
+                <div class="col-12 col-md-7 col-lg-6 my-auto py-1 py-lg-0 ">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         <li class="list-inline-item">
                             <a class="nav-link white-hover" href="#" id="mobile-search" data-toggle="dropdown"
@@ -135,8 +136,7 @@
                             </a>
                             <div class="dropdown-menu ">
                                 {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class=" dropdown-item">Product Management</a>
+                                {% if request.user.is_superuser %}                                
                                 <a href="{% url 'store_management' %}" class=" dropdown-item">Store Management</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class=" dropdown-item">My Profile</a>
@@ -192,8 +192,11 @@
 
 
             </div>
-            {% block page_header %}
-            {% endblock %}
+            <div class="bg-black row">
+                {% block page_header %}
+                {% endblock %}
+            </div>
+            
             <div class="{% if forum %}d-none{% endif %} row text-center">
                 <div class="col bg-black text-white">
                     <h4 class=" my-1 banner">

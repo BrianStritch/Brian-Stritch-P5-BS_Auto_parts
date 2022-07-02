@@ -32,13 +32,33 @@ class StockManagement(TemplateView):
 
 class QueryManagement(TemplateView):
     def get(self, request):
-        existing_contacts = ExistingUsersContactDetails.objects.all()
-        new_users = SiteUsersContactDetails.objects.all()
+        existing_contacts = ExistingUsersContactDetails.objects.all().order_by('status')
+        new_users = SiteUsersContactDetails.objects.all().order_by('status')
         template_name = 'storeowners/contact_us_list.html'
         context = {
            'stop_toast_cart': True,
            'existing_contacts': existing_contacts,
            'new_users': new_users,
+        }
+        return render(request, template_name, context)
+
+class NewQueryDetails(TemplateView):
+    def get(self, request, pk):
+        user = get_object_or_404(SiteUsersContactDetails, pk=pk)
+        template_name = 'storeowners/contact_message.html'
+        context = {
+           'stop_toast_cart': True,
+           'user': user,
+        }
+        return render(request, template_name, context)
+
+class ExistingQueryDetails(TemplateView):
+    def get(self, request, pk):
+        user = get_object_or_404(ExistingUsersContactDetails, pk=pk)
+        template_name = 'storeowners/contact_message.html'
+        context = {
+           'stop_toast_cart': True,
+           'user': user,
         }
         return render(request, template_name, context)
 
@@ -55,8 +75,15 @@ class ToggleExistingContactUsStatus(TemplateView):
         data passed from the reviews details page and if
         form is valid updates and saves status to database.
         """
-        query = get_object_or_404(ExistingUsersContactDetails, pk=pk)        
+        query = get_object_or_404(ExistingUsersContactDetails, pk=pk)
+        existing_contacts = ExistingUsersContactDetails.objects.all().order_by('status')
+        new_users = SiteUsersContactDetails.objects.all().order_by('status')        
         template_name = 'storeowners/contact_us_list.html'
+        context = {
+            'stop_toast_cart': True,
+            'existing_contacts': existing_contacts,
+            'new_users': new_users,
+        }  
         if query.status == 1:
             query.status = 0
             query.save()
@@ -66,10 +93,10 @@ class ToggleExistingContactUsStatus(TemplateView):
             query.save()
             messages.success(request, 'You have completed liked this request.')
 
-        return render(request, template_name)
+        return render(request, template_name, context)
 
 
-class ToggleNewUserContactUsStatus(TemplateView):
+class ToggleNewUserContactUsStatus(View):
     """
         Class based view to toggle the status for
         the selected post and saving to the database.
@@ -81,7 +108,15 @@ class ToggleNewUserContactUsStatus(TemplateView):
         form is valid updates and saves status to database.
         """
         query = get_object_or_404(SiteUsersContactDetails, pk=pk)
-        template_name = 'storeowners/contact_us_list.html'    
+        existing_contacts = ExistingUsersContactDetails.objects.all()
+        new_users = SiteUsersContactDetails.objects.all()
+        template_name = 'storeowners/contact_us_list.html'
+        context = {
+            'stop_toast_cart': True,
+            'existing_contacts': existing_contacts,
+            'new_users': new_users,
+
+        }    
         print('getting here')
         if query.status == 1:
             query.status = 0
@@ -92,4 +127,4 @@ class ToggleNewUserContactUsStatus(TemplateView):
             query.save()
             messages.success(request, 'You have completed liked this request.')
 
-        return render(request, template_name)
+        return render(request, template_name, context)
