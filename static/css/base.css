@@ -73,12 +73,24 @@ font-family: "Raleway", sans-serif;
 .red{
     color: red;
 }
+.green{
+    color: green;
+}
 .gold{
     color: goldenrod;
 }
 .btn-like{
     background-color: black;
 }
+.bg-green{
+    background-color: #28a745;
+    color: black;
+}
+.bg-red{
+    background-color: #c53030;
+    color: black;
+}
+
 /* *************** Header *****************************/
 
 #topnav{
