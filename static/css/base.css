@@ -856,12 +856,24 @@ a.category-badge > span.badge:hover {
     .w-100{
         width: 77% !important;
     }
-    .card{
+    /* .card{
         max-width: 70vw;
         
     }
     .card-body{
         width: 70vw;
+    } */
+    .card-special{
+        width: 90vw !important;
+    }
+    .card-body-special{
+        width: 80vw !important;
+    }
+    .product-card-special{
+        width: 70vw !important;
+    }
+    .product-card-body-special{
+        width: 60vw !important;
     }
     
     .site-search-box{
@@ -921,6 +933,16 @@ a.category-badge > span.badge:hover {
     #dim-cover {
         padding-top: 15vh;
         width: 100vw;
+    }
+    /* .card{
+        max-width: 70vw;
+        
+    }
+    .card-body{
+        width: 70vw;
+    } */
+    hr{
+        max-width: 70vw;
     }
 }
 
