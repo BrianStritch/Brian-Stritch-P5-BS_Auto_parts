@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 # Internal:
 from checkout.models import Order
 from profiles.models import UserProfile
+from checkout import urls
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -17,6 +18,14 @@ class TestCheckoutViews(TestCase):
     """
     A class for testing checkout views
     """
+    def test_get_checkout_page(self):
+        """
+        This test checks that the home landing page
+        is displayed
+        """
+        response = self.client.get('checkout/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'checkout/checkout.html')
     def setUp(self):
         """
         Create test users(standard and superuser) and a test order
