@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 # Internal:
 from checkout.models import Order
 from profiles.models import UserProfile
+from BS_Auto_Parts import urls
 from checkout import urls
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -18,14 +19,7 @@ class TestCheckoutViews(TestCase):
     """
     A class for testing checkout views
     """
-    def test_get_checkout_page(self):
-        """
-        This test checks that the home landing page
-        is displayed
-        """
-        response = self.client.get('checkout/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'checkout/checkout.html')
+    
     def setUp(self):
         """
         Create test users(standard and superuser) and a test order
@@ -39,7 +33,7 @@ class TestCheckoutViews(TestCase):
         test_user_superuser.save()
         testuser = UserProfile.objects.get(user=testuser)
 
-        Order.objects.create(
+        order = Order.objects.create(
             full_name='Test User',
             email='test_email@gmail.com',
             phone_number='123456789',
@@ -65,3 +59,32 @@ class TestCheckoutViews(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
             str(messages[0]), "There's nothing in your bag at the moment")
+
+    def test_get_checkout_page(self):
+        """
+        This test checks the functionality of the checkout page response
+        and redirection to the checkout success page
+        """        
+        response = self.client.post('/checkout/', {            
+            'full_name':'Test User 2',
+            'email':'test_email@gmail.com',
+            'phone_number':'123456789',
+            'country':'IE',
+            'county': 'county',
+            'town_or_city':'Test City',
+            'street_address1':'Test Address 1',
+            'street_address2':'Test Address 2',            
+            'postcode':'postcode',
+            'client_secret': '23456789',
+            'stripe_public_key': 'public_key',
+            'stripe_secret_key': 'secret_key',
+        })
+        order = Order.objects.get(full_name='Test User 2')
+        o_n = order.order_number
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response,f'/checkout/checkout_success/{o_n}')
+    
+    
+
+        
+        

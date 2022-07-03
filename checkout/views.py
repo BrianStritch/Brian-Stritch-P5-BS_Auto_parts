@@ -61,7 +61,7 @@ def checkout(request):
             print( 'this is order print 1', order)
             order.save()
 
-            for item_id, item_data in bag.items():
+            for item_id, item_data in bag.items():                
                 try:
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int ):
@@ -88,6 +88,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
             request.session['save_info'] = 'save-info' in request.POST
+            print('outside for bag items')
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, (
