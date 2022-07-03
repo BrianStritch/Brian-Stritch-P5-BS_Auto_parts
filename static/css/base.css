@@ -983,6 +983,9 @@ a.category-badge > span.badge:hover {
     .home-top-padding{
         margin-top: -6vh;
     }
+    .product-pages {
+        margin-top: 4vh;
+    }
     
 }
 
@@ -1015,6 +1018,22 @@ a.category-badge > span.badge:hover {
     }
     hr{
         max-width: 70vw;
+    }
+    hr.orange-hr {
+        width: 85vw;
+        max-width: 85vw !important;
+    }
+    .product-card-special{
+        
+        width: 85vw !important;
+    }
+    .detail-width-sm{
+        width: 85vw !important;
+    }
+    .btn-small{
+        width: fit-content;
+        height: 5vh;
+        font-size: 12px;
     }
 }
 
