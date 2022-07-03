@@ -926,6 +926,27 @@ a.category-badge > span.badge:hover {
     .product-card-body-special{
         width: 60vw !important;
     }
+    .media-center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0px;
+        margin-left: -13vw;
+        margin-top: 17vh;
+    }
+    .product-heading {
+        position: relative;
+        z-index: 0;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: -7vh;
+        margin-top: 0vh;
+    }
+    .no-mt{
+        margin-top: -14vh !important;
+    }
+    
     
     .site-search-box{
         margin: 5% 0 6% 13%;
