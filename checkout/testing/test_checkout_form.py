@@ -4,7 +4,7 @@
 from django.test import TestCase
 
 # Internal:
-from .forms import OrderForm
+from checkout.forms import OrderForm
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

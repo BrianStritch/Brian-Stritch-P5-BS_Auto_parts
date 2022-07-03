@@ -5,10 +5,10 @@ from decimal import Decimal
 from django.test import TestCase
 
 # Internal:
-from products.models import Product
-from rugby_shop import settings
-from .models import Order
-from .models import OrderLineItem
+from products.models import Product, Category, Manufacturer
+from BS_Auto_Parts import settings
+from checkout.models import Order
+from checkout.models import OrderLineItem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -25,12 +25,11 @@ class TestCheckoutModels(TestCase):
           name = "test name",
           description = "test description",
           price = '449.95',
-          category = 1,
           suits = "universal",
           stock_qty = 1,
           on_sale =  "False",
           has_sizes = "False",
-          rating = 4.6,
+          rating = '4.6',
           image_url = "testfile.jpg",
           image = "testfile.JPG"            
         )

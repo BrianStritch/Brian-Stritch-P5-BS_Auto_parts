@@ -38,7 +38,7 @@ class TestCheckoutViews(TestCase):
             town_or_city='Test City',
             street_address1='Test Address 1',
             street_address2='Test Address 2',
-            user_profile=test_user
+            user_profile=testuser
         )
 
     def tearDown(self):

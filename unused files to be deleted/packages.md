@@ -12,18 +12,20 @@ pip3 install pillow <br>
 pip3 install oauth lib <br>
 pip3 install django-summernote <br>
 pip3 install cloudinary <br>
-npm i -g heroku <br>
-pip install heroku3 <br>
 <br>
 pip3 install dj_database_url <br>
 pip3 install psycopg2-binary <br>
+npm i -g heroku <br>
 pip install heroku3 <br>
-heroku login -i <br>
+
 <br>
 pip3 freeze > requirements.txt <br>
 pip3 install gunicorn <br>
 pip3 install boto3 <br>
 pip3 install django-storages <br>
+pip install unittest2 <br>
+pip install coverage <br>
+heroku login -i <br>
 <br>
 python3 manage.py makemigrations --dry-run <br>
 python3 manage.py makemigrations <br>
@@ -48,7 +50,10 @@ export STRIPE_WH_SECRET=whsec_v2RdruDrpg7GT0PPMfY1JDN1uilcS6D1
 
 
 
-
+coverage and testing <br>
+coverage run manage.py test <br>
+coverage run manage.py test appname<br>
+manage.py test appname <br>
 
 
 
