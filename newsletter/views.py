@@ -141,7 +141,7 @@ class NewsletterSignup(TemplateView):
             email = form.instance.email
             user = get_object_or_404(Newsletter, email=email)            
             user.delete()
-            template_name = 'newsletter/newsletter_opt_out.html'
+            template_name = 'newsletter/newsletter_removed.html'
             messages.success(request, 'You have removed your email from the newsletter database successfully.')
             context = {
             'stop_toast_cart': True,
