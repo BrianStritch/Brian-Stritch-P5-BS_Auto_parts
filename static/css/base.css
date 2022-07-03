@@ -309,6 +309,13 @@ font-size: smallest !important;
 .bottom-margin{
     margin-bottom: 11vh;
 }
+#id_optin{    
+    width: fit-content;
+    display: inline;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
 
 /****************** index page styling ***************************/
 
@@ -331,6 +338,11 @@ font-size: smallest !important;
 .carousel-image{
     width: 460px;
     height: 345px;
+}
+.newsletter-box{
+    color: orangered;
+    background-color: rgba(0, 0, 0, 0.575);
+    padding: 10px;
 }
 /* ****************** carousel css from bootstrap ****************/
 #carousel-container{

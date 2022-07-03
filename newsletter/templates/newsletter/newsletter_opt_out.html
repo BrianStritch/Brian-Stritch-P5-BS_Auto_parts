@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container ">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item text-white" aria-current="page">Newsletter Opt-out Successful</li>                        
+                </ol>
+              </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mb-2 text-center mb-5">
+    <div class="row management mt-5 mb-5">
+        <div class="col-12 col-md-6 high-z margin-0-auto">
+            <div class="bg-black border-white">
+                <div class="bg-black">
+                    <hr class="text-white">
+                    <h3 class="logo-font mb-4 text-white">Newsletter</h3>
+                    <h5 class="logo-font text-muted "></h5>
+                    <hr class="text-white">
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="row flex-and-center">
+        <div class="d-none d-md-block col-md-3"></div>
+        <div class="col-12 col-md-6">            
+            <div class="bg-black border-white newsletter-box py-3">
+                <div class="bg-black py-3">
+                    <h2 class="text-white">Opt-out Successful</h2>
+                    <p>We are sorry to see you opt-out of our monthly newsletter,but feel free to sign-up again any time.
+                        If you were not satisfied in any way, please feel free to contact us with a message on how you feel
+                        we can improve as we take our newsletter very seriously and wish to keep all our members happy.
+                    </p>
+                    <hr class="text-white"> 
+                    <a href="{% url 'home' %}" class="btn btn-outline-bs rounded-2  text-uppercase mr-2">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Home</span>
+                    </a>
+                </div>                    
+            </div>                      
+        </div>
+        <div class="d-none d-md-block col-md-3"></div>        
+    </div>    
+</div>  
+{% endblock %}
+

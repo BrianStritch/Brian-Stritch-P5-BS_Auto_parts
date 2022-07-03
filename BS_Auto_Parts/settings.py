@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'storages',
     'home',
     'storeowners',
+    'newsletter',
     'contact_us',
     'products',
     'favourites',

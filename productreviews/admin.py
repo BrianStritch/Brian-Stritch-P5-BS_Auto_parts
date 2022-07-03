@@ -30,6 +30,16 @@ class ProductReviewAdmin(SummernoteModelAdmin):
     summernote_fields = (
         'content'
         )
+    actions = [
+        'approve_review',
+        ]
+
+    def approve_review(self, request, queryset):
+        """
+        class based function to update the comment status
+        from the selection in the django admin view
+        """
+        queryset.update(status=True)
 
 
 @admin.register(ProductReviewComment)

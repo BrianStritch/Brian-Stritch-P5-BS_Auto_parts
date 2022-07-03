@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from products.models import Product, Category, Manufacturer
+from newsletter.forms import NewsletterSignupForm
 
 def home(request):
     products = Product.objects.all()
     makes = Manufacturer.objects.all().order_by('name')
+    newsletter_form = NewsletterSignupForm()
 
     query = None
     categories = None
@@ -35,6 +37,7 @@ def home(request):
         current_sorting = f'{sort}_{direction}'
 
         context = {
+        'newsletter_form':newsletter_form,
         'products': products,
         'makes':makes,
         'search_term': query,
@@ -51,6 +54,7 @@ def home(request):
         template = 'home/home.html'
         home = True
         context = {
+            'form':newsletter_form,
             'home': home,
             'bttoff':True
         }

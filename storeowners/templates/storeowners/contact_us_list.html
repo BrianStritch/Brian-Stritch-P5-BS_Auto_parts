@@ -43,7 +43,7 @@
                                     <th>Message :</th>
                                     <th>Email :</th>
                                     <th>completed</th>
-                                    <th>Toggle Status :</th>
+                                    <th>Message Details :</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,8 +66,13 @@
                                             {% endif %}
                                             
                                         </td>
-                                        <td> 
-                                            <a href="{%url 'new_user_message' user.pk %}" class="btn btn-like text-white"><small>Message Details</small></a>                                            
+                                        <td>
+                                            {% if user.status == 0 %}
+                                            <a href="{%url 'new_user_message' user.pk %}" class="btn btn-like text-white"><small>Message Details</small></a>
+                                            
+                                            {% else %}
+                                            <a href="{%url 'new_user_message' user.pk %}" ><small>Message Details</small></a>                                        
+                                            {% endif %}  
                                         </td>                                            
                                     </tr>
                                     
@@ -92,7 +97,7 @@
                                     <th>Message :</th>
                                     <th>Email :</th>
                                     <th>completed</th>
-                                    <th>Toggle Status :</th>
+                                    <th>Message Details :</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -116,7 +121,12 @@
                                             
                                         </td>
                                         <td> 
+                                            {% if users.status == 0 %}
                                             <a href="{%url 'existing_user_message' users.pk %}" class="btn btn-like text-white"><small>Message Details</small></a>
+                                            
+                                            {% else %}
+                                            <a href="{%url 'existing_user_message' users.pk %}" ><small>Message Details</small></a>                                        
+                                            {% endif %}                                            
                                         </td>                                            
                                     </tr>
                                     
