@@ -588,6 +588,17 @@ font-size: smallest !important;
 .carousel-caption .btn {
     text-shadow: none
 }
+.transparant{
+    background-color: rgba(0, 0, 0, 0);
+}
+@media not all, (-webkit-transform-3d){
+    .carousel-inner>.item.active, .carousel-inner>.item.next.left, .carousel-inner>.item.prev.right {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        left: 0;
+        height: 28vh;
+    }
+}
 
 @media screen and (min-width:768px) {
 
@@ -858,6 +869,7 @@ a.category-badge > span.badge:hover {
     .product-pages{
         margin-top: 0vh;
     }
+    
     
 }
 
