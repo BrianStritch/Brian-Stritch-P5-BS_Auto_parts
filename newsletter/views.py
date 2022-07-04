@@ -11,9 +11,7 @@ from .forms import NewsletterSignupForm
 
 class NewsletterSignup(TemplateView):
     def post(self, request):
-        form = NewsletterSignupForm(request.POST)
-        print('form = ', form)
-        print('optin = ',form.instance.optin)
+        form = NewsletterSignupForm(request.POST)        
         if form.instance.optin == 0 :
             try:
                 try:
@@ -22,7 +20,7 @@ class NewsletterSignup(TemplateView):
                     query.optin=3
                 if query.optin == 0:
                     if query.email == form.instance.email:
-                        messages.error(request, 'It appears that you are already opted in to our newsletter.')
+                        messages.alert(request, 'It appears that you are already opted in to our newsletter.')
                         form = NewsletterSignupForm(request.POST)
                         blankform = NewsletterSignupForm()
                         template_name = 'home/home.html'
@@ -73,8 +71,7 @@ class NewsletterSignup(TemplateView):
                         return render(request, template_name, context)
                 
             except:
-                print('inside except new user')
-                messages.error(request, 'Your signup was successful')
+                messages.success(request, 'Your signup was successful')
                 form = NewsletterSignupForm(request.POST)
                 form.save()
                 template_name = 'newsletter/newsletter_signup_success.html'
@@ -101,8 +98,7 @@ class NewsletterSignup(TemplateView):
                         }
                         return render(request, template_name, context)
                     else:
-                        print('inside except new user')
-                        messages.error(request, 'Your signup was successful. if you\
+                        messages.success(request, 'Your signup was successful. if you\
                             wish to optin to the newsletter you can change your status via the signup section.')
                         form = NewsletterSignupForm(request.POST)
                         form.save()
@@ -114,8 +110,7 @@ class NewsletterSignup(TemplateView):
                         }
                         return render(request, template_name, context)
                 else:
-                    print('inside except new user')
-                    messages.error(request, 'Your signup was successful. if you\
+                    messages.success(request, 'Your signup was successful. if you\
                         wish to optin to the newsletter you can change your status via the signup section.')
                     form = NewsletterSignupForm(request.POST)
                     form.save()
@@ -127,7 +122,6 @@ class NewsletterSignup(TemplateView):
                     }
                     return render(request, template_name, context)
             except:
-                print('inside except new user2')
                 messages.error(request, 'Your signup was un-successful. Please try again.')
                 form = NewsletterSignupForm(request.POST)
                 template_name = 'home/home.html'
@@ -138,14 +132,41 @@ class NewsletterSignup(TemplateView):
                 return render(request, template_name, context)
                 
         elif form.instance.optin == 2:
-            email = form.instance.email
-            user = get_object_or_404(Newsletter, email=email)            
-            user.delete()
-            template_name = 'newsletter/newsletter_removed.html'
-            messages.success(request, 'You have removed your email from the newsletter database successfully.')
-            context = {
-            'stop_toast_cart': True,
-            }
-            return render(request, template_name, context)
+            try:
+                queryset = Newsletter.objects.all()
+                if queryset.filter(email=form.instance.email).exists():
+                    query = get_object_or_404(Newsletter, email=form.instance.email)
+                    email = form.instance.email
+                    user = get_object_or_404(Newsletter, email=email)            
+                    user.delete()
+                    template_name = 'newsletter/newsletter_removed.html'
+                    messages.success(request, 'You have removed your email\
+                         from the newsletter database successfully.')
+                    context = {
+                    'stop_toast_cart': True,
+                    }
+                    return render(request, template_name, context)
+                else:
+                    messages.alert(request, 'You do not need to withdraw from\
+                         our newsletter database as your email is not stored in our database')
+                                        
+                    blankform = NewsletterSignupForm()
+                    template_name = 'home/home.html'
+                    context = {
+                    'stop_toast_cart': True,
+                    'form': blankform,
+                    }
+                    return render(request, template_name, context)
+               
+            except:
+                messages.alert(request, 'You do not need to withdraw from\
+                         our newsletter database as your email is not stored in our database')
+                form = NewsletterSignupForm()
+                template_name = 'home/home.html'
+                context = {
+                'stop_toast_cart': True,
+                'form': form,
+                }
+                return render(request, template_name, context)
             
                 
