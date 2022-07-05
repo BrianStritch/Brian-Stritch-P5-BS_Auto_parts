@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row ">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'store_management' %}">Store Management</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Manufacturer and Category List</li>                        
+                </ol>
+              </nav>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container mb-2 text-center mb-5">
+    <div class="row">
+        <div class="col-12 col-md-6 high-z margin-0-auto">
+            <hr>
+            <h3 class="logo-font mb-4">Store Management</h3>
+            <h5 class="logo-font text-muted ">Manufacturer and Category List</h5>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card ">
+                <div class="card-body">
+                    <h3 class="logo-font">Shop Categories:</h3>
+                    <hr>
+                    <div class="table-responsive current-stock">
+                        <table class="table table-sm table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category Id :</th>
+                                    <th>Category Name :</th>
+                                    <th>Friendly name :</th>
+                                    <th>Edit :</th>
+                                    <th>Delete :</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for category in categories %}
+                                
+                                    <tr>                                    
+                                        <td>{{category.id}}</td>
+                                        <td>
+                                            {{category.name}}
+                                        </td>
+                                        <td>
+                                            {{category.friendly_name }}
+                                        </td>
+                                        <td>                                            
+                                            <small class="ml-3">
+                                                <a href="{% url 'edit_category' category.pk %}">Edit Category</a> 
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <small class="ml-3">                                                                                           
+                                                <a class="text-danger" href="{% url 'delete_category' category.pk %}">Delete Category</a>
+                                            </small>
+                                        </td>                                            
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>              
+        <div class="col-12 col-lg-6">
+            <div class="card ">
+                <div class="card-body">
+                    <h3 class="logo-font">Shop Manufacturers:</h3>
+                    <hr>
+                    <div class="table-responsive current-stock">
+                        <table class="table table-sm table-borderless table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Manufacturer Id :</th>
+                                    <th>Manufacturer Name :</th>
+                                    <th>Friendly name :</th>
+                                    <th>Edit :</th>
+                                    <th>Delete :</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for manufacturer in manufacturers %}
+                                
+                                    <tr>                                    
+                                        <td>{{manufacturer.id}}</td>
+                                        <td>
+                                            {{manufacturer.name}}
+                                        </td>
+                                        <td>
+                                            {{manufacturer.friendly_name }}
+                                        </td>
+                                        <td>                                            
+                                            <small class="ml-3">
+                                                <a href="{% url 'edit_manufacturer' manufacturer.pk %}">Edit Manufacturer</a> 
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <small class="ml-3">                                                                                           
+                                                <a class="text-danger" href="{% url 'delete_manufacturer' manufacturer.pk %}">Delete Manufacturer</a>
+                                            </small>
+                                        </td>                                            
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>  
+</div>
+
+{% endblock %}
+

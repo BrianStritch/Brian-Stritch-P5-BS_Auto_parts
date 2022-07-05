@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.views import generic, View
 from products.models import Product, Category, Manufacturer
+from products.forms import ManufacturerForm, CategoryForm, ProductForm
 from contact_us.models import ExistingUsersContactDetails, SiteUsersContactDetails
 
 
@@ -30,6 +31,7 @@ class StockManagement(TemplateView):
         }
         return render(request, template_name, context)
 
+
 class QueryManagement(TemplateView):
     def get(self, request):
         existing_contacts = ExistingUsersContactDetails.objects.all().order_by('status')
@@ -42,6 +44,7 @@ class QueryManagement(TemplateView):
         }
         return render(request, template_name, context)
 
+
 class NewQueryDetails(TemplateView):
     def get(self, request, pk):
         user = get_object_or_404(SiteUsersContactDetails, pk=pk)
@@ -52,6 +55,7 @@ class NewQueryDetails(TemplateView):
         }
         return render(request, template_name, context)
 
+
 class ExistingQueryDetails(TemplateView):
     def get(self, request, pk):
         user = get_object_or_404(ExistingUsersContactDetails, pk=pk)
@@ -61,7 +65,6 @@ class ExistingQueryDetails(TemplateView):
            'user': user,
         }
         return render(request, template_name, context)
-
         
 
 class ToggleExistingContactUsStatus(TemplateView):
@@ -128,3 +131,251 @@ class ToggleNewUserContactUsStatus(View):
             messages.success(request, 'You have completed liked this request.')
 
         return render(request, template_name, context)
+
+
+class ManAndCatList(TemplateView):
+    
+    def get(self, request):
+        manufacturers = Manufacturer.objects.all().order_by('name')
+        categories = Category.objects.all().order_by('pk')
+        template_name = 'storeowners/manufacturer_and_category_list.html'
+        context = {
+           'stop_toast_cart': True,
+           'manufacturers': manufacturers,
+           'categories': categories,
+        }
+    
+        return render(request, template_name, context)
+
+login_required
+def add_manufacturer(request):
+  """ 
+  Add a manufacturer to the store
+  """
+  if not request.user.is_superuser:
+    messages.error(request, 'Only staff have access to this feature.')
+    return redirect(reverse('stock_management'))
+
+  if request.method == 'POST':
+    form = ManufacturerForm(request.POST)
+    if form.is_valid():
+      form.save()
+      messages.success(request, 'Your manufacturer has been succesfully added.')
+      template_name = 'storeowners/manufacturer_and_category_list.html'
+      manufacturers = Manufacturer.objects.all()
+      categories = Category.objects.all()
+      context = {
+        'manufacturers': manufacturers,
+        'categories': categories,
+        'stop_toast_cart': True,
+      }
+      return render(request, template_name, context)
+            
+    else:
+      messages.error(request, 'Failed to add manufacturer. Please check your form details.')
+  else:
+    form = ManufacturerForm()
+    template = 'storeowners/add_manufacturer.html'
+    context = {
+        'form': form,
+        'stop_toast_cart': True,
+    }
+    return render(request, template, context)
+
+@login_required
+def edit_manufacturer(request, pk):
+    """ 
+    Edit a manufacturer in the store
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only staff have access to this feature.')
+        return redirect(reverse('home'))
+
+    manufacturer = get_object_or_404(Manufacturer, pk=pk)  
+
+    if request.method == 'POST':
+        form = ManufacturerForm(request.POST,instance=manufacturer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'You have succesfully updated manufacturer {manufacturer.name}')
+            template_name = 'storeowners/manufacturer_and_category_list.html'
+            manufacturers = Manufacturer.objects.all()
+            categories = Category.objects.all()
+            context = {
+                'manufacturers': manufacturers,
+                'categories': categories,
+                'stop_toast_cart': True,
+            }
+            return render(request, template_name, context)
+        else:
+            messages.error(request, f'Failed to update manufacturer. Please check your data is valid')
+    else:    
+        form = ManufacturerForm(instance=manufacturer)
+        messages.info(request, f'You are currently editing {manufacturer.name}')
+
+    template = 'storeowners/edit_manufacturer.html'
+    context = {
+        'form': form,
+        'manufacturer': manufacturer,
+        'stop_toast_cart': True,
+    }
+    return render(request, template, context)
+
+
+class DeleteManufacturer(TemplateView):
+    """
+    Delete a manufacturer from the store
+    """    
+    def get(self, request, pk):
+
+        manufacturer = get_object_or_404(Manufacturer, pk=pk)
+
+        if request.user.is_superuser:        
+          template_name = 'storeowners/delete_manufacturer.html'
+          messages.info(request, f'You are currently deleting {manufacturer.name}')
+          context = {
+              'manufacturer': manufacturer,
+              'stop_toast_cart': True,
+              }
+          return render(request, template_name, context)
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('stock_management'))
+
+    def post(self, request, pk): 
+        if request.user.is_superuser:        
+            manufacturer = get_object_or_404(Manufacturer, pk=pk)
+            manufacturer.delete()
+            messages.success(request, 'You have successfully deleted your manufacturer.')        
+            template_name = 'storeowners/manufacturer_and_category_list.html'
+            manufacturers = Manufacturer.objects.all()
+            categories = Category.objects.all()
+            context = {
+                'manufacturers': manufacturers,
+                'categories': categories,
+                'stop_toast_cart': True,
+            }
+            return render(request, template_name, context)
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('stock_management'))
+        
+
+@login_required
+def add_category(request):
+    """ 
+    Add a category to the store
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only staff have access to this feature.')
+        return redirect(reverse('stock_management'))
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your category has been succesfully added.')
+            template_name = 'storeowners/manufacturer_and_category_list.html'
+            manufacturers = Manufacturer.objects.all()
+            categories = Category.objects.all()
+            context = {
+                'manufacturers': manufacturers,
+                'categories': categories,
+                'stop_toast_cart': True,
+            }
+            return render(request, template_name, context)
+                
+        else:
+            messages.error(request, 'Failed to add category. Please check your form details.')
+    else:
+        form = ManufacturerForm()
+        template = 'storeowners/add_category.html'
+        context = {
+            'form': form,
+            'stop_toast_cart': True,
+        }
+        return render(request, template, context)
+
+@login_required
+def edit_category(request, pk):
+    """ 
+    Edit a category in the store
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only staff have access to this feature.')
+        return redirect(reverse('stock_management'))
+
+    category = get_object_or_404(Category, pk=pk)  
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'You have succesfully updated category {category.name}')
+            template_name = 'storeowners/manufacturer_and_category_list.html'
+            manufacturers = Manufacturer.objects.all()
+            categories = Category.objects.all()
+            context = {
+                'manufacturers': manufacturers,
+                'categories': categories,
+                'stop_toast_cart': True,
+            }
+            return render(request, template_name, context)
+        else:
+            messages.error(request, f'Failed to update category. Please check your data is valid')
+    else:    
+        form = CategoryForm(instance=category)
+        messages.info(request, f'You are currently editing {category.name}')
+
+        template_name = 'storeowners/edit_category.html'
+        context = {
+            'form': form,
+            'category': category,
+            'stop_toast_cart': True,
+        }
+        return render(request, template_name , context)
+
+
+class DeleteCategory(TemplateView):
+    """
+    Class based view to Delete a category from the store, 
+    used to render confirmation page prior to deleting
+    """    
+    def get(self, request, pk):
+
+        category = get_object_or_404(Category, pk=pk)
+
+        if request.user.is_superuser:        
+          template_name = 'storeowners/delete_category.html'
+          messages.info(request, f'You are currently deleting {category.name}')
+          context = {
+              'category': category,
+              'stop_toast_cart': True,
+              }
+          return render(request, template_name, context)
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('stock_management'))
+
+    def post(self, request, pk): 
+        if request.user.is_superuser:        
+            category = get_object_or_404(Category, pk=pk)
+            category.delete()
+            messages.success(request, 'You have successfully deleted your category.')        
+            template_name = 'storeowners/manufacturer_and_category_list.html'
+            manufacturers = Manufacturer.objects.all()
+            categories = Category.objects.all()
+            context = {
+                'manufacturers': manufacturers,
+                'categories': categories,
+                'stop_toast_cart': True,
+            }
+            return render(request, template_name, context)
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('stock_management'))
+        
+  
+
+
+

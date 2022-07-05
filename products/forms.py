@@ -24,22 +24,17 @@ class ProductForm(forms.ModelForm):
 
 
 
-# class ManufacturerForm(forms.ModelForm):
+class ManufacturerForm(forms.ModelForm):
 
-#     class meta:
-#         models = Manufacturer
-#         fields = '__all__'
+    class Meta:
+        model = Manufacturer
+        fields = '__all__'
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     makes = Manufacturer.objects.all()
-    #     friendly_names = [(c.id, c.get_friendly_name()) for m in makes]
+    
+class CategoryForm(forms.ModelForm):
 
-    #     self.fields['Manufacturer'].choices = friendly_names
+    class Meta:
+        model = Category
+        fields = '__all__'
 
-# class CategoryForm(forms.ModelForm):
-
-#     class meta:
-#         models = Category
-#         fields = '__all__'
-
+    
