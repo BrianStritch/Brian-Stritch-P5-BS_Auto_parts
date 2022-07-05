@@ -90,7 +90,7 @@
         <div class="card newsletter-box">
             <div class="card-body text-center newsletter-box">
                 <p>Signup to our monthly newsletter</p>
-                <form class="mt-3" method="POST" id="newsletter" action="{% url 'newsletter' %}">
+                <form class="mt-3" method="POST" id="newsletter-lg" action="{% url 'newsletter' %}">
                     {% csrf_token %}
                     {{ form }}
                     <button type="submit" class="btn btn-outline-bs rounded-2 float-right text-uppercase"><strong>SUBMIT</strong></button>

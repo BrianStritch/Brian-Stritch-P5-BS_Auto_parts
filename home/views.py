@@ -35,7 +35,7 @@ def home(request):
             products = products.filter(queries)
 
         current_sorting = f'{sort}_{direction}'
-
+        
         context = {
         'newsletter_form':newsletter_form,
         'products': products,

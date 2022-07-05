@@ -1,24 +1,30 @@
-# FINE-WINE-N-DINE @ NANNY'S
+# BRIAN STRITCH P5 - BS_AUTO_PARTS
 ## Created and developed by Brian Stritch
 <hr>
 
-FINE-WINE-N-DINE is a web application based on aPublic house and restaurant "Nanny's of Duleek"  located in Duleek, County Meath, Ireland, with a state of the art restaurant "Fine-wine-n-dine", sports bar, cocktail and wine bar and accomodation to come in the very near future.
+At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) is an e-commerce web application and store based on a fictional auto parts and motorsport parts store. [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) consists of an online shop that caters for the average motorist as much as the motorsport enthusiast. The application is fully functinal and allows a purchase to be made with a test Credit card number to display its functionality.
+<br>
+<br>
+At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) our members can sign-up and login to create a personal profile and can manage their credentials in the user profile page and when signed up can avail of features such as the members forum, where members can discuss topics, have the ability to  comment on existing posts or create their own posts. Users also have the ability to like other users posts and comments.
+<br> 
 
-The purpose of this web application is to showcase the Public house "Nanny's of Duleek" and restaurant "Fine-wine-n-dine" and allow users to create and manage their bookings for the restaurant, which can hold a maximum of 60 guests in one sitting, and to allow bookings of up to 60 guests per hour during the opening hours. 
-
-Users can create a personal profile and can manage their credentials in the user profile page and when signed up can avail of the booking and reviews and comments areas of the website.
-
-Users can also create, read, comment and like reviews from past guests or leave a review voicing their opinions of the restaurant and public house. 
-
-The benefit of this application will allow users to create and manage bookings online and their bookings will be catered for on their chosen date and time. Users can create accounts and update edit and delete their accounts should they feel the need to do so.
+The benefit of this application will allow users to purchase the products they require and also offers the user access to information relating to their vehicles. Should the User wish to discuss any issues they may have they can create a post in the many different Topics and can have other members assistance to help them resolve any issues theymay have.The User has the functionality to edit or delete any posts or comments which they themselves have created.
 
 <hr>
 
-An image of the responsive design could not be obtained from Amiresponsive.com as this site has X-Frame Options set to Same Origin and therefore the AmIResponsive platform could not execute the task. Please see [**Responsiveness**](#responsiveness) section below.
+The users on this website can create reviews on their favourite prducts and can like or unlike a review reated by another member, and the user can also create comments on other reviews left by other members. The users can also like and unlike the comments left by other members.
+
+<br>
+
+###### Am_I_RESPONSIVE.COM 
+#### HOME PAGE
+![Am-i-responsive-image](static/readme_images/am-i-responsive-home.JPG "Example of the Home landing page view")
+#### SHOP INDEX PAGE 
+![Am-i-responsive-image](static/readme_images/am-i-responsive-index.JPG "Example of the shop Index page view")
 
 <hr>
 
-# View the live site [**here**](https://b-stritch-p4-fine-wine-n-dine.herokuapp.com/).
+# View the live site [**here**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/).
 
 <hr>
 

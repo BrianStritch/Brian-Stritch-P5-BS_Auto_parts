@@ -11,7 +11,8 @@ from .forms import NewsletterSignupForm
 
 class NewsletterSignup(TemplateView):
     def post(self, request):
-        form = NewsletterSignupForm(request.POST)        
+        form = NewsletterSignupForm(request.POST)
+        print('optin = ',form.instance.optin)        
         if form.instance.optin == 0 :
             try:
                 try:
@@ -159,6 +160,7 @@ class NewsletterSignup(TemplateView):
                     return render(request, template_name, context)
                
             except:
+                print('in final except')
                 messages.alert(request, 'You do not need to withdraw from\
                          our newsletter database as your email is not stored in our database')
                 form = NewsletterSignupForm()
@@ -168,5 +170,15 @@ class NewsletterSignup(TemplateView):
                 'form': form,
                 }
                 return render(request, template_name, context)
-            
-                
+
+           
+class NewsletterSubscribers(TemplateView):
+
+    def get(self, request):
+
+        list = Newsletter.objects.all()
+        template_name = 'newsletter/newsletter_list.html'
+        context = {
+            'list': list,
+        }
+        return render(request, template_name, context)
