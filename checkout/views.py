@@ -75,13 +75,12 @@ def checkout(request):
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
-            print( 'this is order print 1', order)
             order.save()
 
             for item_id, item_data in bag.items():                
                 try:
                     product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int ):
+                    if isinstance(item_data, int ):                      
                         order_line_item = OrderLineItem(
                             order=order,
                             product=product,

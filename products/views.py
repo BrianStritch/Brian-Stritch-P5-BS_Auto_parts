@@ -24,6 +24,7 @@ def all_products(request):
     sort = None
     direction = None
     sale = None
+    category = 1
     # current_sorting = None,None
 
     if request.GET:
@@ -48,6 +49,12 @@ def all_products(request):
         categories = request.GET['category'].split(',')
         products = products.filter(category__name__in=categories)
         categories = Category.objects.filter(name__in=categories)
+        if categories.count() <= 1:
+          category = request.GET['category']
+        else:
+          category = 1 
+        
+        
 
       if 'q' in request.GET:
         query = request.GET['q']
@@ -78,7 +85,7 @@ def all_products(request):
     
     favourites = Favourites.objects.all()
     
-
+    
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -89,6 +96,7 @@ def all_products(request):
       'current_categories': categories,
       'current_sorting': current_sorting,
       'favourites': favourites,
+      'category':category,
     }
     return render(request, 'products/products.html', context)
     

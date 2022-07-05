@@ -1,9 +1,8 @@
-"""
-    imports  -------------Reviews forms.py----------------------
-"""
-# third party imports
+# imports
+# 3rd party imports from django
 from django import forms
-# internal imports
+
+# internal imports from BS_Auto_parts
 from .models import Newsletter
 
 

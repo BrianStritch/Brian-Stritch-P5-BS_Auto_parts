@@ -1,11 +1,11 @@
-"""
-    imports  
-"""
-# third party imports
+# imports
+# 3rd party imports from django
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.shortcuts import reverse
+
+# internal imports from BS_Auto_parts
 from products.models import Product
 
 

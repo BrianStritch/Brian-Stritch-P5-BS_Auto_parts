@@ -1,7 +1,5 @@
-"""
-    imports  ------Reviews views.py----------------------
-"""
-# third party imports
+# imports
+# 3rd party imports from django
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.template.defaultfilters import slugify
@@ -10,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-# internal imports
+# internal imports from BS_Auto_parts
 from products.models import Product
 from .models import ProductReview, ProductReviewComment
 from .forms import ProductReviewCommentForm, CreateProductReviewForm
