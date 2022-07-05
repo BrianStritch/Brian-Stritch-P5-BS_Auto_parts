@@ -1,18 +1,16 @@
 
-# Imports
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 3rd party:
+# imports
+# 3rd party imports from django
 from django.test import TestCase
 from django.contrib.messages import get_messages
 from django.conf import settings
 from django.contrib.auth.models import User
 
-# Internal:
+# internal imports from BS_Auto_parts
 from checkout.models import Order
 from profiles.models import UserProfile
 from BS_Auto_Parts import urls
 from checkout import urls
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 class TestCheckoutViews(TestCase):

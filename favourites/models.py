@@ -1,5 +1,9 @@
+# imports
+# 3rd party imports from django
 from django.db import models
 from django.contrib.auth.models import User
+
+# internal imports from BS_Auto_parts
 from products.models import Product
 
 

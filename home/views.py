@@ -1,6 +1,10 @@
+# imports
+# 3rd party imports from django
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+
+# internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
 from newsletter.forms import NewsletterSignupForm
 
@@ -19,19 +23,23 @@ def home(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
         
         if 'make' in request.GET:
             query = request.GET['make']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
         
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
         current_sorting = f'{sort}_{direction}'
@@ -44,7 +52,8 @@ def home(request):
         'current_categories': categories,
         'current_sorting': current_sorting,
         }
-        return render(request, 'products/products.html', context)
+        return render(
+            request, 'products/products.html', context)
 
     else:
         """
@@ -74,7 +83,8 @@ def index(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -83,10 +93,12 @@ def index(request):
         if 'make' in request.GET:
             query = request.GET['make']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
         
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
         current_sorting = f'{sort}_{direction}'
@@ -112,4 +124,3 @@ def index(request):
             
         }
         return render(request,'home/index.html', context)    
-    

@@ -1,12 +1,9 @@
-# Imports
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 3rd party:
+# imports
+# 3rd party imports from django
 from django.test import TestCase
 
-# Internal:
+# internal imports from BS_Auto_parts
 from checkout.forms import OrderForm
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 class TestCheckoutForms(TestCase):

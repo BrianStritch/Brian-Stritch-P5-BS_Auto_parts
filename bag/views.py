@@ -1,6 +1,10 @@
+# imports
+# 3rd party imports from django
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.db.models import Q
+
+# internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
 
 

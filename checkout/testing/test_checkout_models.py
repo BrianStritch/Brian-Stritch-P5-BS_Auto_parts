@@ -1,15 +1,13 @@
-# Imports
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 3rd party:
+# imports
+# 3rd party imports from django
 from decimal import Decimal
 from django.test import TestCase
 
-# Internal:
+# internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
 from BS_Auto_Parts import settings
 from checkout.models import Order
 from checkout.models import OrderLineItem
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 class TestCheckoutModels(TestCase):

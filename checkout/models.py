@@ -1,15 +1,17 @@
-"""
-Models for checkout app
-"""
+# imports
+# 3rd party imports from django
 import uuid
 from django.db.models import Sum
 from django.db import models
 from django.conf import settings
+from django_countries.fields import CountryField
+
+# internal imports from BS_Auto_Parts
 from products.models import Product
 from profiles.models import UserProfile
 
 
-from django_countries.fields import CountryField
+
 
 
 class Order(models.Model):

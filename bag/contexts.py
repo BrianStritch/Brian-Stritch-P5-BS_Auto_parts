@@ -1,6 +1,10 @@
+# imports
+# 3rd party imports from django
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+
+# internal imports from BS_Auto_parts
 from products.models import Product
 
 

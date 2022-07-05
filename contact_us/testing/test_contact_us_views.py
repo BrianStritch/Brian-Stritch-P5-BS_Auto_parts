@@ -1,13 +1,11 @@
-# Imports
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 3rd party:
+# imports
+# 3rd party imports from django
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from django.test import TestCase
 
-# Internal:
+# internal imports from BS_Auto_parts
 from contact_us.models import ExistingUsersContactDetails, SiteUsersContactDetails
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 class TestProductViews(TestCase):

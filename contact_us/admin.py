@@ -1,5 +1,9 @@
+# imports
+# 3rd party imports from django
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
+
+# internal imports from BS_Auto_parts
 from .models import SiteUsersContactDetails, ExistingUsersContactDetails
 
 

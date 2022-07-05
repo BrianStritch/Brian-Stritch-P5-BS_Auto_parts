@@ -1,13 +1,16 @@
+# imports
+# 3rd party imports from django
 from django import forms
+
+# internal imports from BS_Auto_parts
 from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
-
-
 
 
 class CreateForumPostForm(forms.ModelForm):
     """
         Class based form to set the fields in
-        the Create Post model form for creating a new forum post
+        the Create Post model form for creating
+         a new forum post
     """
     class Meta:
         """
@@ -22,6 +25,7 @@ class CreateForumPostForm(forms.ModelForm):
             'topic',
             )
 
+
 class ForumPostCommentForm(forms.ModelForm):
     """
     Class based form to create new comments using the
@@ -35,9 +39,11 @@ class ForumPostCommentForm(forms.ModelForm):
         model = ForumPostComment
         fields = ('body',) 
 
+
 class ForumCategoryForm(forms.ModelForm):
     """
-    Class BAsed form to create a new forum category using the topics model
+    Class BAsed form to create a new forum 
+    category using the topics model
     """
     class Meta:
         """
@@ -50,7 +56,8 @@ class ForumCategoryForm(forms.ModelForm):
 
 class ForumTopicsForm(forms.ModelForm):
     """
-    Class BAsed form to create a new forum topic using the topics model
+    Class BAsed form to create a new forum 
+    topic using the topics model
     """
     class Meta:
         """

@@ -1,14 +1,17 @@
-
+# imports
+# 3rd party imports from django
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.db.models import Q
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+
+# internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
 from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
-from forum.forms import ForumCategoryForm, ForumPostCommentForm, ForumTopicsForm, CreateForumPostForm
-
+from forum.forms import ForumCategoryForm, ForumPostCommentForm
+from forum.forms import ForumTopicsForm, CreateForumPostForm
 
 
 def forum(request):
@@ -33,7 +36,8 @@ def forum(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "\
+                    You didn't enter any search criteria!")
                 return redirect(reverse('products'))
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -42,7 +46,8 @@ def forum(request):
         if 'make' in request.GET:
             query = request.GET['make']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "\
+                    You didn't enter any search criteria!")
                 return redirect(reverse('products'))
         
             queries = Q(name__icontains=query) | Q(description__icontains=query)
@@ -108,13 +113,10 @@ def PostDetail(request, pk, *args , **kwargs):
     if post.likes.filter(id=request.user.id).exists():
        post_liked = True
     
-    comments = post.forum_post_comments.filter(approved=True).order_by('created_on')
+    comments = post.forum_post_comments.filter(
+        approved=True
+        ).order_by('created_on')
     comments_liked = comments.filter(likes=True)
-    
-
-   
-
-
 
     query = comments.filter(name=request.user)
     commented = False
@@ -131,7 +133,7 @@ def PostDetail(request, pk, *args , **kwargs):
         }
     return render(request, template_name, context)
 
-###############################  Forum Categories  ####################################################
+###############################  Forum Categories  #######################
 class CreateCategory(TemplateView):
 
     def get(self, request):
@@ -139,7 +141,8 @@ class CreateCategory(TemplateView):
         Add a Category to the Forum
         """
         if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
+            messages.error(request, '\
+                Only staff have access to this feature.')
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all() 
             template_name = 'forum/forum.html'
@@ -166,7 +169,8 @@ class CreateCategory(TemplateView):
         form = ForumCategoryForm(request.POST)
         if form.is_valid():
             category = form.save()
-            messages.success(request, 'Your category has been succesfully added.')            
+            messages.success(request, '\
+                Your category has been succesfully added.')            
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all()
             template_name = 'forum/forum.html'
@@ -179,7 +183,8 @@ class CreateCategory(TemplateView):
             return render(request, template_name, context)
        
         else:
-            messages.error(request, 'Failed to add Category. Please check your form details.')
+            messages.error(request, '\
+                Failed to add Category. Please check your form details.')
             form = ForumCategoryForm()
             template = 'forum/create_forum_category.html'
             context = {
@@ -194,12 +199,12 @@ class EditCategory(TemplateView):
     """ 
     Edit a category in the forum
     """
-
     def get(self, request, pk): 
         category = get_object_or_404(ForumCategory, pk=pk) 
         form = ForumCategoryForm(instance=category)
         if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
+            messages.error(request, '\
+                Only staff have access to this feature.')
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all()  
             template_name = 'forum/forum.html'
@@ -211,7 +216,8 @@ class EditCategory(TemplateView):
                 }
             return render(request, template_name, context)
         template_name = 'forum/edit_forum_category.html'
-        messages.info(request, f'You are currently editing {category.name}')
+        messages.info(request, f'\
+            You are currently editing {category.name}')
         context = {
             'form':form,
             'forum': True,
@@ -224,7 +230,8 @@ class EditCategory(TemplateView):
         form = ForumCategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
-            messages.success(request, f'You have succesfully updated category {category.name}') 
+            messages.success(request, f'\
+                You have succesfully updated category {category.name}') 
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all()          
             template = 'forum/forum.html'
@@ -237,9 +244,12 @@ class EditCategory(TemplateView):
             return render(request, template, context)
 
         else:
-            messages.error(request, f'Failed to update category {category.name}. Please check your data is valid')        
+            messages.error(request, f'\
+                Failed to update category {category.name}. \
+                    Please check your data is valid')        
             form = ForumCategoryForm(instance=category)
-            messages.info(request, f'You are currently editing {category.name}')
+            messages.info(request, f'\
+                You are currently editing {category.name}')
             template = 'forum/edit_forum_category.html'
             context = {
                 'form': form,
@@ -256,7 +266,8 @@ class DeleteCategory(TemplateView):
     def get(self, request, pk):        
         category = get_object_or_404(ForumCategory, pk=pk)
         if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
+            messages.error(request, '\
+                Only staff have access to this feature.')
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all() 
             template_name = 'forum/forum.html'
@@ -268,7 +279,8 @@ class DeleteCategory(TemplateView):
                 }
             return render(request, template_name, context)
         template_name = 'forum/delete_forum_category.html'
-        messages.info(request, f'You are currently deleting {category.name}')
+        messages.info(request, f'\
+            You are currently deleting {category.name}')
         context = {
             'forum': True,
             'stop_toast_cart': True,
@@ -278,7 +290,8 @@ class DeleteCategory(TemplateView):
     def post(self, request, pk):
         category = get_object_or_404(ForumCategory, pk=pk)
         category.delete()
-        messages.success(request, 'You have successfully deleted the forum category')
+        messages.success(request, '\
+            You have successfully deleted the forum category')
         forum_categories = ForumCategory.objects.all()
         topics = ForumTopics.objects.all() 
         template_name = 'forum/forum.html'
@@ -290,7 +303,7 @@ class DeleteCategory(TemplateView):
             }
         return render(request, template_name, context)
     
-###############################  Forum Topics  ####################################################
+###############################  Forum Topics  ###################
 class CreateTopic(TemplateView):
 
     def get(self, request):
@@ -298,7 +311,8 @@ class CreateTopic(TemplateView):
         Add a Category topic to the Forum
         """
         if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
+            messages.error(request, '\
+                Only staff have access to this feature.')
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all() 
             template_name = 'forum/forum.html'
@@ -325,7 +339,8 @@ class CreateTopic(TemplateView):
         form = ForumTopicsForm(request.POST)
         if form.is_valid():
             topic = form.save()
-            messages.success(request, 'Your topic has been succesfully added.')            
+            messages.success(request, '\
+                Your topic has been succesfully added.')            
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all()
             template_name = 'forum/forum.html'
@@ -338,7 +353,8 @@ class CreateTopic(TemplateView):
             return render(request, template_name, context)
        
         else:
-            messages.error(request, 'Failed to add topic. Please check your form details.')
+            messages.error(request, '\
+                Failed to add topic. Please check your form details.')
             form = ForumTopicsForm()
             template = 'forum/create_forum_topic.html'
             context = {
@@ -353,7 +369,6 @@ class EditTopic(TemplateView):
     """ 
     Edit a category topic in the forum
     """
-
     def get(self, request, pk):
         topic = get_object_or_404(ForumTopics, pk=pk) 
         form = ForumTopicsForm(instance=topic)
@@ -383,7 +398,8 @@ class EditTopic(TemplateView):
         form = ForumTopicsForm(request.POST, instance=topic)
         if form.is_valid():
             form.save()
-            messages.success(request, f'You have succesfully updated topic {topic.name}') 
+            messages.success(request, f'\
+                You have succesfully updated topic {topic.name}') 
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all()          
             template = 'forum/forum.html'
@@ -396,9 +412,12 @@ class EditTopic(TemplateView):
             return render(request, template, context)
 
         else:
-            messages.error(request, f'Failed to update topic {topic.name}. Please check your data is valid')        
+            messages.error(request, f'\
+                Failed to update topic {topic.name}.\
+                     Please check your data is valid')        
             form = ForumCategoryForm(instance=category)
-            messages.info(request, f'You are currently editing {topic.name}')
+            messages.info(request, f'\
+                You are currently editing {topic.name}')
             template = 'forum/edit_forum_topic.html'
             context = {
                 'form': form,
@@ -415,7 +434,8 @@ class DeleteTopic(TemplateView):
     def get(self, request, pk):        
         topic = get_object_or_404(ForumTopics, pk=pk)
         if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
+            messages.error(request, '\
+                Only staff have access to this feature.')
             forum_categories = ForumCategory.objects.all()
             topics = ForumTopics.objects.all() 
             template_name = 'forum/forum.html'
@@ -427,7 +447,8 @@ class DeleteTopic(TemplateView):
                 }
             return render(request, template_name, context)
         template_name = 'forum/delete_forum_topic.html'
-        messages.info(request, f'You are currently deleting {topic.name}')
+        messages.info(request, f'\
+            You are currently deleting {topic.name}')
         context = {
             'forum': True,
             'stop_toast_cart': True,
@@ -437,7 +458,8 @@ class DeleteTopic(TemplateView):
     def post(self, request, pk):
         topic = get_object_or_404(ForumTopics, pk=pk)
         topic.delete()
-        messages.success(request, 'You have successfully deleted the forum topic')
+        messages.success(request, '\
+            You have successfully deleted the forum topic')
         forum_categories = ForumCategory.objects.all()
         topics = ForumTopics.objects.all() 
         template_name = 'forum/forum.html'
@@ -450,7 +472,7 @@ class DeleteTopic(TemplateView):
         return render(request, template_name, context)
     
 
-###############################  Forum Posts  ####################################################  
+###############################  Forum Posts  ########################## 
 class CreatePost(TemplateView):
 
     def get(self, request, pk):
@@ -478,12 +500,14 @@ class CreatePost(TemplateView):
             form.instance.author = request.user
             post = form.save()
             slug = post.topic.slug
-            messages.success(request, 'Your post has been sent to admin for approval and\
+            messages.success(request, '\
+                Your post has been sent to admin for approval and\
                 will appear shortly.') 
             return HttpResponseRedirect(reverse('topic_list', args=[slug]))
        
         else:
-            messages.error(request, 'Failed to add Post. Please check your form details.')
+            messages.error(request, '\
+                Failed to add Post. Please check your form details.')
             form = CreateForumPostForm()
             template = 'forum/create_forum_post.html'
             context = {
@@ -504,7 +528,8 @@ class EditPost(TemplateView):
         topic = post.topic
         form = CreateForumPostForm(instance=post)        
         template_name = 'forum/edit_forum_post.html'
-        messages.info(request, f'You are currently editing {post.title}')
+        messages.info(request, f'\
+            You are currently editing {post.title}')
         context = {
             'topic': topic,
             'post': post,
@@ -521,17 +546,22 @@ class EditPost(TemplateView):
         if form.is_valid():
             form.instance.status = 0           
             form.save()
-            messages.success(request, f'You have succesfully updated post {post.title}. \
-                Your post has been submitted to admin for approval and will appear shortly.') 
+            messages.success(request, f'\
+                You have succesfully updated post {post.title}. \
+                Your post has been submitted to admin\
+                     for approval and will appear shortly.') 
             return HttpResponseRedirect(reverse('topic_list', args=[slug]))
             
 
         else:
-            messages.error(request, f'Failed to update post {post.title}. Please check your data is valid') 
+            messages.error(request, f'\
+                Failed to update post {post.title}.\
+                     Please check your data is valid') 
             post = get_object_or_404(ForumPost, pk=pk) 
             topic = post.topic      
             form = CreateForumPostForm(instance=post)
-            messages.info(request, f'You are currently editing {post.title}')
+            messages.info(request, f'\
+                You are currently editing {post.title}')
             template = 'forum/edit_forum_post.html'
             context = {
                 'topic': topic,
@@ -550,7 +580,8 @@ class DeletePost(TemplateView):
     def get(self, request, pk):        
         post = get_object_or_404(ForumPost, pk=pk)
         template_name = 'forum/delete_forum_post.html'
-        messages.info(request, f'You are currently deleting {post.title}')
+        messages.info(request, f'\
+            You are currently deleting {post.title}')
         context = {
             'post': post,
             'forum': True,
@@ -562,7 +593,8 @@ class DeletePost(TemplateView):
         post = get_object_or_404(ForumPost, pk=pk)
         slug = post.title.slug
         post.delete()
-        messages.success(request, 'You have successfully deleted the forum post')
+        messages.success(request, '\
+            You have successfully deleted the forum post')
         return HttpResponseRedirect(reverse('topic_list', args=[slug]))
     
 
@@ -581,14 +613,16 @@ class PostLike(View):
         pk = post.pk
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
-            messages.success(request, 'You have succesfully un-liked this post.')
+            messages.success(request, '\
+                You have succesfully un-liked this post.')
         else:
             post.likes.add(request.user)
-            messages.success(request, 'You have succesfully liked this post.')
+            messages.success(request, '\
+                You have succesfully liked this post.')
 
         return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
-###############################  Forum Post Comments  ####################################################
+###############################  Forum Post Comments  ###################
 class CreateForumComment(TemplateView):
 
     def get(self, request, pk):
@@ -619,12 +653,14 @@ class CreateForumComment(TemplateView):
             form.instance.name = request.user.username
             form.instance.email = request.user.email
             post = form.save()
-            messages.success(request, 'Your comment has been sent to admin for approval and\
+            messages.success(request, '\
+                Your comment has been sent to admin for approval and\
                 will appear shortly.')            
             return HttpResponseRedirect(reverse('post_detail', args=[pk]))
        
         else:
-            messages.error(request, 'Failed to add Comment. Please check your form details.')
+            messages.error(request, '\
+                Failed to add Comment. Please check your form details.')
             form = ForumPostCommentForm()
             post = get_object_or_404(ForumPost, pk=pk)
             topic = post.topic
@@ -649,7 +685,8 @@ class EditForumComment(TemplateView):
         post = comment.post
         form = ForumPostCommentForm(instance=comment)        
         template_name = 'forum/edit_forum_comment.html'
-        messages.info(request, f'You are currently editing your comment.')
+        messages.info(request, f'\
+            You are currently editing your comment.')
         context = {
             'post': post,
             'comment': comment,
@@ -666,13 +703,16 @@ class EditForumComment(TemplateView):
         if form.is_valid():
             form.instance.approved = False           
             form.save()
-            messages.success(request, f'You have succesfully updated your comment. \
-                Your comment has been submitted to admin for approval and will appear shortly.') 
+            messages.success(request, f'\
+                You have succesfully updated your comment. \
+                Your comment has been submitted to admin for\
+                     approval and will appear shortly.') 
             
             return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
         else:
-            messages.error(request, f'Failed to update comment. Please check your data is valid') 
+            messages.error(request, f'\
+                Failed to update comment. Please check your data is valid') 
             comment = get_object_or_404(ForumPostComment, pk=pk) 
             post = comment.post      
             form = ForumPostCommentForm(instance=comment)
@@ -696,7 +736,8 @@ class DeleteForumComment(TemplateView):
         comment = get_object_or_404(ForumPostComment, pk=pk)
         post = comment.post
         template_name = 'forum/delete_forum_comment.html'
-        messages.info(request, f'You are currently deleting your comment')
+        messages.info(request, f'\
+            You are currently deleting your comment')
         context = {
             'post': post,
             'comment': comment,
@@ -709,7 +750,8 @@ class DeleteForumComment(TemplateView):
         comment = get_object_or_404(ForumPostComment, pk=pk)
         pk = comment.post.pk
         comment.delete()
-        messages.success(request, 'You have successfully deleted the forum comment')
+        messages.success(request, '\
+            You have successfully deleted the forum comment')
         return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
    
@@ -728,9 +770,11 @@ class CommentLike(View):
         pk = comment.post.pk
         if comment.likes.filter(id=request.user.id).exists():
             comment.likes.remove(request.user)
-            messages.success(request, 'You have succesfully un-liked this comment.')
+            messages.success(request, '\
+                You have succesfully un-liked this comment.')
         else:
             comment.likes.add(request.user)
-            messages.success(request, 'You have succesfully liked this comment.')
+            messages.success(request, '\
+                You have succesfully liked this comment.')
 
         return HttpResponseRedirect(reverse('post_detail', args=[pk]))

@@ -1,3 +1,5 @@
+# imports
+# 3rd party imports from django
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -13,8 +15,11 @@ class ForumCategory(models.Model):
         verbose_name_plural = 'Forum Categories'
 
     name = models.CharField(max_length=254)
+
     slug = models.SlugField(max_length=200, unique=True)
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    friendly_name = models.CharField(
+        max_length=254, null=True, blank=True)
     
 
     def __str__(self):
@@ -26,14 +31,14 @@ class ForumCategory(models.Model):
     def get_absolute_url(self):
         """
             function to define the reverse URL
-            for after a product review is created or edited
+            for after a forum category is created or edited
         """
         return reverse('forum')  
 
     def save(self, *args, **kwargs):
         """
             function to edit and save the slug
-            for after a review is created or edited
+            for after a category is created or edited
         """
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
@@ -44,10 +49,16 @@ class ForumTopics(models.Model):
     class Meta:
         verbose_name_plural = 'Forum Topics'
 
-    forum_category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE)
+    forum_category = models.ForeignKey(
+        ForumCategory, on_delete=models.CASCADE)
+
     name = models.CharField(max_length=254)
+
     slug = models.SlugField(max_length=200, unique=True)
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    friendly_name = models.CharField(
+        max_length=254, null=True, blank=True)
+
     summary = models.TextField(blank=True)
     
 
@@ -57,14 +68,14 @@ class ForumTopics(models.Model):
     def get_absolute_url(self):
         """
             function to define the reverse URL
-            for after a product review is created or edited
+            for after a forum topic is created or edited
         """
         return reverse('forum')  
 
     def save(self, *args, **kwargs):
         """
             function to edit and save the slug
-            for after a review is created or edited
+            for after a topic is created or edited
         """
         self.slug = slugify(self.name)
         super().save(*args, **kwargs)
@@ -76,15 +87,27 @@ class ForumTopics(models.Model):
 class ForumPost(models.Model):
 
     title = models.CharField(max_length=199)
+
     slug = models.SlugField(max_length=200)
-    author = models.ForeignKey(User,  on_delete=models.CASCADE)    
-    topic = models.ForeignKey(ForumTopics,null=True, blank=True,  on_delete=models.CASCADE)
+
+    author = models.ForeignKey(User,  on_delete=models.CASCADE) 
+
+    topic = models.ForeignKey(
+        ForumTopics,null=True, 
+        blank=True,  on_delete=models.CASCADE)
+
     updated_on = models.DateTimeField(auto_now=True)
+
     content = models.TextField()
+
     summary = models.TextField(blank=True)
+
     created_on = models.DateTimeField(auto_now_add=True)
+
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='forum_post_likes', blank=True)
+
+    likes = models.ManyToManyField(
+        User, related_name='forum_post_likes', blank=True)
 
     
     class Meta:
@@ -97,14 +120,14 @@ class ForumPost(models.Model):
     def get_absolute_url(self):
         """
             function to define the reverse URL
-            for after a product review is created or edited
+            for after a forum post is created or edited
         """
         return reverse('forum')  
 
     def save(self, *args, **kwargs):
         """
             function to edit and save the slug
-            for after a review is created or edited
+            for after a post is created or edited
         """
         self.slug = slugify(self.title,)
         super().save(*args, **kwargs)
@@ -118,19 +141,32 @@ class ForumPost(models.Model):
 
 class ForumPostComment(models.Model):
     
-    post = models.ForeignKey(ForumPost, on_delete=models.CASCADE, related_name='forum_post_comments')
+    post = models.ForeignKey(
+        ForumPost, on_delete=models.CASCADE, 
+        related_name='forum_post_comments')
+
     name = models.CharField(max_length=80)
+
     email = models.EmailField()
+
     body = models.TextField()
+
     created_on = models.DateTimeField(auto_now_add=True)
+
     approved = models.BooleanField(default=False)
-    likes = models.ManyToManyField(User, related_name='forum_comment_likes', blank=True)
+
+    likes = models.ManyToManyField(
+        User, related_name='forum_comment_likes', blank=True)
 
     class Meta:
         ordering = ['created_on']
         verbose_name_plural = 'Forum Post comments'
 
     def number_of_likes(self):
+        """
+        function to return the total number of likes
+        on a forum post comment
+        """
         return self.likes.count()
 
     def __str__(self):
