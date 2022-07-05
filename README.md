@@ -82,7 +82,7 @@ The users on this website can create reviews on their favourite prducts and can 
     3. [**Acknowledgements**](#acknowledgements)
 
 ## UX
-This project was designed to allow users to, through CRUD functionality, manage bookings for the restaurant, reviews from guests past present. In particular;
+This project was designed to allow users to, through CRUD functionality, , reviews from guests past present. In particular;
 - Allows users to create an account through the signup form
 - Allows users to edit their accounts details on their profile page
 - Allows users to delete their accounts from their profile page
