@@ -70,7 +70,7 @@
             <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                        <h2 class="logo-font text-black my-0"><strong>BS Auto Parts</strong></h2>
+                        <h1 class="logo-font text-black my-0"><strong>BS Auto Parts</strong></h1>
                     </a>
                 </div>
 
@@ -84,15 +84,15 @@
                 <div class="col-12 col-md-7 col-lg-6 my-auto py-1 py-lg-0 ">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         <li class="list-inline-item">
-                            <a class="nav-link white-hover" href="#" id="mobile-search" data-toggle="dropdown"
+                            <a class="nav-link white-hover" href="#" id="mobile-search-1" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <div class="text-center">
                                     <div><i class="fas fa-search fa-lg"></i></div>
                                     <p class="my-0">Search</p>
                                 </div>
                             </a>
-                            <div class="dropdown-menu border-0 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-                                <form class="form" method="GET" action="">
+                            <div class="dropdown-menu border-0 p-3 rounded-0 my-0" aria-labelledby="mobile-search-1">
+                                <form class="form" method="GET">
                                     <div class="input-group w-100">
                                         <input class="form-control border border-black rounded-0" type="text" name="q"
                                             placeholder="Search our site">
@@ -137,14 +137,14 @@
                             <div class="dropdown-menu ">
                                 {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}                                
-                                <a href="{% url 'store_management' %}" class=" dropdown-item">Store Management</a>
+                                <a href="{% url 'store_management' %}" class=" dropdown-item" aria-label="navigation link to store management page">Store Management</a>
                                 {% endif %}
-                                <a href="{% url 'profile' %}" class=" dropdown-item">My Profile</a>
-                                <a href="{% url 'view_favourites' %}" class=" dropdown-item">My Favourites</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                <a href="{% url 'profile' %}" class=" dropdown-item" aria-label="navigation link to users profile page">My Profile</a>
+                                <a href="{% url 'view_favourites' %}" class=" dropdown-item"  aria-label="navigation link to users favourite products page">My Favourites</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item" aria-label="navigation link to logout">Logout</a>
                                 {% else %}
-                                <a href="{% url 'sign_up' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'sign_up' %}" class="dropdown-item" aria-label="navigation link to user registration page">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item" aria-label="navigation link to login">Login</a>
                                 {% endif %}
                             </div>
                         </li>
@@ -152,7 +152,7 @@
                             <a href="{% url 'view_bag' %}"
                                 class="{%if grand_total %}text-info font-weight-bold {% else %} white-hover {% endif %} nav-link">
                                 <div class="text-center">
-                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                    <div><i class="fas fa-shopping-bag fa-lg"  aria-label="bag icon displaying shopping ag current total"></i></div>
                                     <p class="my-0">
                                         {% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
@@ -192,19 +192,19 @@
 
 
             </div>
-            <div class="bg-black row">
+            <div class="bg-black row" aria-label="page name header with breadcrumb list">
                 {% block page_header %}
                 {% endblock %}
             </div>
             
-            <div class="{% if forum %}d-none{% endif %} row text-center">
+            <div class="{% if forum %}d-none{% endif %} row text-center" aria-label="banner notifying customers of same day cut off delivery time">
                 <div class="col bg-black text-white">
                     <h4 class=" my-1 banner">
                         Same day dispatch on orders made before 3pm !
                     </h4>
                 </div>
             </div>
-            <div id="delivery-banner" class="{% if forum %}d-none{% endif %} row text-center">
+            <div id="delivery-banner" class="{% if forum %}d-none{% endif %} row text-center" aria-label="banner showing delivery threshold">
                 <div class="col bg-black text-white">
                     <h4 class=" my-1 banner">
                         Free delivery on orders over €{{free_delivery_threshold}}!
@@ -243,9 +243,7 @@
         {% endblock %}
 
         {% block postloadjs %}
-        <!-- <script type="text/javascript">
-            $('.toast').toast('show');
-        </script> -->
+        
         {% endblock %}
 
 
@@ -254,10 +252,10 @@
             <div class="container d-lg-flex py-4 row">
                 <div class="col-12 col-md-4 me-lg-auto text-center text-lg-start">
                     <div class="copyright">
-                        &copy; Copyright <strong><span><a href="{% url 'home' %}">BS_Auto_Parts</a></span></strong>. All Rights Reserved
+                        &copy; Copyright <strong><span><a href="{% url 'home' %}" aria-label="link to home page">BS_Auto_Parts</a></span></strong>. All Rights Reserved
                     </div>
                     <hr class="full-width">
-                    <div class="credits">Designed by <a href="https://github.com/BrianStritch" target="_blank">Brian Stritch</a>
+                    <div class="credits">Designed by <a href="https://github.com/BrianStritch" target="_blank" aria-label="link to developers github page">Brian Stritch</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 text-center text-lg-center pt-3 pt-lg-0 {% if bttoff %}d-none{% endif %}">                    
@@ -271,11 +269,11 @@
                 <div class="col-12 col-md-4 social-links text-center text-lg-right pt-3 pt-lg-0">
                     <h4 class="logo-text">Follow us on social media</h4>
                     <hr class="full-width">
-                    <a href="https://twitter.com/" target="_blank" class="twitter"><i class="fa fa-twitter-square"></i></a>
-                    <a href="https://facebook.com/BSAutoParts2022/" target="_blank" class="facebook"><i class="fa fa-facebook-square"></i></a>
-                    <a href="https://instagram.com/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="https://google.com/" target="_blank" class="google-plus"><i class="fa fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com/" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></i></a>
+                    <a href="https://twitter.com/" target="_blank" class="twitter" aria-label="Link to twitter"><i class="fa fa-twitter-square"></i></a>
+                    <a href="https://facebook.com/BSAutoParts2022/" target="_blank" class="facebook" aria-label="Link to facebook"><i class="fa fa-facebook-square"></i></a>
+                    <a href="https://instagram.com/" target="_blank" class="instagram" aria-label="Link to instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="https://google.com/" target="_blank" class="google-plus" aria-label="Link to google-plus"><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/" target="_blank" class="linkedin" aria-label="Link to linkedin"><i class="fa fa-linkedin"></i></i></a>
                 </div>
                 <hr class="full-width">
                 
@@ -285,7 +283,7 @@
         <!-- End Footer-->
 
     </section>
-
+    
     <!-- Template Main JS File -->
     <script src="/static/js/script.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
