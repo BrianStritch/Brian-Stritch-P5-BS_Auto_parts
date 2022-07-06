@@ -15,6 +15,7 @@ class ProductReviewAdmin(SummernoteModelAdmin):
         }
     list_display = (
         'title',
+        'product',
         'slug',
         'status',
         'created_on',
