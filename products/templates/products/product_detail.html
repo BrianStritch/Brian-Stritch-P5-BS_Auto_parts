@@ -182,112 +182,114 @@
         {% endif %} 
     </div>
     
-    {% if review  %}    
-        {% if review.status == 1 %}
-        <div class="row high-z product-review-outer ">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12 col-lg-4 product-review-details">
-                        <h3> <i>Title:</i>  {{ review.title }}</h3>                
-                        <p><i>Content:</i>  {{ review.content }}</p>                    
-                        <p><i>Created by :</i>  {{ review.author }} on {{ review.created_on }}</p> 
-                    </div>                    
-                    <div class="col-12 col-lg-8 comment-scroll">
-                        <h3 ><i>Comments:</i></h3>
-                        <strong>
-                            {% if comments %}                                
-                                {% for comment in comments %}
-                                    {% if comment.approved %}
-                                        <div class="card mt-2">
-                                            <div class="card-body high-z text-black">
-                                                <p>{{ comment.body }}</p>
-                                                <p ><i class="text-black">Comment by:</i> {{comment.name}} | <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
-                                                {% if request.user.username == comment.name %}
-                                                <div class="row">
-                                                    <div class="col">
-                                                       <small class="">
-                                                        {% if request.user.is_authenticated %}
-                                                            <a class="text-md-left {% if request.user.username == comment.name %} d-inline {% endif %}" href="{% url 'edit_review_comment' comment.pk %}">Edit Comment</a>
-                                                            <a class="text-md-left text-danger {% if request.user.userame == comment.name %} d-inline {% endif %}" href="{% url 'delete_review_comment' comment.pk  %}">Delete Comment</a>
-                                                        {% endif %}
-                                                        </small> 
+    {% if reviews  %}
+        {% for review in reviews %}   
+            {% if review.status == 1 %}
+            <div class="row high-z product-review-outer ">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 product-review-details">
+                            <h3> <i>Title:</i>  {{ review.title }}</h3>                
+                            <p><i>Content:</i>  {{ review.content }}</p>                    
+                            <p><i>Created by :</i>  {{ review.author }} on {{ review.created_on }}</p> 
+                        </div>                    
+                        <div class="col-12 col-lg-8 comment-scroll">
+                            <h3 ><i>Comments:</i></h3>
+                            <strong>
+                                {% if comments %}                                
+                                    {% for comment in comments %}
+                                        {% if comment.approved %}
+                                            <div class="card mt-2">
+                                                <div class="card-body high-z text-black">
+                                                    <p>{{ comment.body }}</p>
+                                                    <p ><i class="text-black">Comment by:</i> {{comment.name}} | <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
+                                                    {% if request.user.username == comment.name %}
+                                                    <div class="row">
+                                                        <div class="col">
+                                                        <small class="">
+                                                            {% if request.user.is_authenticated %}
+                                                                <a class="text-md-left {% if request.user.username == comment.name %} d-inline {% endif %}" href="{% url 'edit_review_comment' comment.pk %}">Edit Comment</a>
+                                                                <a class="text-md-left text-danger {% if request.user.userame == comment.name %} d-inline {% endif %}" href="{% url 'delete_review_comment' comment.pk  %}">Delete Comment</a>
+                                                            {% endif %}
+                                                            </small> 
+                                                        </div>
                                                     </div>
+                                                    
+                                                    {% endif %}
                                                 </div>
-                                                
-                                                {% endif %}
                                             </div>
-                                        </div>
-                                    {% else %}
-                                        {% if request.user.username == comment.name %}
-                                        <div class="row text-black high-z text-center">
-                                            <h4>Your comment is currently pending approval by admin and will appear shortly.</h4>
-                                        </div>
+                                        {% else %}
+                                            {% if request.user.username == comment.name %}
+                                            <div class="row text-black high-z text-center">
+                                                <h4>Your comment is currently pending approval by admin and will appear shortly.</h4>
+                                            </div>
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                            <div class="row text-black high-z text-center">
-                                <h4>This review has no comments yet!</h4>
-                            </div>
-                            {% endif %}                            
-                        </strong>
+                                    {% endfor %}
+                                {% else %}
+                                <div class="row text-black high-z text-center">
+                                    <h4>This review has no comments yet!</h4>
+                                </div>
+                                {% endif %}                            
+                            </strong>
+                        </div>
                     </div>
-                </div>
-                <!-- -------------- comment count and likes with like form input --------------------->
-                <div class="row product-review-details">
-                    <div class="col-2 col-lg-2">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            {{ total_comments }}
-                        </strong>
-                        {% endwith %}                    
-                        <strong>
-                            {% if user.is_authenticated %}
-                                <form class="d-inline like-btn-outline" action="{% url 'review_like' review.pk %}" method="POST">
-                                    {% csrf_token %}                                    
-                                    {% if liked %}
-                                        <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" id="like-btn">
-                                            <i class="fas fa-heart red"></i>
-                                        </button>
-                                    {% else %}
-                                        <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" >
-                                            <i class="far fa-heart white"></i>
-                                        </button>
-                                    {% endif %}    
-                                </form>
-                            {% else %}
-                                <span class="text-secondary"> <i class="far fa-heart white"></i> </span>                                
+                    <!-- -------------- comment count and likes with like form input --------------------->
+                    <div class="row product-review-details">
+                        <div class="col-2 col-lg-2">
+                            {% with comments.count as total_comments %}
+                            <strong class="text-secondary"><i class="far fa-comments"></i>
+                                {{ total_comments }}
+                            </strong>
+                            {% endwith %}                    
+                            <strong>
+                                {% if user.is_authenticated %}
+                                    <form class="d-inline like-btn-outline" action="{% url 'review_like' review.pk %}" method="POST">
+                                        {% csrf_token %}                                    
+                                        {% if liked %}
+                                            <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" id="like-btn">
+                                                <i class="fas fa-heart red"></i>
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" >
+                                                <i class="far fa-heart white"></i>
+                                            </button>
+                                        {% endif %}    
+                                    </form>
+                                {% else %}
+                                    <span class="text-secondary"> <i class="far fa-heart white"></i> </span>                                
+                                {% endif %}
+                                <span class="text-secondary">{{ review.number_of_likes }}</span>
+                            </strong>                        
+                        </div>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user == review.author %}
+                                <div class="col-7 col-lg-2 ">                    
+                                    <small class="ml-3">
+                                        <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
+                                        <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>
+                                    </small>
+                                </div> 
                             {% endif %}
-                            <span class="text-secondary">{{ review.number_of_likes }}</span>
-                        </strong>                        
-                    </div>
-                    {% if request.user.is_authenticated %}
-                        {% if request.user == review.author %}
-                            <div class="col-7 col-lg-2 ">                    
-                                <small class="ml-3">
-                                    <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
-                                    <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>
-                                </small>
-                            </div> 
                         {% endif %}
-                    {% endif %}
-                    <div class="col-4 col-lg-8">
-                        
-                        <small>                            
-                        <a class="text-md-right {% if commented %} d-none {% endif %}" 
-                                href="{% url 'review_comment' review.pk  %}">Create Comment</a>
-                        </small>
+                        <div class="col-4 col-lg-8">
+                            
+                            <small>                            
+                            <a class="text-md-right {% if commented %} d-none {% endif %}" 
+                                    href="{% url 'review_comment' review.pk  %}">Create Comment</a>
+                            </small>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {% else %}
-        {% if request.user == review.author %}
-        <div class="row text-black high-z text-center">
-            <h4>Your review is currently pending approval by admin and will appear shortly.</h4>
-        </div>
-        {% endif%}
-        {% endif%}
+            {% else %}
+            {% if request.user == review.author %}
+            <div class="row text-black high-z text-center">
+                <h4>Your review is currently pending approval by admin and will appear shortly.</h4>
+            </div>
+            {% endif%}
+            {% endif%}
+        {% endfor %}
     {% else %}
     <div class="row text-black high-z text-center">
         <h4>This Product has no reviews yet!</h4>
