@@ -234,7 +234,7 @@ class ReviewsComments(View):
     """
     template_name = "product_reviews/create_product_review_comment.html"
 
-    def get(self, request, slug):
+    def get(self, request, pk):
         """
         class based function to render the reviews detail page
         diaplaying the review details for the selected review
@@ -269,7 +269,7 @@ class ReviewsComments(View):
         else:
             form = ProductReviewCommentForm()
             queryset = ProductReview.objects.filter(status=1) 
-            review = get_object_or_404(queryset, slug=slug)
+            review = get_object_or_404(queryset, pk=pk)
             product = review.product
             comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
             liked = False
@@ -298,7 +298,7 @@ class ReviewsComments(View):
                 context
             )
 
-    def post(self, request, slug):
+    def post(self, request, pk):
         """
         POST request for processing the CommentForm
         data passed from the reviews details page and if
@@ -306,7 +306,7 @@ class ReviewsComments(View):
         """
         products = Product.objects.all()
         queryset = ProductReview.objects.filter(status=1) 
-        review = get_object_or_404(queryset, slug=slug) 
+        review = get_object_or_404(queryset, pk=pk) 
         comments = review.product_review_comments.filter(approved=True).order_by('created_on')
         liked = False
         try:

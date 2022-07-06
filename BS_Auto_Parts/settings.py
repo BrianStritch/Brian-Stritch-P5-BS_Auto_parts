@@ -128,21 +128,21 @@ WSGI_APPLICATION = 'BS_Auto_Parts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-        }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-# DATABASES = {
-#             'default': dj_database_url.parse('postgres://amfyoetxracwpl:ed98bc84a8b7473a5d045492dec8087b4fc323d21e9fb81a2e30ba6fe10f6a20@ec2-34-247-172-149.eu-west-1.compute.amazonaws.com:5432/d12q3oe0gh82f2')
+# if 'DATABASE_URL' in os.environ:
+#     DATABASES = {
+#             'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 #         }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+
+DATABASES = {
+            'default': dj_database_url.parse('postgres://amfyoetxracwpl:ed98bc84a8b7473a5d045492dec8087b4fc323d21e9fb81a2e30ba6fe10f6a20@ec2-34-247-172-149.eu-west-1.compute.amazonaws.com:5432/d12q3oe0gh82f2')
+        }
 
 
 # Password validation
