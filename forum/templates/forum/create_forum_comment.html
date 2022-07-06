@@ -7,10 +7,19 @@
 
 {% block page_header %}
 <div class="container header-container ">
-    <div class="row">
-        <div class="col">
-
-        </div>
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'forum' %}">Forum</a></li>
+              <li class="breadcrumb-item active text-white" aria-current="page">Create Comment</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-12">
+        <hr class="hr text-white">
+        <h4 class="text-center text-white"><strong>Forum Admin</strong></h4>
+        <hr class="hr text-white"> 
     </div>
 </div>
 {% endblock %}

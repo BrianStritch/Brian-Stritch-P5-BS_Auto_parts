@@ -86,16 +86,42 @@ def Topic_list(request, slug, *args , **kwargs ):
     A view to list all posts relating to the selected
     topic
     """ 
-    topic = get_object_or_404(ForumTopics, slug=slug)    
-    posts = ForumPost.objects.all()    
+    query = None
+    sort = None
+    direction = None
     
-    template_name = 'forum/topic_details.html'
-    context = {
-    'posts': posts,
-    'topic': topic,
-    'stop_toast_cart': True,
-    'forum':True,
-    }
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search criteria!")
+            return redirect(reverse('checkout'))
+
+        queries = Q(
+            name__icontains=query) | Q(description__icontains=query)
+        product = Product.objects.all()
+        products = product.filter(queries)
+
+        current_sorting = f'{sort}_{direction}'
+                
+        context = {
+        'products': products,
+        'search_term': query,
+        'current_sorting': current_sorting,
+        }
+        return render(
+            request, 'products/products.html', context)
+    else:
+        topic = get_object_or_404(ForumTopics, slug=slug)    
+        posts = ForumPost.objects.all()    
+        
+        template_name = 'forum/topic_details.html'
+        context = {
+        'posts': posts,
+        'topic': topic,
+        'stop_toast_cart': True,
+        'forum':True,
+        }
           
     return render(request, template_name, context)
 
@@ -104,34 +130,60 @@ def PostDetail(request, pk, *args , **kwargs):
     renders a view to display forum post detail relating
     to the specific post selected
     '''
+    query = None
+    sort = None
+    direction = None
     
-    post = get_object_or_404(ForumPost, pk= pk)
-    template_name = 'forum/post_detail.html'
-        
-    
-    post_liked = False
-    if post.likes.filter(id=request.user.id).exists():
-       post_liked = True
-    
-    comments = post.forum_post_comments.filter(
-        approved=True
-        ).order_by('created_on')
-    comments_liked = comments.filter(likes=True)
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search criteria!")
+            return redirect(reverse('checkout'))
 
-    query = comments.filter(name=request.user)
-    commented = False
-    if query:
-        commented = True
-    context = {
-        'comments_liked':comments_liked,
-        'post': post,
-        "commented": commented,
-        "post_liked": post_liked,
-        'comments': comments,
-        'stop_toast_cart': True,
-        'forum':True,
+        queries = Q(
+            name__icontains=query) | Q(description__icontains=query)
+        product = Product.objects.all()
+        products = product.filter(queries)
+
+        current_sorting = f'{sort}_{direction}'
+                
+        context = {
+        'products': products,
+        'search_term': query,
+        'current_sorting': current_sorting,
         }
-    return render(request, template_name, context)
+        return render(
+            request, 'products/products.html', context)
+    else:
+
+        post = get_object_or_404(ForumPost, pk= pk)
+        template_name = 'forum/post_detail.html'
+            
+        
+        post_liked = False
+        if post.likes.filter(id=request.user.id).exists():
+            post_liked = True
+        
+        comments = post.forum_post_comments.filter(
+            approved=True
+            ).order_by('created_on')
+        comments_liked = comments.filter(likes=True)
+
+        query = comments.filter(name=request.user)
+        commented = False
+        if query:
+            commented = True
+        context = {
+            'comments_liked':comments_liked,
+            'post': post,
+            "commented": commented,
+            "post_liked": post_liked,
+            'comments': comments,
+            'stop_toast_cart': True,
+            'forum':True,
+            }
+        return render(request, template_name, context)
 
 ###############################  Forum Categories  #######################
 class CreateCategory(TemplateView):
@@ -140,32 +192,82 @@ class CreateCategory(TemplateView):
         """ 
         Add a Category to the Forum
         """
-        if not request.user.is_superuser:
-            messages.error(request, '\
-                Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all() 
-            template_name = 'forum/forum.html'
-            context = {                
-                'categories': forum_categories,
-                'topics': topics,
-                'forum': True,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            if not request.user.is_superuser:
+                messages.error(request, '\
+                    Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all() 
+                template_name = 'forum/forum.html'
+                context = {                
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+
+            form = ForumCategoryForm
+            template_name = 'forum/create_forum_category.html'
+
+            context = {
+                'form': form,
                 'stop_toast_cart': True,
-                }
+                'forum':True,
+            }
             return render(request, template_name, context)
 
-        form = ForumCategoryForm
-        template_name = 'forum/create_forum_category.html'
-
-        context = {
-            'form': form,
-            'stop_toast_cart': True,
-            'forum':True,
-        }
-        return render(request, template_name, context)
-
     def post(self, request):
+        query = None
+        sort = None
+        direction = None
         
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
         form = ForumCategoryForm(request.POST)
         if form.is_valid():
             category = form.save()
@@ -200,30 +302,56 @@ class EditCategory(TemplateView):
     Edit a category in the forum
     """
     def get(self, request, pk): 
-        category = get_object_or_404(ForumCategory, pk=pk) 
-        form = ForumCategoryForm(instance=category)
-        if not request.user.is_superuser:
-            messages.error(request, '\
-                Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all()  
-            template_name = 'forum/forum.html'
-            context = {                               
-                'categories': forum_categories,
-                'topics': topics,
+        uery = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            category = get_object_or_404(ForumCategory, pk=pk) 
+            form = ForumCategoryForm(instance=category)
+            if not request.user.is_superuser:
+                messages.error(request, '\
+                    Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all()  
+                template_name = 'forum/forum.html'
+                context = {                               
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            template_name = 'forum/edit_forum_category.html'
+            messages.info(request, f'\
+                You are currently editing {category.name}')
+            context = {
+                'form':form,
                 'forum': True,
                 'stop_toast_cart': True,
                 }
             return render(request, template_name, context)
-        template_name = 'forum/edit_forum_category.html'
-        messages.info(request, f'\
-            You are currently editing {category.name}')
-        context = {
-            'form':form,
-            'forum': True,
-            'stop_toast_cart': True,
-            }
-        return render(request, template_name, context)
 
     def post(self, request, pk):
         category = get_object_or_404(ForumCategory, pk=pk)
@@ -263,29 +391,55 @@ class DeleteCategory(TemplateView):
     """
     Delete a category in the forum
     """
-    def get(self, request, pk):        
-        category = get_object_or_404(ForumCategory, pk=pk)
-        if not request.user.is_superuser:
-            messages.error(request, '\
-                Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all() 
-            template_name = 'forum/forum.html'
-            context = {                                
-                'categories': forum_categories,
-                'topics': topics,
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:        
+            category = get_object_or_404(ForumCategory, pk=pk)
+            if not request.user.is_superuser:
+                messages.error(request, '\
+                    Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all() 
+                template_name = 'forum/forum.html'
+                context = {                                
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            template_name = 'forum/delete_forum_category.html'
+            messages.info(request, f'\
+                You are currently deleting {category.name}')
+            context = {
                 'forum': True,
                 'stop_toast_cart': True,
                 }
             return render(request, template_name, context)
-        template_name = 'forum/delete_forum_category.html'
-        messages.info(request, f'\
-            You are currently deleting {category.name}')
-        context = {
-            'forum': True,
-            'stop_toast_cart': True,
-            }
-        return render(request, template_name, context)
 
     def post(self, request, pk):
         category = get_object_or_404(ForumCategory, pk=pk)
@@ -310,29 +464,55 @@ class CreateTopic(TemplateView):
         """ 
         Add a Category topic to the Forum
         """
-        if not request.user.is_superuser:
-            messages.error(request, '\
-                Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all() 
-            template_name = 'forum/forum.html'
-            context = {                
-                'categories': forum_categories,
-                'topics': topics,
-                'forum': True,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            if not request.user.is_superuser:
+                messages.error(request, '\
+                    Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all() 
+                template_name = 'forum/forum.html'
+                context = {                
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+
+            form = ForumTopicsForm
+            template_name = 'forum/create_forum_topic.html'
+
+            context = {
+                'form': form,
                 'stop_toast_cart': True,
-                }
+                'forum':True,
+            }
             return render(request, template_name, context)
-
-        form = ForumTopicsForm
-        template_name = 'forum/create_forum_topic.html'
-
-        context = {
-            'form': form,
-            'stop_toast_cart': True,
-            'forum':True,
-        }
-        return render(request, template_name, context)
 
     def post(self, request):
         
@@ -370,28 +550,54 @@ class EditTopic(TemplateView):
     Edit a category topic in the forum
     """
     def get(self, request, pk):
-        topic = get_object_or_404(ForumTopics, pk=pk) 
-        form = ForumTopicsForm(instance=topic)
-        if not request.user.is_superuser:
-            messages.error(request, 'Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all()  
-            template_name = 'forum/forum.html'
-            context = {                               
-                'categories': forum_categories,
-                'topics': topics,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            topic = get_object_or_404(ForumTopics, pk=pk) 
+            form = ForumTopicsForm(instance=topic)
+            if not request.user.is_superuser:
+                messages.error(request, 'Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all()  
+                template_name = 'forum/forum.html'
+                context = {                               
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            template_name = 'forum/edit_forum_topic.html'
+            messages.info(request, f'You are currently editing {topic.name}')
+            context = {
+                'form':form,
                 'forum': True,
                 'stop_toast_cart': True,
                 }
             return render(request, template_name, context)
-        template_name = 'forum/edit_forum_topic.html'
-        messages.info(request, f'You are currently editing {topic.name}')
-        context = {
-            'form':form,
-            'forum': True,
-            'stop_toast_cart': True,
-            }
-        return render(request, template_name, context)
 
     def post(self, request, pk):
         topic = get_object_or_404(ForumTopics, pk=pk)
@@ -431,29 +637,55 @@ class DeleteTopic(TemplateView):
     """
     Delete a category in the forum
     """
-    def get(self, request, pk):        
-        topic = get_object_or_404(ForumTopics, pk=pk)
-        if not request.user.is_superuser:
-            messages.error(request, '\
-                Only staff have access to this feature.')
-            forum_categories = ForumCategory.objects.all()
-            topics = ForumTopics.objects.all() 
-            template_name = 'forum/forum.html'
-            context = {                                
-                'categories': forum_categories,
-                'topics': topics,
+    def get(self, request, pk): 
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:      
+            topic = get_object_or_404(ForumTopics, pk=pk)
+            if not request.user.is_superuser:
+                messages.error(request, '\
+                    Only staff have access to this feature.')
+                forum_categories = ForumCategory.objects.all()
+                topics = ForumTopics.objects.all() 
+                template_name = 'forum/forum.html'
+                context = {                                
+                    'categories': forum_categories,
+                    'topics': topics,
+                    'forum': True,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            template_name = 'forum/delete_forum_topic.html'
+            messages.info(request, f'\
+                You are currently deleting {topic.name}')
+            context = {
                 'forum': True,
                 'stop_toast_cart': True,
                 }
             return render(request, template_name, context)
-        template_name = 'forum/delete_forum_topic.html'
-        messages.info(request, f'\
-            You are currently deleting {topic.name}')
-        context = {
-            'forum': True,
-            'stop_toast_cart': True,
-            }
-        return render(request, template_name, context)
 
     def post(self, request, pk):
         topic = get_object_or_404(ForumTopics, pk=pk)
@@ -479,18 +711,44 @@ class CreatePost(TemplateView):
         """ 
         Add a Post to the Forum topic selected
         """
-        topic = get_object_or_404(ForumTopics, pk=pk)
-        id = topic.id
-        form = CreateForumPostForm
-        template_name = 'forum/create_forum_post.html'
+        query = None
+        sort = None
+        direction = None
         
-        context = {
-            'topic': topic,
-            'form': form,
-            'stop_toast_cart': True,
-            'forum':True,
-        }
-        return render(request, template_name, context)
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            topic = get_object_or_404(ForumTopics, pk=pk)
+            id = topic.id
+            form = CreateForumPostForm
+            template_name = 'forum/create_forum_post.html'
+            
+            context = {
+                'topic': topic,
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         
@@ -524,20 +782,46 @@ class EditPost(TemplateView):
     """
 
     def get(self, request, pk):
-        post = get_object_or_404(ForumPost, pk=pk)
-        topic = post.topic
-        form = CreateForumPostForm(instance=post)        
-        template_name = 'forum/edit_forum_post.html'
-        messages.info(request, f'\
-            You are currently editing {post.title}')
-        context = {
-            'topic': topic,
-            'post': post,
-            'form':form,
-            'forum': True,
-            'stop_toast_cart': True,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
             }
-        return render(request, template_name, context)
+            return render(
+                request, 'products/products.html', context)
+        else:
+            post = get_object_or_404(ForumPost, pk=pk)
+            topic = post.topic
+            form = CreateForumPostForm(instance=post)        
+            template_name = 'forum/edit_forum_post.html'
+            messages.info(request, f'\
+                You are currently editing {post.title}')
+            context = {
+                'topic': topic,
+                'post': post,
+                'form':form,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         post = get_object_or_404(ForumPost, pk=pk)
@@ -577,17 +861,43 @@ class DeletePost(TemplateView):
     """
     Delete a selected topic post in the forum
     """
-    def get(self, request, pk):        
-        post = get_object_or_404(ForumPost, pk=pk)
-        template_name = 'forum/delete_forum_post.html'
-        messages.info(request, f'\
-            You are currently deleting {post.title}')
-        context = {
-            'post': post,
-            'forum': True,
-            'stop_toast_cart': True,
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
             }
-        return render(request, template_name, context)
+            return render(
+                request, 'products/products.html', context)
+        else:      
+            post = get_object_or_404(ForumPost, pk=pk)
+            template_name = 'forum/delete_forum_post.html'
+            messages.info(request, f'\
+                You are currently deleting {post.title}')
+            context = {
+                'post': post,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         post = get_object_or_404(ForumPost, pk=pk)
@@ -629,19 +939,45 @@ class CreateForumComment(TemplateView):
         """ 
         Add a comment to the Forum Post Comment selected
         """
-        post = get_object_or_404(ForumPost, pk=pk)
-        topic = post.topic
-        form = ForumPostCommentForm()
-        template_name = 'forum/create_forum_comment.html'
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
 
-        context = {
-            'post': post,
-            'topic': topic,
-            'form': form,
-            'stop_toast_cart': True,
-            'forum':True,
-        }
-        return render(request, template_name, context)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            post = get_object_or_404(ForumPost, pk=pk)
+            topic = post.topic
+            form = ForumPostCommentForm()
+            template_name = 'forum/create_forum_comment.html'
+
+            context = {
+                'post': post,
+                'topic': topic,
+                'form': form,
+                'stop_toast_cart': True,
+                'forum':True,
+            }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         
@@ -681,20 +1017,46 @@ class EditForumComment(TemplateView):
     """
 
     def get(self, request, pk):
-        comment = get_object_or_404(ForumPostComment, pk=pk)
-        post = comment.post
-        form = ForumPostCommentForm(instance=comment)        
-        template_name = 'forum/edit_forum_comment.html'
-        messages.info(request, f'\
-            You are currently editing your comment.')
-        context = {
-            'post': post,
-            'comment': comment,
-            'form':form,
-            'forum': True,
-            'stop_toast_cart': True,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
             }
-        return render(request, template_name, context)
+            return render(
+                request, 'products/products.html', context)
+        else:
+            comment = get_object_or_404(ForumPostComment, pk=pk)
+            post = comment.post
+            form = ForumPostCommentForm(instance=comment)        
+            template_name = 'forum/edit_forum_comment.html'
+            messages.info(request, f'\
+                You are currently editing your comment.')
+            context = {
+                'post': post,
+                'comment': comment,
+                'form':form,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         comment = get_object_or_404(ForumPostComment, pk=pk)
@@ -732,19 +1094,45 @@ class DeleteForumComment(TemplateView):
     """
     Delete a selected topic post comment in the forum
     """
-    def get(self, request, pk):        
-        comment = get_object_or_404(ForumPostComment, pk=pk)
-        post = comment.post
-        template_name = 'forum/delete_forum_comment.html'
-        messages.info(request, f'\
-            You are currently deleting your comment')
-        context = {
-            'post': post,
-            'comment': comment,
-            'forum': True,
-            'stop_toast_cart': True,
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
             }
-        return render(request, template_name, context)
+            return render(
+                request, 'products/products.html', context)
+        else:       
+            comment = get_object_or_404(ForumPostComment, pk=pk)
+            post = comment.post
+            template_name = 'forum/delete_forum_comment.html'
+            messages.info(request, f'\
+                You are currently deleting your comment')
+            context = {
+                'post': post,
+                'comment': comment,
+                'forum': True,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
 
     def post(self, request, pk):
         comment = get_object_or_404(ForumPostComment, pk=pk)

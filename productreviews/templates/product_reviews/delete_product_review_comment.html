@@ -5,8 +5,16 @@
 {% block page_header %}
 <div class="container header-container ">
     <div class="row">
-        <div class="col">
-
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'product_detail' comment.product_review.product.pk %}">{{ comment.product_review.product.name }}</a></li>                    
+                    <li class="breadcrumb-item active text-white" aria-current="page">Delete Product review Comment</li>                       
+                </ol>
+              </nav>
         </div>
     </div>
 </div>
@@ -17,31 +25,27 @@
     <div class="overlay"></div>    
     <div class="container mb-2 high-z">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-4"></div>
+            <div class="col-12 col-lg-4 text-center">
                 <hr>
-                <h3 class="logo-font mb-4 high_z"></h3>
+                <h3 class="logo-font mb-4 high_z"> Delete Comment</h3>
                 <hr>
-                <h5 class="logo-font high-z text-md-left">Delete Comment posted by {{request.user}}</h5>
-                
+                <h5 class="logo-font high-z ">Delete Comment posted by {{request.user}}</h5>                
                 <form  method="POST" style="margin-top: 1.3em;">                 
                     {% csrf_token %}
                     <hr>
                     <strong>Are You Sure You Want To DELETE this comment?</strong>
                     <hr>
                     <button class="btn btn-outline-black rounded-0 btn-lg text-md-left">
-                   <a href="{% url 'products' %}">Cancel</a> 
+                   <a href="{% url 'product_detail' comment.product_review.product.id %}">Cancel</a> 
                     </button>
                     <button type="submit" class="btn btn-outline-black rounded-0 btn-lg text-md-right" >DELETE COMMENT !</button> 
                 </form> 
-                                                                     
-                    
-                
                 <hr>
             </div>
+            <div class="col-lg-4"></div>
         </div>
-        
     </div>
-    
 </div>
 
 {% endblock %}

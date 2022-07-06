@@ -59,6 +59,8 @@
                     <small class="ml-3">
                         <a href="{% url 'edit_product' product.id %}">Edit</a>                                            
                         <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        <br>
+                        <a href="{% url 'stock_management' %}" class="btn btn-lge text-white border mt-3 mb-3">Stock Management</a>
                     </small>
                     
                 {% endif %}
@@ -265,7 +267,6 @@
                                 <small class="ml-3">
                                     <a href="{% url 'edit_product_review' product.id %}">Edit Review</a>                                            
                                     <a class="text-danger" href="{% url 'delete_product_review' review.pk %}">Delete Review</a>
-                                    
                                 </small>
                             </div> 
                         {% endif %}

@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404, reverse
+# imports
+# 3rd party imports from django
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -6,9 +8,13 @@ from django.views.generic import TemplateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from .models import UserProfile
+from django.db.models import Q
+
+# internal imports from BS_Auto_parts
 from .forms import UserAccountDetailsForm, UserProfileForm, EditProfileForm
 from django.contrib.auth.forms import UserCreationForm
 from checkout.models import Order
+from products.models import Product
 
 
 
@@ -25,13 +31,39 @@ class SignUp(TemplateView):
         GET request for rendering the sign up
         page including the User account details form
         """
-        form = UserCreationForm()
-        return render(
-            request,
-            self.template_name,
-            {
-                'form': form,
-            })
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            form = UserCreationForm()
+            return render(
+                request,
+                self.template_name,
+                {
+                    'form': form,
+                })
 
     def post(self, request):
         """
@@ -60,55 +92,106 @@ class SignUp(TemplateView):
             return render(request, self.template_name, context)
 
 
-
 @login_required
 def profile(request):
     """
     A view to display a users profile
     """
-    profile = get_object_or_404(UserProfile, user=request.user)
+    query = None
+    sort = None
+    direction = None
     
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search criteria!")
+            return redirect(reverse('checkout'))
 
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated successfully')
-        else:
-            messages.error(request, 'Update failed. Please ensure form data is correct.')
-    else:
-        form = UserProfileForm(instance=profile)
+        queries = Q(
+            name__icontains=query) | Q(description__icontains=query)
+        product = Product.objects.all()
+        products = product.filter(queries)
 
-    orders = profile.orders.all()
-
-    template = 'profiles/profile.html'
-    context = {
-        'profile': profile,
-        'form': form,
-        'orders': orders,
-        'stop_toast_cart': True,
+        current_sorting = f'{sort}_{direction}'
+                
+        context = {
+        'products': products,
+        'search_term': query,
+        'current_sorting': current_sorting,
         }
+        return render(
+            request, 'products/products.html', context)
+    else:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        
 
-    return render(request, template, context)
+        if request.method == 'POST':
+            form = UserProfileForm(request.POST, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your profile has been updated successfully')
+            else:
+                messages.error(request, 'Update failed. Please ensure form data is correct.')
+        else:
+            form = UserProfileForm(instance=profile)
+
+        orders = profile.orders.all()
+
+        template = 'profiles/profile.html'
+        context = {
+            'profile': profile,
+            'form': form,
+            'orders': orders,
+            'stop_toast_cart': True,
+            }
+
+        return render(request, template, context)
 
 
 @login_required
 def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
+    query = None
+    sort = None
+    direction = None
+    
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search criteria!")
+            return redirect(reverse('checkout'))
 
-    messages.info(
-        request,(
-           f'This is a past confirmation for order number { order_number }. '
-            'A confirmation email was sent on the order date.' 
-        ))
+        queries = Q(
+            name__icontains=query) | Q(description__icontains=query)
+        product = Product.objects.all()
+        products = product.filter(queries)
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'from_profile': True,
-    }
+        current_sorting = f'{sort}_{direction}'
+                
+        context = {
+        'products': products,
+        'search_term': query,
+        'current_sorting': current_sorting,
+        }
+        return render(
+            request, 'products/products.html', context)
+    else:
+        order = get_object_or_404(Order, order_number=order_number)
 
-    return render(request, template, context)
+        messages.info(
+            request,(
+            f'This is a past confirmation for order number { order_number }. '
+                'A confirmation email was sent on the order date.' 
+            ))
+
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+            'from_profile': True,
+        }
+
+        return render(request, template, context)
 
 
 class EditProfile(TemplateView):
@@ -125,13 +208,39 @@ class EditProfile(TemplateView):
         GET request for rendering the edit user profile
         page including the edit profile form
         """
-        person = User.objects.get(pk=request.user.id)
-        form = EditProfileForm(instance=person)
-        context = {
-                'form': form,
-                'person': person,
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
             }
-        return render(request, self.template_name, context)
+            return render(
+                request, 'products/products.html', context)
+        else:
+            person = User.objects.get(pk=request.user.id)
+            form = EditProfileForm(instance=person)
+            context = {
+                    'form': form,
+                    'person': person,
+                }
+            return render(request, self.template_name, context)
 
     def post(self, request):
         """
@@ -162,11 +271,58 @@ class EditProfile(TemplateView):
             return render(request, self.template_name, context)
 
 
-class DeleteProfile(DeleteView):
+class DeleteProfile(TemplateView):
     """
         Class based view to delete the selected
-        user using the built in Django Deleteview.
-    """
-    model = User
-    template_name = 'profiles/delete_profile.html'
-    success_url = reverse_lazy('home')
+        review.
+    """   
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('home'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+                'products': products,
+                'search_term': query,
+                'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:     
+            user = get_object_or_404(User, pk=pk)
+            if request.user == user:        
+                template_name = 'profiles/delete_profile.html'
+                messages.info(request, f'You are currently deleting profile for {user.username}')
+                context = {
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            else:
+                messages.error(request, 'Only the User can have access to this feature.') 
+                return redirect(reverse('home'))
+
+    def post(self, request, pk): 
+        user = get_object_or_404(User, pk=pk)
+        if request.user == user: 
+          user.delete()
+          messages.success(request, 'You have successfully deleted your Account.')
+          return redirect(reverse('home'))    
+          
+        else:
+            messages.error(request, 'Only the User can have access to this feature.') 
+            return redirect(reverse('home'))
+        

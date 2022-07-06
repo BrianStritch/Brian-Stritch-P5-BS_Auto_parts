@@ -7,6 +7,8 @@ from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Q
+
 
 # internal imports from BS_Auto_parts
 from products.models import Product
@@ -27,13 +29,39 @@ class CreateProductReview(TemplateView):
         GET request for rendering the create review
         page including the CreateProductReviewForm
         """
-        product = get_object_or_404(Product, pk=pk)
-        form = CreateProductReviewForm()
-        context = {
-            'form': form,
-            'product': product,
-        }
-        return render(request, self.template_name, context)
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            product = get_object_or_404(Product, pk=pk)
+            form = CreateProductReviewForm()
+            context = {
+                'form': form,
+                'product': product,
+            }
+            return render(request, self.template_name, context)
 
     def post(self, request, pk):
         """
@@ -72,15 +100,41 @@ class EditProductReview(TemplateView):
     template_name = 'product_reviews/edit_product_review.html'
 
     def get(self, request, pk, *args, **kwargs):
-        product_review = get_object_or_404(ProductReview, product=pk)
-        product = get_object_or_404(Product, pk=pk)
-        form = CreateProductReviewForm(instance=product_review)
+        query = None
+        sort = None
+        direction = None
         
-        context = {
-            'form': form,
-            'product': product,
-        }
-        return render(request, self.template_name, context)
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            product_review = get_object_or_404(ProductReview, product=pk)
+            product = get_object_or_404(Product, pk=pk)
+            form = CreateProductReviewForm(instance=product_review)
+            
+            context = {
+                'form': form,
+                'product': product,
+            }
+            return render(request, self.template_name, context)
     
     def post(self, request, pk):
         """
@@ -113,14 +167,64 @@ class EditProductReview(TemplateView):
         return HttpResponseRedirect(reverse('products'))
 
 
-class DeleteProductReview(DeleteView):
+class DeleteProductReview(TemplateView):
     """
         Class based view to delete the selected
-        review using the built in Django Deleteview.
-    """
-    model = ProductReview
-    template_name = 'product_reviews/delete_product_review.html'
-    success_url = reverse_lazy('products')
+        review.
+    """   
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:     
+            review = get_object_or_404(ProductReview, pk=pk)
+            product = review.product
+            if request.user.is_superuser:        
+                template_name = 'product_reviews/delete_product_review.html'
+                messages.info(request, f'You are currently deleting {review.title}')
+                context = {
+                    'review': review,
+                    'product': product,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            else:
+                messages.error(request, 'Only staff have access to this feature.') 
+                return redirect(reverse('home'))
+
+    def post(self, request, pk): 
+        if request.user.is_superuser:        
+          product_review = get_object_or_404(ProductReview, pk=pk)
+          product_review.delete()
+          pk = product_review.product.id
+          messages.success(request, 'You have successfully deleted your review.')        
+          return redirect(reverse('product_detail', args=[pk]))
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('home'))
+        
 
 ###############################  Reviews Comments  ####################################################
 class ReviewsComments(View):
@@ -137,36 +241,62 @@ class ReviewsComments(View):
         and renders the commentform and displays all comments
         related to the specific review.
         """
-        form = ProductReviewCommentForm()
-        queryset = ProductReview.objects.filter(status=1) 
-        review = get_object_or_404(queryset, slug=slug) 
-        comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
-        liked = False
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
 
-        
-        
-        if review.likes.filter(id=request.user.id).exists():
-            liked = True
-            try:
-                comments = review.comments.filter(approved=True).order_by('created_on')
-            except:
-                comments = None
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            form = ProductReviewCommentForm()
+            queryset = ProductReview.objects.filter(status=1) 
+            review = get_object_or_404(queryset, slug=slug)
+            product = review.product
+            comments = review.product_review_comments.filter(approved=True).order_by('created_on') 
             liked = False
-            if review.likes.filter(id=self.request.user.id).exists():
+            
+            if review.likes.filter(id=request.user.id).exists():
                 liked = True
+                try:
+                    comments = review.comments.filter(approved=True).order_by('created_on')
+                except:
+                    comments = None
+                liked = False
+                if review.likes.filter(id=self.request.user.id).exists():
+                    liked = True
+            context = {
+                    "product": product,
+                    "review": review,
+                    "comments": comments,
+                    "commented": False,
+                    "liked": liked,
+                    'form': form,
+                }
 
-        return render(
-            request,
-            self.template_name,
-            {
-                "review": review,
-                "comments": comments,
-                "commented": False,
-                "liked": liked,
-                'form': form,
-
-            },
-        )
+            return render(
+                request,
+                self.template_name,
+                context
+            )
 
     def post(self, request, slug):
         """
@@ -232,15 +362,40 @@ class EditComment(TemplateView):
     template_name = 'product_reviews/edit_product_review_comment.html'
 
     def get(self, request, pk, *args, **kwargs):
-    
-        comment = get_object_or_404(ProductReviewComment, pk=pk)
-        form = ProductReviewCommentForm(instance=comment)
-        template_name = 'product_reviews/edit_product_review_comment.html'
-        context = {
-            'form': form,
-            'comment': comment,
-        }
-        return render(request, template_name, context)
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+            comment = get_object_or_404(ProductReviewComment, pk=pk)
+            form = ProductReviewCommentForm(instance=comment)
+            template_name = 'product_reviews/edit_product_review_comment.html'
+            context = {
+                'form': form,
+                'comment': comment,
+            }
+            return render(request, template_name, context)
     
     def post(self, request, pk):
         """
@@ -265,14 +420,76 @@ class EditComment(TemplateView):
         return HttpResponseRedirect(reverse('products'))
 
 
-class DeleteComment(DeleteView):
+class DeleteComment(TemplateView):
     """
         Class based view to delete the selected
-        comment using the built in Django Deleteview.
-    """
-    model = ProductReviewComment
-    template_name = 'product_reviews/delete_product_review_comment.html'
-    success_url = reverse_lazy('products')
+        review.
+    """   
+    def get(self, request, pk):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+                'products': products,
+                'search_term': query,
+                'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:     
+            comment = get_object_or_404(ProductReviewComment, pk=pk)
+            review = comment.product_review
+            product = review.product
+            if request.user.is_superuser:        
+                template_name = 'product_reviews/delete_product_review_comment.html'
+                messages.info(request, f'You are currently deleting {comment.name}')
+                context = {
+                    'comment': comment,
+                    'review': review,
+                    'product': product,
+                    'stop_toast_cart': True,
+                    }
+                return render(request, template_name, context)
+            else:
+                messages.error(request, 'Only staff have access to this feature.') 
+                return redirect(reverse('home'))
+
+    def post(self, request, pk): 
+        if request.user.is_superuser:        
+          comment = get_object_or_404(ProductReviewComment, pk=pk)
+          comment.delete()
+          pk = comment.product_review.product.id
+          messages.success(request, 'You have successfully deleted your comment.')
+          return HttpResponseRedirect(reverse('product_detail', args=[pk]))    
+          
+        else:
+            messages.error(request, 'Only staff have access to this feature.') 
+            return redirect(reverse('home'))
+        
+
+# class DeleteComment(DeleteView):
+#     """
+#         Class based view to delete the selected
+#         comment using the built in Django Deleteview.
+#     """
+#     model = ProductReviewComment
+#     template_name = 'product_reviews/delete_product_review_comment.html'
+#     success_url = reverse_lazy('products')
 
 
 class ReviewLike(View):

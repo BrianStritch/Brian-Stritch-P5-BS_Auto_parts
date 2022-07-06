@@ -9,22 +9,15 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
                     <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>
-                    
-                    
                     {% if category == 1 %} 
-                    <li class="breadcrumb-item active text-white" aria-current="page">Products</li>
-                    
+                    <li class="breadcrumb-item active text-white" aria-current="page">Products</li>                    
+                    {% elif q == 1 %}
+                    <li class="breadcrumb-item active text-white" aria-current="page">Products</li> 
                     {% else %}
-                                    
                     <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>
-                    <li class="breadcrumb-item active text-white" aria-current="page">{{ category }}</li>
-                    
-                    
-                    {% endif %}
-                    
-                    
-
-                                       
+                    <li class="breadcrumb-item active text-white" aria-current="page">{{ category }}{{q}}</li>
+                    {% endif %} 
+                    <p class="text-white">{{q}}</p>        
                 </ol>
               </nav>
         </div>

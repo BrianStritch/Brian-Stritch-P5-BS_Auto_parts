@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views import generic, View
+from django.db.models import Q
 
 # internal imports from BS_Auto_parts
 from products.models import Product
@@ -20,12 +21,39 @@ def view_favourites(request):
     A view that displays users favourites
     
     """
-    template_name = 'favourites/favourites.html'
-    favourites = Favourites.objects.filter(username=request.user)
-    context = {
-        'favourites': favourites,
-    }
-    return render(request, template_name, context)
+    query = None
+    sort = None
+    direction = None
+    
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(
+                request, "You didn't enter any search criteria!")
+            return redirect(reverse('checkout'))
+
+        queries = Q(
+            name__icontains=query) | Q(description__icontains=query)
+        product = Product.objects.all()
+        products = product.filter(queries)
+
+        current_sorting = f'{sort}_{direction}'
+                
+        context = {
+        'products': products,
+        'search_term': query,
+        'current_sorting': current_sorting,
+        }
+        return render(
+            request, 'products/products.html', context)
+    else:
+
+        template_name = 'favourites/favourites.html'
+        favourites = Favourites.objects.filter(username=request.user)
+        context = {
+            'favourites': favourites,
+        }
+        return render(request, template_name, context)
 
 
 class ToggleFavourite(View):

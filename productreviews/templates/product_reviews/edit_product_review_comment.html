@@ -8,8 +8,16 @@
 {% block page_header %}
 <div class="container header-container ">
     <div class="row">
-        <div class="col">
-
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
+                    <li class="breadcrumb-item"><a href="{% url 'product_detail' comment.product_review.product.pk %}">{{ comment.product_review.product.name }}</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page">Edit Product Review Comment</li>                       
+                </ol>
+              </nav>
         </div>
     </div>
 </div>
@@ -32,7 +40,7 @@
                 <form class="mt-3" method="POST" id="profile-update-form">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0">
+                    <a href="{% url 'product_detail' comment.product_review.product.pk %}" class="btn btn-outline-black rounded-0">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>

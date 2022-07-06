@@ -25,6 +25,7 @@ def all_products(request):
     direction = None
     sale = None
     category = 1
+    q=1
     # current_sorting = None,None
 
     if request.GET:
@@ -105,48 +106,74 @@ def product_detail(request, product_id):
     """ 
     A view to show individual product details
     """
-    products = get_object_or_404(Product, pk=product_id)
-    
-    liked = False
-    try:
+    query = None
+    sort = None
+    direction = None
+
+    if 'q' in request.GET:
+      query = request.GET['q']
+      if not query:
+        messages.error(
+        request, "You didn't enter any search criteria!")
+        return redirect(reverse('checkout'))
+
+      queries = Q(
+      name__icontains=query) | Q(description__icontains=query)
+      product = Product.objects.all()
+      products = product.filter(queries)
+
+      current_sorting = f'{sort}_{direction}'
+
+      context = {
+      'products': products,
+      'search_term': query,
+      'current_sorting': current_sorting,
+      }
+      return render(
+      request, 'products/products.html', context)
+    else:
+      products = get_object_or_404(Product, pk=product_id)
       
-      queryset = ProductReview.objects.all()  
-      review = get_object_or_404(queryset, product=product_id )
-      comments = review.product_review_comments.all().order_by('created_on') 
       liked = False
-      if review.likes.filter(id=request.user.id).exists():
-          liked = True
-      query = comments.filter(name=request.user)
-      commented = False
-      if query:
-        commented = True 
       try:
-        favourites = get_object_or_404(Favourites, products=products)
         
-      except:
-        favourites = False
-        
+        queryset = ProductReview.objects.all()  
+        review = get_object_or_404(queryset, product=product_id )
+        comments = review.product_review_comments.all().order_by('created_on') 
+        liked = False
+        if review.likes.filter(id=request.user.id).exists():
+            liked = True
+        query = comments.filter(name=request.user)
+        commented = False
+        if query:
+          commented = True 
+        try:
+          favourites = get_object_or_404(Favourites, products=products)
+          
+        except:
+          favourites = False
+          
 
-      context = {
-      'product': products,
-      "comments": comments,
-      'review': review,
-      "commented": commented,
-      "liked": liked,
-      'favourites': favourites,
-      }
-    except:
-      try:
-        favourites = get_object_or_404(Favourites, products=products)
-        
-      except:
-        favourites = False
-
-      context = {
+        context = {
         'product': products,
+        "comments": comments,
+        'review': review,
+        "commented": commented,
+        "liked": liked,
         'favourites': favourites,
-      }
-    return render(request, 'products/product_detail.html', context)
+        }
+      except:
+        try:
+          favourites = get_object_or_404(Favourites, products=products)
+          
+        except:
+          favourites = False
+
+        context = {
+          'product': products,
+          'favourites': favourites,
+        }
+      return render(request, 'products/product_detail.html', context)
 
 
 @login_required
@@ -154,26 +181,52 @@ def add_product(request):
   """ 
   Add a product to the store
   """
-  if not request.user.is_superuser:
-    messages.error(request, 'Only staff have access to this feature.')
-    return redirect(reverse('home'))
+  query = None
+  sort = None
+  direction = None
+  
+  if 'q' in request.GET:
+      query = request.GET['q']
+      if not query:
+          messages.error(
+              request, "You didn't enter any search criteria!")
+          return redirect(reverse('checkout'))
 
-  if request.method == 'POST':
-    form = ProductForm(request.POST, request.FILES)
-    if form.is_valid():
-      product = form.save()
-      messages.success(request, 'Your product has been succesfully added.')
-      return redirect(reverse('product_detail', args=[product.id ]))      
-    else:
-      messages.error(request, 'Failed to add product. Please check your form details.')
+      queries = Q(
+          name__icontains=query) | Q(description__icontains=query)
+      product = Product.objects.all()
+      products = product.filter(queries)
+
+      current_sorting = f'{sort}_{direction}'
+              
+      context = {
+      'products': products,
+      'search_term': query,
+      'current_sorting': current_sorting,
+      }
+      return render(
+          request, 'products/products.html', context)
   else:
-    form = ProductForm()
-  template = 'products/add_product.html'
-  context = {
-    'form': form,
-    'stop_toast_cart': True,
-  }
-  return render(request, template, context)
+    if not request.user.is_superuser:
+      messages.error(request, 'Only staff have access to this feature.')
+      return redirect(reverse('home'))
+
+    if request.method == 'POST':
+      form = ProductForm(request.POST, request.FILES)
+      if form.is_valid():
+        product = form.save()
+        messages.success(request, 'Your product has been succesfully added.')
+        return redirect(reverse('product_detail', args=[product.id ]))      
+      else:
+        messages.error(request, 'Failed to add product. Please check your form details.')
+    else:
+      form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+      'form': form,
+      'stop_toast_cart': True,
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -181,51 +234,103 @@ def edit_product(request, product_id):
   """ 
   Edit a product in the store
   """
-  if not request.user.is_superuser:
-    messages.error(request, 'Only staff have access to this feature.')
-    return redirect(reverse('home'))
+  query = None
+  sort = None
+  direction = None
+  
+  if 'q' in request.GET:
+      query = request.GET['q']
+      if not query:
+          messages.error(
+              request, "You didn't enter any search criteria!")
+          return redirect(reverse('checkout'))
 
-  product = get_object_or_404(Product, pk=product_id)  
+      queries = Q(
+          name__icontains=query) | Q(description__icontains=query)
+      product = Product.objects.all()
+      products = product.filter(queries)
 
-  if request.method == 'POST':
-    form = ProductForm(request.POST, request.FILES, instance=product)
-    if form.is_valid():
-      form.save()
-      messages.success(request, f'You have succesfully updated product {product.name}')
-      
-      return redirect(reverse('product_detail', args=[product.id ]))
-    else:
-      messages.error(request, f'Failed to update product. Please check your data is valid')
-  else:    
-    form = ProductForm(instance=product)
-    messages.info(request, f'You are currently editing {product.name}')
+      current_sorting = f'{sort}_{direction}'
+              
+      context = {
+      'products': products,
+      'search_term': query,
+      'current_sorting': current_sorting,
+      }
+      return render(
+          request, 'products/products.html', context)
+  else:
+    if not request.user.is_superuser:
+      messages.error(request, 'Only staff have access to this feature.')
+      return redirect(reverse('home'))
 
-  template = 'products/edit_product.html'
-  context = {
-    'form': form,
-    'product': product,
-    'stop_toast_cart': True,
-  }
-  return render(request, template, context)
+    product = get_object_or_404(Product, pk=product_id)  
+
+    if request.method == 'POST':
+      form = ProductForm(request.POST, request.FILES, instance=product)
+      if form.is_valid():
+        form.save()
+        messages.success(request, f'You have succesfully updated product {product.name}')
+        
+        return redirect(reverse('product_detail', args=[product.id ]))
+      else:
+        messages.error(request, f'Failed to update product. Please check your data is valid')
+    else:    
+      form = ProductForm(instance=product)
+      messages.info(request, f'You are currently editing {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+      'form': form,
+      'product': product,
+      'stop_toast_cart': True,
+    }
+    return render(request, template, context)
 
 
 class DeleteProduct(TemplateView):
     """
     Delete a product from the store
     """    
-    def get(self, request, product_id):        
-        product = get_object_or_404(Product, pk=product_id)
-        if request.user.is_superuser:        
-          template_name = 'products/delete_product.html'
-          messages.info(request, f'You are currently deleting {product.name}')
+    def get(self, request, product_id): 
+      query = None
+      sort = None
+      direction = None
+      
+      if 'q' in request.GET:
+          query = request.GET['q']
+          if not query:
+              messages.error(
+                  request, "You didn't enter any search criteria!")
+              return redirect(reverse('checkout'))
+
+          queries = Q(
+              name__icontains=query) | Q(description__icontains=query)
+          product = Product.objects.all()
+          products = product.filter(queries)
+
+          current_sorting = f'{sort}_{direction}'
+                  
           context = {
-              'product': product,
-              'stop_toast_cart': True,
-              }
-          return render(request, template_name, context)
-        else:
-            messages.error(request, 'Only staff have access to this feature.') 
-            return redirect(reverse('home'))
+          'products': products,
+          'search_term': query,
+          'current_sorting': current_sorting,
+          }
+          return render(
+              request, 'products/products.html', context)
+      else:      
+          product = get_object_or_404(Product, pk=product_id)
+          if request.user.is_superuser:        
+            template_name = 'products/delete_product.html'
+            messages.info(request, f'You are currently deleting {product.name}')
+            context = {
+                'product': product,
+                'stop_toast_cart': True,
+                }
+            return render(request, template_name, context)
+          else:
+              messages.error(request, 'Only staff have access to this feature.') 
+              return redirect(reverse('home'))
 
     def post(self, request, product_id): 
         if request.user.is_superuser:        

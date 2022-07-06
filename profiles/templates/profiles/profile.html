@@ -8,8 +8,13 @@
 {% block page_header %}
 <div class="container header-container ">
     <div class="row">
-        <div class="col">
-
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                  
+                    <li class="breadcrumb-item active text-white" aria-current="page">My Profile</li>                       
+                </ol>
+              </nav>
         </div>
     </div>
 </div>
@@ -39,7 +44,7 @@
                     <a href="{% url 'edit_profile' %}">Edit Profile</a> 
                     </button>
                     <button class="btn btn-outline-black rounded-0 btn-lg">
-                        <a class="text-danger" href="{% url 'delete_profile' user.id %}">Delete Account</a>
+                        <a class="text-danger" href="{% url 'delete_profile' user.pk %}">Delete Account</a>
                     </button>  
                     </div>
                 </div>

@@ -6,10 +6,13 @@ from django.contrib import messages
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.db.models import Q
+
 
 # internal imports from BS_Auto_parts
 from .models import Newsletter
 from .forms import NewsletterSignupForm
+from products.models import Product
 
 
 
@@ -219,12 +222,42 @@ class NewsletterSignup(TemplateView):
 
            
 class NewsletterSubscribers(TemplateView):
+    """
+    Class based tempate view to render a page displaying all
+    newsletter subscribers
+    """
 
     def get(self, request):
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
 
-        list = Newsletter.objects.all()
-        template_name = 'newsletter/newsletter_list.html'
-        context = {
-            'list': list,
-        }
-        return render(request, template_name, context)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+        else:
+
+            list = Newsletter.objects.all()
+            template_name = 'newsletter/newsletter_list.html'
+            context = {
+                'list': list,
+            }
+            return render(request, template_name, context)

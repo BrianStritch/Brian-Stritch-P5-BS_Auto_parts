@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
+from django.db.models import Q
 import stripe
 import json
 
@@ -111,9 +112,37 @@ def checkout(request):
                 ' Please double check your information.'
             ))
 
-
-
+   
+        
+ 
+        
     else:
+        query = None
+        sort = None
+        direction = None
+        
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request, "You didn't enter any search criteria!")
+                return redirect(reverse('checkout'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            product = Product.objects.all()
+            products = product.filter(queries)
+
+            current_sorting = f'{sort}_{direction}'
+                    
+            context = {
+            'products': products,
+            'search_term': query,
+            'current_sorting': current_sorting,
+            }
+            return render(
+                request, 'products/products.html', context)
+
         bag = request.session.get('bag', {})
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
