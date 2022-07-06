@@ -60,7 +60,7 @@ def home(request):
         A view to return the home page
         """
         
-        template = 'home/home.html'
+        template = 'home/index.html'
         home = True
         context = {
             'form':newsletter_form,
@@ -69,7 +69,7 @@ def home(request):
         }
         return render(request, template, context)
 
-def index(request):
+def shop(request):
     products = Product.objects.all()
     makes = Manufacturer.objects.all().order_by('name')
 
@@ -123,4 +123,4 @@ def index(request):
             'bttoff':True,
             
         }
-        return render(request,'home/index.html', context)    
+        return render(request,'home/shop.html', context)    
