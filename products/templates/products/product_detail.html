@@ -176,8 +176,7 @@
             {% else %}                
                 <div class=" high-z text-center">
                     <a href="{% url 'create_product_review' product.id %}" class="btn btn-outline-black rounded-0 mt-5 ">Create Review</a>
-                </div> 
-                
+                </div>
             {% endif %}      
         {% endif %} 
     </div>
@@ -245,16 +244,16 @@
                             <strong>
                                 {% if user.is_authenticated %}
                                     <form class="d-inline like-btn-outline" action="{% url 'review_like' review.pk %}" method="POST">
-                                        {% csrf_token %}                                    
-                                        {% if liked %}
+                                        {% csrf_token %}
+                                        {% if not review.likes %}
                                             <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" id="like-btn">
                                                 <i class="fas fa-heart red"></i>
-                                            </button>
+                                            </button>                                                                                  
                                         {% else %}
                                             <button type="submit" name="reviewpost_id" value="{{ review.pk }}" class="btn-like like-btn-outline" >
                                                 <i class="far fa-heart white"></i>
                                             </button>
-                                        {% endif %}    
+                                        {% endif %}                                        
                                     </form>
                                 {% else %}
                                     <span class="text-secondary"> <i class="far fa-heart white"></i> </span>                                

@@ -132,18 +132,18 @@ def product_detail(request, product_id):
       return render(
       request, 'products/products.html', context)
     else:
-      products = get_object_or_404(Product, pk=product_id)
-      print('inside else before try')
+      products = get_object_or_404(Product, pk=product_id)      
       liked = False
       try:
         
         queryset = ProductReview.objects.all()  
         reviews = get_object_or_404(queryset, product=product_id )
-        print(reviews)
-        comments = review.product_review_comments.all().order_by('created_on') 
+        comments = reviews.product_review_comments.all().order_by('created_on') 
         liked = False
-        if review.likes.filter(id=request.user.id).exists():
+        
+        if reviews.likes.filter(id=request.user.id).exists():
             liked = True
+        
         query = comments.filter(name=request.user)
         commented = False
         if query:
@@ -156,12 +156,12 @@ def product_detail(request, product_id):
           
 
         context = {
-        'product': products,
-        "comments": comments,
-        'reviews': reviews,
-        "commented": commented,
-        "liked": liked,
-        'favourites': favourites,
+          'product': products,
+          "comments": comments,
+          'reviews': reviews,
+          "commented": commented,
+          "liked": liked,
+          'favourites': favourites,
         }
       except:
         try:
