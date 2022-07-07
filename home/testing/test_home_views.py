@@ -14,7 +14,7 @@ class TestHomeViews(TestCase):
         """
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/home.html')
+        self.assertTemplateUsed(response, 'home/index.html')
     
     def test_get_shop_index_page(self):
         """
@@ -23,4 +23,4 @@ class TestHomeViews(TestCase):
         """
         response = self.client.get('/shop/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home/index.html')
+        self.assertTemplateUsed(response, 'home/shop.html')

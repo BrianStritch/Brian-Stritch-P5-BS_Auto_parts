@@ -310,7 +310,7 @@ class ManAndCatList(TemplateView):
         
             return render(request, template_name, context)
 
-login_required
+@login_required
 def add_manufacturer(request):
     """ 
     Add a manufacturer to the store

@@ -2,7 +2,7 @@
 ## Created and developed by Brian Stritch
 <hr>
 
-At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) is an e-commerce web application and store based on a fictional auto parts and motorsport parts store. At [** BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) consists of an online shop that caters for the average motorist as much as the motorsport enthusiast. The application is fully functinal and allows a purchase to be made with a test Credit card number to display its functionality.
+At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) is an e-commerce web application and store based on a fictional auto parts and motorsport parts store. [**BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) consists of an online shop that caters for the average motorist as much as the motorsport enthusiast. The application is fully functional and allows a purchase to be made with a test Credit card number to display its functionality.
 <br>
 <br>
 At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) our members can sign-up and login to create a personal profile and can manage their credentials in the user profile page and when signed up can avail of features such as the members forum, where members can discuss topics, have the ability to  comment on existing posts or create their own posts. Users also have the ability to like other users posts and comments.
@@ -130,51 +130,174 @@ A new user who does not have an account will have access to the homepage (index.
 Once logged in, the members will have access to the sites remaining functionality for creating reviews, commenting and liking reviews, the forum topics, categories, posts and comments and will allow the editing and deleting of reviews,comments and editing content on their personal profile. 
 
 In regards to the contact us messenging service, should an unregistered user wish to contact the administrator, a form is displayed with numerous fields such as the users address and personal details which is added to the database for future reference. A registed user has simply a message text box displayed as the users information will already be on file.
+
+<br>
+
+# USERS :
+        - There are two main user types,
+            - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
+            - A regular(shopper) user account has been set up with username/password of testuser/testpassword
+            - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
+            - For the expiry date, cvc and postal code please input 0424 242424
  
-###### Site registered user profile page view
-![User Profile](static/readme_images/users-account-info.JPG "Example of the users profile")
+Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
+
+Below is a list of views and descriptions ilustrating the different views and functionality available to the site user depending on thier status, ie, staff, regstered user or unregistered guest users, who all have different levels of access depending on thier status.
+
+# User types - Unregistered and Registered User Access:
+<br>
+
+## General site pages
+<hr>
+<br>
+
+##### Shop page view
+![Shop page view](media/readme/site_images/index-page.JPG "Example of the Shop page view")
+
+##### Shop page Products view
+![Shop page Products view](media/readme/site_images/products-page.JPG "Example of the Shop page Products view")
+
+##### Shop page Product review view
+![Shop page Product review view](media/readme/site_images/product-detail-page.JPG "Example of the Shop page Product review view")
+
+##### Registered User add to favourites toggle button
+![Registered User add to favourites toggle button](media/readme/site_images/product-added-to-favourites.JPG "Example of the Registered User add to favourites toggle button view")
+
+##### User shopping bag view
+![User shopping bag view](media/readme/site_images/shopping-bag.JPG "Example of the User shopping bag view")
+
+##### User checkout page view
+![User checkout page view](media/readme/site_images/checkout.JPG "Example of the User checkout page view")
+
+
+##### User checkout success page view
+![User checkout success page view](media/readme/site_images/checkout_success.JPG "Example of the User checkout success page view")
+
+##### Unregistered User contact us page view
+![Un-registered User contact us page view](media/readme/site_images/contact-us-form-anonymous-user.JPG "Example of the Un-registered User contact us page view")
+
+##### Registered User contact us page view
+![Registered User contact us page view](media/readme/site_images/contact-us-registered-users.JPG "Example of the Registered User contact us page view")
+
+##### Registered User log-in view
+![Registered User log-in view](media/readme/site_images/log-in.JPG "Example of the Registered User log-in view")
+
+##### Registered User log-out view
+![Registered User log-out view](media/readme/site_images/log-out.JPG "Example of the Registered User log-out view")
+
+##### User sign-up view
+![User sign-up view](media/readme/site_images/sign-up.JPG "Example of the User sign-up view")
+<br>
+
+## Registered User forum page views
+<hr>
+<br>
+
+##### Registered User forum page view
+![Registered User forum page view](media/readme/site_images/forum-page.JPG "Example of the Administration forum page view")
+
+##### Registered User forum page navigation
+![Registered User forum page view](media/readme/site_images/forum-nav.JPG "Example of the Administration forum page navigation")
+
+##### Registered User forum site navigation links
+![Registered User forum create category view](media/readme/site_images/forum-main-page-links.JPG "Example of the Administration forum create category view")
+
+##### Registered User forum topic post list view
+![Registered User forum topic list view](media/readme/site_images/forum-topic-page.JPG "Example of the Registered User forum  topic list view")
+##### Registered User forum topic post view
+![Registered User forum topic post view](media/readme/site_images/forum_post_details.JPG "Example of the Registered User forum topic post view")
+##### Registered User create forum topic post view
+![Registered User create forum topic post view](media/readme/site_images/create-forum-post-page.JPG "Example of the Registered User create forum topic post view")
+
+
+# User types - Admin Access:
+<hr>
+
+       
+    
+
+
+
+
+<!-- ###### Registered User forum page navigation
+![AdminisRegistered Usertration forum page view](media/readme/site_images/ "Example of the Administration forum page navigation")
+
+###### Registered User completed bookings view
+![Registered User completed bookings view](media/readme/site_images/ "Example of the admin completed pending view")
+###### Registered User  Forum navigation menu
+![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
+###### Registered User  Forum navigation menu
+![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
+
+###### Registered User  Forum navigation menu
+![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
+
+###### Registered user profile page view
+![Registered User Profile](static/readme_images/ "Example of the users profile") -->
+
+
+## General site pages
+<hr>
+<br>
+
+##### Administrators user menu
+![Administrators navigation menu](media/readme/site_images/admin-account-nav-menu.JPG "Example of the admin access profile navigation")
+
+##### Administration Store Management view
+![Administration Store Management view](media/readme/site_images/store_management.JPG "Example of the admin store management view")
+
+##### Administration stock control view
+![Administration stock control view](media/readme/site_images/stock_management.JPG "Example of the admin stock management view")
+
+##### Administration store manufacturers and categories menu list view
+![Administration store manufacturers and categories menu list view](media/readme/site_images/store_category_and_manufacturer_list.JPG "Example of the Administration store manufacturers and categories menu list view")
+
+##### Administration contact us list view
+![Administration contact us list view](media/readme/site_images//storeowners_contact_us_list.JPG "Example of the Administration contact us list view")
+
+##### Administration add product view
+![Administration add product view](media/readme/site_images/add-product-page.JPG "Example of the Administration add product view")
+
+##### Administration add category view
+![Administration add category view](media/readme/site_images/admin_shop_add_category.JPG "Example of the Administration add category view")
+
+##### Administration add manufacturer view
+![Administration add manufacturer view](media/readme/site_images/admin_shop_add_manufacturer.JPG "Example of the Administration add manufacturer view")
+
+##### Administration product likes button, edit, delete and stock management buttons on product detail view
+![Administration product likes button on product detail view](media/readme/site_images/admin-product-details.JPG "Example of the Administration product likes button on product detail view")
+
+##### Close up view of administration product likes button, edit, delete and stock management buttons on product detail view
+![Administration product likes button on product detail view](media/readme/site_images/admin-stock-management-button.JPG "Example of the Administration product likes button on product detail view")
+
+
+##### Admin user profile page view
+![User Profile](media/readme/site_images/my-account-user-details.JPG "Example of the users profile")
+<br>
+
+## Administrators forum page views
+<hr>
+<br>
+
+##### Administration forum page view
+![Administration forum page view](media/readme/site_images/admin_forum_main.JPG "Example of the Administration forum page view")
+
+##### Administration forum page navigation
+![Administration forum page view](media/readme/site_images/forum-admin-menu.JPG "Example of the Administration forum page navigation")
+
+##### Administration forum create category view
+![Administration forum create category view](media/readme/site_images/admin_forum_create_category.JPG "Example of the Administration forum create category view")
+
+##### Administration forum create topic view
+![Administration forum create topic view](media/readme/site_images/admin_forum_create_topic.JPG "Example of the Administration forum create topic view")
 
 Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
 <br>
-# User types
-- There are two main user types,
-    - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
-    - A regular(shopper) user account has been set up with username/password of testuser/testpassword
-    - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
-    - For the expiry date, cvc and postal code please input 0424 242424
+
+## User Stories
+<hr>
 <br>
-###### Administration bookings view
-![Administration bookings view](static/readme_images/admin-current-bookings.JPG "Example of the admin bookings view")
-###### Administration pending bookings view
-![Administration pending bookings view](static/readme_images/admin-pending-bookings.JPG "Example of the admin bookings pending view")
-###### Administration approved bookings view
-![Administration approved bookings view](static/readme_images/admin-approved-bookings.JPG "Example of the admin approved pending view")
-###### Administration completed bookings view
-![Administration completed bookings view](static/readme_images/admin-completed-bookings.JPG "Example of the admin completed pending view")
 
-
-###### Admin user profile page view
-![User Profile](static/readme_images/users-account-info.JPG "Example of the users profile")
-
-Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
-<br>
-# User types
-- There are two main user types,
-    - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
-    - A regular(shopper) user account has been set up with username/password of testuser/testpassword
-    - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
-    - For the expiry date, cvc and postal code please input 0424 242424
-<br>
-###### Administration bookings view
-![Administration bookings view](static/readme_images/admin-current-bookings.JPG "Example of the admin bookings view")
-###### Administration pending bookings view
-![Administration pending bookings view](static/readme_images/admin-pending-bookings.JPG "Example of the admin bookings pending view")
-###### Administration approved bookings view
-![Administration approved bookings view](static/readme_images/admin-approved-bookings.JPG "Example of the admin approved pending view")
-###### Administration completed bookings view
-![Administration completed bookings view](static/readme_images/admin-completed-bookings.JPG "Example of the admin completed pending view")
-
-### User Stories
 #### New Users
 - As a new user, I would like to be able to view information about the establishment so that I can decide whether to use their services or not
 - As a new user, I would like to be able to see reasons why I should create an account so that I can decide if I would like to become a members

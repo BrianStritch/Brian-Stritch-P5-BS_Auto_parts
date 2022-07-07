@@ -36,7 +36,7 @@ class NewsletterSignup(TemplateView):
                                     in to our newsletter.')
                         form = NewsletterSignupForm(request.POST)
                         blankform = NewsletterSignupForm()
-                        template_name = 'home/home.html'
+                        template_name = 'home/index.html'
                         context = {
                         'stop_toast_cart': True,
                         'form': blankform,
@@ -58,7 +58,7 @@ class NewsletterSignup(TemplateView):
                                 request, 'Your signup was unsuccessful, please try again.'
                                 )
                             form = NewsletterSignupForm(request.POST)
-                            template_name = 'home/home.html'
+                            template_name = 'home/index.html'
                             context = {
                             'stop_toast_cart': True,
                             'form': form,
@@ -133,7 +133,7 @@ class NewsletterSignup(TemplateView):
                         form = NewsletterSignupForm(request.POST)
                         form.save()
                         blankform = NewsletterSignupForm()
-                        template_name = 'home/home.html'
+                        template_name = 'home/index.html'
                         context = {
                         'stop_toast_cart': True,
                         'form': blankform,
@@ -148,7 +148,7 @@ class NewsletterSignup(TemplateView):
                     form = NewsletterSignupForm(request.POST)
                     form.save()
                     blankform = NewsletterSignupForm()
-                    template_name = 'home/home.html'
+                    template_name = 'home/index.html'
                     context = {
                     'stop_toast_cart': True,
                     'form': blankform,
@@ -158,7 +158,7 @@ class NewsletterSignup(TemplateView):
                 messages.error(request, '\
                     Your signup was un-successful. Please try again.')
                 form = NewsletterSignupForm(request.POST)
-                template_name = 'home/home.html'
+                template_name = 'home/index.html'
                 context = {
                 'stop_toast_cart': True,
                 'form': form,
@@ -190,7 +190,7 @@ class NewsletterSignup(TemplateView):
                              )
                                         
                     blankform = NewsletterSignupForm()
-                    template_name = 'home/home.html'
+                    template_name = 'home/index.html'
                     context = {
                     'stop_toast_cart': True,
                     'form': blankform,
@@ -202,7 +202,7 @@ class NewsletterSignup(TemplateView):
                          our newsletter database as your email is not\
                              stored in our database2')
                 form = NewsletterSignupForm()
-                template_name = 'home/home.html'
+                template_name = 'home/index.html'
                 context = {
                 'stop_toast_cart': True,
                 'form': form,
@@ -213,7 +213,7 @@ class NewsletterSignup(TemplateView):
             messages.error(request, 'there was a problem with the your data,\
                  please try again.')
             form = NewsletterSignupForm()
-            template_name = 'home/home.html'
+            template_name = 'home/index.html'
             context = {
             'stop_toast_cart': True,
             'form': form,

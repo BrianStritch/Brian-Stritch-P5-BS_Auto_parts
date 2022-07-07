@@ -71,7 +71,7 @@ class ContactUs(TemplateView):
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.')            
-            template_name = 'home/home.html' 
+            template_name = 'home/index.html' 
             context = {
                 'stop_toast_cart': True,
                 'home': True,
@@ -124,7 +124,7 @@ class SimpleContactUs(TemplateView):
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.') 
-            template_name = 'home/home.html' 
+            template_name = 'home/index.html' 
             context = {
                 'stop_toast_cart': True,
                 'home': True,
@@ -211,7 +211,7 @@ class ExistingUsersContactUs(TemplateView):
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.')            
-            template_name = 'home/home.html' 
+            template_name = 'home/index.html' 
             context = {
                 'stop_toast_cart': True,
                 'home': True,
