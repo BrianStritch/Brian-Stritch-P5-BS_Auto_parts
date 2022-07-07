@@ -7,6 +7,8 @@ from django.db.models.functions import Lower
 from django.db.models import Q
 from django.views.generic import TemplateView, UpdateView, DeleteView
 from django.views import generic, View
+from django.contrib.auth.decorators import login_required
+
 
 # internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
@@ -15,6 +17,7 @@ from contact_us.models import ExistingUsersContactDetails, SiteUsersContactDetai
 
 
 class StoreManagement(TemplateView):
+
     def get(self, request):
         query = None
         sort = None

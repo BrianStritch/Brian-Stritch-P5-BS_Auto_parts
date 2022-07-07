@@ -136,21 +136,41 @@ class Product_detail(TemplateView):
         return render(
         request, 'products/products.html', context)
       else:
-                  
-            # review = get_object_or_404(ProductReview, product=product_id)
-            product = get_object_or_404(Product, pk=product_id)
-            reviews = ProductReview.objects.filter(product=product).order_by('-created_on')            
+        products = get_object_or_404(Product, pk=product_id)    # gets the product  
+        liked = False
+        count = ProductReview.objects.filter(product=product_id, status=1).count() #counts published reviews
+        print('count start', count)
+        if count == 1 : # if published reviews == 1
+          review_length = True # sets bool for template to display singular occurrance
+          product = get_object_or_404(Product, pk=product_id)
+          review = get_object_or_404(ProductReview, product=product)
+          print('review =', review)
           
-            # if review.likes.filter(id=request.user.id).exists():
-            #     liked = True
+          nancount = ProductReviewComment.objects.filter(product_review=review).count()
+          print('nancount =', nancount)
+          # comments = None
+          if nancount <= 1:
+            print('nancount == 1')
+            queryset = ProductReview.objects.filter(status=1)
+            print('1', queryset) 
+            reviews = get_object_or_404(queryset, product=product_id)
+            print('review = ', reviews)
+            comments = reviews.product_review_comments.filter(approved=True).order_by('-created_on')
+            print('comments', comments)
+            liked = False
+          
+            if review.likes.filter(id=request.user.id).exists():
+                liked = True
             # try:
             #     comments = review.comments.filter(approved=True).order_by('created_on')
             # except:
             #     comments = None
             liked = False
-            # if reviews.likes.filter(id=self.request.user.id).exists():
-            #     liked = True
+            if review.likes.filter(id=self.request.user.id).exists():
+                liked = True
             
+            if query:
+              commented = True
             try:
                 favourites = get_object_or_404(Favourites, products=products)
                 
@@ -158,10 +178,56 @@ class Product_detail(TemplateView):
               favourites = False
           
             print('product = ',product)
-            print('review = ',reviews)
+            print('review = ',review)
+            print('end comments = ', comments)
             context = {
-                'reviews':reviews,
+                'review_length':review_length,
+                'review':review,
                 'product': product,
+                "comments": comments,
+                "commented": False,
+                "liked": liked,
+                'favourites': favourites,         
+              }
+            template_name = 'products/product_detail.html'
+            return render(request, template_name, context)
+          else:
+            print('nancount lge')
+            queryset = ProductReview.objects.filter(status=1)
+            print('1', queryset) 
+            reviews = get_object_or_404(queryset, product=product_id)
+            print('review = ', reviews)
+            comments = reviews.product_review_comments.filter(approved=True).order_by('-created_on')
+            print('comments', comments)
+            liked = False
+          
+            if review.likes.filter(id=request.user.id).exists():
+                liked = True
+            # try:
+            #     comments = review.comments.filter(approved=True).order_by('created_on')
+            # except:
+            #     comments = None
+            liked = False
+            if review.likes.filter(id=self.request.user.id).exists():
+                liked = True
+            
+            if query:
+              commented = True
+            try:
+                favourites = get_object_or_404(Favourites, products=products)
+                
+            except:
+              favourites = False
+          
+            print('product = ',product)
+            print('review = ',review)
+            print('end comments = ', comments)
+            context = {
+                'review_length':review_length,
+                'review':review,
+                'product': product,
+                "comments": comments,
+                "commented": False,
                 "liked": liked,
                 'favourites': favourites,         
               }
@@ -192,57 +258,57 @@ class Product_detail(TemplateView):
           #   }
           # return render(request, 'products/product_detail.html', context)
         
-        # elif count > 1:
-        #   print('count is 2')
-        #   review_length = False
-        #   product = get_object_or_404(Product, pk=product_id)
-        #   reviews = ProductReview.objects.all()
-        #   new_count = ProductReview.objects.filter(product=product_id).count()
-        #   try:
-        #       favourites = get_object_or_404(Favourites, products=products)
+        elif count > 1:
+          print('count is 2')
+          review_length = False
+          product = get_object_or_404(Product, pk=product_id)
+          reviews = ProductReview.objects.all()
+          new_count = ProductReview.objects.filter(product=product_id).count()
+          try:
+              favourites = get_object_or_404(Favourites, products=products)
               
-        #   except:
-        #     favourites = False
+          except:
+            favourites = False
 
-        #   # query = comments.filter(name=request.user)
-        #   commented = False
-        #   if query:
-        #     commented = True 
+          # query = comments.filter(name=request.user)
+          commented = False
+          if query:
+            commented = True 
 
-        #   print('new_count = ',new_count)
-        #   print('product = ',product)
-        #   print('reviews = ',reviews)
-        #   context = {
-        #       'reviews_length':review_length,
-        #       'reviews':reviews,
-        #       'product': product,
-        #       "commented": False,
-        #       "liked": False,
-        #       'favourites': favourites,         
-        #     }
-        #   template_name = 'products/product_detail.html'
-        #   return render(request, template_name, context)
+          print('new_count = ',new_count)
+          print('product = ',product)
+          print('reviews = ',reviews)
+          context = {
+              'reviews_length':review_length,
+              'reviews':reviews,
+              'product': product,
+              "commented": False,
+              "liked": False,
+              'favourites': favourites,         
+            }
+          template_name = 'products/product_detail.html'
+          return render(request, template_name, context)
         
-        # else:
-        #   print('count is 0')
-        #   review_length = False
-        #   product = get_object_or_404(Product, pk=product_id)
-        #   try:
-        #       favourites = get_object_or_404(Favourites, products=products)
+        else:
+          print('count is 0')
+          review_length = False
+          product = get_object_or_404(Product, pk=product_id)
+          try:
+              favourites = get_object_or_404(Favourites, products=products)
               
-        #   except:
-        #     favourites = False
+          except:
+            favourites = False
 
-        #   print('product 3= ',product)
-        #   context = {
-        #       'reviews_length':review_length,
-        #       'product': product,
-        #       "commented": False,
-        #       "liked": False,
-        #       'favourites': favourites,         
-        #     }
-        #   template_name = 'products/product_detail.html'
-        #   return render(request, template_name, context)
+          print('product 3= ',product)
+          context = {
+              'reviews_length':review_length,
+              'product': product,
+              "commented": False,
+              "liked": False,
+              'favourites': favourites,         
+            }
+          template_name = 'products/product_detail.html'
+          return render(request, template_name, context)
             
             
             

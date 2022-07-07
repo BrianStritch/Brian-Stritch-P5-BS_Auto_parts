@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.db.models import Q
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+
 
 # internal imports from BS_Auto_parts
 from products.models import Product, Category, Manufacturer
@@ -13,7 +15,7 @@ from .models import ForumCategory, ForumPost, ForumPostComment, ForumTopics
 from forum.forms import ForumCategoryForm, ForumPostCommentForm
 from forum.forms import ForumTopicsForm, CreateForumPostForm
 
-
+@login_required
 def forum(request):
     """
     Renders a view displaying all forum categories with main
@@ -779,8 +781,7 @@ class CreatePost(TemplateView):
 class EditPost(TemplateView):
     """ 
     Edit a selected topic post in the forum
-    """
-
+    """    
     def get(self, request, pk):
         query = None
         sort = None
