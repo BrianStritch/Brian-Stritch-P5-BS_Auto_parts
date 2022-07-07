@@ -9,7 +9,9 @@ from django.db.models import Q
 # internal imports from BS_Auto_parts
 from .models import ExistingUsersContactDetails, SiteUsersContactDetails
 from products.models import Product
-from contact_us.forms import CreateSiteUsersContactDetailsForm , CreateSimpleUsersContactForm , CreateExistingUsersContactForm
+from contact_us.forms import CreateSiteUsersContactDetailsForm
+from contact_us.forms import CreateExistingUsersContactForm
+from contact_us.forms import CreateSimpleUsersContactForm
 
 
 
@@ -24,44 +26,17 @@ class ContactUs(TemplateView):
         """
         a get method to render the template passing the 
         CreateSiteUsersContactDetailsForm as context
-        """
-        query = None
-        sort = None
-        direction = None
-        
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
-                return redirect(reverse('checkout'))
+        """               
+        form = CreateSiteUsersContactDetailsForm
+        template_name = 'contact_us/contact_us.html'
+        context = {
+            'form': form,            
+            'stop_toast_cart': True,
+            'forum':True,
+        }
+        return render(request, template_name, context)
 
-            queries = Q(
-                name__icontains=query) | Q(description__icontains=query)
-            product = Product.objects.all()
-            products = product.filter(queries)
-
-            current_sorting = f'{sort}_{direction}'
-                    
-            context = {
-            'products': products,
-            'search_term': query,
-            'current_sorting': current_sorting,
-            }
-            return render(
-                request, 'products/products.html', context)
-
-        else:       
-            form = CreateSiteUsersContactDetailsForm
-            template_name = 'contact_us/contact_us.html'
-            context = {
-                'form': form,            
-                'stop_toast_cart': True,
-                'forum':True,
-            }
-            return render(request, template_name, context)
-
-    def post(self,request):
+    def post(self, request):
         """
         a method to render  the POST data of the 
         CreateSiteUsersContactDetailsForm passed from the template
@@ -101,7 +76,7 @@ class SimpleContactUs(TemplateView):
     a post method to process the data from the form and
     return the user to the home landing page.
     """
-    def get(self,request):
+    def get(self, request):
         """
         a method to render the template passing the 
         CreateSimpleUsersContactForm as context
@@ -114,7 +89,7 @@ class SimpleContactUs(TemplateView):
         }
         return render(request, template_name, context)
 
-    def post(self,request):
+    def post(self, request):
         """
         a method to process the POST data of the 
         CreateSimpleUsersContactForm passed from the template
@@ -156,51 +131,25 @@ class ExistingUsersContactUs(TemplateView):
     return the user to the home landing page. This class is
     used where a user is authenticated.
     """
-    def get(self,request, pk):
+    def get(self, request, pk):
         """
         a method to render the template passing the 
         CreateExistingUsersContactForm as context taking the
          user.pk parameter to associate the contact form with
           the relevant user
-        """
-        query = None
-        sort = None
-        direction = None
-        
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
-                return redirect(reverse('checkout'))
+        """        
+        user = get_object_or_404(User, pk=pk)
+        form = CreateExistingUsersContactForm
+        template_name = 'contact_us/contact_us.html'
+        context = {
+            'form': form,
+            'user': user,
+            'stop_toast_cart': True,
 
-            queries = Q(
-                name__icontains=query) | Q(description__icontains=query)
-            product = Product.objects.all()
-            products = product.filter(queries)
+        }
+        return render(request, template_name, context)
 
-            current_sorting = f'{sort}_{direction}'
-                    
-            context = {
-            'products': products,
-            'search_term': query,
-            'current_sorting': current_sorting,
-            }
-            return render(
-                request, 'products/products.html', context)
-        else:
-            user = get_object_or_404(User, pk=pk)
-            form = CreateExistingUsersContactForm
-            template_name = 'contact_us/contact_us.html'
-            context = {
-                'form': form,
-                'user': user,
-                'stop_toast_cart': True,
-
-            }
-            return render(request, template_name, context)
-
-    def post(self,request, pk):
+    def post(self, request, pk):
         """
         a method to process the POST data of the 
         CreateSiteUsersContactDetailsForm passed from the template

@@ -19,7 +19,7 @@ from products.models import Product
 class NewsletterSignup(TemplateView):
     def post(self, request):
         form = NewsletterSignupForm(request.POST)        
-        print(form) # this codeblock will not run correctly with this removed
+        print(form) # this codeblock will not run correctly with this print statement removed
         if form.instance.optin == 0 :
             try:
                 try:
@@ -215,8 +215,8 @@ class NewsletterSignup(TemplateView):
             form = NewsletterSignupForm()
             template_name = 'home/index.html'
             context = {
-            'stop_toast_cart': True,
-            'form': form,
+                'stop_toast_cart': True,
+                'form': form,
             }
             return render(request, template_name, context)
 
@@ -228,36 +228,9 @@ class NewsletterSubscribers(TemplateView):
     """
 
     def get(self, request):
-        query = None
-        sort = None
-        direction = None
-        
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
-                return redirect(reverse('checkout'))
-
-            queries = Q(
-                name__icontains=query) | Q(description__icontains=query)
-            product = Product.objects.all()
-            products = product.filter(queries)
-
-            current_sorting = f'{sort}_{direction}'
-                    
-            context = {
-            'products': products,
-            'search_term': query,
-            'current_sorting': current_sorting,
-            }
-            return render(
-                request, 'products/products.html', context)
-        else:
-
-            list = Newsletter.objects.all()
-            template_name = 'newsletter/newsletter_list.html'
-            context = {
-                'list': list,
-            }
-            return render(request, template_name, context)
+        list = Newsletter.objects.all()
+        template_name = 'newsletter/newsletter_list.html'
+        context = {
+            'list': list,
+        }
+        return render(request, template_name, context)

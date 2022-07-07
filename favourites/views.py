@@ -21,39 +21,12 @@ def view_favourites(request):
     A view that displays users favourites
     
     """
-    query = None
-    sort = None
-    direction = None
-    
-    if 'q' in request.GET:
-        query = request.GET['q']
-        if not query:
-            messages.error(
-                request, "You didn't enter any search criteria!")
-            return redirect(reverse('checkout'))
-
-        queries = Q(
-            name__icontains=query) | Q(description__icontains=query)
-        product = Product.objects.all()
-        products = product.filter(queries)
-
-        current_sorting = f'{sort}_{direction}'
-                
-        context = {
-        'products': products,
-        'search_term': query,
-        'current_sorting': current_sorting,
-        }
-        return render(
-            request, 'products/products.html', context)
-    else:
-
-        template_name = 'favourites/favourites.html'
-        favourites = Favourites.objects.filter(username=request.user)
-        context = {
-            'favourites': favourites,
-        }
-        return render(request, template_name, context)
+    template_name = 'favourites/favourites.html'
+    favourites = Favourites.objects.filter(username=request.user)
+    context = {
+        'favourites': favourites,
+    }
+    return render(request, template_name, context)
 
 
 class ToggleFavourite(View):
@@ -82,9 +55,9 @@ class ToggleFavourite(View):
             Favourites.objects.create(
                 username = request.user,
                 products = product
-            )            
+            )
             messages.success(request, '\
-                You have succesfully added this product to your favourites.')            
+                You have succesfully added this product to your favourites.')
             return HttpResponseRedirect(reverse('product_detail', args=[pk]))
 
         return HttpResponseRedirect(reverse('product_detail', args=[pk]))
