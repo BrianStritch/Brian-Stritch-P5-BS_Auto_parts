@@ -81,42 +81,68 @@ The users on this website can create reviews on their favourite prducts and can 
     2. [**Media**](#media)
     3. [**Acknowledgements**](#acknowledgements)
 
-## UX
-This project was designed to allow users to, through CRUD functionality, , reviews from guests past present. In particular;
+## UX Site users
+This project was designed to allow users to, through CRUD functionality, create read update delete , shopping bag orders, product reviews, forum posts, forum post comments, and the ability to sign up to a newsletter and send a message to the site owners via the contact us form via the navigation menu. In particular;
+
 - Allows users to create an account through the signup form
 - Allows users to edit their accounts details on their profile page
 - Allows users to delete their accounts from their profile page
+- Allows users to view previous order history in the profile page
 
-- Allows users to create a booking through the create booking form attached to the bookings page
-- Allows users to edit their booking through the edit booking form attached to the bookings page
-- Allows users to delete their booking through the delete booking link attached to the edit bookings page
+- Allows users to navigate through the shop easily to find the products they wish to buy
+- Allows users to add products to the shopping bag
+- Allows users to make purchases through the store
 
-- Allows users to create a review through the create review form attached to the reviews page
-- Allows users to edit their review through the edit review form attached to the reviews page
-- Allows users to delete their review through the delete review link attached to the edit reviews page
+- Allows users to create a review through the create review form displayed on the product details page
+- Allows users to edit their review through the edit review form displayed on the product details page
+- Allows users to delete their review through the delete review link displayed on the product details page
 
-- Allows users to create a comment through the create comment form attached to the reviews page
-- Allows users to edit their comment through the edit comment form attached to the reviews page
-- Allows users to delete their comment through the edit comment link attached to the edit reviews page
+- Allows registered users the ability to navigate to the Members forum easily
+- Allows registered users the ability to navigate to the Members forum categories and topic easily
+- Allows registered users to create forum posts through the create post form attached to the forum topic page
+- Allows registered users to edit their forum posts through the edit forum posts form attached to the forum topic page
+- Allows registered users to delete their forum posts through the delete forum posts link attached to the forum topic page
+- Allows registered users to create a comment on another users post through the create comment form attached to the post detail page
+- Allows registered users to edit their comment through the edit comment form attached to the post detail page
+- Allows registered users to delete their comment through the delete comment link attached to the edit post detail page
 
-This website is designed for the regular everyday individuals and is appropriate to all age groups as the restaurant caters for all age groups and with the additional sports bar attached which would be particularly aimed at sports fans as the venue has 12 large screens based in seperate areas in the establishment and offers a diverse selection of sporting events daily. The website allows guests to create reviews and tells others of their experiences. 
+## UX Administration
+This project was designed to create an online ecommerce store where the site owners have the functionality to create read update and delete, products, product categories, manufacturer categories, forum topics, forum categories, forum posts and forum comments. 
+To restrict the type of content displayed on this website any comments or posts or reviews created by a site user, will be sent to the administrator for verification prior to being published. Should a user update a post, comment, review, the status is reset and the post, comment or review, is resent to the administrator for a further approval prior to publishment. 
 
-The Color scheme throughout the website is based on the dark green and light tan brown colors found in the "Nanny's" logos and the wooden or timber colors are based on the country rustic appearance and themed interior of the establishment. THe mahogany color is symbolic of the woodwork in the bar and lounge areas and the lighter brown colors are symbolic to the beer garden located outside the rear of the establishment.
+Any actions carried out by a site user or administrator are accompanied with messages to inform the user of the tasks and their status. 
 
-At nanny's, there are four types of vintage wines on draught along with all the regular slection of beers, however, nanny's has been fitted with a cocktail bar for the guests who like an exotic beverage which makes for some fantastic images for reviews.
+The administrator has a seperate admin panel, which is not visible to regular site users, to carry out their day to day tasks which can be seen in the images below. The administration panel allows the storeowner to easily navigate via stock control, newsletter subscribers, contact us messages and manufacturer and category lists with further crud functionality to allow the siteowner full unrestricted access to the tasks they may require. 
+
+
+This website is designed for the regular everyday individuals, however it caters for the motorsport enthusiast and due to the forum, would cater for all types of motor enthusiast, and allows the users to interact and share the knowledge they have gained. The forum has a classified section where users can trade used goods and can advertise for vehicles and parts wanted. 
+
+The forum has a seperate forum admin menu which is not visible to regular site users where the siteowners have access to forms to create forum categories and topics. The Administartor also has edit and delete functionality avilable at the forum topic and ategory headings, which is not visible to the regular users.
+
+The Color scheme throughout the website is based on an orange and black color scheme as the colors are very different giving the user clear visiblity throughout the website. We have also opted to use larer images for better visiblilty of the products on offer so the user can visibly see the product clearly prior to selectin to purchase it. 
 
 I feel that this website satisfies the base requirements in that the users can create, read, update and delete data related to items in the database in an easy to use and visually appealing interface. 
 
-There are a range of apps including Bookings, Reviews and Site pages that all work together seamlessly to provide a beautifully designed and easy to navigate website that has been designed to appeal to a wide range of users. 
+There are a range of apps including shopping bag, checkout, contact us, favourites, forum, home, media, newsletter, product reviews, products, profiles and storeowners that all work together seamlessly to provide a beautifully designed and easy to navigate website that has been designed to appeal to a wide range of users. 
 
-A new user who does not have an account will only have access to the homepage (index.html), the about us page, the menu page, contact and about us page,a restricted version of the reviews page the signup page, and the login page. They will be unable to make bookings, leave reviews or comments on the existing reviews.  
+A new user who does not have an account will have access to the homepage (index.html) and to the store, and has limited functionality such as the newsletter optin, and the contact us messenger the signup page, and the login page. They will be unable to access the forum or create reviews or comments on the existing reviews, and should the user attempt to navigate to the forum, they will be redirected to the sign in page, which also offers a link to sign up.  
 
-Once logged in, the members will have access to the sites remaining functionality for creating reviews, commenting and liking reviews, creating bookings, viewing existing bookings, editing and deleting reviews,comments and editing content on their personal profile. The bookings displayed to each user are relative to the users username and the application only displays bookings created by that user.
+Once logged in, the members will have access to the sites remaining functionality for creating reviews, commenting and liking reviews, the forum topics, categories, posts and comments and will allow the editing and deleting of reviews,comments and editing content on their personal profile. 
+
+In regards to the contact us messenging service, should an unregistered user wish to contact the administrator, a form is displayed with numerous fields such as the users address and personal details which is added to the database for future reference. A registed user has simply a message text box displayed as the users information will already be on file.
  
 ###### User home page view
 ![User Profile](static/readme_images/users-account-info.JPG "Example of the users profile")
 
 Once logged in, staff members have access to the same functionality as members for testing purposes.The staff status allows selected users to access the management area where staff can view all bookings , pending bookings, approved bookings, completed bookings and allows access to the django administration area where the staff member can view all bookings, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish comments which have been submitted for approval prior to the comment getting published.
+<br>
+# User types
+- There are two main user types,
+    - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
+    - A regular(shopper) user account has been set up with username/password of testuser/testpassword
+    - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
+    - For the expiry date, cvc and postal code please input 0424 242424
+<br>
 ###### Administration bookings view
 ![Administration bookings view](static/readme_images/admin-current-bookings.JPG "Example of the admin bookings view")
 ###### Administration pending bookings view
