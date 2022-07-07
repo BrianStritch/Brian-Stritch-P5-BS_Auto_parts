@@ -131,7 +131,29 @@ Once logged in, the members will have access to the sites remaining functionalit
 
 In regards to the contact us messenging service, should an unregistered user wish to contact the administrator, a form is displayed with numerous fields such as the users address and personal details which is added to the database for future reference. A registed user has simply a message text box displayed as the users information will already be on file.
  
-###### User home page view
+###### Site registered user profile page view
+![User Profile](static/readme_images/users-account-info.JPG "Example of the users profile")
+
+Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
+<br>
+# User types
+- There are two main user types,
+    - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
+    - A regular(shopper) user account has been set up with username/password of testuser/testpassword
+    - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
+    - For the expiry date, cvc and postal code please input 0424 242424
+<br>
+###### Administration bookings view
+![Administration bookings view](static/readme_images/admin-current-bookings.JPG "Example of the admin bookings view")
+###### Administration pending bookings view
+![Administration pending bookings view](static/readme_images/admin-pending-bookings.JPG "Example of the admin bookings pending view")
+###### Administration approved bookings view
+![Administration approved bookings view](static/readme_images/admin-approved-bookings.JPG "Example of the admin approved pending view")
+###### Administration completed bookings view
+![Administration completed bookings view](static/readme_images/admin-completed-bookings.JPG "Example of the admin completed pending view")
+
+
+###### Admin user profile page view
 ![User Profile](static/readme_images/users-account-info.JPG "Example of the users profile")
 
 Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
