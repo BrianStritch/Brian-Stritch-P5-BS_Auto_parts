@@ -859,7 +859,9 @@ a.category-badge > span.badge:hover {
     .burger-logo{
         display: block;
     }
-    
+    .vw-90{
+        max-width: 90vw;
+    }
 
 }
 
