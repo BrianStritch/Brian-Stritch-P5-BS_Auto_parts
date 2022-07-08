@@ -9,7 +9,6 @@ from django.contrib import messages
 # internal imports from BS_Auto_parts
 from contact_us.forms import CreateSiteUsersContactDetailsForm
 from contact_us.forms import CreateExistingUsersContactForm
-from contact_us.forms import CreateSimpleUsersContactForm
 
 
 class ContactUs(TemplateView):
@@ -21,13 +20,13 @@ class ContactUs(TemplateView):
     """
     def get(self, request):
         """
-        a get method to render the template passing the 
+        a get method to render the template passing the
         CreateSiteUsersContactDetailsForm as context
-        """               
+        """
         form = CreateSiteUsersContactDetailsForm
         template_name = 'contact_us/contact_us.html'
         context = {
-            'form': form,            
+            'form': form,
             'stop_toast_cart': True,
             'forum': True,
         }
@@ -35,23 +34,24 @@ class ContactUs(TemplateView):
 
     def post(self, request):
         """
-        a method to render  the POST data of the 
+        a method to render  the POST data of the
         CreateSiteUsersContactDetailsForm passed from the template
         """
         form = CreateSiteUsersContactDetailsForm(request.POST)
         if form.is_valid():
             contact = form.save()
-            messages.success(request, 'Your message has been succesfully\
-                 submitted and Admin will be in contact shortly.')            
-            template_name = 'home/index.html' 
+            messages.success(
+                request, 'Your message has been succesfully\
+                     submitted and Admin will be in contact shortly.')  # noqa
+            template_name = 'home/index.html'
             context = {
                 'stop_toast_cart': True,
                 'home': True,
                 'bttoff': True
 
-            } 
-            return render(request, template_name, context)             
-       
+            }
+            return render(request, template_name, context)
+
         else:
             messages.error(request, '\
                 Failed to send message. Please check your form details.')
@@ -65,59 +65,6 @@ class ContactUs(TemplateView):
             return render(request, template, context)
 
 
-class SimpleContactUs(TemplateView):
-    """
-    A view to render the contact us page and form and
-    a post method to process the data from the form and
-    return the user to the home landing page.
-    """
-    def get(self, request):
-        """
-        a method to render the template passing the 
-        CreateSimpleUsersContactForm as context
-        """
-        form = CreateSimpleUsersContactForm
-        template_name = 'contact_us/contact_us.html'
-        context = {
-            'form': form,
-            'stop_toast_cart': True,
-        }
-        return render(request, template_name, context)
-
-    def post(self, request):
-        """
-        a method to process the POST data of the 
-        CreateSimpleUsersContactForm passed from the template
-        """
-        form = CreateSimpleUsersContactForm(request.POST)
-        if form.is_valid():
-            contact = form.save()
-            messages.success(request, 'Your message has been succesfully\
-                 submitted and Admin will be in contact shortly.') 
-            template_name = 'home/index.html' 
-            context = {
-                'stop_toast_cart': True,
-                'home': True,
-                'bttoff': True
-
-            } 
-            return render(request, template_name, context)               
-
-        else:
-            messages.error(request, 'Failed to send message.\
-                 Please check your form details.')
-            form = CreateSimpleUsersContactForm(request.POST)
-            template = 'contact_us/contact_us.html'
-            context = {
-                'form': form,
-                'stop_toast_cart': True,
-                'forum': True,
-            }
-            return render(request, template, context)
-
-        
-
-
 class ExistingUsersContactUs(TemplateView):
     """
     A view to render the contact us page and form and
@@ -127,11 +74,11 @@ class ExistingUsersContactUs(TemplateView):
     """
     def get(self, request, pk):
         """
-        a method to render the template passing the 
+        a method to render the template passing the
         CreateExistingUsersContactForm as context taking the
          user.pk parameter to associate the contact form with
           the relevant user
-        """        
+        """
         user = get_object_or_404(User, pk=pk)
         form = CreateExistingUsersContactForm
         template_name = 'contact_us/contact_us.html'
@@ -145,7 +92,7 @@ class ExistingUsersContactUs(TemplateView):
 
     def post(self, request, pk):
         """
-        a method to process the POST data of the 
+        a method to process the POST data of the
         CreateSiteUsersContactDetailsForm passed from the template
         """
         form = CreateExistingUsersContactForm(request.POST)
@@ -153,16 +100,16 @@ class ExistingUsersContactUs(TemplateView):
             form.instance.user = request.user
             contact = form.save()
             messages.success(request, 'Your message has been succesfully\
-                 submitted and Admin will be in contact shortly.')            
-            template_name = 'home/index.html' 
+                 submitted and Admin will be in contact shortly.')
+            template_name = 'home/index.html'
             context = {
                 'stop_toast_cart': True,
                 'home': True,
-                'bttoff':True
+                'bttoff': True
 
-            } 
-            return render(request, template_name, context)             
-       
+            }
+            return render(request, template_name, context)
+
         else:
             messages.error(request, 'Failed to send message.\
                  Please check your form details.')
@@ -171,6 +118,6 @@ class ExistingUsersContactUs(TemplateView):
             context = {
                 'form': form,
                 'stop_toast_cart': True,
-                'forum':True,
+                'forum': True,
             }
             return render(request, template, context)
