@@ -1,13 +1,11 @@
+""" imports for checkout test checkout models """
 # imports
 # 3rd party imports from django
-from decimal import Decimal
 from django.test import TestCase
 
 # internal imports from BS_Auto_parts
-from products.models import Product, Category, Manufacturer
-from BS_Auto_Parts import settings
+from products.models import Product
 from checkout.models import Order
-from checkout.models import OrderLineItem
 
 
 class TestCheckoutModels(TestCase):
@@ -18,18 +16,18 @@ class TestCheckoutModels(TestCase):
         """
         Create a test product and order
         """
-        Product.objects.create(            
-          stock_no = "test-stock-no",
-          name = "test name",
-          description = "test description",
-          price = '449.95',
-          suits = "universal",
-          stock_qty = 1,
-          on_sale =  "False",
-          has_sizes = "False",
-          rating = '4.6',
-          image_url = "testfile.jpg",
-          image = "testfile.JPG"            
+        Product.objects.create(
+          stock_no="test-stock-no",
+          name="test name",
+          descripion="test description",
+          price='449.95',
+          suits="universal",
+          stock_qty=1,
+          on_sale="False",
+          has_sizes="False",
+          rating='4.6',
+          image_url="testfile.jpg",
+          image="testfile.JPG"
         )
 
         Order.objects.create(

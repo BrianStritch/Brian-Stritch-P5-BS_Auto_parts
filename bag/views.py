@@ -1,12 +1,12 @@
+""" imports for bag views.py """
 # imports
 # 3rd party imports from django
 from django.shortcuts import render, redirect, reverse
-from django.shortcuts import get_object_or_404, HttpResponse
+from django.shortcuts import HttpResponse
 from django.contrib import messages
-from django.db.models import Q
 
 # internal imports from BS_Auto_parts
-from products.models import Product, Category, Manufacturer
+from products.models import Product
 
 
 def view_bag(request):
@@ -35,39 +35,30 @@ def add_to_bag(request, item_id):
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(
                     request,
-                    f'You have succesfully added another\
-                         "{product.name}" size "{size.upper()}"\
-                             to the shopping bag.'
+                    f'You have succesfully added another "{product.name}" size "{size.upper()}" to the shopping bag.'  # noqa
                              )
             else:
                 bag[item_id]['items_by_size'][size] = quantity
                 messages.success(
                     request,
-                    f'You have succesfully added \
-                        "{product.name}" size "{size.upper()}"\
-                             to the shopping bag.')
+                    f'You have succesfully added "{product.name}" size "{size.upper()}" to the shopping bag.')  # noqa
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(
                 request,
-                f'You have succesfully added "{quantity}" \
-                    of our "{product.name}" size "{size.upper()}"\
-                         to the shopping bag.'
-                         )
+                f'You have succesfully added "{quantity}" of our "{product.name}" size "{size.upper()}" to the shopping bag.')  # noqa
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
             messages.success(
                 request,
-                f'You have succesfully added another\
-                     "{product.name}" to the shopping bag.'
+                f'You have succesfully added another "{product.name}" to the shopping bag.'  # noqa
                      )
         else:
             bag[item_id] = quantity
             messages.success(
                 request,
-                f'You have succesfully added\
-                     "{product.name}" to the shopping bag.'
+                f'You have succesfully added "{product.name}" to the shopping bag.'  # noqa
                      )
 
     request.session['bag'] = bag
@@ -91,41 +82,32 @@ def edit_bag(request, item_id):
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
                 request,
-                f'You have succesfully edited the\
-                     quantity of "{product.name}" \
-                        size "{size.upper()}" in your shopping bag.'
+                f'You have succesfully edited the quantity of "{product.name}" size "{size.upper()}" in your shopping bag.'  # noqa
                         )
         else:
             del bag[item_id]['items_by_size'][size]
             messages.success(
                 request,
-                f'You have succesfully removed "{product.name}"\
-                     size "{size.upper()}" from your shopping bag.'
+                f'You have succesfully removed "{product.name}" size "{size.upper()}" from your shopping bag.'  # noqa
                      )
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
                 messages.success(
                     request,
-                    f'You have succesfully removed\
-                         "{product.name}" size "{size.upper()}"\
-                             from your shopping bag.'
+                    f'You have succesfully removed "{product.name}" size "{size.upper()}" from your shopping bag.'  # noqa
                              )
     else:
         if quantity > 0:
             bag[item_id] = quantity
             messages.success(
                 request,
-                f'You have succesfully edited the \
-                    quantity of "{product.name}"\
-                         in your shopping bag.'
+                f'You have succesfully edited the quantity of "{product.name}" in your shopping bag.'  # noqa
                          )
         else:
             bag.pop(item_id)
             messages.success(
                 request,
-                f'You have succesfully removed \
-                    "{product.name}" from your\
-                         shopping bag.'
+                f'You have succesfully removed "{product.name}" from your shopping bag.'  # noqa
                          )
 
     request.session['bag'] = bag
@@ -149,23 +131,19 @@ def delete_bag_item(request, item_id):
             del bag[item_id]['items_by_size'][size]
             messages.success(
                 request,
-                f'You have succesfully removed \
-                    "{product.name}" size "{size}"\
-                         from your shopping bag.'
+                f'You have succesfully removed "{product.name}" size "{size}" from your shopping bag.'  # noqa
                          )
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
                 messages.success(
                     request,
-                    f'You have succesfully removed "{product.name}" \
-                        size "{size}" from your shopping bag.'
+                    f'You have succesfully removed "{product.name}" size "{size}" from your shopping bag.'  # noqa
                         )
         else:
             bag.pop(item_id)
             messages.success(
                 request,
-                f'You have succesfully removed "{product.name}"\
-                     from your shopping bag.'
+                f'You have succesfully removed "{product.name}" from your shopping bag.'  # noqa
                      )
 
         request.session['bag'] = bag

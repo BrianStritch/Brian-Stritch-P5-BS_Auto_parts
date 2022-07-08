@@ -1,18 +1,15 @@
+""" cimports for contact_us views.py """
 # imports
 # 3rd party imports from django
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views.generic import TemplateView, UpdateView, DeleteView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.db.models import Q
 
 # internal imports from BS_Auto_parts
-from .models import ExistingUsersContactDetails, SiteUsersContactDetails
-from products.models import Product
 from contact_us.forms import CreateSiteUsersContactDetailsForm
 from contact_us.forms import CreateExistingUsersContactForm
 from contact_us.forms import CreateSimpleUsersContactForm
-
 
 
 class ContactUs(TemplateView):
@@ -22,7 +19,7 @@ class ContactUs(TemplateView):
     return the user to the home landing page. This class is
     used where a user is not authenticated.
     """
-    def get(self,request):
+    def get(self, request):
         """
         a get method to render the template passing the 
         CreateSiteUsersContactDetailsForm as context
@@ -32,7 +29,7 @@ class ContactUs(TemplateView):
         context = {
             'form': form,            
             'stop_toast_cart': True,
-            'forum':True,
+            'forum': True,
         }
         return render(request, template_name, context)
 
@@ -50,7 +47,7 @@ class ContactUs(TemplateView):
             context = {
                 'stop_toast_cart': True,
                 'home': True,
-                'bttoff':True
+                'bttoff': True
 
             } 
             return render(request, template_name, context)             
@@ -63,11 +60,9 @@ class ContactUs(TemplateView):
             context = {
                 'form': form,
                 'stop_toast_cart': True,
-                'forum':True,
+                'forum': True,
             }
             return render(request, template, context)
-
-        
 
 
 class SimpleContactUs(TemplateView):
@@ -103,12 +98,11 @@ class SimpleContactUs(TemplateView):
             context = {
                 'stop_toast_cart': True,
                 'home': True,
-                'bttoff':True
+                'bttoff': True
 
             } 
-            return render(request, template_name, context)         
-                        
-       
+            return render(request, template_name, context)               
+
         else:
             messages.error(request, 'Failed to send message.\
                  Please check your form details.')
@@ -117,7 +111,7 @@ class SimpleContactUs(TemplateView):
             context = {
                 'form': form,
                 'stop_toast_cart': True,
-                'forum':True,
+                'forum': True,
             }
             return render(request, template, context)
 

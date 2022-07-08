@@ -1,3 +1,4 @@
+""" Imports for Bag Urls.py file  """
 # imports
 # 3rd party imports from django
 from django.urls import path

@@ -1,3 +1,4 @@
+""" imports for checkout test checkout form """
 # imports
 # 3rd party imports from django
 from django.test import TestCase

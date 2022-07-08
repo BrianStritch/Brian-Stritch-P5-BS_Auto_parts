@@ -1,3 +1,4 @@
+""" imports for checkout forms.py """
 # imports
 # 3rd party imports from django
 from django import forms
@@ -7,7 +8,9 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """ class to create an order form """
     class Meta:
+        """ a class to determine the fiels in the form """
         model = Order
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
