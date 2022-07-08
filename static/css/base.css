@@ -600,40 +600,6 @@ font-size: smallest !important;
     }
 }
 
-@media screen and (min-width:768px) {
-
-    .carousel-control .glyphicon-chevron-left,
-    .carousel-control .glyphicon-chevron-right,
-    .carousel-control .icon-next,
-    .carousel-control .icon-prev {
-        width: 30px;
-        height: 30px;
-        margin-top: -10px;
-        font-size: 30px
-    }
-
-    .carousel-control .glyphicon-chevron-left,
-    .carousel-control .icon-prev {
-        margin-left: -10px
-    }
-
-    .carousel-control .glyphicon-chevron-right,
-    .carousel-control .icon-next {
-        margin-right: -10px
-    }
-
-    .carousel-caption {
-        right: 20%;
-        left: 20%;
-        padding-bottom: 30px
-    }
-
-    .carousel-indicators {
-        bottom: 20px
-    }
-}
-
-
 
 
 
@@ -897,6 +863,40 @@ a.category-badge > span.badge:hover {
 
 }
 
+@media screen and (min-width:768px) {
+
+    .carousel-control .glyphicon-chevron-left,
+    .carousel-control .glyphicon-chevron-right,
+    .carousel-control .icon-next,
+    .carousel-control .icon-prev {
+        width: 30px;
+        height: 30px;
+        margin-top: -10px;
+        font-size: 30px
+    }
+
+    .carousel-control .glyphicon-chevron-left,
+    .carousel-control .icon-prev {
+        margin-left: -10px
+    }
+
+    .carousel-control .glyphicon-chevron-right,
+    .carousel-control .icon-next {
+        margin-right: -10px
+    }
+
+    .carousel-caption {
+        right: 20%;
+        left: 20%;
+        padding-bottom: 30px
+    }
+
+    .carousel-indicators {
+        bottom: 20px
+    }
+}
+
+
 @media(max-width:720px){
     .nav-link {
         font-size: 10px;
@@ -1025,7 +1025,7 @@ a.category-badge > span.badge:hover {
         padding-top: 12vh;
     }
     #dim-cover {
-        padding-top: 15vh;
+        padding-top: 20vh;
         width: 100vw;
     }
     hr{
