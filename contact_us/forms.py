@@ -1,10 +1,10 @@
+""" imports for contact us forms.py """
 # imports
 # 3rd party imports from django
 from django import forms
 
 # internal imports from BS_Auto_parts
 from .models import SiteUsersContactDetails, ExistingUsersContactDetails
-
 
 
 class CreateSiteUsersContactDetailsForm(forms.ModelForm):
@@ -22,7 +22,7 @@ class CreateSiteUsersContactDetailsForm(forms.ModelForm):
         fields = (
             'name',
             'surname',
-            'email',            
+            'email',
             'phone_number',
             'street_address1',
             'street_address2',

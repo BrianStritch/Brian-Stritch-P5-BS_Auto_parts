@@ -10,13 +10,11 @@
 <div class="container header-container ">
     <div class="row">
         <div class="col-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
-                    <li class="breadcrumb-item"><a href="{% url 'profile' %}">My Profile</a></li>                    
-                    <li class="breadcrumb-item active text-white" aria-current="page">Delete Profile</li>                       
-                </ol>
-              </nav>
+            <menu aria-label="breadcrumb" class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
+                <li class="breadcrumb-item"><a href="{% url 'profile' %}">My Profile</a></li>                    
+                <li class="breadcrumb-item active text-white" aria-current="page">Delete Profile</li>                       
+            </menu>
         </div>
     </div>
 </div>
@@ -58,5 +56,5 @@
 
 {% block postloadjs %}
   {{ block.super }}
-  <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+  <script  src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

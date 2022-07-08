@@ -9,14 +9,12 @@
 <div class="container header-container ">
     <div class="row">
         <div class="col-12">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
-                    <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
-                    <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
-                    <li class="breadcrumb-item active text-white" aria-current="page">{{ product.name }}</li>                       
-                </ol>
-              </nav>
+            <menu aria-label="breadcrumb" class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
+                <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
+                <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
+                <li class="breadcrumb-item active text-white" aria-current="page">{{ product.name }}</li>                       
+            </menu>
         </div>
     </div>
 </div>

@@ -6,13 +6,11 @@
 <div class="container header-container ">
     <div class="row">
         <div class="col-12">
-            <menu aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
-                    <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
-                    <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
-                    <li class="breadcrumb-item active text-white" aria-current="page">Shopping Bag</li>                       
-                </ol>
+            <menu aria-label="breadcrumb" class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>                    
+                <li class="breadcrumb-item"><a href="{% url 'shop' %}">Shop</a></li>                    
+                <li class="breadcrumb-item"><a href="{% url 'products' %}">Products</a></li>                    
+                <li class="breadcrumb-item active text-white" aria-current="page">Shopping Bag</li>                       
             </menu>
         </div>
     </div>
@@ -166,7 +164,7 @@
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
 
-<script type="text/javascript">
+<script >
     // Update quantity on click
     $('.update-link').click(function(e) {
         var form = $(this).prev('.update-form');

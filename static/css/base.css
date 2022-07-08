@@ -10,7 +10,7 @@ body {
     background-size: cover;
     height: calc(120vh - 164px);
     min-height: 100%;
-    
+    padding-top: 10vh;
     font-family: "Open Sans", sans-serif;
     color: #313030;
     position: relative;
@@ -92,6 +92,10 @@ font-family: "Raleway", sans-serif;
 }
 .border-white{
     border: 1px solid white;
+}
+menu{
+    padding: 0px !important;
+    margin: 0px 0 0 0px !important;
 }
 
 /* *************** Header *****************************/
@@ -668,7 +672,7 @@ font-size: smallest !important;
     text-align: center;
 }
 .product-pages{
-    margin-top: 22vh;
+    margin-top: -10vh;
 }
 .product-heading{
     position: relative;
@@ -833,7 +837,7 @@ a.category-badge > span.badge:hover {
         padding-top: 13vh;
     }
     .product-pages{
-        margin-top: 0vh;
+        margin-top: -10vh;
     }
     
     
@@ -916,7 +920,7 @@ a.category-badge > span.badge:hover {
     }
     #dim-cover {
         
-        margin-top: -20px;
+        margin-top: -20vh;
         padding-top: 160px;
     }
     .center{
@@ -997,8 +1001,11 @@ a.category-badge > span.badge:hover {
     .home-top-padding{
         margin-top: -6vh;
     }
+    .shop-top-padding{
+        margin-top: 25vh;
+    }
     .product-pages {
-        margin-top: 4vh;
+        margin-top: -25vh;
     }
     
 }
@@ -1014,9 +1021,7 @@ a.category-badge > span.badge:hover {
     nav{
         margin-left: 40px;
     }
-    .forum-banner {
-        margin-top: -19vh;
-    }
+    
     .search-box-width{
         width: 80vw;
     }
@@ -1049,6 +1054,12 @@ a.category-badge > span.badge:hover {
         height: 5vh;
         font-size: 12px;
     }
+    .forum-top-padding{
+        margin-top: 25vh;
+    }
+    .forum-banner {
+        margin-top: 16vh !important;
+    }
 }
 
 
@@ -1078,5 +1089,10 @@ a.category-badge > span.badge:hover {
         padding-top: 0.5rem; 
         padding-bottom: 0.5rem;
     }
-
+    .forum-top-padding{
+        margin-top: 20vh !important;
+    }
+    .forum-banner {
+        margin-top: 10vh !important;
+    }
 }

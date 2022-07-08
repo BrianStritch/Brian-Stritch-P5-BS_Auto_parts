@@ -8,12 +8,10 @@
 {% block page_header %}    
         <div class="row  bg-black pt-1">
             <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                <menu aria-label="breadcrumb" class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
                         <li class="breadcrumb-item active text-white"><a href="{% url 'forum' %}" aria-current="page">Forum</a></li>                        
-                    </ol>
-                  </nav>
+                </menu>
             </div>
             <div class="col-12 bg-black text-white">                
                 <h4 class="text-center "><strong>Members Forum :</strong></h4>
@@ -23,7 +21,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="overlay forum"></div>
+<div class="overlay forum forum-top-padding"></div>
     <div class="container-fluid forum-banner">
         {% for category in categories %}
         <div class="row high-z flex-and-center column">

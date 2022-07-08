@@ -1,3 +1,5 @@
+""" imports for contact us apps.py"""
+# 3rd party imports
 from django.apps import AppConfig
 
 

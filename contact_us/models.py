@@ -1,3 +1,4 @@
+""" imports for contact us models"""
 # imports
 # 3rd party imports from django
 from django.db import models
@@ -6,6 +7,7 @@ from django_countries.fields import CountryField
 
 
 STATUS = ((0, 'Pending'), (1, 'Completed'))
+
 
 class SiteUsersContactDetails(models.Model):
     """
@@ -46,7 +48,7 @@ class SiteUsersContactDetails(models.Model):
         max_length=40,
         null=True,
         blank=True
-        )    
+        )
 
     county = models.CharField(
         max_length=80,
@@ -65,11 +67,14 @@ class SiteUsersContactDetails(models.Model):
         null=True,
         blank=True
         )
-    
-    class Meta:
-        ordering = ['-created_on']
-        verbose_name_plural = 'Site Users Contact Details' 
 
+    class Meta:
+        """
+        class to set the ordering of the list
+        display of site users contact details
+        """
+        ordering = ['-created_on']
+        verbose_name_plural = 'Site Users Contact Details'
 
     def __str__(self):
         return f'{self.name} {self.surname}'
@@ -81,7 +86,7 @@ class ExistingUsersContactDetails(models.Model):
     to be contacted by the site owners for a specific reason.
     """
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     message = models.TextField(max_length=250, blank=True)
 
@@ -90,7 +95,9 @@ class ExistingUsersContactDetails(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        """
+        class to set the ordering of the list
+        display of site users contact details
+        """
         ordering = ['-created_on']
-        verbose_name_plural = 'Existing Users Contact Details' 
-
-  
+        verbose_name_plural = 'Existing Users Contact Details'
