@@ -452,6 +452,51 @@ Please [**click here**](https://github.com/BrianStritch/Brian-Stritch-P4-Fine-Wi
 - Cloudinary - Cloudinary storage was set up and used for storing website images
 - Postgres - This Relational Datatabase was used to handle the data storage
 
+### Libraries and resources
+- Bootstrap 5.0 (https://getbootstrap.com/docs/5.0)
+    - The project uses the bootstrap library for some UI components in the website (Buttons, Card, Carousel, Modal, Pagination, Navbar)
+- Postgres (https://www.postgresql.org/)
+  - The deployed project on Heroku uses a Postgres database
+- SQLLite (https://www.sqlite.org/index.html)
+  - The database uses in local development was a SQLLite database
+- Gitpod (https://gitpod.io/)
+    - Gitpod was used as the IDE for the project
+- Github (https://github.com/)
+    - GitHub was used to store the project code in a repository
+- Google Fonts (https://fonts.google.com/)
+    - Google font Poppins was used as the website font
+- Balsamiq (https://balsamiq.com/)
+    - Balsamiq was used to create the website wireframes
+- Font Awesome (https://fontawesome.com/)
+    - Font awesome was used to provide the relevant fonts/icons for the website
+- JQuery (https://jquery.com)
+    - JQuery was used in some javascript files for DOM manipulation
+- CSS Validation Service (https://jigsaw.w3.org/css-validator/)
+   - CSS validation service for validation the css in the project  
+- HTML Markup Validation Service (https://validator.w3.org/)   
+    - HTML validation service for validation the css in the project  
+- Chrome dev tools (https://developers.google.com/web/tools/chrome-devtools)
+    - For troubleshooting and debugging of the project code
+- Chrome Lighthouse (https://developers.google.com/web/tools/lighthouse)
+    - For performance, accessibility, progressive web apps, SEO analysis of the project code
+- amiresponsive (https://ui.dev/amiresponsive)
+    - Website for generating the responsive image in this README
+- Python online interpreter (https://www.programiz.com/python-programming/online-compiler/)
+    - For testing python code snippets
+- Unittest (https://docs.djangoproject.com/en/3.2/topics/testing/overview/)
+    - For Python unit testing
+- JSHint (https://jshint.com/)
+  - For javascript code quality
+- PEP8 (https://www.python.org/dev/peps/pep-0008/)
+  - I used the pep8 code analysis plugin in Pycharm to check for pep8 errors
+- Stripe (https://www.stripe.com)
+  - For processing a test credit card to test a payment as part of an order
+- Coverage (https://coverage.readthedocs.io/en/6.1.2/)
+  - For unit test code coverage reports
+- Quick Database diagrams (https://www.quickdatabasediagrams.com)
+  - For the database schema diagram
+
+
 ### Database
 - The website is a data-centric one with html, javascript, css used with the bootstrap(version 5) framework as a frontend
 - The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version(production)
@@ -497,31 +542,24 @@ There are two main uses on this site; a site member and a site staff member. Ple
 - Password: administration
 
 ### Manual
-As there are many pages for the fine-wine-n-dine website which had to be manually tested to ensure functionality and UX were correct, they have been included in a separate file to avoid taking up too much space on the README.md documentation.
+As there are many pages for the BS_Auto_Parts website which had to be manually tested to ensure functionality and UX were correct, they have been included in a separate file to avoid taking up too much space on the README.md documentation.
 
-Please see the manual_testing.md file for the full breakdown of the manual testing done for this site. You can click [**here**](https://github.com/BrianStritch/Brian-Stritch-P4-Fine-Wine-n-Dine/blob/main/manual-testing.md)  to reach the file.
+Please see the manual_testing.md file for the full breakdown of the manual testing done for this site. You can click [**here**]()  to reach the file.
 
-During this process, several issues were discovered which have been since fixed on the site. Some examples of these include;
+During this process, several issues were discovered and some of which have been since fixed on the site. Some examples of these include;
 
-- The standard UserChangeForm in django did not provide the fields for updating the users first_name and last_name and a custom form was required which inherited from the UserChangeForm but was getting a 404 error on submitting. The fix for this error was add a reverse url in the form model to execute when the form was completed and submitted.
+- The original version of the website allowed users to create product reviews for the seleted products and each review had the ability for users like/unlike the specific reviews, and to create comments and like/unlike the comments. During the early stages of development this functinality was functioning as intended and a review could be created, any user could like/unlike the review, the users could alos create comments on the review and they could like/unlike the comments. For any of the reviews or comments that were liked, if the current user had previously selected to like the review/comment, the heart symbol would turn red and if unliked would turn white. Near the end of developing this application, during manual testing of the site it became apparrant that there was an issue with the logic relating to this. The issue was that the query in the view was querying for a single review in order to display the comments relating to that review and when more than one review was returned an error would arise as the multiple results required itertion in the template and the template was not set up for this. the template was set up for displaying a single instance so when i changed it to suit a multiple response it would throw an error then when a single response or no response was returned from the query. Due to time constraints i had to remove this functionality from the application, but will be implementing it in a future updated version.
 
-- On creating the booking form, an error was found where the primary_guest id was found to be null and must be an instance of User as the booking model primary_guest field was a foreign key of the User model and the fix for this error was to declare the form.instance.primary_guest = request.user which rectified this issue.
+- In the shopping bag app and checkout appit was noted that although following the guidelines set out in the boutique ado walkthrough, the order does not appear to be adding items by size and quantity, and if a product is selected and multiple sizes or a quantity higher than 1 then the order does not calculate this and only one item is added. Due to time constratints i have not been able to pinpoint the fault which causes this issue, however this would be a future upate to be added to this application.
 
-- The edit booking view rendered a form however this raised an error where the primary guest was null and this data could not be obtained from the POST request as it was not part of the data sent by the POST request and was not an inherited value. To rectify this error a primary key value of the user had to be passed with the url in the edit button on the bookings detail page, which in turn passed the value to the edit booking page which was then passed with the POST request and the form was then validated and saved. This same issue was found for the delete booking view, edit review, delete review, edit comment, delete comment, edit user profile and delete user profile where a value was needed to be sent with the url in the button
+- In the forum app, the user has the ability to like and unlike comments, and the toggler is functioning correctly as it is correctly incrementing or decrementing the number of likes, however the red heart icon does change color depending on the current users preferences and due to time constraints this bug will need rectificatin in a future update.
 
-- When the application was deployed on heroku a 500 internal server error was noted on some of the pages when selected and it was found that {% load static %} was not at the top of all documents as i thought it was only required in the base.html file. By placing the {% load static %} statement on the top of all the required pages this rectified this error.
+- .
 
-- When the project was deployed to heroku it was found that if the user registration form, create booking form, edit booking form, create review form, edit review form, create comment form, edit comment forms contained any invalid data that the a 500 internal server error was raised and the application would halt. After revising the vews.py files for the respected form views it was found that an if statement was checking the validity of the form data if the data was valid would then save the data to the database. There was no else statement attached and this meant that the application could not process the data and there was no alternative path. To rectify this issue i added an else statement which redirected the user to the required page where the user could resubmit the data.
+- .
 
-- The application is set up to allow a maximum of 60 guests in one hour, and each booking can accomodate up to 10 guests at a table and when a booking is created, the POST request data is checked against two database queries to detemine if the booking can be validated. The first check against the database is to check if the user who is making the booking has already chosen the time and dates submitted and if so will return the user to the booking form page with a message notifying them that they have already created a booking for this date and time and to choose an alternative time or date. The second check against the database checks how many bookings have been created for this specific time and date and if there is an available space will save the booking, and if no space is available, will return the user to the booking form page with a message notifying them that they have already created a booking for this date and time and to choose an alternative time or date. On creating this logic it was found that the standard django updateview allowed the bookings to be edited and did not apply the logic as per the booking creation form. The fix for this issue was to create a custom view with GET and POST requests and apply the same logic to the POST request as the booking creation form to check the validity of the updated data prior to saving to the database.
+- .
 
-- During manual testing it was noted that the color schemes were displayed differently between browsers. The tests were carried out on chrome mobile browser and samsung internet browser where differences were noted. please see below images displaying same:
-
-###### Google Chrome mobile browser
-![Google Chrome mobile browser](static/readme_images/google-chrome-browser.jpg "Google Chrome mobile browser")
-
-###### Samsung mobile browser
-![Samsung mobile browser](static/readme_images/samsung-internet-browser.jpg "Samsung mobile browser")
 
 There are other issues that could not be fixed due to ability / time contraints that have been included in the "Bugs Found" section below. 
 <hr>
@@ -606,63 +644,21 @@ In order to run tests on GitPod using unittest (which has been installed to hand
 
 2. Run the following code : "pyhton3 manage.py test"
     - This will run a test on all test.py files in the app and will display in the terminal if all tests are passing, and if it does not it will show the error causing the test to fail.
+<hr>
 
 ### Responsiveness
-This website has been designed to scale correctly to different screen sizes with no issues on layout. In order to ensure that the view was pleasant to the user, certain divs and items had to be arranged differently or hidden/shown depending on screen size. This was handled using CSS media queries.
+This website has been designed to scale correctly to different screen sizes with no issues on layout. In order to ensure that the view was pleasant to the user, certain divs and items had to be arranged differently or hidden/shown depending on screen size. This was handled using CSS media queries. Click [**here**]() to see images of the application on different sized media screens.
 
-##### Desktop Size
-![Full Size Menu](static/readme_images/responsive-testing/full-screen-navigation-menus.JPG "An example of how the menu looks on a desktop screen")
-
-##### Tablet Size Screen Navigation Menu
-![Small Screen Menu](static//readme_images/responsive-testing/moile-and-tablet-sized-screen-navigation-menus.JPG "An example of how the menu looks on a small/mobile screen")
-
-##### Mobile Size Home Page
-![Mobile Screen home page](static//readme_images/responsive-testing/mobile-sized-screen-home.JPG "An example of how the home page looks on a mobile screen")
-
-##### Mobile Size Home Page Navigation 
-![Mobile Screen Menu](static//readme_images/responsive-testing/mobile-sized-screen-navigation-menus-.JPG "An example of how the menu looks on a mobile screen")
-
-##### Tablet Size Bookings Page Navigation Menu 
-![Small Screen Menu Additional nav for Bookings](static/readme_images/responsive-testing/bookings-additional-nav-small-screen-size.JPG "An example of how the menu looks on a small screen with additional nav for bookings")
-
-##### Tablet Size Reviews Page Navigation Menu 
-![Small Screen Menu Additional nav for Reviews](static/readme_images/responsive-testing/reviews-additional-nav-small-screen-size.JPG "An example of how the menu looks on a small screen with additional nav for reviews")
-
-##### Tablet Size Admin Page Navigation Menu 
-![Small Screen Menu Additional nav for Admin](static/readme_images/responsive-testing/administration-additional-nav-small-screen-size.JPG "An example of how the menu looks on a small screen with additional nav for admin")
-
-In order to ensure that the navigation bar was as responsive as possible, on Desktop the menu shows accross the top of the page while on mobile screens, the menu reduced to a burger icon wide visible button. When the burger icon is clicked, the menu appears as a dropdown with the links to other pages from the nav bar. 
-
-On the bookings page there is an additional nav bar which contains the link to create a booking which drops down with the navigation menu only on the bookings page. 
-
-On the reviews page there is an additional nav bar which contains the link to create a review which drops down with the navigation menu only on the reviews page. 
-
-On the admin bookings page there is an additional nav bar which contains the links to pending bookings, approved bookings, completed bookings and all bookings which drops down with the navigation menu only on the admin bookings page. 
-
-Each page was altered slightly between mobile and desktop for its layout to ensure that the user is getting the best UX possible, regardless of the screen size they are using. This can be seen in the wireframes section as I have included a wireframe of each page with desktop and mobile view. 
+<hr>
 
 ### Bugs Found
-- When the application was deployed on heroku a 500 internal server error was noted on some of the pages when selected and it was found that {% load static %} was not at the top of all documents as i thought it was only required in the base.html file. By placing the {% load static %} statement on the top of all the required pages this rectified this error.
+- The original version of the website allowed users to create product reviews for the seleted products and each review had the ability for users like/unlike the specific reviews, and to create comments and like/unlike the comments. During the early stages of development this functinality was functioning as intended and a review could be created, any user could like/unlike the review, the users could alos create comments on the review and they could like/unlike the comments. For any of the reviews or comments that were liked, if the current user had previously selected to like the review/comment, the heart symbol would turn red and if unliked would turn white. Near the end of developing this application, during manual testing of the site it became apparrant that there was an issue with the logic relating to this. The issue was that the query in the view was querying for a single review in order to display the comments relating to that review and when more than one review was returned an error would arise as the multiple results required itertion in the template and the template was not set up for this. the template was set up for displaying a single instance so when i changed it to suit a multiple response it would throw an error then when a single response or no response was returned from the query. Due to time constraints i had to remove this functionality from the application, but will be implementing it in a future updated version.
 
-- During the manual testing it was found that the user did not know that by clicking the username that it would redirect to the user profile details page. This issue was rectified by renaming the link.
+- In the shopping bag app and checkout appit was noted that although following the guidelines set out in the boutique ado walkthrough, the order does not appear to be adding items by size and quantity, and if a product is selected and multiple sizes or a quantity higher than 1 then the order does not calculate this and only one item is added. Due to time constratints i have not been able to pinpoint the fault which causes this issue, however this would be a future upate to be added to this application.
 
-- When the project was deployed to heroku it was found during manual testing that if the user registration form, create booking form, edit booking form, create review form, edit review form, create comment form, edit comment forms contained any invalid data that the a 500 internal server error was raised and the application would halt. After revising the vews.py files for the respected form views it was found that an if statement was checking the validity of the form data if the data was valid would then save the data to the database. There was no else statement attached and this meant that the application could not process the data and there was no alternative path. To rectify this issue i added an else statement which redirected the user to the required page where the user could resubmit the data.
+- In the forum app, the user has the ability to like and unlike comments, and the toggler is functioning correctly as it is correctly incrementing or decrementing the number of likes, however the red heart icon does change color depending on the current users preferences and due to time constraints this bug will need rectificatin in a future update.
 
-- It was found during manual testing that some of the page urls were raising a 500 error when the user attempted to test the page, this was rectified by including the {% load static %} tag on all required pages.
-
-- During manual testing it was found that the user did not know that by clicking the booking in the bookings view that it would redirect the user to the booking details page where the user could then edit or delete the booking.The booking card in the bookings page was displaying too much information and the user was able to view all the booking details without selecting the booking and being redirected to the booking details page. To fix this error the information displayed was significantly reduced and a message was displayed to the user to "click on a booking to view booking details".
-
-- During manual testing numerous issues with styling and layouts were noted which required modifications to the bootsrap classes to display the content as required in this application.
-
-- During manual testing it was noted that the color schemes were displayed differently between browsers. The tests were carried out on chrome mobile browser and samsung internet browser where differences were noted. please see below images displaying same:
-
-###### Google Chrome mobile browser
-![Google Chrome mobile browser](static/readme_images/google-chrome-browser.jpg "Google Chrome mobile browser")
-
-###### Samsung mobile browser
-![Samsung mobile browser](static/readme_images/samsung-internet-browser.jpg "Samsung mobile browser")
-
-## Deployment
+# Deployment
 This project was deployed to Heroku at the address **https://brian-stritch-p5-bs-auto-parts.herokuapp.com/** using the following steps
 
 ### GitHub:
@@ -684,13 +680,16 @@ To see a complete walkthrough of how to create a heroku account, a new app and t
 AWS amazon web services was used for sorage of static files and images for this project and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/aws_walkthrough.md)
 
 ### Gmail Account setup for the sending of emails from django apps
-Google G-Mail was used for this project and to see a full walkthrough of the process involved please click [**here**]()
+Google G-Mail was used for this project and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/gmail_setup.md)
+
+### Stripe Account setup for the handling of payments from django apps online store
+Stripe was used for this project to manage payments and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/stripe_setup.md)
 
 
 ## Credits
 ### Content
 - Font icons imported from FontAwesome.
-- THe amjority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels.
+- THe majority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels and researching past pupils work.
  
 ### Media
 As there are many images for the products in this website, most of which were obtained from Pexels.com, shutterstock.com and some images obtained from facebook and chinese vendor wish.
