@@ -653,9 +653,11 @@ Each page was altered slightly between mobile and desktop for its layout to ensu
 ![Samsung mobile browser](static/readme_images/samsung-internet-browser.jpg "Samsung mobile browser")
 
 ## Deployment
-This project was deployed to Heroku at the address **https://b-stritch-p4-fine-wine-n-dine.herokuapp.com/** using the following steps
+This project was deployed to Heroku at the address **https://brian-stritch-p5-bs-auto-parts.herokuapp.com/** using the following steps
 
 ### GitHub:
+Github was used for building this project with version control and to see a full walkthrough of the process involved please click [**here**]()
+
 - Create a new project on GitHub
 - Click the green Gitpod button to open in Gitpod
 
@@ -666,21 +668,23 @@ This project was deployed to Heroku at the address **https://b-stritch-p4-fine-w
 - Next, push the code commit to GitHub by typing "git push"
 
 ### Heroku:
-- Create a Heroku account
-- Create a new app
-- Link the Heroku app with your GitHub repository
-- Push changes to git using the terminal and verify that the connection to Heroku is working
-- Add environment variables to Heroku settings.
-- In Heroku click the deploy tab, click on deploy to deploy the latest branch of your repository
-    - You can click on automatic deployment where each new push to github will be deployed to heroku
+To see a complete walkthrough of how to create a heroku account, a new app and the heroku deployment process please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/heroku_deployment.md)
+
+### AWS Amazon Web Services
+AWS amazon web services was used for sorage of static files and images for this project and to see a full walkthrough of the process involved please click [**here**]()
+
+### Gmail Account setup for the sending of emails from django apps
+Google G-Mail was used for this project and to see a full walkthrough of the process involved please click [**here**]()
+
 
 ## Credits
 ### Content
-- Font icons imported from FontAwesome. 
+- Font icons imported from FontAwesome.
+- THe amjority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels.
+ 
 ### Media
-As there are many images for the reviews in this website, most of which were obtained from Pexels.com, shutterstock.com and some images obtained from the establishment facebook page.
+As there are many images for the products in this website, most of which were obtained from Pexels.com, shutterstock.com and some images obtained from facebook and chinese vendor wish.
 
 ### Acknowledgements
 - I would like to acknowledge my mentor Mo Shami for all of his help and advice with this project
 - I would like to thank my friends and family for their testing help and advice with this project
-- I would like to thanks the establishment management of Nannys for permission to use the images from their facebook site.
