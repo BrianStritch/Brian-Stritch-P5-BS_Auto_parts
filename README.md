@@ -213,29 +213,6 @@ Below is a list of views and descriptions ilustrating the different views and fu
 # User types - Admin Access:
 <hr>
 
-       
-    
-
-
-
-
-<!-- ###### Registered User forum page navigation
-![AdminisRegistered Usertration forum page view](media/readme/site_images/ "Example of the Administration forum page navigation")
-
-###### Registered User completed bookings view
-![Registered User completed bookings view](media/readme/site_images/ "Example of the admin completed pending view")
-###### Registered User  Forum navigation menu
-![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
-###### Registered User  Forum navigation menu
-![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
-
-###### Registered User  Forum navigation menu
-![Registered User bookings view](media/readme/site_images/ "Example of the admin access profile navigation")
-
-###### Registered user profile page view
-![Registered User Profile](static/readme_images/ "Example of the users profile") -->
-
-
 ## General site pages
 <hr>
 <br>
@@ -270,7 +247,6 @@ Below is a list of views and descriptions ilustrating the different views and fu
 ##### Close up view of administration product likes button, edit, delete and stock management buttons on product detail view
 ![Administration product likes button on product detail view](media/readme/site_images/admin-stock-management-button.JPG "Example of the Administration product likes button on product detail view")
 
-
 ##### Admin user profile page view
 ![User Profile](media/readme/site_images/my-account-user-details.JPG "Example of the users profile")
 <br>
@@ -291,7 +267,6 @@ Below is a list of views and descriptions ilustrating the different views and fu
 ##### Administration forum create topic view
 ![Administration forum create topic view](media/readme/site_images/admin_forum_create_topic.JPG "Example of the Administration forum create topic view")
 
-Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
 <br>
 
 ## User Stories
@@ -299,28 +274,56 @@ Once logged in, staff members have access to the same functionality as members a
 <br>
 
 #### New Users
-- As a new user, I would like to be able to view information about the establishment so that I can decide whether to use their services or not
-- As a new user, I would like to be able to see reasons why I should create an account so that I can decide if I would like to become a members
-- As a new user, I would like to be able to view a menu to see what type of foods are on offer
-- As a new user, I would like to be able to view reviews from past guests so that I can see what other users think of the establishment
+    - As a new user, I would like to be able to view products in the store 
+    - As a new user, I would like to be able to view products in the store and add them to my shopping bag
+    - As a new user, I would like to be able to navigate from the products to the shopping bag
+    - As a new user, I would like to be able to view the products in the shopping bag easily to check its contents
+    - As a new user, I would like to be able to view the ability to easily navigate back to the shop products page from the shopping bag
+      in case i wish to purchase more products.
+    - As a new user, I would like to be able ammend the quantity of products in my shopping bag in case i wish to purchase more of the
+      same  products.
+    - As a new user, I would like to be able to navigate from the shopping bag to the checkout page to progress with my purchase.
+    - As a new user, I would like to be able to easily enter my shipping details to ensure my order is delivered correctly.
+    - As a new user, I would like to be able to easily enter my payment details and confirm my purchase.
+    - As a new user, I would like to be able to recieve an order confirmation email which outlines which products i have purchased, their
+      prices, the quantity of each item, the cost of each item and the total cost of my order.
+    - As a new user, I would like to be able to see reasons why I should create an account so that I can decide if I would like to become
+      a member
+    - As a new user, I would like to be able to have the ability to register and create an account.  
+    - As a new user, I would like to be able to have the ability to sign up for the shop newsletter.
+    - As a new user, I would like to be able to have the ability to opt in or out of the newsletter or remove my email from the
+      newsletter database should i feel the wish to do so.
+    - As a new user, I would like to be able to read reviews on each product so that I can see what other users think of the products on
+     offer
 
 #### Existing Members
-- As an existing member, I would like to be able to log into my profile easily so that I avail of members only attributes of the website.
-- As an existing member, I would like to be able to log into my profile easily so that I can review my profile information
-- As an existing member, I would like to be able to edit my personal information on my profile so that I can keep the information up to date on the database
-- As an existing member, I would like to be able to delete my profile should i wish to do so
+##### I would like to have all the new users functionality and also:
+    - As an existing member, I would like to be able to log into my profile easily so that I can avail of members only attributes of the 
+    website such as the forum.
+    - As an existing member, I would like to be able to log into my profile easily so that I can review my profile information
+    - As an existing member, I would like to be able to edit my personal information on my profile so that I can keep the information up to date on the database
+    - As an existing member, I would like to be able to delete my profile should i wish to do so
 
-- As an existing member, I would like to be able to view my bookings 
-- As an existing member, I would like to be able to edit all of my bookings
-- As an existing member, I would like to be able to delete my bookings
+    - As an existing member, I would like to be able to view my previous orders history 
+    - As an existing member, I would like to be able to create reviews on products in the store
+    - As an existing member, I would like to be able to edit all of my reviews
+    - As an existing member, I would like to be able to delete my reviews
 
-- As an existing member, I would like to be able to view all reviews 
-- As an existing member, I would like to be able to edit all of my reviews
-- As an existing member, I would like to be able to delete my reviews
+    - As an existing member, I would like to be able to access the members forum and view all the different posts in each topic and the comments on each post. 
+    - As an existing member, I would like to be able to create my own forum post
+    - As an existing member, I would like to be able to easily view my own forum post
+    - As an existing member, I would like to be able to edit all of my forum posts
+    - As an existing member, I would like to be able to delete my forum post
 
-- As an existing member, I would like to be able to view my comments on reviews 
-- As an existing member, I would like to be able to edit all of my comments on reviews
-- As an existing member, I would like to be able to delete my comments on reviews
+    - As an existing member, I would like to be able to view all forum post comments 
+    - As an existing member, I would like to be able to create my own forum post comments 
+    - As an existing member, I would like to be able to view all my forum post comments 
+    - As an existing member, I would like to be able to edit all of my forum post comments
+    - As an existing member, I would like to be able to delete my forum post comments
+
+    - As an existing member, I would like to be able to view the number of likes on each post 
+    - As an existing member, I would like to be able to view the number of likes on each post comment
+    - As an existing member, I would like to be able to view the number of likes on each product review
 
 #### Admin / Staff Users
 - As a staff member, I would like to be able to view all the restaurant bookings 

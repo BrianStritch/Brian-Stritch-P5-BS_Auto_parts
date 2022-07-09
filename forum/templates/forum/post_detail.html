@@ -50,8 +50,11 @@
                                                     <div class="card-body high-z text-black">
                                                         <p><i class="fas fa-comments"></i> {{ comment.body }} </p>
                                                         <p ><i class="text-black">Comment by:</i> {{comment.name}} | <i class="text-black">posted on:</i> {{ comment.created_on}}</p>
+                                                        
                                                         {% if request.user.username == comment.name %}
-                                                            {% if comment in comments_liked %}
+                                                            {% if request.user in comments_liked %}
+                                                            
+                                                            <h1>hello</h1>
                                                                 <button  class="btn-like like-btn-outline hover-off" >
                                                                     <i class="fas fa-heart red"></i>
                                                                 </button>                                                            

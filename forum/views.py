@@ -132,32 +132,7 @@ def PostDetail(request, pk, *args , **kwargs):
     renders a view to display forum post detail relating
     to the specific post selected
     '''
-    # query = None
-    # sort = None
-    # direction = None
     
-    # if 'q' in request.GET:
-    #     query = request.GET['q']
-    #     if not query:
-    #         messages.error(
-    #             request, "You didn't enter any search criteria!")
-    #         return redirect(reverse('checkout'))
-
-    #     queries = Q(
-    #         name__icontains=query) | Q(description__icontains=query)
-    #     product = Product.objects.all()
-    #     products = product.filter(queries)
-
-    #     current_sorting = f'{sort}_{direction}'
-                
-    #     context = {
-    #     'products': products,
-    #     'search_term': query,
-    #     'current_sorting': current_sorting,
-    #     }
-    #     return render(
-    #         request, 'products/products.html', context)
-    # else:
 
     post = get_object_or_404(ForumPost, pk= pk)
     template_name = 'forum/post_detail.html'
@@ -166,7 +141,7 @@ def PostDetail(request, pk, *args , **kwargs):
     post_liked = False
     if post.likes.filter(id=request.user.id).exists():
         post_liked = True
-    
+        
     comments = post.forum_post_comments.filter(
         approved=True
         ).order_by('created_on')
@@ -219,32 +194,7 @@ class CreateCategory(TemplateView):
         }
         return render(request, template_name, context)
 
-    def post(self, request):
-        # query = None
-        # sort = None
-        # direction = None
-        
-        # if 'q' in request.GET:
-        #     query = request.GET['q']
-        #     if not query:
-        #         messages.error(
-        #             request, "You didn't enter any search criteria!")
-        #         return redirect(reverse('checkout'))
-
-        #     queries = Q(
-        #         name__icontains=query) | Q(description__icontains=query)
-        #     product = Product.objects.all()
-        #     products = product.filter(queries)
-
-        #     current_sorting = f'{sort}_{direction}'
-                    
-        #     context = {
-        #     'products': products,
-        #     'search_term': query,
-        #     'current_sorting': current_sorting,
-        #     }
-        #     return render(
-        #         request, 'products/products.html', context)
+    def post(self, request):        
         form = ForumCategoryForm(request.POST)
         if form.is_valid():
             category = form.save()

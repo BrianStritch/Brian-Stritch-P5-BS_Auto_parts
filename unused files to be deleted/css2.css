@@ -20,7 +20,7 @@ body {
     font-size: 1.6rem;
 }
 
-#dim-cover{
+.dim-cover{
     background-color: rgba(0, 0, 0, 0.590);
     height: 200%;
     padding-top: 12vh;
@@ -563,7 +563,7 @@ a.category-badge > span.badge:hover {
     html{
         padding-top: 16vh;
     }
-    #dim-cover-bag{
+    .dim-cover-bag{
         padding-top: 13vh;
     }
 }
@@ -575,10 +575,10 @@ a.category-badge > span.badge:hover {
         left: 0;
         
     }
-    #dim-cover{
+    .dim-cover{
         padding-top: 13vh;
     }
-    #dim-cover-bag{
+    .dim-cover-bag{
         padding-top: 13vh;
     }
     #footer{
@@ -599,7 +599,7 @@ a.category-badge > span.badge:hover {
         padding-top: 18vh;
         width: 100vw;
     }
-    #dim-cover{        
+    .dim-cover{        
         padding-top: 7vh;
         width: 100vw;
     }
@@ -663,7 +663,7 @@ a.category-badge > span.badge:hover {
     html{
         padding-top: 12vh;
     }
-    #dim-cover {
+    .dim-cover {
         padding-top: 15vh;
         width: 100vw;
     }

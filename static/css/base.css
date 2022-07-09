@@ -1,8 +1,16 @@
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body{ 
+    min-width:100%;
+  }
 html {
     height: 100%;
-    padding-top: 10vh;
-    width: 100%;
+    /* width: 100%; */
 }
 
 body {
@@ -10,7 +18,6 @@ body {
     background-size: cover;
     height: calc(120vh - 164px);
     min-height: 100%;
-    padding-top: 10vh;
     font-family: "Open Sans", sans-serif;
     color: #313030;
     position: relative;
@@ -19,10 +26,10 @@ body {
     min-height:100%;
 }
 
-#dim-cover{
+.dim-cover{
     background-color: rgba(0, 0, 0, 0.590);
     height: 200%;
-    padding-top: 12vh;
+    padding-top: 0vh;
 }
 
 a {
@@ -106,6 +113,20 @@ menu{
 .orange{
     background-color: orangered;
 }
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header,
+.page-footer {
+    flex-shrink: 0;
+}
+
+.page-body {
+    flex-grow: 1;
+}
 
 
 
@@ -177,6 +198,7 @@ a:hover{
     top: 72px;
     right: 15px;
     z-index: 20000;
+    max-width: 75vw;
 }
 
 .custom-toast{
@@ -283,7 +305,7 @@ a:hover{
     position: relative;
     z-index: 0;
     margin-top: 5vh;
-    width: 100vw;
+    /* width: 100vw; */
     flex: 1;
     
 }
@@ -816,7 +838,7 @@ a.category-badge > span.badge:hover {
 /* ********************* shopping bag page *******************************/
 
 .outer-container{
-    width: 100vw;
+    /* width: 100vw; */
     min-height: 75vh;
 }
 .float-right{
@@ -830,14 +852,12 @@ a.category-badge > span.badge:hover {
 
 @media(min-width:996px){
     
-    html{
-        padding-top: 16vh;
-    }
-    #dim-cover-bag{
-        padding-top: 13vh;
+   
+    .dim-cover-bag{
+        padding-top: 0vh;
     }
     .product-pages{
-        margin-top: -10vh;
+        margin-top: 0vh;
     }
     
     
@@ -850,12 +870,12 @@ a.category-badge > span.badge:hover {
         left: 0;
         
     }
-    #dim-cover{
-        padding-top: 13vh;
+    .dim-cover{
+        padding-top: 0vh;
         
     }
-    #dim-cover-bag{
-        padding-top: 13vh;
+    .dim-cover-bag{
+        padding-top: 0vh;
     }
     #footer{
         margin-top: 8vh;
@@ -915,13 +935,13 @@ a.category-badge > span.badge:hover {
         margin: auto;
     }
     html{
-        padding-top: 18vh;
+        padding-top: 0vh;
         width: 100vw;
     }
-    #dim-cover {
+    .dim-cover {
         
-        margin-top: -20vh;
-        padding-top: 160px;
+        margin-top: 0vh;
+        padding-top: 0px;
     }
     .center{
         display: block;
@@ -999,20 +1019,27 @@ a.category-badge > span.badge:hover {
         width: 100vw !important;
     }
     .home-top-padding{
-        margin-top: -6vh;
+        margin-top: 0vh;
     }
     .shop-top-padding{
-        margin-top: 25vh;
+        margin-top: 0vh;
     }
     .product-pages {
-        margin-top: -25vh;
+        margin-top: 0vh;
+    }
+    .message-container{
+        margin-right: 5vw;
+    }
+    .message-container button{
+        height: 5vh;
+        width: 8vw;
     }
     
 }
 
 @media(max-width:432px){
     html{
-        padding-top: 10vh;
+        padding-top: 0vh;
     }
     .nav-link{
         font-size: 10px;
@@ -1028,11 +1055,8 @@ a.category-badge > span.badge:hover {
     .banner{
         font-size: 10px;
     }
-    html{
-        padding-top: 12vh;
-    }
-    #dim-cover {
-        padding-top: 20vh;
+    .dim-cover {
+        padding-top: 0vh;
         width: 100vw;
     }
     hr{

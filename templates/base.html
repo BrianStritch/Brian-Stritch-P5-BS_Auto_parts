@@ -65,8 +65,8 @@
 </head>
 
 <body class="{% if forum %}body-padding-top{% endif %}">
-    <section id="dim-cover">
-        <header class="container-fluid fixed-top">
+    <section class="dim-cover">
+        <header class="container-fluid page-header high-z">
             <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
                 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -235,9 +235,11 @@
 
 
         
-
-        {% block content %}
-        {% endblock %}
+        <div class="page-body">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
 
         {% block postloadjs %}
         
@@ -245,7 +247,7 @@
 
 
         <!-- ======= Footer ======= -->
-        <footer id="footer" class="{% if home %}footer-home{% endif %} flex-and-center">
+        <footer id="footer" class="{% if home %}footer-home{% endif %} flex-and-center page-footer high-z">
             <div class="container d-lg-flex py-4 row">
                 <div class="col-12 col-md-4 me-lg-auto text-center text-lg-start">
                     <div class="copyright">

@@ -2,7 +2,7 @@
 # 3rd party imports from django
 from django.db import models
 
-OPTIONS = ((0, 'Optin'),(1, 'Optout'),(2, 'Delete:')) 
+OPTIONS = ((0, 'Subscribe:'),(1, 'Un-Subscribe:'),(2, 'Delete:')) 
 
 class Newsletter(models.Model):
     """

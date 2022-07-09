@@ -1,5 +1,5 @@
 .body-padding-top{
-    padding-top: 3.5em;
+    padding-top: 0;
 }
 
 .forum{
@@ -73,13 +73,13 @@
 
 @media(max-width:996px){
     .body-padding-top{
-        padding-top: 1.5em;
+        padding-top: 0em;
     }
     
 }
 @media(max-width:420px){
     .body-padding-top{
-        padding-top: 0.25em;
+        padding-top: 0em;
     }
     .forum-heading-box {
         width: 90%;
@@ -94,7 +94,7 @@
 }
 @media(max-width:321px){
     .body-padding-top{
-        padding-top: 5.25em;
+        padding-top: 0em;
     }
     .forum-heading-box {
         width: 90%;
