@@ -571,18 +571,9 @@ There are other issues that could not be fixed due to ability / time contraints 
 #### CSS
 The custom.css file code was validated using the The W3C CSS Validation Service and the image below verifies that the code was successfully validated with no errors. Numerous warnings were noted which relate to the bootstrap CSS files inherited with the template, however none of the custom css written for this web application failed or had any warnings present.
 
-###### base.css
-![W3C CSS Validation base.css](./media/readme/w3c_validation/w3c-css-validator-base-css.JPG "W3C CSS validation")
+All CSS files have been tested and the results of which can be found by clicking [**here**]() to reach the file. 
 
-###### product-review.css
-![W3C CSS Validation product-review](./media/readme/w3c_validation/w3c-css-validator-product-review-css.JPG "W3C CSS validation product-review")
-
-###### checkout.css
-![W3C CSS Validation checkout](./media/readme/w3c_validation/w3c-css-validator-checkout-css.JPG "W3C CSS validation checkout")
-
-###### forum.css
-![W3C CSS Validation forum](./media/readme/w3c_validation/w3c-css-validator-forum-css.JPG "W3C CSS validation forum")
-
+PLease see below badges obtained for passing the W3C CSS Validator testing
 <p>
     <a href="http://jigsaw.w3.org/css-validator/check/referer">
         <img style="border:0;width:88px;height:31px"
@@ -599,7 +590,7 @@ The custom.css file code was validated using the The W3C CSS Validation Service 
         alt="Valid CSS!" />
     </a>
 </p>
-       
+     
 <hr>
 
 #### HTML
@@ -647,7 +638,7 @@ In order to run tests on GitPod using unittest (which has been installed to hand
 <hr>
 
 ### Responsiveness
-This website has been designed to scale correctly to different screen sizes with no issues on layout. In order to ensure that the view was pleasant to the user, certain divs and items had to be arranged differently or hidden/shown depending on screen size. This was handled using CSS media queries. Click [**here**]() to see images of the application on different sized media screens.
+This website has been designed to scale correctly to different screen sizes with no issues on layout. In order to ensure that the view was pleasant to the user, certain divs and items had to be arranged differently or hidden/shown depending on screen size. This was handled using CSS media queries. Click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/responsive_testing.md) to see images of the application on different sized media screens.
 
 <hr>
 
