@@ -29,27 +29,28 @@ The users on this website can create reviews on their favourite prducts and can 
 <hr>
 
 ## Table of Contents
-1. [**UX**](#ux)
+1. [**Search Engine Optimisation**](#Search-Engine-Optimisation)
+2. [**UX**](#ux)
     1. [**User Stories**](#user-stories)
         1. [**New Users**](#new-users)
         2. [**Existing Members**](#existing-members)
         3. [**Admin / Staff Users**](#admin-/-staff-users)
     2. [**Wireframes**](#wireframes)
     3. [**Entity Relationship Diagram (ERD)**](#entity-relationship-diagram-(ERD))
-2. [**Features**](#features)
+3. [**Features**](#features)
     1. [**Existing Features**](#existing-features)
         1. [**Regular Users**](#regular-users)
         2. [**Staff Users**](#staff-users)
     2. [**Future Features**](#future-features)
-3. [**Technologies Used**](#technologies-used)
-4. [**Database**](#database)
+4. [**Technologies Used**](#technologies-used)
+5. [**Database**](#database)
     1. [**Physical database diagram**](#physical-database-diagram)
     2. [**Database models**](#models)
         1. [**User Model**](#user-model)
         2. [**Booking Model**](#booking-model)
         3. [**Review Model**](#review-model)
         4. [**Comment Model**](#comment-model)
-5. [**Testing**](#testing)
+6. [**Testing**](#testing)
     1. [**User Credentials**](#user-credentials)
         1. [**Test User**](#test-user)
         2. [**Test User Staff**](#test-user-staff)
@@ -72,14 +73,36 @@ The users on this website can create reviews on their favourite prducts and can 
         6. [**Tablet Size Reviews Page Navigation Menu**](#tablet-size-reviews-page-navigation-menu)
         7. [**Tablet Size Admin Page Navigation Menu**](#tablet-size-admin-page-navigation-menu)        
     6. [**Bugs Found**](#bugs-found)
-6. [**Deployment**](#deployment)
+7. [**Deployment**](#deployment)
     1. [**GitHub**](#GitHub)
         1. [**To commit the code on GitPod to GitHub**](#to-commit-the-code-on-GitPod-to-GitHub)
     2. [**Heroku**](#heroku)
-7. [**Credits**](#credits)
+8. [**Credits**](#credits)
     1. [**Content**](#content)
     2. [**Media**](#media)
     3. [**Acknowledgements**](#acknowledgements)
+
+## Search Engine Optimisation
+
+A description which is relevant and informative has been included in the meta of base.html: 
+
+"BS-Auto_Parts is a high quality high performance vehicle auto parts sales website, hoping to bring the very best in advance automotive service and reliability offering you the finest drifting, racing, and performance parts for all your vehicle maintenance needs and auto repair work"
+
+Utilising Google Search, short keywords and long keyword phases were identified to include across the site to optimise search engine results for the site. These keyword were then run through wordtracker.com to check volume for the search with Google in the UK region.
+
+The list of keywords for the site were narrowed down to:
+
+1. auto parts
+2. advance automotive
+3. vehicle repair
+4. racing
+5. drifting
+6. performance
+7. auto repair
+8. vehicle maintenance
+
+These keywords are aplied across the website in context and in descriptions. 
+
 
 ## UX Site users
 This project was designed to allow users to, through CRUD functionality, create read update delete , shopping bag orders, product reviews, forum posts, forum post comments, and the ability to sign up to a newsletter and send a message to the site owners via the contact us form via the navigation menu. In particular;
@@ -163,7 +186,7 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
  
 
 ### Site Map
-![Site Map](media/ "Site Map Diagram showing Layout of the Web application")
+![Site Map](sitemap.xml "Site Map compiled for the application")
 
 ## Features
 ### Existing Features
@@ -203,14 +226,14 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
 14. Edit Categories - Staff Users can edit forum categories in the forum
 15. Delete Forum Categories - Staff Users can delete forum categories in the forum
 
-<!-- ### Future Features
-1. An Accomodation booking application will be added in a future update so the guests can stay in our new state of the art rooms.
-2. A Menu app will be added in order for the staff / admin users to change the menu with a simple update form.
-3. A payment method would be added in a future update so that the user can pre-pay their booking
-4. A Merchandise shop will be added so that guests can purchase Nanny's clothing merchandise
+### Future Features
+1. A future feature to implement is the ability to post comments on each product review, which due to time constraints i was unable to include in this version due to errors when testing.
+2. In a future update i would like to alter the stock quantity when a purchase is made as currently it does not.
+3. In a future update i would like to fix the error with the orderlineitems not being addd to the order and via the webhooks.
+4. A future update i would like to include would be the ability to like multiple comments and an indicator turning red. currently it only works for the forum posts and due to time constraints i was unable to have this function included in this version due to errors when testing.
 5. A simple sign up with social media account will be introduced in a future update as we did not have the timescale to complete in this deployment.
 6. A contact link between guests and admin will be established in a future update.
-7. A User account details app will be set up in a future update to manage contact information and payment methods etc. -->
+
 
 ## Technologies Used
 - HTML - This site uses HTML to instruct the browser how to interprit the code correctly and arrange the layout.
@@ -222,8 +245,9 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
 - Balsamiq - This was used to create the wireframes in the design phase
 - Heroku - This was chosen to host the website app for deployment.
 - Coverage - This reporting tool was installed and used to produce reports showing how much of the apps had been tested
-- Cloudinary - Cloudinary storage was set up and used for storing website images
 - Postgres - This Relational Datatabase was used to handle the data storage
+- Stripe - This is used to handle payments via the online store
+- AWS S3 Bucket - This is used as storage for all static and media files
 
 ### Libraries and resources
 - Bootstrap 5.0 (https://getbootstrap.com/docs/5.0)
@@ -278,7 +302,9 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
 
 #### Physical database diagram
 This model contains all fields stored in the database collections with their data type and mimics the structure of what is actually stored in the Postgres database
-<br>![Database diagram](static/readme_images/database/database-diagram.png)
+<br>
+
+[**Database diagram**](/README/ERD.md)
 
 
 #### Models
@@ -302,6 +328,8 @@ This model contains all fields stored in the database collections with their dat
   - Existing users contact details
 
 A full breakdown of the models can be found [**Here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/models.md)
+
+An ERD Entity relationship diagram can be found [**Here**](/README/ERD.md)
 
 
 ## Testing
@@ -453,7 +481,7 @@ Stripe was used for this project to manage payments and to see a full walkthroug
 
 ### Facebook Mock business page
 We have created a mock facebook business page based on the CI balsamic template below: 
-<br> !["facebook mocuup page"](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page")
+<br> !["facebook mockup page"](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page")
 
 
 ## Credits
@@ -463,6 +491,7 @@ We have created a mock facebook business page based on the CI balsamic template 
  
 ### Media
 As there are many images for the products in this website, most of which were obtained from Pexels.com, shutterstock.com and some images obtained from facebook and chinese vendor wish.
+- Product information and images were obtained from a combination of lengthy searcing on Unsplash,Burst (by Shopify),Pexels,Pixabay,Free Images,Kaboompics,Stocksnap.io,Canva and further images obtained from filtering google search to royalty free.
 
 ### Acknowledgements
 - I would like to acknowledge my mentor Mo Shami for all of his help and advice with this project

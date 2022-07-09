@@ -1,7 +1,7 @@
 workspace <br>
 https://brianstritc-brianstritc-uq1bkslym41.ws-eu47.gitpod.io/ <br>
 <br>
-
+Pip3 install -r requirements.txt
 pip3 install Django==3.2 <br>
 pip3 install django-crispy-forms <br>
 pip3 install django-countries==7.2.1 <br>

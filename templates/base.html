@@ -13,7 +13,25 @@
     {% endblock %}
 
     {% block extra-meta %}
+    <!--Meta Description-->
+    <meta name="description"
+        content="BS-Auto_Parts is a high quality high performance 
+        vehicle auto parts sales website, hoping to bring the very best 
+        in advance automotive service and reliability offering you the 
+        finest drifting, racing, and performance parts for all your vehicle 
+        maintenance needs and auto repair work" />
+    <!--Keywords-->
+    <meta name="keywords"
+        content="
+        auto parts, 
+        advance automotive, 
+        performance, 
+        vehicle maintenance, 
+        racing, drifting, 
+        vehicle repair, 
+        auto parts">
     {% endblock %}
+
 
     {% block corecss %}
     <!-- Bootstrap CSS -->
@@ -42,7 +60,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/41b937922a.js" crossorigin="anonymous"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -50,12 +68,12 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script src="https://js.stripe.com/v3/"></script>   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
 
     {% endblock %}
 
@@ -109,8 +127,8 @@
                                 </form>
                             </div>
                         </li>
-                        <li class="list-inline-item"> 
-                            {% if user.is_authenticated %}                           
+                        <li class="list-inline-item">
+                            {% if user.is_authenticated %}
                             <a class="white-hover nav-link" href="{% url 'existing_user_contact_us' request.user.pk %}">
                                 <div class="text-center">
                                     <div><i class="fas fa-envelope fa-lg"></i></div>
@@ -124,7 +142,7 @@
                                     <p class="my-0">Contact Us</p>
                                 </div>
                             </a>
-                            {% endif %}                         
+                            {% endif %}
                         </li>
                         <li class="list-inline-item dropdown">
                             <a href="#" id="user-options-2" data-toggle="dropdown" aria-haspopup="true"
@@ -136,15 +154,21 @@
                             </a>
                             <div class="dropdown-menu ">
                                 {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}                                
-                                <a href="{% url 'store_management' %}" class=" dropdown-item" aria-label="navigation link to store management page">Store Management</a>
+                                {% if request.user.is_superuser %}
+                                <a href="{% url 'store_management' %}" class=" dropdown-item"
+                                    aria-label="navigation link to store management page">Store Management</a>
                                 {% endif %}
-                                <a href="{% url 'profile' %}" class=" dropdown-item" aria-label="navigation link to users profile page">My Profile</a>
-                                <a href="{% url 'view_favourites' %}" class=" dropdown-item"  aria-label="navigation link to users favourite products page">My Favourites</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item" aria-label="navigation link to logout">Logout</a>
+                                <a href="{% url 'profile' %}" class=" dropdown-item"
+                                    aria-label="navigation link to users profile page">My Profile</a>
+                                <a href="{% url 'view_favourites' %}" class=" dropdown-item"
+                                    aria-label="navigation link to users favourite products page">My Favourites</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item"
+                                    aria-label="navigation link to logout">Logout</a>
                                 {% else %}
-                                <a href="{% url 'sign_up' %}" class="dropdown-item" aria-label="navigation link to user registration page">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item" aria-label="navigation link to login">Login</a>
+                                <a href="{% url 'sign_up' %}" class="dropdown-item"
+                                    aria-label="navigation link to user registration page">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item"
+                                    aria-label="navigation link to login">Login</a>
                                 {% endif %}
                             </div>
                         </li>
@@ -152,7 +176,8 @@
                             <a href="{% url 'view_bag' %}"
                                 class="{%if grand_total %}text-info font-weight-bold {% else %} white-hover {% endif %} nav-link">
                                 <div class="text-center">
-                                    <div><i class="fas fa-shopping-bag fa-lg"  aria-label="bag icon displaying shopping bag current total"></i></div>
+                                    <div><i class="fas fa-shopping-bag fa-lg"
+                                            aria-label="bag icon displaying shopping bag current total"></i></div>
                                     <p class="my-0">
                                         {% if grand_total %}
                                         €{{ grand_total|floatformat:2 }}
@@ -171,19 +196,20 @@
             <div class="row nav-links ">
                 <div class="col-lg-12">
                     <menu class=" row navbar navbar-expand-lg navbar-light vw-90">
-                        <button class="col=12 navbar-toggler {%if home %}d-none{% endif %}" data-toggle="collapse" data-target="#main-nav"
-                            aria-controls="main-nav" aria-label="toggle navigation" aria-expanded="false">
+                        <button class="col=12 navbar-toggler {%if home %}d-none{% endif %}" data-toggle="collapse"
+                            data-target="#main-nav" aria-controls="main-nav" aria-label="toggle navigation"
+                            aria-expanded="false">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="col-12">
                             {% include 'includes/mobile-top-header.html' %}
                             {% if not home %}
-                                {% if forum %}                        
-                                {% include 'includes/forum-nav.html' %}
-                                {% else %}
-                                {% include 'includes/main-nav.html' %}
-                                {% endif %}
-                                
+                            {% if forum %}
+                            {% include 'includes/forum-nav.html' %}
+                            {% else %}
+                            {% include 'includes/main-nav.html' %}
+                            {% endif %}
+
                             {% endif %}
                         </div>
                     </menu>
@@ -193,56 +219,58 @@
                 {% block page_header %}
                 {% endblock %}
             </div>
-            
-            <div class="{% if forum %}d-none{% endif %} row text-center" aria-label="banner notifying customers of same day cut off delivery time">
+
+            <div class="{% if forum %}d-none{% endif %} row text-center"
+                aria-label="banner notifying customers of same day cut off delivery time">
                 <div class="col bg-black text-white">
                     <h4 class=" my-1 banner">
                         Same day dispatch on orders made before 3pm !
                     </h4>
                 </div>
             </div>
-            <div id="delivery-banner" class="{% if forum %}d-none{% endif %} row text-center" aria-label="banner showing delivery threshold">
+            <div id="delivery-banner" class="{% if forum %}d-none{% endif %} row text-center"
+                aria-label="banner showing delivery threshold">
                 <div class="col bg-black text-white">
                     <h4 class=" my-1 banner">
                         Free delivery on orders over €{{free_delivery_threshold}}!
                     </h4>
                 </div>
             </div>
-            
+
         </header>
 
 
         {% if messages %}
-            <div class="message-container">
-                {% for message in messages %}
-                    {% with message.level as level %}
-                        {% if level == 40 %}
-                            {% include 'includes/toasts/toast_error.html'%}
-                        {% elif level == 30 %}
-                            {% include 'includes/toasts/toast_warning.html'%}
-                        {% elif level == 25 %}
-                            {% include 'includes/toasts/toast_success.html'%}
-                        {% else %}
-                            {% include 'includes/toasts/toast_info.html'%}
-                        {% endif %}
-                    {% endwith %}                    
-                {% endfor %}
-            </div>
+        <div class="message-container">
+            {% for message in messages %}
+            {% with message.level as level %}
+            {% if level == 40 %}
+            {% include 'includes/toasts/toast_error.html'%}
+            {% elif level == 30 %}
+            {% include 'includes/toasts/toast_warning.html'%}
+            {% elif level == 25 %}
+            {% include 'includes/toasts/toast_success.html'%}
+            {% else %}
+            {% include 'includes/toasts/toast_info.html'%}
+            {% endif %}
+            {% endwith %}
+            {% endfor %}
+        </div>
         {% endif %}
 
 
 
 
 
-        
+
         <div class="page-body">
             {% block content %}
             {% endblock %}
         </div>
-        
+
 
         {% block postloadjs %}
-        
+
         {% endblock %}
 
 
@@ -251,38 +279,46 @@
             <div class="container d-lg-flex py-4 row">
                 <div class="col-12 col-md-4 me-lg-auto text-center text-lg-start">
                     <div class="copyright">
-                        &copy; Copyright <strong><span><a href="{% url 'home' %}" aria-label="link to home page">BS_Auto_Parts</a></span></strong>. All Rights Reserved
+                        &copy; Copyright <strong><span><a href="{% url 'home' %}"
+                                    aria-label="link to home page">BS_Auto_Parts</a></span></strong>. All Rights
+                        Reserved
                     </div>
                     <hr class="full-width">
-                    <div class="credits">Designed by <a href="https://github.com/BrianStritch" target="_blank" aria-label="link to developers github page">Brian Stritch</a>
+                    <div class="credits">Designed by <a href="https://github.com/BrianStritch" target="_blank"
+                            aria-label="link to developers github page">Brian Stritch</a>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 text-center text-lg-center pt-3 pt-lg-0 {% if bttoff %}d-none{% endif %}">                    
+                <div class="col-12 col-md-4 text-center text-lg-center pt-3 pt-lg-0 {% if bttoff %}d-none{% endif %}">
                     <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
                         <i class="fas fa-arrow-up"></i>
                         back to top of page
                         <i class="fas fa-arrow-up"></i>
-                            
+
                     </a>
                 </div>
                 <div class="col-12 col-md-4 social-links text-center text-lg-right pt-3 pt-lg-0">
                     <h4 class="logo-text">Follow us on social media</h4>
                     <hr class="full-width">
-                    <a href="https://twitter.com/" target="_blank" class="twitter" aria-label="Link to twitter"><i class="fa fa-twitter-square"></i></a>
-                    <a href="https://facebook.com/BSAutoParts2022/" target="_blank" class="facebook" aria-label="Link to facebook"><i class="fa fa-facebook-square"></i></a>
-                    <a href="https://instagram.com/" target="_blank" class="instagram" aria-label="Link to instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="https://google.com/" target="_blank" class="google-plus" aria-label="Link to google-plus"><i class="fa fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com/" target="_blank" class="linkedin" aria-label="Link to linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://twitter.com/" target="_blank" class="twitter" aria-label="Link to twitter"><i
+                            class="fa fa-twitter-square"></i></a>
+                    <a href="https://facebook.com/BSAutoParts2022/" target="_blank" class="facebook"
+                        aria-label="Link to facebook"><i class="fa fa-facebook-square"></i></a>
+                    <a href="https://instagram.com/" target="_blank" class="instagram" aria-label="Link to instagram"><i
+                            class="fa fa-instagram"></i></a>
+                    <a href="https://google.com/" target="_blank" class="google-plus"
+                        aria-label="Link to google-plus"><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://linkedin.com/" target="_blank" class="linkedin" aria-label="Link to linkedin"><i
+                            class="fa fa-linkedin"></i></a>
                 </div>
                 <hr class="full-width">
-                
+
             </div>
         </footer>
 
         <!-- End Footer-->
 
     </section>
-    
+
     <!-- Template Main JS File -->
     <script src="/static/js/script.js"></script>
     <script src="/static/js/js_Bootstrap_carousel.js"></script>
@@ -291,7 +327,7 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>
