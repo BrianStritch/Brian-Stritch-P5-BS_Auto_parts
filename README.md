@@ -671,7 +671,7 @@ Github was used for building this project with version control and to see a full
 To see a complete walkthrough of how to create a heroku account, a new app and the heroku deployment process please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/heroku_deployment.md)
 
 ### AWS Amazon Web Services
-AWS amazon web services was used for sorage of static files and images for this project and to see a full walkthrough of the process involved please click [**here**]()
+AWS amazon web services was used for sorage of static files and images for this project and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/aws_walkthrough.md)
 
 ### Gmail Account setup for the sending of emails from django apps
 Google G-Mail was used for this project and to see a full walkthrough of the process involved please click [**here**]()
