@@ -113,5 +113,5 @@ class ProductReviewComment(models.Model):
             function to define the reverse URL
             for after a comment is created or edited
         """
-        return reverse('products')   # --------------------- set reverse url --------------
-
+        return reverse('products')
+        

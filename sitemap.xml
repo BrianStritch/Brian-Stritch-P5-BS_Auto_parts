@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/contact_us/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/profile/register/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/accounts/login/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/bag/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/shop/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?sale=on_sale</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/accounts/login/?next=/forum/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?sort=rating&amp;direction=desc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?sort=category&amp;direction=asc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=coilover_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=steering_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=camber_arm_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=coilover_kits,steering_kits,camber_arm_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=fast_road_brake_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=racing_brake_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=brake_fitting_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=brake_hose_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=handbrake_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=fast_road_brake_kits,racing_brake_kits,brake_fitting_kits,brake_hose_kits,handbrake_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=engine_tuning_parts</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=turbocharging_kits</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=engine_electronics</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=differentials</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=safety_equipment</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=protective_equipment</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=timing</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=motorsport_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=engine_tuning_parts,turbocharging_kits,engine_electronics,differentials,safety_equipment,protective_equipment,timing,motorsport_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=spoilers</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=splitters</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=alloy_wheels</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=audio</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=lighting</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=styling_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=spoilers,splitters,alloy_wheels,audio,lighting,styling_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=oils</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=oil_filters</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=air_filters</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=fuel_filters</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=spark_plugs</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=glow_plugs</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=service_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=oils,oil_filters,air_filters,fuel_filters,spark_plugs,service_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/22/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/13/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/14/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/12/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/35/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/34/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/1/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/3/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/4/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/5/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/6/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/7/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/8/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/9/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/10/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/11/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/15/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/16/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/17/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/18/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/20/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/21/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/23/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/24/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/2/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/25/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/26/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/27/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/28/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/29/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/30/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=suspension_and_steering_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/31/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/?category=braking_misc</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/32/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://brian-stritch-p5-bs-auto-parts.herokuapp.com/products/19/</loc>
+  <lastmod>2022-07-09T15:49:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

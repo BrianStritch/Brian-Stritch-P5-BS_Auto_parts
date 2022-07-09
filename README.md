@@ -134,6 +134,8 @@ In regards to the contact us messenging service, should an unregistered user wis
 <br>
 
 # USERS :
+
+## User types - Unregistered and Registered User Access:
         - There are two main user types,
             - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
             - A regular(shopper) user account has been set up with username/password of testuser/testpassword
@@ -142,141 +144,17 @@ In regards to the contact us messenging service, should an unregistered user wis
  
 Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
 
-Below is a list of views and descriptions ilustrating the different views and functionality available to the site user depending on thier status, ie, staff, regstered user or unregistered guest users, who all have different levels of access depending on thier status.
-
-# User types - Unregistered and Registered User Access:
-<br>
-
-## General site pages
 <hr>
 <br>
-
-A full breakdown of the pages available within this application can be found by clicking [** here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/w3c_validation.md)
-
-
+A full breakdown of the pages available within this application can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/site_users_and_admins_views.md)
 <br>
 
 ## User Stories
 <hr>
 <br>
 
-#### New Users
-    - As a new user, I would like to be able to view products in the store 
-    - As a new user, I would like to be able to view products in the store and add them to my shopping bag
-    - As a new user, I would like to be able to navigate from the products to the shopping bag
-    - As a new user, I would like to be able to view the products in the shopping bag easily to check its contents
-    - As a new user, I would like to be able to view the ability to easily navigate back to the shop products page from the shopping bag
-      in case i wish to purchase more products.
-    - As a new user, I would like to be able ammend the quantity of products in my shopping bag in case i wish to purchase more of the
-      same  products.
-    - As a new user, I would like to be able to navigate from the shopping bag to the checkout page to progress with my purchase.
-    - As a new user, I would like to be able to easily enter my shipping details to ensure my order is delivered correctly.
-    - As a new user, I would like to be able to easily enter my payment details and confirm my purchase.
-    - As a new user, I would like to be able to recieve an order confirmation email which outlines which products i have purchased, their
-      prices, the quantity of each item, the cost of each item and the total cost of my order.
-    - As a new user, I would like to be able to see reasons why I should create an account so that I can decide if I would like to become
-      a member
-    - As a new user, I would like to be able to have the ability to register and create an account.  
-    - As a new user, I would like to be able to have the ability to sign up for the shop newsletter.
-    - As a new user, I would like to be able to have the ability to opt in or out of the newsletter or remove my email from the
-      newsletter database should i feel the wish to do so.
-    - As a new user, I would like to be able to read reviews on each product so that I can see what other users think of the products on
-     offer
+User stories and a canban board have been used in the production of this web application and a full breakdown of the user stories and images of the github issues and canban board are available and can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/user_stories_issues_and_canban.md)
 
-#### Existing Members
-##### I would like to have all the new users functionality and also:
-    - As an existing member, I would like to be able to log into my profile easily so that I can avail of members only attributes of 
-      the website such as the forum.
-    - As an existing member, I would like to be able to log into my profile easily so that I can review my profile information
-    - As an existing member, I would like to be able to edit my personal information on my profile so that I can keep the information
-      up to date on the database
-    - As an existing member, I would like to be able to delete my profile should i wish to do so
-
-    - As an existing member, I would like to be able to view my previous orders history 
-    - As an existing member, I would like to be able to create reviews on products in the store
-    - As an existing member, I would like to be able to edit all of my reviews
-    - As an existing member, I would like to be able to delete my reviews
-    - As an existing member, I would like to be able to like a selected product review 
-    - As an existing member, I would like to be able to un-like a selected product review 
-    - As an existing member, I would like to be able to view the number of likes on each product review
-
-    - As an existing member, I would like to be able to access the members forum and view all the different posts in each topic and the
-      comments on each post. 
-    - As an existing member, I would like to be able to create my own forum post
-    - As an existing member, I would like to be able to easily view my own forum post
-    - As an existing member, I would like to be able to edit all of my forum posts
-    - As an existing member, I would like to be able to delete my forum post
-    - As an existing member, I would like to be able to like a selected post 
-    - As an existing member, I would like to be able to un-like a selected post 
-    - As an existing member, I would like to be able to view the number of likes on each post
-
-    - As an existing member, I would like to be able to view all forum post comments 
-    - As an existing member, I would like to be able to create my own forum post comments 
-    - As an existing member, I would like to be able to view all my forum post comments 
-    - As an existing member, I would like to be able to edit all of my forum post comments
-    - As an existing member, I would like to be able to delete my forum post comments
-    - As an existing member, I would like to be able to view the number of likes on each post comment
-    - As an existing member, I would like to be able to like a selected post comment
-    - As an existing member, I would like to be able to un-like a selected post comment
-   
-
-#### Admin / Staff Users
-##### Stock Control
-    - As a staff member, I would like to be able to view all the products in the store
-    - As a staff member, I would like to be able to add new products to the store
-    - As a staff member, I would like to be able to edit all the details of all the products in the store
-    - As a staff member, I would like to be able to delete products no longer in the store
-    - As a staff member, I would like to be able to easily toggle the sale status of products in the store
-    - As a staff member, I would like to be able to view all the product categories in the store
-    - As a staff member, I would like to be able to add new product categories  to the store
-    - As a staff member, I would like to be able to edit all the details of all the product categories  in the store
-    - As a staff member, I would like to be able to delete product categories  no longer required in the store
-    - As a staff member, I would like to be able to view all the manufacturer brands suitable for the products in the store
-    - As a staff member, I would like to be able to add new manufacturer brands to the store
-    - As a staff member, I would like to be able to edit all the details of all the manufacturer brands in the store
-    - As a staff member, I would like to be able to delete manufacturer brands no longer required in the store
-
-##### User Management
-    - As a staff member, I would like to be able to view all of the users of the website so that I can manage them
-    - As a staff member, I would like to be able to edit a users Information should it be required
-    - As a staff member, I would like to be able to delete the accounts of registered users in my store if required
-    - As a staff member, I would like to be able to be able to grant a user staff access or remove if required
-    - As a staff member, I would like to be able to add new members to the store if required
-
-##### Newsletter Subscribers
-    - As a staff member, I would like to be able to view all the newletter subscribers in the store
-    - As a staff member, I would like to be able to view the newsletter subscribers current status in the store
-    - As a staff member, I would like to be able to edit all the newsletter subscribers details 
-    - As a staff member, I would like to be able to delete newsletter subscribers no longer subcribed from the database
-
-##### Product Reviews
-    - As a staff member, I would like the ability to be able to review all the product reviews prior to publishment for the
-      purpose of quality control 
-    - As a staff member, I would like to be able to view all the pending product reviews 
-    - As a staff member, I would like to be able to view all the published product reviews
-    - As a staff member, I would like to be able to view all the reviews
-    - As a staff member, I would like to be able to edit any of the reviews if required
-    - As a staff member, I would like to be able to delete a review in the event that it contains any offensive or inappropriate content
-    - As a staff member, I would like to be able to view all comments on reviews
-    - As a staff member, I would like to be able to approve or disprove all comments on reviews in the event that they contain any 
-      offensive or inappropriate content
-    - As a staff member, I would like to be able to edit any of the comments on a review if required 
-
-##### Forum
-###### Posts   
-    - As a staff member, I would like the ability to be able to review all the forum posts prior to publishment for the
-      purpose of quality control 
-    - As a staff member, I would like to be able to view all the pending forum posts 
-    - As a staff member, I would like to be able to view all the published forum posts
-    - As a staff member, I would like to be able to edit any of the forum posts 
-    - As a staff member, I would like to be able to delete any of the forum posts
-###### Comments  
-    - As a staff member, I would like the ability to be able to review all the forum post comments prior to publishment for the
-      purpose of quality control
-    - As a staff member, I would like to be able to view all the pending forum posts comments
-    - As a staff member, I would like to be able to view all the published forum posts comments
-    - As a staff member, I would like to be able to edit any of the forum posts comments
-    - As a staff member, I would like to be able to delete any of the forum posts comments
 
 ### Wireframes
 As there are many pages to this project, I have included the wireframes in a separate document.
@@ -293,38 +171,46 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
 1. Login - The customers are able to create their own accounts and log into the website with secure details.
 2. Sign-Up - New users can sign up to create an account.
 3. When creating a profile, it will not allow users to create a profile with the same username as another member
-4. User Profile - Each user has their own profile that welcomes them by Username for personalisation.
-5. Users can create bookings from the bookings page which is visible to logged in users.
-6. Users can view their bookings from the bookings page which is visible to logged in users.
-7. Users can select a booking and view , edit or delete the booking from the bookings detail page which is visible to logged in users.
-8. Users can view reviews from past guests from the reviews page which is visible to all users.
-9. Users can view specific reviews details and comments by clicking the review which redirects to the reviews detail page.
-10. Users can edit or delete their own reviews or comments from the reviews detail page where an edit and delete button are visible to logged in users, but only for reviews or comments which were created by that user.
-11. Users can view the menu to see what food products are available.
-12. Users can view the contact and about us page to understand who the owners of the establishment are and what they are about. 
-13. Users can also see the contact information, should they wish to contact the establisment directly.
-14. Users can view the opnening hours to see when the establishment is open for business.
-15. Users can see a gallery of images populated by images provided by guests from reviews.
+4. User Profile - Each user has their own profile that can be udated by the user.
+5. Users can create orders and make purchases in the store, whether logged in or not.
+6. Users can view their previous order history from the my profile page which is visible to logged in users.
+7. Users can select a product and view the product detail page which is visible to all in users.
+8. Users can view reviews from past customers from the product details page which is visible to all users.
+9. Users can edit or delete their own reviews or comments from the reviews detail page where an edit and delete button are visible to logged in users, but only for reviews or comments which were created by that user. 
+10. Registered users can navigate to the members forum to view the latest topics and discussions.
+11. Users can select a forum topic to view the post within.
+12. Users can create a forum topic post and can edit and delete posts which they have created. 
+13. Users can view comments made on each post, and can create comments and edit/delete comments which they have created.
+14. Users can sign up to the website newsletter, and can subscribe/ unsubscribe and delete their email from the newsletter database from the fron home page.
+15. Users can track their path through the website and can return to the previous page via the navigational breadcrumbs.
 16. Users can log out at any time from the site by clicking on the logout button 
 
 #### Staff Users
-1. Edit Bookings - Staff users can edit any bookings saved to the database using a simple form.
-2. Edit Reviews - Staff users can edit any reviews saved to the database using a simple form.
-3. Edit Comments- Staff users can edit any comments saved to the database using a simple form.
-4. Delete Bookings - Staff users can delete any bookings saved to the database.
-5. Delete Reviews - Staff users can delete any reviews saved to the database.
-6. Delete Comments- Staff users can delete any comments saved to the database.
+1. Edit Products - Staff users can edit any products saved to the database using a simple form.
+2. Edit Manufacturers - Staff users can edit any manufacturers saved to the database using a simple form.
+3. Edit Categories- Staff users can edit any comments saved to the database using a simple form.
+4. Delete Products - Staff users can delete any products saved to the database.
+5. Delete Manufacturers - Staff users can delete any manufacturers saved to the database.
+6. Delete Categories- Staff users can delete any comments saved to the database.
 7. Edit Users - Staff users can edit any users saved to the database.
 8. Delete Users - Staff users can delete any users saved to the database.
+9. Update users status - Staff users can access the administration panel and can update the users access status ie.
+   staff/admin/regular user.
+10. Create Forum Topics - Staff Users can create new forum topics in the forum
+11. Edit Topics - Staff Users can edit forum topics in the forum
+12. Delete Forum Topics - Staff Users can delete forum topics in the forum
+13. Create Forum Categories - Staff Users can create new forum categories in the forum
+14. Edit Categories - Staff Users can edit forum categories in the forum
+15. Delete Forum Categories - Staff Users can delete forum categories in the forum
 
-### Future Features
+<!-- ### Future Features
 1. An Accomodation booking application will be added in a future update so the guests can stay in our new state of the art rooms.
 2. A Menu app will be added in order for the staff / admin users to change the menu with a simple update form.
 3. A payment method would be added in a future update so that the user can pre-pay their booking
 4. A Merchandise shop will be added so that guests can purchase Nanny's clothing merchandise
 5. A simple sign up with social media account will be introduced in a future update as we did not have the timescale to complete in this deployment.
 6. A contact link between guests and admin will be established in a future update.
-7. A User account details app will be set up in a future update to manage contact information and payment methods etc.
+7. A User account details app will be set up in a future update to manage contact information and payment methods etc. -->
 
 ## Technologies Used
 - HTML - This site uses HTML to instruct the browser how to interprit the code correctly and arrange the layout.
@@ -396,25 +282,27 @@ This model contains all fields stored in the database collections with their dat
 
 
 #### Models
-- The following models were created to represent the database model structure for the website
-##### User Model
-- The User model contains information about the user. It is part of the Django allauth library
-- The model contains the following fields: username, password, first_name, last_name, email, is_staff, is_active, is_superuser, last_login, date_joined
+- This web application utilises 16 seperate models each serving a different purpose and some relating to each other where necessary. The models include:
+  - User
+  - Userprofile
+  - Manufacturer
+  - Category
+  - Product
+  - Product Review
+  - Prouct Review Comment
+  - Order
+  - OrderLineItem
+  - Favourites
+  - Forum Category
+  - Forum Topic
+  - Forum Post
+  - Forum Post Comment
+  - Newsletter
+  - Site users contact details
+  - Existing users contact details
 
-##### Booking Model
-- The Booking model contains information about reservations made in the restaurant.
-- It contains the User model as a foreign-key.
-- The model contains the following fields: booking_Id, primary_guest, Slug, availability, booking_status, dietary_notes, additional_comments, no_of_guests, no_of_tables.
+A full breakdown of the models can be found [**Here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/models.md)
 
-##### Review Model
-- The Review model contains a review of the establisment by a user/guest
-- It contains the User model as a foreign key.
-- The model contains the following fields: reviewId, authorID, title, slug, content, excerpt, status, featured_image, updated_on, created_on.
-
-##### Comment Model
-- The Comment model contains a comment on a review
-- It contains the User Model as a foreign-key and Review model as a foreign-key.
-- The model contains the following fields: commentID, reviewID, name, email, body, created_on, approved.
 
 ## Testing
 ### User Credentials
@@ -427,6 +315,9 @@ There are two main uses on this site; a site member and a site staff member. Ple
 #### Admin User
 - Username: admin
 - Password: administration
+
+#### Stripe PAyment Details
+- Test Card Number: 4242424242424242 042 42424
 
 ### Manual
 As there are many pages for the BS_Auto_Parts website which had to be manually tested to ensure functionality and UX were correct, they have been included in a separate file to avoid taking up too much space on the README.md documentation.
@@ -441,18 +332,12 @@ During this process, several issues were discovered and some of which have been 
 
 - In the forum app, the user has the ability to like and unlike comments, and the toggler is functioning correctly as it is correctly incrementing or decrementing the number of likes, however the red heart icon does change color depending on the current users preferences and due to time constraints this bug will need rectificatin in a future update.
 
-- .
-
-- .
-
-- .
-
+- During manual testing numerous visual errors came to light and the majority of which have been rectified, however some of minor errors still exist, relating to the page width and elements not spanning the full width of the document or the document overflowing beyomd the viewport width.
 
 There are other issues that could not be fixed due to ability / time contraints that have been included in the "Bugs Found" section below. 
 <hr>
 
 ### Validation
-
 <hr>
 
 #### CSS
@@ -537,13 +422,12 @@ This website has been designed to scale correctly to different screen sizes with
 - In the forum app, the user has the ability to like and unlike comments, and the toggler is functioning correctly as it is correctly incrementing or decrementing the number of likes, however the red heart icon does change color depending on the current users preferences and due to time constraints this bug will need rectificatin in a future update.
 
 # Deployment
-This project was deployed to Heroku at the address **https://brian-stritch-p5-bs-auto-parts.herokuapp.com/** using the following steps
+This project was deployed to Heroku at the address **https://brian-stritch-p5-bs-auto-parts.herokuapp.com/** using the following steps:
 
 ### GitHub:
-Github was used for building this project with version control and to see a full walkthrough of the process involved please click [**here**]()
-
-- Create a new project on GitHub
-- Click the green Gitpod button to open in Gitpod
+- During the extent of this course we have been using the CI template as a base, and cloning the template by pressing the use this template button, which creates a new repository in your github account. 
+- Name your new repository respective of the current project you wish to create.
+- Once created, press the green gitpod button which will open the repository in gitpod and will begin installing all the packages and dependencies as per the CI template.
 
 #### To commit the code on GitPod to GitHub:
 - In the terminal, type "git add ." to add all new changes to the code to staging area
@@ -553,15 +437,23 @@ Github was used for building this project with version control and to see a full
 
 ### Heroku:
 To see a complete walkthrough of how to create a heroku account, a new app and the heroku deployment process please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/heroku_deployment.md)
+<br>
 
 ### AWS Amazon Web Services
 AWS amazon web services was used for sorage of static files and images for this project and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/aws_walkthrough.md)
+<br>
 
 ### Gmail Account setup for the sending of emails from django apps
 Google G-Mail was used for this project and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/gmail_setup.md)
+<br>
 
 ### Stripe Account setup for the handling of payments from django apps online store
 Stripe was used for this project to manage payments and to see a full walkthrough of the process involved please click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/stripe_setup.md)
+<br>
+
+### Facebook Mock business page
+We have created a mock facebook business page based on the CI balsamic template below: 
+<br> !["facebook mocuup page"](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page")
 
 
 ## Credits
