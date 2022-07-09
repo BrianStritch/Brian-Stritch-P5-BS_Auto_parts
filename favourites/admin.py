@@ -1,9 +1,11 @@
+""" imports for favourites admin.py """
 # imports
 # 3rd party imports from django
 from django.contrib import admin
 
 # internal imports from BS_Auto_parts
 from .models import Favourites
+
 
 class FavouritesAdmin(admin.ModelAdmin):
     """
@@ -19,7 +21,6 @@ class FavouritesAdmin(admin.ModelAdmin):
     )
     list_filter = (
         'username',
-        
     )
     list_per_page = 20
 

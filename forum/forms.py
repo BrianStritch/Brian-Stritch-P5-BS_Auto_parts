@@ -1,3 +1,4 @@
+""" forum forms.py """
 # imports
 # 3rd party imports from django
 from django import forms
@@ -37,12 +38,12 @@ class ForumPostCommentForm(forms.ModelForm):
         set the fields in the create comment model form
         """
         model = ForumPostComment
-        fields = ('body',) 
+        fields = ('body',)
 
 
 class ForumCategoryForm(forms.ModelForm):
     """
-    Class BAsed form to create a new forum 
+    Class BAsed form to create a new forum
     category using the topics model
     """
     class Meta:
@@ -56,7 +57,7 @@ class ForumCategoryForm(forms.ModelForm):
 
 class ForumTopicsForm(forms.ModelForm):
     """
-    Class BAsed form to create a new forum 
+    Class BAsed form to create a new forum
     topic using the topics model
     """
     class Meta:

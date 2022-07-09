@@ -1,3 +1,4 @@
+""" newsletter forms.py """
 # imports
 # 3rd party imports from django
 from django import forms
@@ -22,4 +23,3 @@ class NewsletterSignupForm(forms.ModelForm):
             'email',
             'optin',
             )
-        

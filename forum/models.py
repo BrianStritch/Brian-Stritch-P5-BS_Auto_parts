@@ -1,3 +1,4 @@
+""" forum models.py """
 # imports
 # 3rd party imports from django
 from django.db import models
@@ -6,12 +7,14 @@ from django.template.defaultfilters import slugify
 from django.shortcuts import reverse
 
 
-STATUS = ((0, 'Draft'), (1, 'Published')) 
+STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
 class ForumCategory(models.Model):
+    """ model for ForumCategory table"""
 
     class Meta:
+        """ model to set plural of class name """
         verbose_name_plural = 'Forum Categories'
 
     name = models.CharField(max_length=254)
@@ -20,20 +23,20 @@ class ForumCategory(models.Model):
 
     friendly_name = models.CharField(
         max_length=254, null=True, blank=True)
-    
 
     def __str__(self):
         return self.name
 
     def get_friendly_name(self):
+        """ returns friendly name """
         return self.friendly_name
-    
+
     def get_absolute_url(self):
         """
             function to define the reverse URL
             for after a forum category is created or edited
         """
-        return reverse('forum')  
+        return reverse('forum')
 
     def save(self, *args, **kwargs):
         """
@@ -45,8 +48,10 @@ class ForumCategory(models.Model):
 
 
 class ForumTopics(models.Model):
+    """ model for forumtopics """
 
     class Meta:
+        """ class to set plural of class name"""
         verbose_name_plural = 'Forum Topics'
 
     forum_category = models.ForeignKey(
@@ -60,17 +65,16 @@ class ForumTopics(models.Model):
         max_length=254, null=True, blank=True)
 
     summary = models.TextField(blank=True)
-    
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
         """
             function to define the reverse URL
             for after a forum topic is created or edited
         """
-        return reverse('forum')  
+        return reverse('forum')
 
     def save(self, *args, **kwargs):
         """
@@ -81,19 +85,21 @@ class ForumTopics(models.Model):
         super().save(*args, **kwargs)
 
     def get_friendly_name(self):
+        """ returns friendly name """
         return self.friendly_name
 
 
 class ForumPost(models.Model):
+    """ model for forumpost """
 
     title = models.CharField(max_length=199)
 
     slug = models.SlugField(max_length=200)
 
-    author = models.ForeignKey(User,  on_delete=models.CASCADE) 
+    author = models.ForeignKey(User,  on_delete=models.CASCADE)
 
     topic = models.ForeignKey(
-        ForumTopics,null=True, 
+        ForumTopics, null=True,
         blank=True,  on_delete=models.CASCADE)
 
     updated_on = models.DateTimeField(auto_now=True)
@@ -109,20 +115,20 @@ class ForumPost(models.Model):
     likes = models.ManyToManyField(
         User, related_name='forum_post_likes', blank=True)
 
-    
     class Meta:
+        """ sets the plural for classname """
         ordering = ['-created_on']
-        verbose_name_plural = 'Forum Posts'  
+        verbose_name_plural = 'Forum Posts'
 
     def __str__(self):
         return self.title
-    
+
     def get_absolute_url(self):
         """
             function to define the reverse URL
             for after a forum post is created or edited
         """
-        return reverse('forum')  
+        return reverse('forum')
 
     def save(self, *args, **kwargs):
         """
@@ -133,16 +139,19 @@ class ForumPost(models.Model):
         super().save(*args, **kwargs)
 
     def number_of_likes(self):
+        """ reurns the total number of likes"""
         return self.likes.count()
-    
+
     def number_of_posts(self):
+        """ returns the total number of posts """
         return self.title.count()
 
 
 class ForumPostComment(models.Model):
-    
+    """ model for forum post comment """
+
     post = models.ForeignKey(
-        ForumPost, on_delete=models.CASCADE, 
+        ForumPost, on_delete=models.CASCADE,
         related_name='forum_post_comments')
 
     name = models.CharField(max_length=80)
@@ -159,6 +168,7 @@ class ForumPostComment(models.Model):
         User, related_name='forum_comment_likes', blank=True)
 
     class Meta:
+        """sets the ordering method """
         ordering = ['created_on']
         verbose_name_plural = 'Forum Post comments'
 

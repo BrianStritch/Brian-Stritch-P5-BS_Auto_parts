@@ -1,10 +1,11 @@
+""" forum admin.py """
 # imports
 # 3rd party imports from django
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 
 # internal imports from BS_Auto_parts
-from .models import ForumCategory, ForumPostComment, ForumPost,ForumTopics
+from .models import ForumCategory, ForumPostComment, ForumPost, ForumTopics
 
 
 @admin.register(ForumPost)
@@ -78,11 +79,13 @@ class ForumPostCommentAdmin(admin.ModelAdmin):
         """
         queryset.update(approved=True)
 
+
 @admin.register(ForumCategory)
 class ForumCategoryAdmin(admin.ModelAdmin):
+    """ sets the display settings for the admin panel """
     list_display = (
         'friendly_name',
-        'name',        
+        'name',
     )
     prepopulated_fields = {
         'slug': ('name',)
@@ -90,12 +93,15 @@ class ForumCategoryAdmin(admin.ModelAdmin):
 
     ordering = ('friendly_name',)
 
+
 @admin.register(ForumTopics)
 class ForumTopicsAdmin(admin.ModelAdmin):
+    """ sets the display settings for the admin panel """
+
     list_display = (
         'forum_category',
         'friendly_name',
-        'name',        
+        'name',
     )
     prepopulated_fields = {
         'slug': ('name',)

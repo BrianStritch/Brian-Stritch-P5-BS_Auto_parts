@@ -1,3 +1,4 @@
+""" home urls.py """
 # imports
 # 3rd party imports from django
 from django.urls import path

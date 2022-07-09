@@ -1,10 +1,11 @@
+""" newsletter admin.py """
 # imports
 # 3rd party imports from django
 from django.contrib import admin
-from django_summernote.admin import SummernoteModelAdmin
 
 # internal imports from BS_Auto_parts
 from .models import Newsletter
+
 
 @admin.register(Newsletter)
 class NewsletterSignupForm(admin.ModelAdmin):
@@ -12,7 +13,7 @@ class NewsletterSignupForm(admin.ModelAdmin):
     Class to set the fields to be displayed in the django
     admin panel in the newsletter fields
     """
-    
+
     list_display = (
         'email',
         'created_on',

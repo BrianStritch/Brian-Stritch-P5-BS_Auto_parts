@@ -1,3 +1,4 @@
+""" forum urls.py """
 # imports
 # 3rd party imports from django
 from django.urls import path
@@ -9,7 +10,7 @@ urlpatterns = [
     path('', views.forum, name='forum'),
     path(
         'topic/<slug:slug>/',
-        views.Topic_list,
+        views.TopicList,
         name='topic_list'
         ),
     path(
@@ -86,5 +87,5 @@ urlpatterns = [
         'forum_comment/like/<int:pk>/',
         views.CommentLike.as_view(),
         name='forum_comment_like'
-        ), 
+        ),
 ]

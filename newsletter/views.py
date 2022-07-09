@@ -1,33 +1,30 @@
+""" newsletter views.py """
 # imports
 # 3rd party imports from django
-from django.shortcuts import render, redirect, reverse
-from django.shortcuts import get_object_or_404, HttpResponse
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.views.generic import TemplateView, UpdateView, DeleteView
-from django.views import generic, View
-from django.http import HttpResponseRedirect
-from django.db.models import Q
-
+from django.views.generic import TemplateView
 
 # internal imports from BS_Auto_parts
 from .models import Newsletter
 from .forms import NewsletterSignupForm
-from products.models import Product
-
 
 
 class NewsletterSignup(TemplateView):
+    """ class to handle newsletter signup form on index page """
     def post(self, request):
-        form = NewsletterSignupForm(request.POST)        
-        print(form) # this codeblock will not run correctly with this print statement removed
-        if form.instance.optin == 0 :
+        """ function to handle response from newsletter form """
+        form = NewsletterSignupForm(request.POST)
+        print(form)  # this will not run with this print statement removed
+        if form.instance.optin == 0:
             try:
                 try:
                     query = get_object_or_404(
                         Newsletter, email=form.instance.email
                         )
                 except:
-                    query.optin=3
+                    query.optin = 3
                 if query.optin == 0:
                     if query.email == form.instance.email:
                         messages.info(
@@ -38,53 +35,58 @@ class NewsletterSignup(TemplateView):
                         blankform = NewsletterSignupForm()
                         template_name = 'home/index.html'
                         context = {
-                        'stop_toast_cart': True,
-                        'form': blankform,
-
+                            'stop_toast_cart': True,
+                            'form': blankform,
                         }
                         return render(request, template_name, context)
                     else:
                         if form.is_valid:
                             form.save()
-                            template_name = 'newsletter/newsletter_signup_success.html'
+                            template_name = (
+                                'newsletter/newsletter_signup_success.html'
+                                )
                             messages.success(request, 'Signup Successful')
                             context = {
-                            'stop_toast_cart': True,
-
+                                'stop_toast_cart': True,
                             }
                             return render(request, template_name, context)
                         else:
                             messages.error(
-                                request, 'Your signup was unsuccessful, please try again.'
+                                request,
+                                'Your signup was unsuccesful, please try again'
                                 )
                             form = NewsletterSignupForm(request.POST)
                             template_name = 'home/index.html'
                             context = {
-                            'stop_toast_cart': True,
-                            'form': form,
+                                'stop_toast_cart': True,
+                                'form': form,
                             }
                             return render(request, template_name, context)
                 else:
                     try:
                         email = form.instance.email
-                        user = get_object_or_404(Newsletter, email=email)                  
-                        user.optin=0
+                        user = get_object_or_404(Newsletter, email=email)
+                        user.optin = 0
                         user.save()
-                        template_name = 'newsletter/newsletter_signup_success.html'
+                        template_name = (
+                            'newsletter/newsletter_signup_success.html'
+                            )
                         messages.success(request, 'Status update Successful')
                         context = {
-                        'stop_toast_cart': True,
+                            'stop_toast_cart': True,
                         }
                         return render(request, template_name, context)
                     except:
                         form.save()
-                        template_name = 'newsletter/newsletter_signup_success.html'
+                        template_name = (
+                            'newsletter/newsletter_signup_success.html'
+                            )
                         messages.success(request, 'Signup Successful')
                         context = {
-                        'stop_toast_cart': True,
+                            'stop_toast_cart': True,
                         }
                         return render(request, template_name, context)
-                
+
             except:
                 if form.is_valid:
                     messages.success(request, 'Your signup was successful')
@@ -92,17 +94,16 @@ class NewsletterSignup(TemplateView):
                     form.save()
                     template_name = 'newsletter/newsletter_signup_success.html'
                     context = {
-                    'stop_toast_cart': True,
+                        'stop_toast_cart': True,
                     }
                     return render(request, template_name, context)
                 else:
                     messages.error(request, '\
                         this is the else of the except not valid')
                     form = NewsletterSignupForm(request.POST)
-                    
                     template_name = 'newsletter/newsletter_signup_success.html'
                     context = {
-                    'stop_toast_cart': True,
+                        'stop_toast_cart': True,
                     }
                     return render(request, template_name, context)
 
@@ -113,16 +114,16 @@ class NewsletterSignup(TemplateView):
                     query = get_object_or_404(
                         Newsletter, email=form.instance.email
                         )
-            
+
                     if query.email == form.instance.email:
                         email = form.instance.email
                         user = get_object_or_404(Newsletter, email=email)
-                        user.optin=1
+                        user.optin = 1
                         user.save()
                         template_name = 'newsletter/newsletter_opt_out.html'
                         messages.success(request, 'Opt-out Successful')
                         context = {
-                        'stop_toast_cart': True,
+                            'stop_toast_cart': True,
                         }
                         return render(request, template_name, context)
                     else:
@@ -135,23 +136,24 @@ class NewsletterSignup(TemplateView):
                         blankform = NewsletterSignupForm()
                         template_name = 'home/index.html'
                         context = {
-                        'stop_toast_cart': True,
-                        'form': blankform,
+                            'stop_toast_cart': True,
+                            'form': blankform,
                         }
                         return render(request, template_name, context)
                 else:
-                    messages.success(request, 'Your signup was \
+                    messages.success(
+                        request, 'Your signup was \
                         successful. if you wish to optin to the \
-                            newsletter you can change your status \
-                                via the signup section.'
-                                )
+                        newsletter you can change your status \
+                        via the signup section.'
+                        )
                     form = NewsletterSignupForm(request.POST)
                     form.save()
                     blankform = NewsletterSignupForm()
                     template_name = 'home/index.html'
                     context = {
-                    'stop_toast_cart': True,
-                    'form': blankform,
+                        'stop_toast_cart': True,
+                        'form': blankform,
                     }
                     return render(request, template_name, context)
             except:
@@ -160,26 +162,26 @@ class NewsletterSignup(TemplateView):
                 form = NewsletterSignupForm(request.POST)
                 template_name = 'home/index.html'
                 context = {
-                'stop_toast_cart': True,
-                'form': form,
+                    'stop_toast_cart': True,
+                    'form': form,
                 }
                 return render(request, template_name, context)
-                
+
         elif form.instance.optin == 2:
             try:
                 queryset = Newsletter.objects.all()
                 query = Newsletter.objects.get(
                         email=form.instance.email
                         )
-                if query.email == form.instance.email:                    
+                if query.email == form.instance.email:
                     email = query.email
-                    subscriber = get_object_or_404(Newsletter, email=email)            
+                    subscriber = get_object_or_404(Newsletter, email=email)
                     subscriber.delete()
                     template_name = 'newsletter/newsletter_removed.html'
                     messages.success(request, 'You have removed your email\
                          from the newsletter database successfully.')
                     context = {
-                    'stop_toast_cart': True,
+                        'stop_toast_cart': True,
                     }
                     return render(request, template_name, context)
                 else:
@@ -188,15 +190,14 @@ class NewsletterSignup(TemplateView):
                          our newsletter database as your email\
                              is not stored in our database'
                              )
-                                        
                     blankform = NewsletterSignupForm()
                     template_name = 'home/index.html'
                     context = {
-                    'stop_toast_cart': True,
-                    'form': blankform,
+                        'stop_toast_cart': True,
+                        'form': blankform,
                     }
                     return render(request, template_name, context)
-               
+
             except:
                 messages.info(request, 'You do not need to withdraw from\
                          our newsletter database as your email is not\
@@ -204,11 +205,11 @@ class NewsletterSignup(TemplateView):
                 form = NewsletterSignupForm()
                 template_name = 'home/index.html'
                 context = {
-                'stop_toast_cart': True,
-                'form': form,
+                    'stop_toast_cart': True,
+                    'form': form,
                 }
                 return render(request, template_name, context)
-        
+
         else:
             messages.error(request, 'there was a problem with the your data,\
                  please try again.')
@@ -220,7 +221,7 @@ class NewsletterSignup(TemplateView):
             }
             return render(request, template_name, context)
 
-           
+
 class NewsletterSubscribers(TemplateView):
     """
     Class based tempate view to render a page displaying all
@@ -228,9 +229,13 @@ class NewsletterSubscribers(TemplateView):
     """
 
     def get(self, request):
-        list = Newsletter.objects.all()
+        """
+        function to return a list of the newsletter
+         subscribers and their values
+        """
+        lists = Newsletter.objects.all()
         template_name = 'newsletter/newsletter_list.html'
         context = {
-            'list': list,
+            'list': lists,
         }
         return render(request, template_name, context)
