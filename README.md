@@ -298,41 +298,80 @@ Below is a list of views and descriptions ilustrating the different views and fu
 
 #### Existing Members
 ##### I would like to have all the new users functionality and also:
-    - As an existing member, I would like to be able to log into my profile easily so that I can avail of members only attributes of the 
-    website such as the forum.
+    - As an existing member, I would like to be able to log into my profile easily so that I can avail of members only attributes of 
+      the website such as the forum.
     - As an existing member, I would like to be able to log into my profile easily so that I can review my profile information
-    - As an existing member, I would like to be able to edit my personal information on my profile so that I can keep the information up to date on the database
+    - As an existing member, I would like to be able to edit my personal information on my profile so that I can keep the information
+      up to date on the database
     - As an existing member, I would like to be able to delete my profile should i wish to do so
 
     - As an existing member, I would like to be able to view my previous orders history 
     - As an existing member, I would like to be able to create reviews on products in the store
     - As an existing member, I would like to be able to edit all of my reviews
     - As an existing member, I would like to be able to delete my reviews
+    - As an existing member, I would like to be able to like a selected product review 
+    - As an existing member, I would like to be able to un-like a selected product review 
+    - As an existing member, I would like to be able to view the number of likes on each product review
 
-    - As an existing member, I would like to be able to access the members forum and view all the different posts in each topic and the comments on each post. 
+    - As an existing member, I would like to be able to access the members forum and view all the different posts in each topic and the
+      comments on each post. 
     - As an existing member, I would like to be able to create my own forum post
     - As an existing member, I would like to be able to easily view my own forum post
     - As an existing member, I would like to be able to edit all of my forum posts
     - As an existing member, I would like to be able to delete my forum post
+    - As an existing member, I would like to be able to like a selected post 
+    - As an existing member, I would like to be able to un-like a selected post 
+    - As an existing member, I would like to be able to view the number of likes on each post
 
     - As an existing member, I would like to be able to view all forum post comments 
     - As an existing member, I would like to be able to create my own forum post comments 
     - As an existing member, I would like to be able to view all my forum post comments 
     - As an existing member, I would like to be able to edit all of my forum post comments
     - As an existing member, I would like to be able to delete my forum post comments
-
-    - As an existing member, I would like to be able to view the number of likes on each post 
     - As an existing member, I would like to be able to view the number of likes on each post comment
-    - As an existing member, I would like to be able to view the number of likes on each product review
+    - As an existing member, I would like to be able to like a selected post comment
+    - As an existing member, I would like to be able to un-like a selected post comment
+   
 
 #### Admin / Staff Users
-- As a staff member, I would like to be able to view all the restaurant bookings 
-- As a staff member, I would like to be able to view all the pending restaurant bookings 
-- As a staff member, I would like to be able to view all the approved restaurant bookings 
-- As a staff member, I would like to be able to view all the completed restaurant bookings 
+- As a staff member, I would like to be able to view all the products in the store
+- As a staff member, I would like to be able to add new products to the store
+- As a staff member, I would like to be able to edit all the details of all the products in the store
+- As a staff member, I would like to be able to delete products no longer in the store
+- As a staff member, I would like to be able to easily toggle the sale status of products in the store
+
+- As a staff member, I would like to be able to view all the registered users in my store
+- As a staff member, I would like to be able to add new members to the store
+- As a staff member, I would like to be able to toggle members status in the store, i.e: staff/superuser
+- As a staff member, I would like to be able to edit all the details of all the registered users in my store
+- As a staff member, I would like to be able to delete the accounts of registered users in my store
+
+- As a staff member, I would like to be able to view all the newletter subscribers in the store
+- As a staff member, I would like to be able to view the newsletter subscribers current status in the store
+- As a staff member, I would like to be able to edit all the newsletter subscribers details 
+- As a staff member, I would like to be able to delete newsletter subscribers no longer subcribed from the database
+
+
+- As a staff member, I would like the ability to be able to review all the product reviews prior to publishment 
+- As a staff member, I would like to be able to view all the pending product reviews 
+- As a staff member, I would like to be able to view all the published product reviews
+ 
+- As a staff member, I would like the ability to be able to review all the forum posts prior to publishment 
+- As a staff member, I would like to be able to view all the pending forum posts 
+- As a staff member, I would like to be able to view all the published forum posts
+- As a staff member, I would like to be able to edit any of the forum posts 
+- As a staff member, I would like to be able to delete any of the forum posts
+
+- As a staff member, I would like the ability to be able to review all the forum post comments prior to publishment 
+- As a staff member, I would like to be able to view all the pending forum posts comments
+- As a staff member, I would like to be able to view all the published forum posts comments
+- As a staff member, I would like to be able to edit any of the forum posts comments
+- As a staff member, I would like to be able to delete any of the forum posts comments
+
+<!-- - As a staff member, I would like to be able to view all the completed restaurant bookings 
 - As a staff member, I would like to be able to manage all the restaurant bookings
 - As a staff member, I would like for the application to stop any booking duplications
-- As a staff member, I would like for the application to only allow a predefined number of guests per hour
+- As a staff member, I would like for the application to only allow a predefined number of guests per hour -->
 
 - As a staff member, I would like to be able to view all the reviews
 - As a staff member, I would like to be able to edit any of the reviews if required
