@@ -533,7 +533,17 @@ There are other issues that could not be fixed due to ability / time contraints 
 #### CSS
 The custom.css file code was validated using the The W3C CSS Validation Service and the image below verifies that the code was successfully validated with no errors. Numerous warnings were noted which relate to the bootstrap CSS files inherited with the template, however none of the custom css written for this web application failed or had any warnings present.
 
-![W3C CSS Validation](static/readme_images/w3c_validation/W3C-CSS-validation.JPG "W3C CSS validation")
+###### base.css
+![W3C CSS Validation base.css](./media/readme/w3c_validation/w3c-css-validator-base-css.JPG "W3C CSS validation")
+
+###### product-review.css
+![W3C CSS Validation product-review](./media/readme/w3c_validation/w3c-css-validator-product-review-css.JPG "W3C CSS validation product-review")
+
+###### checkout.css
+![W3C CSS Validation checkout](./media/readme/w3c_validation/w3c-css-validator-checkout-css.JPG "W3C CSS validation checkout")
+
+###### forum.css
+![W3C CSS Validation forum](./media/readme/w3c_validation/w3c-css-validator-forum-css.JPG "W3C CSS validation forum")
 
 <p>
     <a href="http://jigsaw.w3.org/css-validator/check/referer">
@@ -566,7 +576,7 @@ Please see the w3c-validation.md file for the full breakdown of the HTML W3C val
 #### JavaScript
 JS Hint was used to ensure that the JavaScript used in the website had no errors.
 
-![JSHint report](static/readme_images/JSHint/JSHint-report.JPG "JSHint report")
+![JSHint report](./media/readme/JSHint/jsHint.JPG "JSHint report")
 
 ### Python
 All python code pages have been tested to ensure it meets PEP8 standards and the results of which can be found by clicking [**here**]() to reach the file. 
