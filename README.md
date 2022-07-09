@@ -334,58 +334,62 @@ Below is a list of views and descriptions ilustrating the different views and fu
    
 
 #### Admin / Staff Users
-- As a staff member, I would like to be able to view all the products in the store
-- As a staff member, I would like to be able to add new products to the store
-- As a staff member, I would like to be able to edit all the details of all the products in the store
-- As a staff member, I would like to be able to delete products no longer in the store
-- As a staff member, I would like to be able to easily toggle the sale status of products in the store
+##### Stock Control
+    - As a staff member, I would like to be able to view all the products in the store
+    - As a staff member, I would like to be able to add new products to the store
+    - As a staff member, I would like to be able to edit all the details of all the products in the store
+    - As a staff member, I would like to be able to delete products no longer in the store
+    - As a staff member, I would like to be able to easily toggle the sale status of products in the store
+    - As a staff member, I would like to be able to view all the product categories in the store
+    - As a staff member, I would like to be able to add new product categories  to the store
+    - As a staff member, I would like to be able to edit all the details of all the product categories  in the store
+    - As a staff member, I would like to be able to delete product categories  no longer required in the store
+    - As a staff member, I would like to be able to view all the manufacturer brands suitable for the products in the store
+    - As a staff member, I would like to be able to add new manufacturer brands to the store
+    - As a staff member, I would like to be able to edit all the details of all the manufacturer brands in the store
+    - As a staff member, I would like to be able to delete manufacturer brands no longer required in the store
 
-- As a staff member, I would like to be able to view all the registered users in my store
-- As a staff member, I would like to be able to add new members to the store
-- As a staff member, I would like to be able to toggle members status in the store, i.e: staff/superuser
-- As a staff member, I would like to be able to edit all the details of all the registered users in my store
-- As a staff member, I would like to be able to delete the accounts of registered users in my store
+##### User Management
+    - As a staff member, I would like to be able to view all of the users of the website so that I can manage them
+    - As a staff member, I would like to be able to edit a users Information should it be required
+    - As a staff member, I would like to be able to delete the accounts of registered users in my store if required
+    - As a staff member, I would like to be able to be able to grant a user staff access or remove if required
+    - As a staff member, I would like to be able to add new members to the store if required
 
-- As a staff member, I would like to be able to view all the newletter subscribers in the store
-- As a staff member, I would like to be able to view the newsletter subscribers current status in the store
-- As a staff member, I would like to be able to edit all the newsletter subscribers details 
-- As a staff member, I would like to be able to delete newsletter subscribers no longer subcribed from the database
+##### Newsletter Subscribers
+    - As a staff member, I would like to be able to view all the newletter subscribers in the store
+    - As a staff member, I would like to be able to view the newsletter subscribers current status in the store
+    - As a staff member, I would like to be able to edit all the newsletter subscribers details 
+    - As a staff member, I would like to be able to delete newsletter subscribers no longer subcribed from the database
 
+##### Product Reviews
+    - As a staff member, I would like the ability to be able to review all the product reviews prior to publishment for the
+      purpose of quality control 
+    - As a staff member, I would like to be able to view all the pending product reviews 
+    - As a staff member, I would like to be able to view all the published product reviews
+    - As a staff member, I would like to be able to view all the reviews
+    - As a staff member, I would like to be able to edit any of the reviews if required
+    - As a staff member, I would like to be able to delete a review in the event that it contains any offensive or inappropriate content
+    - As a staff member, I would like to be able to view all comments on reviews
+    - As a staff member, I would like to be able to approve or disprove all comments on reviews in the event that they contain any 
+      offensive or inappropriate content
+    - As a staff member, I would like to be able to edit any of the comments on a review if required 
 
-- As a staff member, I would like the ability to be able to review all the product reviews prior to publishment 
-- As a staff member, I would like to be able to view all the pending product reviews 
-- As a staff member, I would like to be able to view all the published product reviews
- 
-- As a staff member, I would like the ability to be able to review all the forum posts prior to publishment 
-- As a staff member, I would like to be able to view all the pending forum posts 
-- As a staff member, I would like to be able to view all the published forum posts
-- As a staff member, I would like to be able to edit any of the forum posts 
-- As a staff member, I would like to be able to delete any of the forum posts
-
-- As a staff member, I would like the ability to be able to review all the forum post comments prior to publishment 
-- As a staff member, I would like to be able to view all the pending forum posts comments
-- As a staff member, I would like to be able to view all the published forum posts comments
-- As a staff member, I would like to be able to edit any of the forum posts comments
-- As a staff member, I would like to be able to delete any of the forum posts comments
-
-<!-- - As a staff member, I would like to be able to view all the completed restaurant bookings 
-- As a staff member, I would like to be able to manage all the restaurant bookings
-- As a staff member, I would like for the application to stop any booking duplications
-- As a staff member, I would like for the application to only allow a predefined number of guests per hour -->
-
-- As a staff member, I would like to be able to view all the reviews
-- As a staff member, I would like to be able to edit any of the reviews if required
-- As a staff member, I would like to be able to delete a review in the event that it contains any offensive or inappropriate content
-- As a staff member, I would like to be able to view all comments on reviews
-- As a staff member, I would like to be able to approve or disprove all comments on reviews in the event that they contain any offensive or inappropriate content
-- As a staff member, I would like to be able to edit any of the comments on a review if required 
-
-
-- As a staff member, I would like to be able to view all of the users of the website so that I can manage them
-- As a staff member, I would like to be able to edit a users Information should it be required
-- As a staff member, I would like to be able to delete a user from the website if required
-- As a staff member, I would like to be able to be able to edit a users information if required
-- As a staff member, I would like to be able to be able to grant a user staff access or remove if required
+##### Forum
+###### Posts   
+    - As a staff member, I would like the ability to be able to review all the forum posts prior to publishment for the
+      purpose of quality control 
+    - As a staff member, I would like to be able to view all the pending forum posts 
+    - As a staff member, I would like to be able to view all the published forum posts
+    - As a staff member, I would like to be able to edit any of the forum posts 
+    - As a staff member, I would like to be able to delete any of the forum posts
+###### Comments  
+    - As a staff member, I would like the ability to be able to review all the forum post comments prior to publishment for the
+      purpose of quality control
+    - As a staff member, I would like to be able to view all the pending forum posts comments
+    - As a staff member, I would like to be able to view all the published forum posts comments
+    - As a staff member, I would like to be able to edit any of the forum posts comments
+    - As a staff member, I would like to be able to delete any of the forum posts comments
 
 ### Wireframes
 As there are many pages to this project, I have included the wireframes in a separate document.
@@ -394,7 +398,7 @@ Please [**click here**](https://github.com/BrianStritch/Brian-Stritch-P4-Fine-Wi
  
 
 ### Site Map
-![Site Map](static/readme_images/wireframe_images/site-map-diagram.JPG "Site Map Diagram showing Layout of the Web application")
+![Site Map](media/ "Site Map Diagram showing Layout of the Web application")
 
 ## Features
 ### Existing Features

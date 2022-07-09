@@ -67,4 +67,24 @@ select option[value='']{
 }
 .order-confirmation-wrapper{
   padding: 10px;
+  border: 2px solid black;
+  border-radius: 1em;
+}
+#invoice{
+  border: 1px solid black;
+  border-radius: 2em;
+  background-color: bisque;
+  color: rgb(4, 1, 23);
+  width: 60vw;
+  margin: 5px auto;
+}
+#invoice a{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: bisque;
+  color: rgb(4, 1, 23);
+}
+#invoice a:hover{
+  background-color: rgb(4, 1, 23) ;
+  color:bisque ;
 }

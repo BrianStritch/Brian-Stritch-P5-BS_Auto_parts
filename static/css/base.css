@@ -223,6 +223,10 @@ a:hover{
     color: black;
     text-transform: uppercase;
 }
+.message-container button {
+    height: 5vh;
+    width: 5vw;
+}
 
 
 /****************** toasts styling taken from Code Institute Boutique Ado walkthrough */
