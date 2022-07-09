@@ -569,10 +569,10 @@ JS Hint was used to ensure that the JavaScript used in the website had no errors
 ![JSHint report](static/readme_images/JSHint/JSHint-report.JPG "JSHint report")
 
 ### Python
-All python code pages have been tested to ensure it meets PEP8 standards and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P4-Fine-Wine-n-Dine/blob/main/pep8-testing.md) to reach the file. 
+All python code pages have been tested to ensure it meets PEP8 standards and the results of which can be found by clicking [**here**]() to reach the file. 
 
 ### Accessibility
-All HTML pages have been tested for accessibility and performance using Chrome Devtools Lighthouse testing platform and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P4-Fine-Wine-n-Dine/blob/main/accessibility-tests.md) to reach the file. 
+All HTML pages have been tested for accessibility and performance using Chrome Devtools Lighthouse testing platform and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/accessibility_tests.md) to reach the file. 
 
 ### Automated
 #### Django / Coverage
