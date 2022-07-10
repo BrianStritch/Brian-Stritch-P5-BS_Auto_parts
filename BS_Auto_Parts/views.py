@@ -13,6 +13,6 @@ def handler401(request, exception):
     """ Error Handler 401 - Unauthorized """
     return render(request, "errors/401.html", status=401)
 
-def handler500(request, exception):
+def handler500(request):
     """ Error Handler 500 - Server Error """
     return render(request, "errors/500.html", status=500)
