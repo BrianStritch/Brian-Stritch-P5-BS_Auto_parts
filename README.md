@@ -115,7 +115,7 @@ These keywords are aplied across the website in context and in descriptions.
 
 A Facebook business page for the studio has been set up to ensure organic growth of the business. The site is linked to the business account through the facebook social media link. The Facebook page includes a link back to the site.
 
-A mockup facebook business page has been created which can be seen [**here**]().
+A mockup facebook business page has been created which can be seen [**here**](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page").
 <br>
 A standard facebook page has been created to showcase the business and promote the Forum. The facebook page can be found 
 <a href="https://facebook.com/BSAutoParts2022/" target="_blank">here</a> .
