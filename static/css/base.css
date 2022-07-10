@@ -1035,6 +1035,7 @@ a.category-badge > span.badge:hover {
     .message-container button{
         height: 5vh;
         width: 8vw;
+        font-size: x-large;
     }
     
 }

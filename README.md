@@ -410,13 +410,14 @@ The automated tool yapf has been used to assist in the erradification of linting
 All python files have been tested using pep8 online testing platform and all errors have been removed and pep8 testing has passed.
 Please see the pep8 testing file for the full breakdown of the pep8 testing done for this site. You can click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/pep8.md) to reach the file. 
 
+<hr>
 
 #### JavaScript
 JS Hint was used to ensure that the JavaScript used in the website had no errors.
 
 ![JSHint report](./media/readme/JSHint/jsHint.JPG "JSHint report")
 
-
+<hr>
 
 ### Automated
 #### Django / Coverage
@@ -427,9 +428,10 @@ Django tests were written and Coverage was used to product detailed reports to e
 
 2. In order to product a html report which allows you to inspect in each file, to see in easy to use colour codes the lines of code which have been tested or which have not yet been tested, please use the following command: "coverage html"
 
-##### __Coverage report page __
-![coverage report page 1](static/readme_images/coverage-report-results/Coverage-report-page-1.JPG "coverage report page 1")
+##### Coverage Report
+[**Click Here for Full coverage report**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/coverage.md)
 
+<hr>
 
 
 #### Unittest
@@ -497,7 +499,7 @@ We have created a mock facebook business page based on the CI balsamic template 
 # Credits
 ### Content
 - Font icons imported from FontAwesome.
-- THe majority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels and researching past pupils work.
+- The majority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels and researching past pupils work.
  
 ### Media
 As there are many images for the products in this website, most of which were obtained from Pexels.com, shutterstock.com and some images obtained from facebook and chinese vendor wish.
