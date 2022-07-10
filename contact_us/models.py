@@ -5,7 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
-
 STATUS = ((0, 'Pending'), (1, 'Completed'))
 
 
@@ -26,47 +25,19 @@ class SiteUsersContactDetails(models.Model):
 
     created_on = models.DateTimeField(auto_now_add=True)
 
-    phone_number = models.CharField(
-        max_length=20,
-        null=True,
-        blank=True
-        )
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
 
-    street_address1 = models.CharField(
-        max_length=80,
-        null=True,
-        blank=True
-        )
+    street_address1 = models.CharField(max_length=80, null=True, blank=True)
 
-    street_address2 = models.CharField(
-        max_length=80,
-        null=True,
-        blank=True
-        )
+    street_address2 = models.CharField(max_length=80, null=True, blank=True)
 
-    town_or_city = models.CharField(
-        max_length=40,
-        null=True,
-        blank=True
-        )
+    town_or_city = models.CharField(max_length=40, null=True, blank=True)
 
-    county = models.CharField(
-        max_length=80,
-        null=True,
-        blank=True
-        )
+    county = models.CharField(max_length=80, null=True, blank=True)
 
-    country = CountryField(
-        blank_label='Country',
-        null=True,
-        blank=True
-        )
+    country = CountryField(blank_label='Country', null=True, blank=True)
 
-    postcode = models.CharField(
-        max_length=20,
-        null=True,
-        blank=True
-        )
+    postcode = models.CharField(max_length=20, null=True, blank=True)
 
     class Meta:
         """

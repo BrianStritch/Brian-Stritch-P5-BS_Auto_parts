@@ -12,14 +12,14 @@ class TestProfileModels(TestCase):
     """
     A class for testing the profile model
     """
+
     def setUp(self):
         """
         This setup creates a test user
         """
-        testuser = User.objects.create_user(
-            username='test_user',
-            password='test_password',
-            email='test_user@test.com')
+        testuser = User.objects.create_user(username='test_user',
+                                            password='test_password',
+                                            email='test_user@test.com')
         testuser.save()
 
     def tearDown(self):

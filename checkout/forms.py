@@ -9,13 +9,21 @@ from .models import Order
 
 class OrderForm(forms.ModelForm):
     """ class to create an order form """
+
     class Meta:
         """ a class to determine the fiels in the form """
         model = Order
-        fields = ('full_name', 'email', 'phone_number',
-                  'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county',)
+        fields = (
+            'full_name',
+            'email',
+            'phone_number',
+            'street_address1',
+            'street_address2',
+            'town_or_city',
+            'postcode',
+            'country',
+            'county',
+        )
 
     def __init__(self, *args, **kwargs):
         """

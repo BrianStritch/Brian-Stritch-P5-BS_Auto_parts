@@ -33,7 +33,6 @@ class ToggleFavourite(View):
     """
 
     def post(self, request, pk):
-
         """
         POST request for processing the favourite status
         data passed from the reviews details page and if
@@ -44,14 +43,15 @@ class ToggleFavourite(View):
         try:
             favourite = get_object_or_404(Favourites, products=pk)
             favourite.delete()
-            messages.success(request, 'You have succesfully removed this product from your favourites.')  # noqa
+            messages.success(
+                request,
+                'You have succesfully removed this product from your favourites.'
+            )  # noqa
             return HttpResponseRedirect(reverse('product_detail', args=[pk]))
         except:
-            Favourites.objects.create(
-                username=request.user,
-                products=product
-            )
-            messages.success(request, '\
+            Favourites.objects.create(username=request.user, products=product)
+            messages.success(
+                request, '\
                 You have succesfully added this product to your favourites.')
             return HttpResponseRedirect(reverse('product_detail', args=[pk]))
 

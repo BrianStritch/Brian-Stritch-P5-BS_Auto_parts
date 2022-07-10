@@ -19,8 +19,8 @@ class TestCheckoutViews(TestCase):
         """
         Create test users(standard and superuser) and a test order
         """
-        testuser = User.objects.create_user(
-            username='testuser', password='testpassword')
+        testuser = User.objects.create_user(username='testuser',
+                                            password='testpassword')
         test_user_superuser = User.objects.create_superuser(
             username='test_user_superuser', password='test_password')
 
@@ -28,16 +28,14 @@ class TestCheckoutViews(TestCase):
         test_user_superuser.save()
         testuser = UserProfile.objects.get(user=testuser)
 
-        order = Order.objects.create(
-            full_name='Test User',
-            email='test_email@gmail.com',
-            phone_number='123456789',
-            country='IE',
-            town_or_city='Test City',
-            street_address1='Test Address 1',
-            street_address2='Test Address 2',
-            user_profile=testuser
-        )
+        order = Order.objects.create(full_name='Test User',
+                                     email='test_email@gmail.com',
+                                     phone_number='123456789',
+                                     country='IE',
+                                     town_or_city='Test City',
+                                     street_address1='Test Address 1',
+                                     street_address2='Test Address 2',
+                                     user_profile=testuser)
 
     def tearDown(self):
         """
@@ -52,28 +50,29 @@ class TestCheckoutViews(TestCase):
         response = self.client.get('/checkout/')
         self.assertRedirects(response, '/products/')
         messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(
-            str(messages[0]), "There's nothing in your bag at the moment")
+        self.assertEqual(str(messages[0]),
+                         "There's nothing in your bag at the moment")
 
     def test_get_checkout_page(self):
         """
         This test checks the functionality of the checkout page response
         and redirection to the checkout success page
         """
-        response = self.client.post('/checkout/', {
-            'full_name': 'Test User 2',
-            'email': 'test_email@gmail.com',
-            'phone_number': '123456789',
-            'country': 'IE',
-            'county': 'county',
-            'town_or_city': 'Test City',
-            'street_address1': 'Test Address 1',
-            'street_address2': 'Test Address 2',
-            'postcode': 'postcode',
-            'client_secret': '23456789',
-            'stripe_public_key': 'public_key',
-            'stripe_secret_key': 'secret_key',
-        })
+        response = self.client.post(
+            '/checkout/', {
+                'full_name': 'Test User 2',
+                'email': 'test_email@gmail.com',
+                'phone_number': '123456789',
+                'country': 'IE',
+                'county': 'county',
+                'town_or_city': 'Test City',
+                'street_address1': 'Test Address 1',
+                'street_address2': 'Test Address 2',
+                'postcode': 'postcode',
+                'client_secret': '23456789',
+                'stripe_public_key': 'public_key',
+                'stripe_secret_key': 'secret_key',
+            })
         order = Order.objects.get(full_name='Test User 2')
         o_n = order.order_number
         self.assertEqual(response.status_code, 302)

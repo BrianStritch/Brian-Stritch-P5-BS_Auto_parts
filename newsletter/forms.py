@@ -13,6 +13,7 @@ class NewsletterSignupForm(forms.ModelForm):
         the newsletter signup model form where site
         users can sign up to recieve a newsletter
     """
+
     class Meta:
         """
         Class to indicate which model to use and to
@@ -22,4 +23,4 @@ class NewsletterSignupForm(forms.ModelForm):
         fields = (
             'email',
             'optin',
-            )
+        )

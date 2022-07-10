@@ -8,7 +8,6 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
-
 # internal imports from BS_Auto_parts
 from products.models import Product
 from profiles.models import UserProfile
@@ -19,6 +18,7 @@ class StripeWH_Handler:
     """
        class to handle stripe webhooks
     """
+
     def __init__(self, request):
         """
         Initilisation of handler
@@ -43,8 +43,7 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
         body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {
+            'checkout/confirmation_emails/confirmation_email_body.txt', {
                 'order': order,
                 'contact_email': settings.DEFAULT_FROM_EMAIL,
             })
@@ -124,10 +123,10 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                    content=(f"Webhook recieved: {event['type']} | \
+                content=(f"Webhook recieved: {event['type']} | \
                         SUCCESS: Verified order already in database."),
-                    status=200,
-                    )
+                status=200,
+            )
         else:
             order = None
             try:
@@ -155,7 +154,8 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():  # noqa
+                        for size, quantity in item_data['items_by_size'].items(
+                        ):  # noqa
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,

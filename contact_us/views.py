@@ -18,6 +18,7 @@ class ContactUs(TemplateView):
     return the user to the home landing page. This class is
     used where a user is not authenticated.
     """
+
     def get(self, request):
         """
         a get method to render the template passing the
@@ -40,20 +41,15 @@ class ContactUs(TemplateView):
         form = CreateSiteUsersContactDetailsForm(request.POST)
         if form.is_valid():
             contact = form.save()
-            messages.success(
-                request, 'Your message has been succesfully\
+            messages.success(request, 'Your message has been succesfully\
                      submitted and Admin will be in contact shortly.')  # noqa
             template_name = 'home/index.html'
-            context = {
-                'stop_toast_cart': True,
-                'home': True,
-                'bttoff': True
-
-            }
+            context = {'stop_toast_cart': True, 'home': True, 'bttoff': True}
             return render(request, template_name, context)
 
         else:
-            messages.error(request, '\
+            messages.error(
+                request, '\
                 Failed to send message. Please check your form details.')
             form = CreateSiteUsersContactDetailsForm(request.POST)
             template = 'contact_us/contact_us.html'
@@ -72,6 +68,7 @@ class ExistingUsersContactUs(TemplateView):
     return the user to the home landing page. This class is
     used where a user is authenticated.
     """
+
     def get(self, request, pk):
         """
         a method to render the template passing the
@@ -86,7 +83,6 @@ class ExistingUsersContactUs(TemplateView):
             'form': form,
             'user': user,
             'stop_toast_cart': True,
-
         }
         return render(request, template_name, context)
 
@@ -99,19 +95,16 @@ class ExistingUsersContactUs(TemplateView):
         if form.is_valid():
             form.instance.user = request.user
             contact = form.save()
-            messages.success(request, 'Your message has been succesfully\
+            messages.success(
+                request, 'Your message has been succesfully\
                  submitted and Admin will be in contact shortly.')
             template_name = 'home/index.html'
-            context = {
-                'stop_toast_cart': True,
-                'home': True,
-                'bttoff': True
-
-            }
+            context = {'stop_toast_cart': True, 'home': True, 'bttoff': True}
             return render(request, template_name, context)
 
         else:
-            messages.error(request, 'Failed to send message.\
+            messages.error(
+                request, 'Failed to send message.\
                  Please check your form details.')
             form = CreateExistingUsersContactForm(request.POST)
             template = 'contact_us/contact_us.html'

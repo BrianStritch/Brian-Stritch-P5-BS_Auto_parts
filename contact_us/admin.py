@@ -13,26 +13,18 @@ class SiteUsersContactDetailsAdmin(admin.ModelAdmin):
     Class to set the fields to be displayed in the django
     admin panel in the review fields
     """
-    
-    list_display = (
-        'name',
-        'surname',
-        'email',
-        'created_on',
-        'status'
-        )
-   
+
+    list_display = ('name', 'surname', 'email', 'created_on', 'status')
+
     search_fields = [
         'name',
         'surname',
         'status',
-        ]
-    summernote_fields = (
-        'message'
-        )
+    ]
+    summernote_fields = ('message')
     actions = [
         'update_status_complete',
-        ]
+    ]
 
     def update_status_complete(self, request, queryset):
         """
@@ -41,28 +33,20 @@ class SiteUsersContactDetailsAdmin(admin.ModelAdmin):
         """
         queryset.update(status=True)
 
+
 @admin.register(ExistingUsersContactDetails)
 class ExistingUsersContactDetailsAdmin(admin.ModelAdmin):
     """
     Class to set the fields to be displayed in the django
     admin panel in the comments fields
     """
-    
-    list_display = (
-        'user',
-        'created_on',
-        'status'
-        )
-    search_fields = [
-        'user',
-        'status'
-        ]
-    summernote_fields = (
-        'message'
-        )
+
+    list_display = ('user', 'created_on', 'status')
+    search_fields = ['user', 'status']
+    summernote_fields = ('message')
     actions = [
         'update_status_complete',
-        ]
+    ]
 
     def update_status_complete(self, request, queryset):
         """

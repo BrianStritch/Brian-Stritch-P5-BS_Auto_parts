@@ -18,9 +18,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Favourites',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('products', models.ManyToManyField(blank=True, to='products.Product')),
-                ('username', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
+                ('products',
+                 models.ManyToManyField(blank=True, to='products.Product')),
+                ('username',
+                 models.OneToOneField(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name_plural': 'Favourites',

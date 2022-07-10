@@ -24,10 +24,10 @@ class UserAccountDetailsForm(UserCreationForm):
             'username',
             'first_name',
             'last_name',
-            'email',          
+            'email',
             'password1',
             'password2',
-            )
+        )
 
     def update(self, commit=True):
         """
@@ -45,9 +45,10 @@ class UserAccountDetailsForm(UserCreationForm):
 
 
 class UserProfileForm(forms.ModelForm):
+
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        exclude = ('user', )
 
     def __init__(self, *args, **kwargs):
         """
@@ -72,7 +73,8 @@ class UserProfileForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            self.fields[field].widget.attrs[
+                'class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False
 
 
@@ -94,4 +96,4 @@ class EditProfileForm(UserChangeForm):
             'email',
             'first_name',
             'last_name',
-            )
+        )

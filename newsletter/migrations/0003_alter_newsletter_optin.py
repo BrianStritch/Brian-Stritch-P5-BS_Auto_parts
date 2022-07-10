@@ -13,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='newsletter',
             name='optin',
-            field=models.IntegerField(choices=[(0, 'Choose:'), (1, 'Optout'), (2, 'Optin')], default=2),
+            field=models.IntegerField(choices=[(0, 'Choose:'), (1, 'Optout'),
+                                               (2, 'Optin')],
+                                      default=2),
         ),
     ]

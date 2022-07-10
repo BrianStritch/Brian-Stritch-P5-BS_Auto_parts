@@ -13,6 +13,7 @@ class CreateSiteUsersContactDetailsForm(forms.ModelForm):
         the SiteUsersContactDetails model form for
         creating a new user contact details form
     """
+
     class Meta:
         """
         Class to indicate which model to use and to
@@ -31,7 +32,7 @@ class CreateSiteUsersContactDetailsForm(forms.ModelForm):
             'country',
             'postcode',
             'message',
-            )
+        )
 
 
 class CreateSimpleUsersContactForm(forms.ModelForm):
@@ -40,6 +41,7 @@ class CreateSimpleUsersContactForm(forms.ModelForm):
         the SiteUsersContactDetails model form for
         creating a new user contact details form
     """
+
     class Meta:
         """
         Class to indicate which model to use and to
@@ -51,7 +53,7 @@ class CreateSimpleUsersContactForm(forms.ModelForm):
             'surname',
             'email',
             'message',
-            )
+        )
 
 
 class CreateExistingUsersContactForm(forms.ModelForm):
@@ -60,12 +62,11 @@ class CreateExistingUsersContactForm(forms.ModelForm):
         the ExistingUsersContactDetails model form for
         creating a new contact us form
     """
+
     class Meta:
         """
         Class to indicate which model to use and to
         set the fields in the create review model form
         """
         model = ExistingUsersContactDetails
-        fields = (
-            'message',
-            )
+        fields = ('message', )

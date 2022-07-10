@@ -13,6 +13,7 @@ from .forms import NewsletterSignupForm
 
 class NewsletterSignup(TemplateView):
     """ class to handle newsletter signup form on index page """
+
     def post(self, request):
         """ function to handle response from newsletter form """
         form = NewsletterSignupForm(request.POST)
@@ -20,9 +21,8 @@ class NewsletterSignup(TemplateView):
         if form.instance.optin == 0:
             try:
                 try:
-                    query = get_object_or_404(
-                        Newsletter, email=form.instance.email
-                        )
+                    query = get_object_or_404(Newsletter,
+                                              email=form.instance.email)
                 except:
                     query.optin = 3
                 if query.optin == 0:
@@ -43,8 +43,7 @@ class NewsletterSignup(TemplateView):
                         if form.is_valid:
                             form.save()
                             template_name = (
-                                'newsletter/newsletter_signup_success.html'
-                                )
+                                'newsletter/newsletter_signup_success.html')
                             messages.success(request, 'Signup Successful')
                             context = {
                                 'stop_toast_cart': True,
@@ -54,7 +53,7 @@ class NewsletterSignup(TemplateView):
                             messages.error(
                                 request,
                                 'Your signup was unsuccesful, please try again'
-                                )
+                            )
                             form = NewsletterSignupForm(request.POST)
                             template_name = 'home/index.html'
                             context = {
@@ -69,8 +68,7 @@ class NewsletterSignup(TemplateView):
                         user.optin = 0
                         user.save()
                         template_name = (
-                            'newsletter/newsletter_signup_success.html'
-                            )
+                            'newsletter/newsletter_signup_success.html')
                         messages.success(request, 'Status update Successful')
                         context = {
                             'stop_toast_cart': True,
@@ -79,8 +77,7 @@ class NewsletterSignup(TemplateView):
                     except:
                         form.save()
                         template_name = (
-                            'newsletter/newsletter_signup_success.html'
-                            )
+                            'newsletter/newsletter_signup_success.html')
                         messages.success(request, 'Signup Successful')
                         context = {
                             'stop_toast_cart': True,
@@ -98,7 +95,8 @@ class NewsletterSignup(TemplateView):
                     }
                     return render(request, template_name, context)
                 else:
-                    messages.error(request, '\
+                    messages.error(
+                        request, '\
                         this is the else of the except not valid')
                     form = NewsletterSignupForm(request.POST)
                     template_name = 'newsletter/newsletter_signup_success.html'
@@ -111,9 +109,8 @@ class NewsletterSignup(TemplateView):
             try:
                 queryset = Newsletter.objects.all()
                 if queryset.filter(email=form.instance.email).exists():
-                    query = get_object_or_404(
-                        Newsletter, email=form.instance.email
-                        )
+                    query = get_object_or_404(Newsletter,
+                                              email=form.instance.email)
 
                     if query.email == form.instance.email:
                         email = form.instance.email
@@ -145,8 +142,7 @@ class NewsletterSignup(TemplateView):
                         request, 'Your signup was \
                         successful. if you wish to optin to the \
                         newsletter you can change your status \
-                        via the signup section.'
-                        )
+                        via the signup section.')
                     form = NewsletterSignupForm(request.POST)
                     form.save()
                     blankform = NewsletterSignupForm()
@@ -157,7 +153,8 @@ class NewsletterSignup(TemplateView):
                     }
                     return render(request, template_name, context)
             except:
-                messages.error(request, '\
+                messages.error(
+                    request, '\
                     Your signup was un-successful. Please try again.')
                 form = NewsletterSignupForm(request.POST)
                 template_name = 'home/index.html'
@@ -170,15 +167,14 @@ class NewsletterSignup(TemplateView):
         elif form.instance.optin == 2:
             try:
                 queryset = Newsletter.objects.all()
-                query = Newsletter.objects.get(
-                        email=form.instance.email
-                        )
+                query = Newsletter.objects.get(email=form.instance.email)
                 if query.email == form.instance.email:
                     email = query.email
                     subscriber = get_object_or_404(Newsletter, email=email)
                     subscriber.delete()
                     template_name = 'newsletter/newsletter_removed.html'
-                    messages.success(request, 'You have removed your email\
+                    messages.success(
+                        request, 'You have removed your email\
                          from the newsletter database successfully.')
                     context = {
                         'stop_toast_cart': True,
@@ -188,8 +184,7 @@ class NewsletterSignup(TemplateView):
                     messages.info(
                         request, 'You do not need to withdraw from\
                          our newsletter database as your email\
-                             is not stored in our database'
-                             )
+                             is not stored in our database')
                     blankform = NewsletterSignupForm()
                     template_name = 'home/index.html'
                     context = {
@@ -199,7 +194,8 @@ class NewsletterSignup(TemplateView):
                     return render(request, template_name, context)
 
             except:
-                messages.info(request, 'You do not need to withdraw from\
+                messages.info(
+                    request, 'You do not need to withdraw from\
                          our newsletter database as your email is not\
                              stored in our database2')
                 form = NewsletterSignupForm()
@@ -211,7 +207,8 @@ class NewsletterSignup(TemplateView):
                 return render(request, template_name, context)
 
         else:
-            messages.error(request, 'there was a problem with the your data,\
+            messages.error(
+                request, 'there was a problem with the your data,\
                  please try again.')
             form = NewsletterSignupForm()
             template_name = 'home/index.html'

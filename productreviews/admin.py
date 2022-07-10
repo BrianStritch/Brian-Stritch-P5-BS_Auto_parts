@@ -12,30 +12,26 @@ class ProductReviewAdmin(SummernoteModelAdmin):
     Class to set the fields to be displayed in the django
     admin panel in the review fields
     """
-    prepopulated_fields = {
-        'slug': ('title',)
-        }
+    prepopulated_fields = {'slug': ('title', )}
     list_display = (
         'title',
         'product',
         'slug',
         'status',
         'created_on',
-        )
+    )
     list_filter = (
         'status',
         'created_on',
-        )
+    )
     search_fields = [
         'title',
         'content',
-        ]
-    summernote_fields = (
-        'content'
-        )
+    ]
+    summernote_fields = ('content')
     actions = [
         'approve_review',
-        ]
+    ]
 
     def approve_review(self, request, queryset):
         """
@@ -51,25 +47,22 @@ class ProductReviewCommentsAdmin(admin.ModelAdmin):
     Class to set the fields to be displayed in the django
     admin panel in the comments fields
     """
-    list_filter = (
-        'approved',
-        'created_on'
-        )
+    list_filter = ('approved', 'created_on')
     list_display = (
         'name',
         'body',
         'product_review',
         'created_on',
         'approved',
-        )
+    )
     search_fields = [
         'name',
         'email',
         'body',
-        ]
+    ]
     actions = [
         'approve_comments',
-        ]
+    ]
 
     def approve_comments(self, request, queryset):
         """

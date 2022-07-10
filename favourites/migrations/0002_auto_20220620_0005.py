@@ -21,11 +21,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='favourites',
             name='products',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='products.product'),
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to='products.product'),
         ),
         migrations.AlterField(
             model_name='favourites',
             name='username',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='product_favourites', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='product_favourites',
+                to=settings.AUTH_USER_MODEL),
         ),
     ]

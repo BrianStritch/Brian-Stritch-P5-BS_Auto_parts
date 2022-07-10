@@ -12,20 +12,30 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='existinguserscontactdetails',
-            options={'ordering': ['-created_on'], 'verbose_name_plural': 'Existing Users Contact Details'},
+            options={
+                'ordering': ['-created_on'],
+                'verbose_name_plural': 'Existing Users Contact Details'
+            },
         ),
         migrations.AlterModelOptions(
             name='siteuserscontactdetails',
-            options={'ordering': ['-created_on'], 'verbose_name_plural': 'Site Users Contact Details'},
+            options={
+                'ordering': ['-created_on'],
+                'verbose_name_plural': 'Site Users Contact Details'
+            },
         ),
         migrations.AddField(
             model_name='existinguserscontactdetails',
             name='status',
-            field=models.IntegerField(choices=[(0, 'Pending'), (1, 'Completed')], default=0),
+            field=models.IntegerField(choices=[(0, 'Pending'),
+                                               (1, 'Completed')],
+                                      default=0),
         ),
         migrations.AddField(
             model_name='siteuserscontactdetails',
             name='status',
-            field=models.IntegerField(choices=[(0, 'Pending'), (1, 'Completed')], default=0),
+            field=models.IntegerField(choices=[(0, 'Pending'),
+                                               (1, 'Completed')],
+                                      default=0),
         ),
     ]

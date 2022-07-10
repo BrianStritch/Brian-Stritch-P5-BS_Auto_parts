@@ -14,18 +14,11 @@ class NewsletterSignupForm(admin.ModelAdmin):
     admin panel in the newsletter fields
     """
 
-    list_display = (
-        'email',
-        'created_on',
-        'optin'
-        )
-    search_fields = [
-        'email',
-        'optin'
-        ]
+    list_display = ('email', 'created_on', 'optin')
+    search_fields = ['email', 'optin']
     actions = [
         'update_status_optin',
-        ]
+    ]
 
     def update_status_optin(self, request, queryset):
         """

@@ -15,25 +15,39 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='forumpost',
-            options={'ordering': ['-created_on'], 'verbose_name_plural': 'Forum Posts'},
+            options={
+                'ordering': ['-created_on'],
+                'verbose_name_plural': 'Forum Posts'
+            },
         ),
         migrations.AlterModelOptions(
             name='forumpostcomment',
-            options={'ordering': ['created_on'], 'verbose_name_plural': 'Forum Post comments'},
+            options={
+                'ordering': ['created_on'],
+                'verbose_name_plural': 'Forum Post comments'
+            },
         ),
         migrations.AlterField(
             model_name='forumpost',
             name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='forumpost',
             name='likes',
-            field=models.ManyToManyField(blank=True, related_name='forum_post_likes', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(blank=True,
+                                         related_name='forum_post_likes',
+                                         to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='forumpost',
             name='topic',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='forum.forumtopics'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to='forum.forumtopics'),
         ),
     ]

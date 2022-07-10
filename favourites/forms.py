@@ -13,4 +13,7 @@ class Favouriteform(forms.ModelForm):
     class Meta:
         """ class to set the fields in the form """
         model = Favourites
-        fields = ('username', 'products',)
+        fields = (
+            'username',
+            'products',
+        )

@@ -18,6 +18,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='forumpost',
             name='topic',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='forum_posts_topic', to='forum.forumtopics'),
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='forum_posts_topic',
+                to='forum.forumtopics'),
         ),
     ]

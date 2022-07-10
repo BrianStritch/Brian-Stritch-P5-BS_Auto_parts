@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from django.shortcuts import reverse
 
-
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
@@ -21,8 +20,7 @@ class ForumCategory(models.Model):
 
     slug = models.SlugField(max_length=200, unique=True)
 
-    friendly_name = models.CharField(
-        max_length=254, null=True, blank=True)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -54,15 +52,13 @@ class ForumTopics(models.Model):
         """ class to set plural of class name"""
         verbose_name_plural = 'Forum Topics'
 
-    forum_category = models.ForeignKey(
-        ForumCategory, on_delete=models.CASCADE)
+    forum_category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=254)
 
     slug = models.SlugField(max_length=200, unique=True)
 
-    friendly_name = models.CharField(
-        max_length=254, null=True, blank=True)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     summary = models.TextField(blank=True)
 
@@ -96,11 +92,12 @@ class ForumPost(models.Model):
 
     slug = models.SlugField(max_length=200)
 
-    author = models.ForeignKey(User,  on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    topic = models.ForeignKey(
-        ForumTopics, null=True,
-        blank=True,  on_delete=models.CASCADE)
+    topic = models.ForeignKey(ForumTopics,
+                              null=True,
+                              blank=True,
+                              on_delete=models.CASCADE)
 
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -112,8 +109,9 @@ class ForumPost(models.Model):
 
     status = models.IntegerField(choices=STATUS, default=0)
 
-    likes = models.ManyToManyField(
-        User, related_name='forum_post_likes', blank=True)
+    likes = models.ManyToManyField(User,
+                                   related_name='forum_post_likes',
+                                   blank=True)
 
     class Meta:
         """ sets the plural for classname """
@@ -135,7 +133,7 @@ class ForumPost(models.Model):
             function to edit and save the slug
             for after a post is created or edited
         """
-        self.slug = slugify(self.title,)
+        self.slug = slugify(self.title, )
         super().save(*args, **kwargs)
 
     def number_of_likes(self):
@@ -150,9 +148,9 @@ class ForumPost(models.Model):
 class ForumPostComment(models.Model):
     """ model for forum post comment """
 
-    post = models.ForeignKey(
-        ForumPost, on_delete=models.CASCADE,
-        related_name='forum_post_comments')
+    post = models.ForeignKey(ForumPost,
+                             on_delete=models.CASCADE,
+                             related_name='forum_post_comments')
 
     name = models.CharField(max_length=80)
 
@@ -164,8 +162,9 @@ class ForumPostComment(models.Model):
 
     approved = models.BooleanField(default=False)
 
-    likes = models.ManyToManyField(
-        User, related_name='forum_comment_likes', blank=True)
+    likes = models.ManyToManyField(User,
+                                   related_name='forum_comment_likes',
+                                   blank=True)
 
     class Meta:
         """sets the ordering method """

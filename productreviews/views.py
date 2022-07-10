@@ -9,7 +9,6 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 
-
 # internal imports from BS_Auto_parts
 from products.models import Product
 from .models import ProductReview
@@ -63,7 +62,6 @@ class CreateProductReview(TemplateView):
 
 
 class EditProductReview(TemplateView):
-
     """
         Class based view to display edit product review
         page with createproductreview form relative to the
@@ -81,12 +79,12 @@ class EditProductReview(TemplateView):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
+                messages.error(request,
+                               "You didn't enter any search criteria!")
                 return redirect(reverse('checkout'))
 
-            queries = Q(
-                name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             product = Product.objects.all()
             products = product.filter(queries)
 
@@ -97,8 +95,7 @@ class EditProductReview(TemplateView):
                 'search_term': query,
                 'current_sorting': current_sorting,
             }
-            return render(
-                request, 'products/products.html', context)
+            return render(request, 'products/products.html', context)
         else:
             product_review = get_object_or_404(ProductReview, pk=pk)
             product = product_review.product
@@ -131,11 +128,9 @@ class EditProductReview(TemplateView):
             product_review.post = product_review
             product_review.save()
             messages.success(
-                request,
-                f'Your review has been updated for { product.name },\
+                request, f'Your review has been updated for { product.name },\
                  your review has been re-submitted to administration \
-                    for approval.'
-                 )
+                    for approval.')
             return HttpResponseRedirect(reverse('products'))
         else:
             form = CreateProductReviewForm()
@@ -150,6 +145,7 @@ class DeleteProductReview(TemplateView):
         Class based view to delete the selected
         review.
     """
+
     def get(self, request, pk):
         query = None
         sort = None
@@ -158,12 +154,12 @@ class DeleteProductReview(TemplateView):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(
-                    request, "You didn't enter any search criteria!")
+                messages.error(request,
+                               "You didn't enter any search criteria!")
                 return redirect(reverse('checkout'))
 
-            queries = Q(
-                name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             product = Product.objects.all()
             products = product.filter(queries)
 
@@ -174,28 +170,23 @@ class DeleteProductReview(TemplateView):
                 'search_term': query,
                 'current_sorting': current_sorting,
             }
-            return render(
-                request, 'products/products.html', context)
+            return render(request, 'products/products.html', context)
         else:
             review = get_object_or_404(ProductReview, pk=pk)
             product = review.product
             if request.user.is_superuser:
                 template_name = 'product_reviews/delete_product_review.html'
-                messages.info(
-                    request,
-                    f'You are currently deleting {review.title}'
-                    )
+                messages.info(request,
+                              f'You are currently deleting {review.title}')
                 context = {
                     'review': review,
                     'product': product,
                     'stop_toast_cart': True,
-                    }
+                }
                 return render(request, template_name, context)
             else:
-                messages.error(
-                    request,
-                    'Only staff have access to this feature.'
-                    )
+                messages.error(request,
+                               'Only staff have access to this feature.')
                 return redirect(reverse('home'))
 
     def post(self, request, pk):
@@ -204,10 +195,8 @@ class DeleteProductReview(TemplateView):
             product_review = get_object_or_404(ProductReview, pk=pk)
             product_review.delete()
             pk = product_review.product.id
-            messages.success(
-                request,
-                'You have successfully deleted your review.'
-                )
+            messages.success(request,
+                             'You have successfully deleted your review.')
             return redirect(reverse('product_detail', args=[pk]))
         else:
             messages.error(request, 'Only staff have access to this feature.')
@@ -219,6 +208,7 @@ class ReviewLike(View):
         Class based view to toggle the liked status for
         the selected comment and saving to the database.
     """
+
     def post(self, request, pk):
         """
         POST request for processing the review liked status
@@ -229,15 +219,11 @@ class ReviewLike(View):
         pkr = review.product.pk
         if review.likes.filter(id=request.user.id).exists():
             review.likes.remove(request.user)
-            messages.success(
-                request,
-                'You have succesfully un-liked this review.'
-                )
+            messages.success(request,
+                             'You have succesfully un-liked this review.')
         else:
             review.likes.add(request.user)
-            messages.success(
-                request,
-                'You have succesfully liked this review.'
-                )
+            messages.success(request,
+                             'You have succesfully liked this review.')
 
         return HttpResponseRedirect(reverse('product_detail', args=[pkr]))

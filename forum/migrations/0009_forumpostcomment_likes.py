@@ -15,6 +15,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='forumpostcomment',
             name='likes',
-            field=models.ManyToManyField(blank=True, related_name='forum_comment_likes', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(blank=True,
+                                         related_name='forum_comment_likes',
+                                         to=settings.AUTH_USER_MODEL),
         ),
     ]

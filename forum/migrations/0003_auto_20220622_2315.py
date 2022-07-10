@@ -18,6 +18,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='forumpost',
             name='topic',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='forum_posts_topic', to='forum.forumtopics'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='forum_posts_topic',
+                to='forum.forumtopics'),
         ),
     ]

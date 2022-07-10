@@ -17,10 +17,9 @@ class TestProfileViews(TestCase):
          This setup creates a test user,
          test product and test order
          """
-        testuser = User.objects.create_user(
-            username='test_user',
-            password='test_password',
-            email='test_user@test.com')
+        testuser = User.objects.create_user(username='test_user',
+                                            password='test_password',
+                                            email='test_user@test.com')
         testuser.save()
 
         Order.objects.create(

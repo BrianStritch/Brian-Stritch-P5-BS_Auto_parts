@@ -9,11 +9,7 @@ from django.shortcuts import reverse
 # internal imports from BS_Auto_parts
 from products.models import Product
 
-
-STATUS = (
-    (0, 'Draft'),
-    (1, 'Published')
-    )
+STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
 class ProductReview(models.Model):
@@ -26,11 +22,9 @@ class ProductReview(models.Model):
 
     slug = models.SlugField(max_length=200)
 
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='product_review_posts'
-        )
+    author = models.ForeignKey(User,
+                               on_delete=models.CASCADE,
+                               related_name='product_review_posts')
 
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -42,11 +36,9 @@ class ProductReview(models.Model):
 
     status = models.IntegerField(choices=STATUS, default=0)
 
-    likes = models.ManyToManyField(
-        User,
-        related_name='product_review_likes',
-        blank=True
-        )
+    likes = models.ManyToManyField(User,
+                                   related_name='product_review_likes',
+                                   blank=True)
 
     class Meta:
         """
@@ -88,11 +80,9 @@ class ProductReviewComment(models.Model):
         Class based model for Comments
     """
 
-    product_review = models.ForeignKey(
-        ProductReview,
-        on_delete=models.CASCADE,
-        related_name='product_review_comments'
-        )
+    product_review = models.ForeignKey(ProductReview,
+                                       on_delete=models.CASCADE,
+                                       related_name='product_review_comments')
 
     name = models.CharField(max_length=80)
 
