@@ -1,19 +1,19 @@
+""" product reviews views.py """
 # imports
 # 3rd party imports from django
 from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.views import generic, View
+from django.views import View
 from django.template.defaultfilters import slugify
-from django.views.generic import TemplateView, UpdateView, DeleteView
+from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
 
 
 # internal imports from BS_Auto_parts
 from products.models import Product
-from .models import ProductReview, ProductReviewComment
-from .forms import ProductReviewCommentForm, CreateProductReviewForm
+from .models import ProductReview
+from .forms import CreateProductReviewForm
 
 
 class CreateProductReview(TemplateView):
@@ -70,14 +70,14 @@ class EditProductReview(TemplateView):
         current selected product review and for saving
         updated data to the database.
     """
-        
+
     template_name = 'product_reviews/edit_product_review.html'
 
     def get(self, request, pk, *args, **kwargs):
         query = None
         sort = None
         direction = None
-        
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -91,11 +91,11 @@ class EditProductReview(TemplateView):
             products = product.filter(queries)
 
             current_sorting = f'{sort}_{direction}'
-                    
+
             context = {
-            'products': products,
-            'search_term': query,
-            'current_sorting': current_sorting,
+                'products': products,
+                'search_term': query,
+                'current_sorting': current_sorting,
             }
             return render(
                 request, 'products/products.html', context)
@@ -103,24 +103,24 @@ class EditProductReview(TemplateView):
             product_review = get_object_or_404(ProductReview, pk=pk)
             product = product_review.product
             form = CreateProductReviewForm(instance=product_review)
-            
+
             context = {
                 'form': form,
                 'product': product,
             }
             return render(request, self.template_name, context)
-    
+
     def post(self, request, pk):
         """
         POST request for processing the CreateProductReviewForm
         data passed from the create product review page and if
         form is valid saves booking to database.
-        """        
+        """
         product_review = get_object_or_404(ProductReview, pk=pk)
         product = product_review.product
         form = CreateProductReviewForm(request.POST, instance=product_review)
         if form.is_valid():
-            product_review.status=0
+            product_review.status = 0
             form.instance.product = product
             form.instance.author = request.user
             title = form.cleaned_data['title']
@@ -130,8 +130,12 @@ class EditProductReview(TemplateView):
             product_review = form.save(commit=False)
             product_review.post = product_review
             product_review.save()
-            messages.success(request, f'Your review has been updated for { product.name },\
-                 your review has been re-submitted to administration for approval.')
+            messages.success(
+                request,
+                f'Your review has been updated for { product.name },\
+                 your review has been re-submitted to administration \
+                    for approval.'
+                 )
             return HttpResponseRedirect(reverse('products'))
         else:
             form = CreateProductReviewForm()
@@ -145,12 +149,12 @@ class DeleteProductReview(TemplateView):
     """
         Class based view to delete the selected
         review.
-    """   
+    """
     def get(self, request, pk):
         query = None
         sort = None
         direction = None
-        
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -164,20 +168,23 @@ class DeleteProductReview(TemplateView):
             products = product.filter(queries)
 
             current_sorting = f'{sort}_{direction}'
-                    
+
             context = {
-            'products': products,
-            'search_term': query,
-            'current_sorting': current_sorting,
+                'products': products,
+                'search_term': query,
+                'current_sorting': current_sorting,
             }
             return render(
                 request, 'products/products.html', context)
-        else:     
+        else:
             review = get_object_or_404(ProductReview, pk=pk)
             product = review.product
-            if request.user.is_superuser:        
+            if request.user.is_superuser:
                 template_name = 'product_reviews/delete_product_review.html'
-                messages.info(request, f'You are currently deleting {review.title}')
+                messages.info(
+                    request,
+                    f'You are currently deleting {review.title}'
+                    )
                 context = {
                     'review': review,
                     'product': product,
@@ -185,20 +192,27 @@ class DeleteProductReview(TemplateView):
                     }
                 return render(request, template_name, context)
             else:
-                messages.error(request, 'Only staff have access to this feature.') 
+                messages.error(
+                    request,
+                    'Only staff have access to this feature.'
+                    )
                 return redirect(reverse('home'))
 
-    def post(self, request, pk): 
-        if request.user.is_superuser:        
-          product_review = get_object_or_404(ProductReview, pk=pk)
-          product_review.delete()
-          pk = product_review.product.id
-          messages.success(request, 'You have successfully deleted your review.')        
-          return redirect(reverse('product_detail', args=[pk]))
+    def post(self, request, pk):
+        """ method to handle the post request"""
+        if request.user.is_superuser:
+            product_review = get_object_or_404(ProductReview, pk=pk)
+            product_review.delete()
+            pk = product_review.product.id
+            messages.success(
+                request,
+                'You have successfully deleted your review.'
+                )
+            return redirect(reverse('product_detail', args=[pk]))
         else:
-            messages.error(request, 'Only staff have access to this feature.') 
+            messages.error(request, 'Only staff have access to this feature.')
             return redirect(reverse('home'))
-        
+
 
 class ReviewLike(View):
     """
@@ -215,9 +229,15 @@ class ReviewLike(View):
         pkr = review.product.pk
         if review.likes.filter(id=request.user.id).exists():
             review.likes.remove(request.user)
-            messages.success(request, 'You have succesfully un-liked this review.')
+            messages.success(
+                request,
+                'You have succesfully un-liked this review.'
+                )
         else:
             review.likes.add(request.user)
-            messages.success(request, 'You have succesfully liked this review.')
+            messages.success(
+                request,
+                'You have succesfully liked this review.'
+                )
 
         return HttpResponseRedirect(reverse('product_detail', args=[pkr]))

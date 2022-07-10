@@ -1,3 +1,4 @@
+""" product reviews models.py """
 # imports
 # 3rd party imports from django
 from django.db import models
@@ -20,16 +21,20 @@ class ProductReview(models.Model):
         Class based model for Reviews
     """
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    
+
     title = models.CharField(max_length=200)
 
     slug = models.SlugField(max_length=200)
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='product_review_posts')
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='product_review_posts'
+        )
 
     updated_on = models.DateTimeField(auto_now=True)
 
-    content = models.TextField()    
+    content = models.TextField()
 
     summary = models.TextField(blank=True)
 
@@ -37,7 +42,11 @@ class ProductReview(models.Model):
 
     status = models.IntegerField(choices=STATUS, default=0)
 
-    likes = models.ManyToManyField(User, related_name='product_review_likes', blank=True)
+    likes = models.ManyToManyField(
+        User,
+        related_name='product_review_likes',
+        blank=True
+        )
 
     class Meta:
         """
@@ -51,7 +60,7 @@ class ProductReview(models.Model):
             function to define the reverse URL
             for after a product review is created or edited
         """
-        return reverse('products')  
+        return reverse('products')
 
     def save(self, *args, **kwargs):
         """
@@ -61,7 +70,7 @@ class ProductReview(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
-    def __str__(self): 
+    def __str__(self):
         """
             function to return the review title as a string
         """
@@ -114,4 +123,3 @@ class ProductReviewComment(models.Model):
             for after a comment is created or edited
         """
         return reverse('products')
-        

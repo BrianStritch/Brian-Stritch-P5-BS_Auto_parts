@@ -1,6 +1,8 @@
+""" product reviews admin.py """
+# 3rd party imports
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-
+# imports from bs_auto_parts
 from .models import ProductReview, ProductReviewComment
 
 
@@ -75,4 +77,3 @@ class ProductReviewCommentsAdmin(admin.ModelAdmin):
         from the selection in the django admin view
         """
         queryset.update(approved=True)
-
