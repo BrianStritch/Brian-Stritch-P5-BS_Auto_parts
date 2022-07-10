@@ -402,6 +402,14 @@ Some of the page urls were raising a 500 error when the validator attempted to t
 Please see the w3c-validation.md file for the full breakdown of the HTML W3C validation testing done for this site. You can click[**here**]() to reach the file. 
 
 
+#### PYTHON 
+
+The automated tool yapf has been used to assist in the erradification of linting errors in the python files throughout this application.
+
+All python files have been tested using pep8 online testing platform and all errors have been removed and pep8 testing has passed.
+Please see the pep8 testing file for the full breakdown of the pep8 testing done for this site. You can click[**here**](./README/pep-8_testing.md) to reach the file. 
+
+
 #### JavaScript
 JS Hint was used to ensure that the JavaScript used in the website had no errors.
 
