@@ -34,3 +34,8 @@ urlpatterns = [
     path('staff/', include('storeowners.urls')),
     path('newsletter/', include('newsletter.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'BS_Auto_Parts.views.handler404'
+handler400 = 'BS_Auto_Parts.views.handler400'
+handler401 = 'BS_Auto_Parts.views.handler401'
+handler500 = 'BS_Auto_Parts.views.handler500'
