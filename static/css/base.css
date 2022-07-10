@@ -309,7 +309,6 @@ a:hover{
     position: relative;
     z-index: 0;
     margin-top: 5vh;
-    /* width: 100vw; */
     flex: 1;
     
 }
@@ -842,7 +841,6 @@ a.category-badge > span.badge:hover {
 /* ********************* shopping bag page *******************************/
 
 .outer-container{
-    /* width: 100vw; */
     min-height: 75vh;
 }
 .float-right{

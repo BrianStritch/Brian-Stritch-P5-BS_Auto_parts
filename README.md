@@ -31,10 +31,12 @@ The users on this website can create reviews on their favourite prducts and can 
 ## Table of Contents
 1. [**Search Engine Optimisation**](#Search-Engine-Optimisation)
 2. [**UX**](#ux)
-    1. [**User Stories**](#user-stories)
-        1. [**New Users**](#new-users)
-        2. [**Existing Members**](#existing-members)
-        3. [**Admin / Staff Users**](#admin-/-staff-users)
+    1. [**Users and User Stories**](#users-and-user-stories)
+        1. [**Site Users**](#site-users)
+        2. [**Admin Users**](#admin-users)
+        3. [**Unregistered and Registered Users**](#Unregistered-and-Registered-Users)
+        4. [**Users**](#users)
+            - [**User Stories**](#user-stories) 
     2. [**Wireframes**](#wireframes)
     3. [**Entity Relationship Diagram (ERD)**](#entity-relationship-diagram-(ERD))
 3. [**Features**](#features)
@@ -46,24 +48,22 @@ The users on this website can create reviews on their favourite prducts and can 
 5. [**Database**](#database)
     1. [**Physical database diagram**](#physical-database-diagram)
     2. [**Database models**](#models)
-        1. [**User Model**](#user-model)
-        2. [**Booking Model**](#booking-model)
-        3. [**Review Model**](#review-model)
-        4. [**Comment Model**](#comment-model)
 6. [**Testing**](#testing)
     1. [**User Credentials**](#user-credentials)
         1. [**Test User**](#test-user)
         2. [**Test User Staff**](#test-user-staff)
+        3. [**Stripe PAyment Details**](#stripe-pAyment-details)
     2. [**Manual**](#manual)
     3. [**Validation**](#validation)
-        1. [**CSS**](#CSS)
-        2. [**HTML**](#HTML)
+        1. [**HTML**](#HTML)
+        2. [**CSS**](#CSS)
         3. [**JavaScript**](#javaScript) 
         4. [**Python**](#python)
         5. [**Accessibility**](#accessibility)
     4. [**Automated**](#automated)
         1. [**Django / Coverage**](#django-/-coverage)
             1. [**Test Steps**](#test-steps)
+        2. [**Unittest**](#unittest)
     5. [**Responsiveness**](#responsiveness)
         1. [**Desktop Size**](#desktop-size)
         2. [**Tablet Size Screen Navigation Menu**](#tablet-size-screen-navigation-menu)
@@ -104,7 +104,9 @@ The list of keywords for the site were narrowed down to:
 These keywords are aplied across the website in context and in descriptions. 
 
 
-## UX Site users
+# UX 
+## Users and User Stories
+### Site users
 This project was designed to allow users to, through CRUD functionality, create read update delete , shopping bag orders, product reviews, forum posts, forum post comments, and the ability to sign up to a newsletter and send a message to the site owners via the contact us form via the navigation menu. In particular;
 
 - Allows users to create an account through the signup form
@@ -129,7 +131,7 @@ This project was designed to allow users to, through CRUD functionality, create 
 - Allows registered users to edit their comment through the edit comment form attached to the post detail page
 - Allows registered users to delete their comment through the delete comment link attached to the edit post detail page
 
-## UX Administration
+### Admin Users
 This project was designed to create an online ecommerce store where the site owners have the functionality to create read update and delete, products, product categories, manufacturer categories, forum topics, forum categories, forum posts and forum comments. 
 To restrict the type of content displayed on this website any comments or posts or reviews created by a site user, will be sent to the administrator for verification prior to being published. Should a user update a post, comment, review, the status is reset and the post, comment or review, is resent to the administrator for a further approval prior to publishment. 
 
@@ -156,9 +158,9 @@ In regards to the contact us messenging service, should an unregistered user wis
 
 <br>
 
-# USERS :
 
-## User types - Unregistered and Registered User Access:
+
+### Unregistered and Registered Users
         - There are two main user types,
             - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
             - A regular(shopper) user account has been set up with username/password of testuser/testpassword
@@ -172,23 +174,24 @@ Once logged in, staff members have access to the same functionality as members a
 A full breakdown of the pages available within this application can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/site_users_and_admins_views.md)
 <br>
 
-## User Stories
+### USERS :
+#### User Stories
 <hr>
 <br>
 
 User stories and a canban board have been used in the production of this web application and a full breakdown of the user stories and images of the github issues and canban board are available and can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/user_stories_issues_and_canban.md)
 
 
-### Wireframes
+## Wireframes
 As there are many pages to this project, I have included the wireframes in a separate document.
 
 Please [**click here**]() to see the wireframes.md file for the entire collection of wireframes.
  
 
-### Site Map
+## Site Map
 ![Site Map](sitemap.xml "Site Map compiled for the application")
 
-## Features
+# Features
 ### Existing Features
 #### Regular Users 
 1. Login - The customers are able to create their own accounts and log into the website with secure details.
@@ -235,7 +238,7 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
 6. A contact link between guests and admin will be established in a future update.
 
 
-## Technologies Used
+# Technologies Used
 - HTML - This site uses HTML to instruct the browser how to interprit the code correctly and arrange the layout.
 - CSS - This site uses CSS to aid in the style, and overall theme of the website
 - Bootstrap - This site uses Bootstrap elements to help design the framework of the site
@@ -294,7 +297,7 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
   - For the database schema diagram
 
 
-### Database
+# Database
 - The website is a data-centric one with html, javascript, css used with the bootstrap(version 5) framework as a frontend
 - The backend consists of Python built with the Django framework with a database of a Postgres for the deployed Heroku version(production)
 - Postgres is a powerful, open source object-relational database system (https://www.postgresql.org/)
@@ -332,7 +335,7 @@ A full breakdown of the models can be found [**Here**](https://github.com/BrianS
 An ERD Entity relationship diagram can be found [**Here**](/README/ERD.md)
 
 
-## Testing
+# Testing
 ### User Credentials
 There are two main uses on this site; a site member and a site staff member. Please use the logins below to access and review both user types:
 
@@ -347,10 +350,7 @@ There are two main uses on this site; a site member and a site staff member. Ple
 #### Stripe PAyment Details
 - Test Card Number: 4242424242424242 042 42424
 
-### Manual
-As there are many pages for the BS_Auto_Parts website which had to be manually tested to ensure functionality and UX were correct, they have been included in a separate file to avoid taking up too much space on the README.md documentation.
-
-Please see the manual_testing.md file for the full breakdown of the manual testing done for this site. You can click [**here**]()  to reach the file.
+### Manual Testing
 
 During this process, several issues were discovered and some of which have been since fixed on the site. Some examples of these include;
 
@@ -367,6 +367,15 @@ There are other issues that could not be fixed due to ability / time contraints 
 
 ### Validation
 <hr>
+
+#### HTML
+
+All HTML pages have been checked using the W3C Markup Validation Service. Some Errors were found in the Edit_profile.html page which relate to the fields automaticaly rendered using crispy forms.
+
+Some of the page urls were raising a 500 error when the validator attempted to test the page, however to avoid this, the page source code was used for testing, however the tool pointed to several small issues on some pages that were of no consequence, such as opening p tags not being found for a closing /p tag, when they were present in the code, however these issues only related to the crispy forms mentioned above.
+
+Please see the w3c-validation.md file for the full breakdown of the HTML W3C validation testing done for this site. You can click[**here**](./README/w3c_validation.md) to reach the file. 
+
 
 #### CSS
 The custom.css file code was validated using the The W3C CSS Validation Service and the image below verifies that the code was successfully validated with no errors. Numerous warnings were noted which relate to the bootstrap CSS files inherited with the template, however none of the custom css written for this web application failed or had any warnings present.
@@ -393,21 +402,13 @@ PLease see below badges obtained for passing the W3C CSS Validator testing
      
 <hr>
 
-#### HTML
-
-All HTML pages have been checked using the W3C Markup Validation Service. Some Errors were found in the Edit_profile.html page which relate to the fields automaticaly rendered using crispy forms.
-
-Some of the page urls were raising a 500 error when the validator attempted to test the page, however to avoid this, the page source code was used for testing, however the tool pointed to several small issues on some pages that were of no consequence, such as opening p tags not being found for a closing /p tag, when they were present in the code, however these issues only related to the crispy forms mentioned above.
-
-Please see the w3c-validation.md file for the full breakdown of the HTML W3C validation testing done for this site. You can click[**here**]() to reach the file. 
-
 
 #### PYTHON 
 
 The automated tool yapf has been used to assist in the erradification of linting errors in the python files throughout this application.
 
 All python files have been tested using pep8 online testing platform and all errors have been removed and pep8 testing has passed.
-Please see the pep8 testing file for the full breakdown of the pep8 testing done for this site. You can click[**here**](./README/pep-8_testing.md) to reach the file. 
+Please see the pep8 testing file for the full breakdown of the pep8 testing done for this site. You can click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/pep8.md) to reach the file. 
 
 
 #### JavaScript
@@ -415,11 +416,7 @@ JS Hint was used to ensure that the JavaScript used in the website had no errors
 
 ![JSHint report](./media/readme/JSHint/jsHint.JPG "JSHint report")
 
-### Python
-All python code pages have been tested to ensure it meets PEP8 standards and the results of which can be found by clicking [**here**]() to reach the file. 
 
-### Accessibility
-All HTML pages have been tested for accessibility and performance using Chrome Devtools Lighthouse testing platform and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/accessibility_tests.md) to reach the file. 
 
 ### Automated
 #### Django / Coverage
@@ -430,13 +427,12 @@ Django tests were written and Coverage was used to product detailed reports to e
 
 2. In order to product a html report which allows you to inspect in each file, to see in easy to use colour codes the lines of code which have been tested or which have not yet been tested, please use the following command: "coverage html"
 
-##### __Coverage report page 1__
+##### __Coverage report page __
 ![coverage report page 1](static/readme_images/coverage-report-results/Coverage-report-page-1.JPG "coverage report page 1")
-##### __Coverage report page 2__
-![coverage report page 2](static/readme_images/coverage-report-results/Coverage-report-page-2.JPG "coverage report page 2")
 
 
-##### Unittest
+
+#### Unittest
 In order to run tests on GitPod using unittest (which has been installed to handle testing), please follow the below steps in the terminal on GitPod:
 
 1. In BS_Auto_parts settings.py the database needs to be switched to the local database as the tests will not run when on the heroku postgres database. The loal database is kept in commented out form to allow switching of the database for testing purposes.
@@ -444,6 +440,12 @@ In order to run tests on GitPod using unittest (which has been installed to hand
 2. Run the following code : "pyhton3 manage.py test"
     - This will run a test on all test.py files in the app and will display in the terminal if all tests are passing, and if it does not it will show the error causing the test to fail.
 <hr>
+
+### Python
+All python code pages have been tested to ensure it meets PEP8 standards and the results of which can be found by clicking [**here**]() to reach the file. 
+
+### Accessibility
+All HTML pages have been tested for accessibility and performance using Chrome Devtools Lighthouse testing platform and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/accessibility_tests.md) to reach the file. 
 
 ### Responsiveness
 This website has been designed to scale correctly to different screen sizes with no issues on layout. In order to ensure that the view was pleasant to the user, certain divs and items had to be arranged differently or hidden/shown depending on screen size. This was handled using CSS media queries. Click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/responsive_testing.md) to see images of the application on different sized media screens.
@@ -492,7 +494,7 @@ We have created a mock facebook business page based on the CI balsamic template 
 <br> !["facebook mockup page"](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page")
 
 
-## Credits
+# Credits
 ### Content
 - Font icons imported from FontAwesome.
 - THe majority of the shop context was inherited from a combination of the Code Institute Walkthroughs and Fellow students input from the CI slack channels and researching past pupils work.

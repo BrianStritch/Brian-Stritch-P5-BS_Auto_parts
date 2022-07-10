@@ -19,7 +19,7 @@ class TestCheckoutModels(TestCase):
         """
         Product.objects.create(stock_no="test-stock-no",
                                name="test name",
-                               descripion="test description",
+                               description="test description",
                                price='449.95',
                                suits="universal",
                                stock_qty=1,

@@ -5,7 +5,8 @@ from django.contrib.messages import get_messages
 from django.test import TestCase
 
 # internal imports from BS_Auto_parts
-from contact_us.models import ExistingUsersContactDetails, SiteUsersContactDetails
+from contact_us.models import (
+    ExistingUsersContactDetails, SiteUsersContactDetails)
 
 
 class TestProductViews(TestCase):

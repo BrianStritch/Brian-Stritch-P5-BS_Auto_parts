@@ -259,7 +259,6 @@ class ToggleNewUserContactUsStatus(View):
             'existing_contacts': existing_contacts,
             'new_users': new_users,
         }
-        print('getting here')
         if query.status == 1:
             query.status = 0
             query.save()

@@ -63,7 +63,7 @@ class ForumCategoryForm(forms.ModelForm):
 
 class ForumTopicsForm(forms.ModelForm):
     """
-    Class BAsed form to create a new forum
+    Class Based form to create a new forum
     topic using the topics model
     """
 
