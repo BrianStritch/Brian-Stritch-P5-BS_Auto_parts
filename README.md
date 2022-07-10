@@ -30,7 +30,13 @@ The users on this website can create reviews on their favourite prducts and can 
 
 ## Table of Contents
 1. [**Search Engine Optimisation**](#Search-Engine-Optimisation)
-2. [**UX**](#ux)
+2. [**Web Marketing**](#web-marketing)
+    1. [**Social Media Marketing**](#social=media-marketing)
+    2. [**Email Marketing**](#email-marketing)
+    3. [**GDPR**](#gdpr)
+    4. [**Business Model**](#business-model)
+        - [**Business to Consumer**](#business-to-consumer)
+3. [**UX**](#ux)
     1. [**Users and User Stories**](#users-and-user-stories)
         1. [**Site Users**](#site-users)
         2. [**Admin Users**](#admin-users)
@@ -39,16 +45,16 @@ The users on this website can create reviews on their favourite prducts and can 
             - [**User Stories**](#user-stories) 
     2. [**Wireframes**](#wireframes)
     3. [**Entity Relationship Diagram (ERD)**](#entity-relationship-diagram-(ERD))
-3. [**Features**](#features)
+4. [**Features**](#features)
     1. [**Existing Features**](#existing-features)
         1. [**Regular Users**](#regular-users)
         2. [**Staff Users**](#staff-users)
     2. [**Future Features**](#future-features)
-4. [**Technologies Used**](#technologies-used)
-5. [**Database**](#database)
+5. [**Technologies Used**](#technologies-used)
+6. [**Database**](#database)
     1. [**Physical database diagram**](#physical-database-diagram)
     2. [**Database models**](#models)
-6. [**Testing**](#testing)
+7. [**Testing**](#testing)
     1. [**User Credentials**](#user-credentials)
         1. [**Test User**](#test-user)
         2. [**Test User Staff**](#test-user-staff)
@@ -73,11 +79,11 @@ The users on this website can create reviews on their favourite prducts and can 
         6. [**Tablet Size Reviews Page Navigation Menu**](#tablet-size-reviews-page-navigation-menu)
         7. [**Tablet Size Admin Page Navigation Menu**](#tablet-size-admin-page-navigation-menu)        
     6. [**Bugs Found**](#bugs-found)
-7. [**Deployment**](#deployment)
+8. [**Deployment**](#deployment)
     1. [**GitHub**](#GitHub)
         1. [**To commit the code on GitPod to GitHub**](#to-commit-the-code-on-GitPod-to-GitHub)
     2. [**Heroku**](#heroku)
-8. [**Credits**](#credits)
+9. [**Credits**](#credits)
     1. [**Content**](#content)
     2. [**Media**](#media)
     3. [**Acknowledgements**](#acknowledgements)
@@ -102,6 +108,62 @@ The list of keywords for the site were narrowed down to:
 8. vehicle maintenance
 
 These keywords are aplied across the website in context and in descriptions. 
+
+## Web Marketing
+
+### Social Media Marketing
+
+A Facebook business page for the studio has been set up to ensure organic growth of the business. The site is linked to the business account through the facebook social media link. The Facebook page includes a link back to the site.
+
+A mockup facebook business page has been created which can be seen [**here**]().
+<br>
+A standard facebook page has been created to showcase the business and promote the Forum. The facebook page can be found 
+<a href="https://facebook.com/BSAutoParts2022/" target="_blank">here</a> .
+
+### Email Marketing
+
+A newsletter sign up is encorporated in the home landing page where a user can sign up to a monthly newsletter showcasing the latest deals and new products featured in the store. To opt in they simply enter their email and select opt-in and submit their details to the Newsletter database. To opt-out the user simply enters their email in the same way as opting in, but selects the opt-out, which opts out the user from the newsletter but keeps their email on file. 
+
+Should a user wish to ne removed from the Newsletter database, then it is the same process as before but select delete and submit their details. Confirmation messages will be shown and a confirmation page will be displayed confirming their action.
+
+## GDPR
+
+A privacy policy was generated through https://www.privacypolicygenerator.info/ and a link to the policy is available in the page footer.
+
+
+## Business Model
+
+### B2C – Business-to-consumer
+
+B2C businesses sell to their end-user. This is the business model selected and utilised for BS_Auto_parts. 
+
+
+* Who is the customer? 
+    * The customer is the consumer, the individual by whom the purchased good or service will be used.
+* What will they buy?
+    * BS_Auto_Parts supplies Automotive parts for the regular maintenance and extends to motorsport applications. A customer would make a once off purchase from the store.
+* And how will they pay?
+    * All payments will be processed online through stripe.com.
+    * They will be secure.
+    * Products would require a once off payment to be made.
+* What data would need to be collected and stored?
+    * The required data to purchase a product would be:
+        * Full Name
+        * Email Address
+        * Credit Card Details
+        * Delivery Address Details
+        * Phone Number
+* Would the customer need to be authenticated?
+    * For a once off purchase from the store, the customer would not need an account. However, if they wish to store any of their information within the database they would need to register for an account with BS_Auto_Parts.
+* Roles within the e-commerce process:
+    * Customer:
+        * Orders a product
+    * BS_Auto_Parts Site:
+       * Creates the customer record on Stripe and the database
+       * Creates the order and processes the payment through Stripe
+       * Collects address details for delivery
+    * Site Owner / Administrator:
+        * Arranges delivery of the product to the customer
 
 
 # UX 
