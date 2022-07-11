@@ -252,8 +252,8 @@ In regards to the contact us messenging service, should an unregistered user wis
 
 ### Unregistered and Registered Users
 - There are two main user types,
-- An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
-- A regular(shopper) user account has been set up with username/password of testuser/testpassword
+- An admin(administrator) user account has been set up with username of testuseradmin and password testpassword
+- A regular(shopper) user account has been set up with username of testuser and password testpassword
 - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
 - For the expiry date, cvc and postal code please input 0424 242424
  
@@ -437,11 +437,11 @@ There are two main uses on this site; a site member and a site staff member. Ple
 
 #### Test User
 - Username: testuser
-- Password: administration
+- Password: testpassword
 
 #### Admin User
-- Username: admin
-- Password: administration
+- Username: testuseradmin
+- Password: testpassword
 
 #### Stripe PAyment Details
 - Test Card Number: 
