@@ -279,7 +279,7 @@ User stories and a canban board have been used in the production of this web app
 ## Wireframes
 As there are many pages to this project, I have included the wireframes in a separate document.
 
-Please [**click here**]() to see the wireframes.md file for the entire collection of wireframes.
+Please [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/wireframes.md) to see the wireframes.md file for the entire collection of wireframes.
  
 
 ## Site Map
