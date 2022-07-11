@@ -126,6 +126,34 @@ A newsletter sign up is encorporated in the home landing page where a user can s
 
 Should a user wish to ne removed from the Newsletter database, then it is the same process as before but select delete and submit their details. Confirmation messages will be shown and a confirmation page will be displayed confirming their action.
 
+newletter signup form
+
+![newletter signup form](./media/readme/newsletter/nesletter-signup.JPG "newsletter signup form")
+<br>
+newletter signup successful
+
+![newletter signup successful](./media/readme/newsletter/newsletter-signup-successful.JPG "newletter signup successful")
+<br>
+newletter un-subscribe
+
+![newletter un-subscribe](./media/readme/newsletter/newsletter-un-subscribe.JPG "newletter un-subscribe")
+<br>
+newletter opt-out success message
+
+![newletter opt-out success message](./media/readme/newsletter/newsletter-opt-out-successful.JPG "newletter opt-out success message")
+<br>
+newletter delete from database
+
+![newletter delete from database](./media/readme/newsletter/newsletter-delete-from-database.JPG "newletter delete from database")
+<br>
+newletter delete from database successful
+
+![newletter delete from database successful](./media/readme/newsletter/newsletter-email-removed-from-database.JPG "newletter delete from database successful")
+<br>
+Admin newletter list
+
+![Admin newletter list](./media/readme/newsletter/newsletter-list.JPG "Admin newletter list")
+
 ## GDPR
 
 A privacy policy was generated through https://www.privacypolicygenerator.info/ and a link to the policy is available in the page footer.
@@ -454,7 +482,7 @@ The custom.css file code was validated using the The W3C CSS Validation Service 
 
 All CSS files have been tested and the results of which can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/w3c_validation.md) to reach the file. 
 
-PLease see below badges obtained for passing the W3C CSS Validator testing
+Please see below badges obtained for passing the W3C CSS Validator testing
 <p>
     <a href="http://jigsaw.w3.org/css-validator/check/referer">
         <img style="border:0;width:88px;height:31px"
@@ -506,7 +534,7 @@ Django tests were written and Coverage was used to product detailed reports to e
 <hr>
 
 
-#### Unittest
+#### Unit test
 In order to run tests on GitPod using unittest (which has been installed to handle testing), please follow the below steps in the terminal on GitPod:
 
 1. In BS_Auto_parts settings.py the database needs to be switched to the local database as the tests will not run when on the heroku postgres database. The loal database is kept in commented out form to allow switching of the database for testing purposes.
