@@ -2,10 +2,10 @@
 ## Created and developed by Brian Stritch
 <hr>
 
-At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) is an e-commerce web application and store based on a fictional auto parts and motorsport parts store. [**BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) consists of an online shop that caters for the average motorist as much as the motorsport enthusiast. The application is fully functional and allows a purchase to be made with a test Credit card number to display its functionality.
+[**BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) is an e-commerce web application and store based on a fictional auto parts and motorsport parts store. [**BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) consists of an online shop that caters for the average motorist as much as the motorsport enthusiast. The application is fully functional and allows a purchase to be made with a test Credit card number to display its functionality.
 <br>
 <br>
-At [**At BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) our members can sign-up and login to create a personal profile and can manage their credentials in the user profile page and when signed up can avail of features such as the members forum, where members can discuss topics, have the ability to  comment on existing posts or create their own posts. Users also have the ability to like other users posts and comments.
+At [**BS_AUTO_PARTS**](https://brian-stritch-p5-bs-auto-parts.herokuapp.com/) our members can sign-up and login to create a personal profile and can manage their credentials in the user profile page and when signed up can avail of features such as the members forum, where members can discuss topics, have the ability to  comment on existing posts or create their own posts. Users also have the ability to like other users posts and comments.
 <br> 
 
 The benefit of this application will allow users to purchase the products they require and also offers the user access to information relating to their vehicles. Should the User wish to discuss any issues they may have they can create a post in the many different Topics and can have other members assistance to help them resolve any issues theymay have.The User has the functionality to edit or delete any posts or comments which they themselves have created.
@@ -107,13 +107,13 @@ The list of keywords for the site were narrowed down to:
 7. auto repair
 8. vehicle maintenance
 
-These keywords are aplied across the website in context and in descriptions. 
+These keywords are applied across the website in context and in descriptions. 
 
 ## Web Marketing
 
 ### Social Media Marketing
 
-A Facebook business page for the studio has been set up to ensure organic growth of the business. The site is linked to the business account through the facebook social media link. The Facebook page includes a link back to the site.
+A Facebook business page for the store has been set up however this is a standard type account and not a business accoutn. A mock-up business account page has been created and can be seen below. The site is linked to the standard account through the facebook social media link.
 
 A mockup facebook business page has been created which can be seen [**here**](./media/readme/facebook_business_page_mockup.JPG "facebook mockup business page").
 <br>
@@ -223,22 +223,26 @@ In regards to the contact us messenging service, should an unregistered user wis
 
 
 ### Unregistered and Registered Users
-        - There are two main user types,
-            - An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
-            - A regular(shopper) user account has been set up with username/password of testuser/testpassword
-            - When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
-            - For the expiry date, cvc and postal code please input 0424 242424
+- There are two main user types,
+- An admin(administrator) user account has been set up with username/password of testuseradmin/testpassword
+- A regular(shopper) user account has been set up with username/password of testuser/testpassword
+- When making a payment as a regular user, a test credit card of 4242424242424242 has been set up for the card number
+- For the expiry date, cvc and postal code please input 0424 242424
  
 Once logged in, staff members have access to the same functionality as members and additonal functionality which is not made available to a regular user for testing purposes and to maintain stock control etc. The staff status allows selected users to access the management area where staff can view all products, categories, manufacturers, newsletter subscribers and contact us messages sent by site users to administration, and allows access to the django administration area where the staff member can view all products, orders, newsletter subscribers, forum categories, reviews, comments, users etc and has administration priveledges which allows them to create edit and update reviews, comments, bookings, users etc. The administration area is required in order to publish posts, comments, reviews etc, which have been submitted for approval prior to getting published.
 
-<hr>
+
 <br>
+
 A full breakdown of the pages available within this application can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/site_users_and_admins_views.md)
+<hr>
 <br>
 
 ### USERS :
-#### User Stories
 <hr>
+
+#### User Stories
+
 <br>
 
 User stories and a canban board have been used in the production of this web application and a full breakdown of the user stories and images of the github issues and canban board are available and can be found by clicking [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/user_stories_issues_and_canban.md)
@@ -251,7 +255,9 @@ Please [**click here**]() to see the wireframes.md file for the entire collectio
  
 
 ## Site Map
-![Site Map](sitemap.xml "Site Map compiled for the application")
+
+As part of the development of this project, a sitemap was generated using XML-Sitemaps.com (www.xml-sitemaps.com). They provide a free tool which generates an xml file that can be included in the project for google to use. click [**here**](sitemap.xml "Site Map compiled for the application") to seethis files contents.
+
 
 # Features
 ### Existing Features
@@ -410,7 +416,11 @@ There are two main uses on this site; a site member and a site staff member. Ple
 - Password: administration
 
 #### Stripe PAyment Details
-- Test Card Number: 4242424242424242 042 42424
+- Test Card Number: 
+    - Card number: 4242424242424242
+    - Expiry : 04/24
+    - CVV : 242
+    - Zip : 424
 
 ### Manual Testing
 
@@ -436,7 +446,7 @@ All HTML pages have been checked using the W3C Markup Validation Service. Some E
 
 Some of the page urls were raising a 500 error when the validator attempted to test the page, however to avoid this, the page source code was used for testing, however the tool pointed to several small issues on some pages that were of no consequence, such as opening p tags not being found for a closing /p tag, when they were present in the code, however these issues only related to the crispy forms mentioned above.
 
-Please see the w3c-validation.md file for the full breakdown of the HTML W3C validation testing done for this site. You can click[**here**](./README/w3c_validation.md) to reach the file. 
+Please see the w3c-validation.md file for the full breakdown of the HTML W3C validation testing done for this site. You can click [**here**](https://github.com/BrianStritch/Brian-Stritch-P5-BS_Auto_parts/blob/main/README/w3c_html_validation.md) to reach the file. 
 
 
 #### CSS

@@ -2,16 +2,20 @@
 <hr>
 
 ###### base.css
-![W3C CSS Validation base.css](./media/readme/w3c_validation/w3c-css-validator-base-css.JPG "W3C CSS validation")
+
+![W3C CSS Validation base.css](../media/readme/w3c_validation/w3c-css-validator-base-css.JPG "W3C CSS validation")
 
 ###### product-review.css
-![W3C CSS Validation product-review](./media/readme/w3c_validation/w3c-css-validator-product-review-css.JPG "W3C CSS validation product-review")
+
+![W3C CSS Validation product-review](../media/readme/w3c_validation/w3c-css-validator-product-review-css.JPG "W3C CSS validation product-review")
 
 ###### checkout.css
-![W3C CSS Validation checkout](./media/readme/w3c_validation/w3c-css-validator-checkout-css.JPG "W3C CSS validation checkout")
+
+![W3C CSS Validation checkout](../media/readme/w3c_validation/w3c-css-validator-checkout-css.JPG "W3C CSS validation checkout")
 
 ###### forum.css
-![W3C CSS Validation forum](./media/readme/w3c_validation/w3c-css-validator-forum-css.JPG "W3C CSS validation forum")
+
+![W3C CSS Validation forum](../media/readme/w3c_validation/w3c-css-validator-forum-css.JPG "W3C CSS validation forum")
 
 
 <p>
